@@ -6,13 +6,13 @@
 /*   By: ddelladi <ddelladi@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/16 19:22:22 by ddelladi          #+#    #+#             */
-/*   Updated: 2022/07/17 22:30:01 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/07/18 00:30:57 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int	final_length(int start_x, int start_y, int rxy[2])
+float	final_length(int start_x, int start_y, int rxy[2])
 {
 	if (rxy[0] == INT_MAX)
 		return (INT_MAX);

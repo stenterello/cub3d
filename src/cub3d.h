@@ -6,7 +6,7 @@
 /*   By: ddelladi <ddelladi@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/22 13:34:25 by ddelladi          #+#    #+#             */
-/*   Updated: 2022/07/17 22:28:19 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/07/18 00:31:15 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,6 +87,6 @@ int		get_abs(int n);
 void	bresenham(int xy[2], int xy2[2], int color, t_rules *rules);
 int		virtual_horizontal_colliding(int rayX, int rayY, t_rules *rules, int dir);
 int		virtual_vertical_colliding(int rayX, int rayY, t_rules *rules, int dir);
-void	draw_3d(t_rules *rules, int dist, int x, float ray_angle);
+void	draw_3d(t_rules *rules, float dist, int x, float ray_angle);
 
 #endif

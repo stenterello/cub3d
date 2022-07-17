@@ -15,16 +15,21 @@ make -C ./include/mlx_linux
  
 
  
-# Make data base, printed on Sun Jul 17 22:39:13 2022
+# Make data base, printed on Mon Jul 18 00:25:44 2022
  
 
 # Variables
  
 
+ 
 # automatic
+ 
 <D = $(patsubst %/,%,$(dir $<))
+ 
 # automatic
+ 
 ?F = $(notdir $?)
+ 
 # environment
 DESKTOP_SESSION = cinnamon
 # default
@@ -75,10 +80,11 @@ XDG_DATA_DIRS = /usr/share/cinnamon:/usr/share/gnome:/home/davide/.local/share/f
 DBUS_SESSION_BUS_ADDRESS = unix:path=/run/user/1000/bus
 # environment
 LESSOPEN = | /usr/bin/lesspipe %s
+ 
 # environment
 VSCODE_CWD = /home/davide
 # environment
-XDG_SESSION_PATH = /org/freedesktop/DisplayManager/Session6
+XDG_SESSION_PATH = /org/freedesktop/DisplayManager/Session1
 # default
 MAKE_HOST := x86_64-pc-linux-gnu
 # environment
@@ -88,7 +94,7 @@ GPG_AGENT_INFO = /run/user/1000/gnupg/S.gpg-agent:0:1
 # environment
 PG_OF_PATH = /home/davide/Programmi/OpenFrameworks/of_v0.11.2_linux64gcc6_release
 # environment
-SESSION_MANAGER = local/ThinkPad-E550:@/tmp/.ICE-unix/179826,unix/ThinkPad-E550:/tmp/.ICE-unix/179826
+SESSION_MANAGER = local/ThinkPad-E550:@/tmp/.ICE-unix/3268,unix/ThinkPad-E550:/tmp/.ICE-unix/3268
 # environment
 XDG_RUNTIME_DIR = /run/user/1000
 # environment
@@ -106,7 +112,7 @@ XDG_SESSION_DESKTOP = cinnamon
 # environment
 SSH_AUTH_SOCK = /run/user/1000/keyring/ssh
 # environment
-GIO_LAUNCHED_DESKTOP_FILE_PID = 205084
+GIO_LAUNCHED_DESKTOP_FILE_PID = 27674
 # automatic
 %F = $(notdir $%)
 # environment
@@ -120,7 +126,7 @@ QT_QPA_PLATFORMTHEME = qt5ct
 # environment
 XDG_SEAT = seat0
 # environment
-SSH_AGENT_PID = 179899
+SSH_AGENT_PID = 3338
 # environment
 ORIGINAL_XDG_CURRENT_DESKTOP = X-Cinnamon
 # environment
@@ -152,7 +158,7 @@ MAKE = $(MAKE_COMMAND)
 # environment
 SHLVL = 0
 # environment
-XDG_SESSION_ID = c14
+XDG_SESSION_ID = c4
 # environment
 USER = davide
 # makefile
@@ -216,7 +222,7 @@ GJS_DEBUG_OUTPUT = stderr
 # environment
 LANG = C
 # environment
-VSCODE_PID = 205084
+VSCODE_PID = 27674
 # variable set hash-table stats:
 # Load=98/1024=10%, Rehash=0, Collisions=7/128=5%
 
@@ -298,7 +304,6 @@ re: clean all
 clean:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
- 
 #  File has not been updated.
 #  recipe to execute (from 'Makefile', line 20):
 	./configure clean
@@ -317,9 +322,8 @@ clean:
 # strcache performance: lookups = 72 / hit rate = 15%
 # hash-table stats:
 # Load=61/8192=1%, Rehash=0, Collisions=1/72=1%
-# Finished Make data base on Sun Jul 17 22:39:13 2022
+# Finished Make data base on Mon Jul 18 00:25:44 2022
 
- 
 # GNU Make 4.2.1
 # Built for x86_64-pc-linux-gnu
 # Copyright (C) 1988-2016 Free Software Foundation, Inc.
@@ -327,7 +331,7 @@ clean:
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Sun Jul 17 22:39:13 2022
+# Make data base, printed on Mon Jul 18 00:25:44 2022
 
 # Variables
 
@@ -359,6 +363,7 @@ GDMSESSION = cinnamon
 MAKE_VERSION := 4.2.1
 # makefile
 CURDIR := /home/davide/Documenti/Codici/42/cub3d
+ 
 # makefile
 SHELL = /bin/sh
 # environment
@@ -392,7 +397,7 @@ LESSOPEN = | /usr/bin/lesspipe %s
 # environment
 VSCODE_CWD = /home/davide
 # environment
-XDG_SESSION_PATH = /org/freedesktop/DisplayManager/Session6
+XDG_SESSION_PATH = /org/freedesktop/DisplayManager/Session1
 # default
 MAKE_HOST := x86_64-pc-linux-gnu
 # environment
@@ -402,7 +407,7 @@ GPG_AGENT_INFO = /run/user/1000/gnupg/S.gpg-agent:0:1
 # environment
 PG_OF_PATH = /home/davide/Programmi/OpenFrameworks/of_v0.11.2_linux64gcc6_release
 # environment
-SESSION_MANAGER = local/ThinkPad-E550:@/tmp/.ICE-unix/179826,unix/ThinkPad-E550:/tmp/.ICE-unix/179826
+SESSION_MANAGER = local/ThinkPad-E550:@/tmp/.ICE-unix/3268,unix/ThinkPad-E550:/tmp/.ICE-unix/3268
 # environment
 XDG_RUNTIME_DIR = /run/user/1000
 # environment
@@ -422,7 +427,7 @@ XDG_SESSION_DESKTOP = cinnamon
 # environment
 SSH_AUTH_SOCK = /run/user/1000/keyring/ssh
 # environment
-GIO_LAUNCHED_DESKTOP_FILE_PID = 205084
+GIO_LAUNCHED_DESKTOP_FILE_PID = 27674
 # automatic
 %F = $(notdir $%)
 # environment
@@ -436,7 +441,7 @@ QT_QPA_PLATFORMTHEME = qt5ct
 # environment
 XDG_SEAT = seat0
 # environment
-SSH_AGENT_PID = 179899
+SSH_AGENT_PID = 3338
 # environment
 ORIGINAL_XDG_CURRENT_DESKTOP = X-Cinnamon
 # environment
@@ -476,7 +481,7 @@ LIBFT = ./include/libft/libft.a
 # makefile (from 'Makefile', line 2)
 CC = gcc
 # environment
-XDG_SESSION_ID = c14
+XDG_SESSION_ID = c4
 # environment
 USER = davide
 # makefile
@@ -544,7 +549,7 @@ NAME = cub3d
 # environment
 LANG = C
 # environment
-VSCODE_PID = 205084
+VSCODE_PID = 27674
 # variable set hash-table stats:
 # Load=107/1024=10%, Rehash=0, Collisions=14/146=10%
 
@@ -604,8 +609,7 @@ src/colliding.o:
 
 cub3d: include/mlx_linux/mlx_linux.a include/libft/libft.a src/main.o src/error.o src/memory.o src/memory2.o src/check.o src/map_gen.o src/take_rules_utils.o src/map_gen_utils.o src/events.o src/window.o src/minimap.o src/raycast.o src/colliding.o src/bresenham.o src/utils.o src/3d.o
 #  Implicit rule search has not been done.
- 
-#  Last modified 2022-07-17 22:36:50.423077628
+#  Last modified 2022-07-17 22:46:58.600534583
 #  File has not been updated.
 # variable set hash-table stats:
 # Load=0/32=0%, Rehash=0, Collisions=0/5=0%
@@ -637,6 +641,7 @@ src/memory.o:
 #  Modification time never checked.
 #  File has not been updated.
 
+ 
 # Not a target:
 src/window.o:
 #  Implicit rule search has not been done.
@@ -776,6 +781,6 @@ src/map_gen.o:
 # strcache performance: lookups = 61 / hit rate = 40%
 # hash-table stats:
 # Load=36/8192=0%, Rehash=0, Collisions=1/61=2%
-# Finished Make data base on Sun Jul 17 22:39:13 2022
+# Finished Make data base on Mon Jul 18 00:25:44 2022
 
  

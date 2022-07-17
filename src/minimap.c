@@ -6,7 +6,7 @@
 /*   By: ddelladi <ddelladi@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/16 18:33:06 by ddelladi          #+#    #+#             */
-/*   Updated: 2022/07/17 22:36:47 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/07/18 00:28:58 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,18 +16,16 @@
 
 void	draw_view_rays(t_rules *rules)
 {
-	float	mv_unit;
 	float	angle;
 	int		counter;
 
-	mv_unit = (float)(2 * PI) / 360;
-	angle = rules->player.dir - (mv_unit * 45);
+	angle = rules->player.dir - (ANGLE_UNIT * 45);
 	counter = 0;
-	while (angle < rules->player.dir + (mv_unit * 45))
+	while (angle < rules->player.dir + (ANGLE_UNIT * 45))
 	{
 		raycast_bresenham(angle, rules, counter);
-		angle += mv_unit;
-		counter += 12;
+		angle += ANGLE_UNIT / 4;
+		counter += 6;
 	}
 	// testing-only one-ray
 	// raycast_bresenham(rules->player.dir, rules);
