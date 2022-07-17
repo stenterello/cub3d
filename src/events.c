@@ -6,7 +6,7 @@
 /*   By: ddelladi <ddelladi@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/16 18:32:06 by ddelladi          #+#    #+#             */
-/*   Updated: 2022/07/17 21:50:03 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/07/17 22:39:23 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,13 +29,13 @@ void	move_view(int keycode, t_rules *rules)
 {
 	if (keycode == 65361)
 	{
-		rules->player.dir -= (2 * PI / 360);
+		rules->player.dir -= ANGLE_UNIT * 5;
 		if (rules->player.dir < 0)
 			rules->player.dir = 2 * PI;
 	}
 	else if (keycode == 65363)
 	{
-		rules->player.dir += (2 * PI / 360);
+		rules->player.dir += ANGLE_UNIT * 5;
 		if (rules->player.dir > 2 * PI)
 			rules->player.dir = 0;
 	}

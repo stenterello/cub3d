@@ -15,7 +15,8 @@ SRC=main.c \
 	raycast.c \
 	colliding.c \
 	bresenham.c \
-	utils.c
+	utils.c \
+	3d.c
 SRCS=$(addprefix src/, $(SRC))
 OBJS=$(SRCS:.c=.o)
 LIBFT=./include/libft/libft.a

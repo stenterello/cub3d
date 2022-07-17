@@ -6,7 +6,7 @@
 /*   By: ddelladi <ddelladi@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/16 19:22:22 by ddelladi          #+#    #+#             */
-/*   Updated: 2022/07/17 21:33:50 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/07/17 22:30:01 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,7 +106,7 @@ void	vertical_lines_check(float angle, int xy[2], t_rules *rules, int ret[2])
 	// 	bresenham(xy, ret, 0x00000000, rules);
 }
 
-void	raycast_bresenham(float angle, t_rules *rules)
+void	raycast_bresenham(float angle, t_rules *rules, int counter)
 {
 	int		xy[2];
 	int		f_pts[2];
@@ -117,7 +117,13 @@ void	raycast_bresenham(float angle, t_rules *rules)
 	horizontal_lines_check(angle, xy, rules, f_pts);
 	vertical_lines_check(angle, xy, rules, s_pts);
 	if (final_length(xy[0], xy[1], s_pts) == INT_MAX || final_length(xy[0], xy[1], f_pts) < final_length(xy[0], xy[1], s_pts))
+	{
 		bresenham(xy, f_pts, 0x00FFFFFF, rules);
+		draw_3d(rules, final_length(xy[0], xy[1], f_pts), counter, angle);
+	}
 	else
+	{
 		bresenham(xy, s_pts, 0x00FFFFFF, rules);
+		draw_3d(rules, final_length(xy[0], xy[1], s_pts), counter, angle);
+	}
 }

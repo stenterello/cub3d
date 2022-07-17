@@ -6,7 +6,7 @@
 /*   By: ddelladi <ddelladi@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/16 18:33:06 by ddelladi          #+#    #+#             */
-/*   Updated: 2022/07/17 21:35:42 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/07/17 22:36:47 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,18 +16,21 @@
 
 void	draw_view_rays(t_rules *rules)
 {
-	// float	mv_unit;
-	// float	angle;
+	float	mv_unit;
+	float	angle;
+	int		counter;
 
-	// mv_unit = (float)(2 * PI) / 360;
-	// angle = rules->player.dir - (mv_unit * 30);
-	// while (angle < rules->player.dir + (mv_unit * 30))
-	// {
-	// 	raycast_bresenham(angle, rules);
-	// 	angle += mv_unit;
-	// }
+	mv_unit = (float)(2 * PI) / 360;
+	angle = rules->player.dir - (mv_unit * 45);
+	counter = 0;
+	while (angle < rules->player.dir + (mv_unit * 45))
+	{
+		raycast_bresenham(angle, rules, counter);
+		angle += mv_unit;
+		counter += 12;
+	}
 	// testing-only one-ray
-	raycast_bresenham(rules->player.dir, rules);
+	// raycast_bresenham(rules->player.dir, rules);
 }
 
 void	draw_mini_player(t_rules *rules)
@@ -72,6 +75,24 @@ void	draw_mini_block(t_rules *rules, int coord[2], int color)
 	coord[0] += rules->mini_block_width;
 }
 
+void	paint_bg(t_rules *rules)
+{
+	int		i;
+	int		j;
+	t_frame	bg;
+
+	bg.img = mlx_new_image(rules->mlx, rules->win_width, rules->win_height);
+	bg.addr = mlx_get_data_addr(bg.img, &bg.bpp, &bg.line_length, &bg.endian);
+	i = 0;
+	while (i < rules->win_height)
+	{
+		j = 0;
+		while (j < rules->win_width)
+			easy_pixel_put(&bg, j++, i, 0x00000000);
+		i++;
+	}
+	mlx_put_image_to_window(rules->mlx, rules->mlx_win, bg.img, 0, 0);
+}
 
 void	minimap(t_rules *rules)
 {
@@ -79,6 +100,7 @@ void	minimap(t_rules *rules)
 	int	j;
 	int	coord[2];
 
+	paint_bg(rules);
 	i = 0;
 	coord[0] = 0;
 	coord[1] = 0;

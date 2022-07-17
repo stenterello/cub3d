@@ -6,7 +6,7 @@
 /*   By: ddelladi <ddelladi@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/22 13:34:25 by ddelladi          #+#    #+#             */
-/*   Updated: 2022/07/17 21:32:50 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/07/17 22:28:19 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 # include <math.h>
 # include <limits.h>
 # define PI 3.1415926535
+# define ANGLE_UNIT 0.0174533
 
 typedef struct s_ray
 {
@@ -80,11 +81,12 @@ void	init_window(t_rules *rules);
 void	easy_pixel_put(t_frame *frame, int x, int y, int color);
 void	draw_mini_block(t_rules *rules, int coord[2], int color);
 void	free_rules(t_rules *rules);
-void	raycast_bresenham(float angle, t_rules *rules);
+void	raycast_bresenham(float angle, t_rules *rules, int counter);
 int		colliding(t_rules *rules, char *dir);
 int		get_abs(int n);
 void	bresenham(int xy[2], int xy2[2], int color, t_rules *rules);
 int		virtual_horizontal_colliding(int rayX, int rayY, t_rules *rules, int dir);
 int		virtual_vertical_colliding(int rayX, int rayY, t_rules *rules, int dir);
+void	draw_3d(t_rules *rules, int dist, int x, float ray_angle);
 
 #endif
