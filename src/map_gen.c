@@ -6,7 +6,7 @@
 /*   By: ddelladi <ddelladi@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/22 14:24:52 by ddelladi          #+#    #+#             */
-/*   Updated: 2022/07/18 12:23:50 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/07/18 13:06:04 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@ static int	completed_rules(t_rules *rules)
 		!rules->south_texture_path ||
 		!rules->east_texture_path ||
 		!rules->west_texture_path ||
-		rules->floor_color[0] == 127 ||
-		rules->ceiling_color[0] == 127)
+		rules->floor_color[0] == INT_MAX ||
+		rules->ceiling_color[0] == INT_MAX)
 		return (0);
 	return (1);
 }

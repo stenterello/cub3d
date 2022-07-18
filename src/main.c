@@ -6,7 +6,7 @@
 /*   By: ddelladi <ddelladi@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/22 13:36:34 by ddelladi          #+#    #+#             */
-/*   Updated: 2022/07/18 11:32:53 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/07/18 13:05:58 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,12 +23,12 @@ void	init_rules(t_rules *rules)
 	rules->win_height = 1080;
 	rules->mini_block_width = 15;
 	rules->map_width = 0;
-	rules->ceiling_color[0] = 127;
-	rules->ceiling_color[1] = 127;
-	rules->ceiling_color[2] = 127;
-	rules->floor_color[0] = 127;
-	rules->floor_color[1] = 127;
-	rules->floor_color[2] = 127;
+	rules->ceiling_color[0] = INT_MAX;
+	rules->ceiling_color[1] = INT_MAX;
+	rules->ceiling_color[2] = INT_MAX;
+	rules->floor_color[0] = INT_MAX;
+	rules->floor_color[1] = INT_MAX;
+	rules->floor_color[2] = INT_MAX;
 }
 
 void	free_rules(t_rules *rules)
