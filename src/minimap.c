@@ -6,7 +6,7 @@
 /*   By: ddelladi <ddelladi@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/16 18:33:06 by ddelladi          #+#    #+#             */
-/*   Updated: 2022/07/18 12:25:00 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/07/18 20:24:38 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,22 +33,22 @@ void	draw_view_rays(t_rules *rules)
 
 void	draw_mini_player(t_rules *rules)
 {
-	t_frame	pl;
-	int		i;
-	int		j;
+	// t_frame	pl;
+	// int		i;
+	// int		j;
 
-	i = 0;
-	j = 0;
-	pl.img = mlx_new_image(rules->mlx, rules->mini_block_width / 3, rules->mini_block_width / 3);
-	pl.addr = mlx_get_data_addr(pl.img, &pl.bpp, &pl.line_length, &pl.endian);
-	while (i < rules->mini_block_width / 3)
-	{
-		j = 0;
-		while (j < rules->mini_block_width / 3)
-			easy_pixel_put(&pl, i, j++, 0x000000FF);
-		i++;
-	}
-	mlx_put_image_to_window(rules->mlx, rules->mlx_win, pl.img, rules->player.x - ((rules->mini_block_width / 3) / 2), rules->player.y - ((rules->mini_block_width / 3) / 2));
+	// i = 0;
+	// j = 0;
+	// pl.img = mlx_new_image(rules->mlx, rules->mini_block_width / 3, rules->mini_block_width / 3);
+	// pl.addr = mlx_get_data_addr(pl.img, &pl.bpp, &pl.line_length, &pl.endian);
+	// while (i < rules->mini_block_width / 3)
+	// {
+	// 	j = 0;
+	// 	while (j < rules->mini_block_width / 3)
+	// 		easy_pixel_put(&pl, i, j++, 0x000000FF);
+	// 	i++;
+	// }
+	// mlx_put_image_to_window(rules->mlx, rules->mlx_win, pl.img, rules->player.x - ((rules->mini_block_width / 3) / 2), rules->player.y - ((rules->mini_block_width / 3) / 2));
 	draw_view_rays(rules);
 }
 
@@ -84,7 +84,7 @@ void	paint_bg(t_rules *rules)
 	i = -1;
 	printf("ceiling_color: %0x\n", get_hex_color(rules->ceiling_color));
 	printf("floor_color: %0x\n", get_hex_color(rules->floor_color));
-	while (++i < rules->win_height / 2)
+	while (++i < rules->win_height / 2 - 15)
 	{
 		j = 0;
 		while (j < rules->win_width)
@@ -101,32 +101,32 @@ void	paint_bg(t_rules *rules)
 
 void	minimap(t_rules *rules)
 {
-	int	i;
-	int	j;
-	int	coord[2];
+	// int	i;
+	// int	j;
+	// int	coord[2];
 
 	paint_bg(rules);
-	i = 0;
-	coord[0] = 0;
-	coord[1] = 0;
-	while (rules->map[i])
-	{
-		j = 0;
-		while (rules->map[i][j])
-		{
-			if (rules->map[i][j] == '1')
-				draw_mini_block(rules, coord, 0x00FF0000);
-			else if (rules->map[i][j] == '0')
-				draw_mini_block(rules, coord, 0x0000FF00);
-			else if (rules->map[i][j] == ' ')
-				draw_mini_block(rules, coord, 0x00000000);
-			// else if (rules->map[i][j] != 32 && rules->map[i][j] != '\n')
-			// 	draw_mini_block(rules, coord, 0x000000FF);
-			j++;
-		}
-		i++;
-		coord[1] += rules->mini_block_width;
-		coord[0] = 0;
-	}
+	// i = 0;
+	// coord[0] = 0;
+	// coord[1] = 0;
+	// while (rules->map[i])
+	// {
+	// 	j = 0;
+	// 	while (rules->map[i][j])
+	// 	{
+	// 		if (rules->map[i][j] == '1')
+	// 			draw_mini_block(rules, coord, 0x00FF0000);
+	// 		else if (rules->map[i][j] == '0')
+	// 			draw_mini_block(rules, coord, 0x0000FF00);
+	// 		else if (rules->map[i][j] == ' ')
+	// 			draw_mini_block(rules, coord, 0x00000000);
+	// 		// else if (rules->map[i][j] != 32 && rules->map[i][j] != '\n')
+	// 		// 	draw_mini_block(rules, coord, 0x000000FF);
+	// 		j++;
+	// 	}
+	// 	i++;
+	// 	coord[1] += rules->mini_block_width;
+	// 	coord[0] = 0;
+	// }
 	draw_mini_player(rules);
 }
