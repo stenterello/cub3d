@@ -6,7 +6,7 @@
 /*   By: ddelladi <ddelladi@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/22 14:42:37 by ddelladi          #+#    #+#             */
-/*   Updated: 2022/07/18 10:28:11 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/07/18 13:00:58 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,30 +68,37 @@ static void	copy_into(char **dst, char *src)
 	ft_strlcpy(*dst, &src[i], ft_strlen(&src[i]) + 1);
 }
 
-static char	take_number(char *str, int *i)
-{
-	int	ret;
-	int	j;
+// static char	take_number(char *str, int *i)
+// {
+// 	int	ret;
+// 	int	j;
 	
-	j = 0;
-	ret = ft_atoi(str);
-	while (ft_isdigit(str[j]))
-		j++;
-	*i += j + 1;
-	return (ret);
-}
+// 	j = 0;
+// 	ret = (char)ft_atoi(str);
+// 	while (ft_isdigit(str[j]))
+// 		j++;
+// 	*i += j + 1;
+// 	return (ret);
+// }
 
-static void	copy_rgb(char *dst, char *src)
+static void	copy_rgb(int rgb[3], char *src)
 {
 	int		i;
+	int	i2;
 	int		n;
 
 	i = 0;
 	n = 0;
-	while (!ft_isdigit(src[i]) || src[i] == ' ')
+	i2 = 0;
+	while (i < 3)
+	{
+		while (!ft_isdigit(src[i2]) || src[i2] == ' ')
+			i2++;
+		rgb[n++] = ft_atoi(&src[i2]);
+		while (ft_isdigit(src[i2]))
+			i2++;
 		i++;
-	while (n < 3)
-		dst[n++] = take_number(&src[i], &i);
+	}
 }
 
 void	insert_rule(char *rul, t_rules *rules)
@@ -104,12 +111,12 @@ void	insert_rule(char *rul, t_rules *rules)
 		copy_into(&rules->east_texture_path, &rul[2]);
 	else if (!ft_strncmp("WE", rul, 2))
 		copy_into(&rules->west_texture_path, &rul[2]);
-	else if (!ft_strncmp("F", rul, 1) && rules->floor_color[0] == -1)
+	else if (!ft_strncmp("F", rul, 1) && rules->floor_color[0] == 127)
 		copy_rgb(rules->floor_color, &rul[1]);
-	else if (!ft_strncmp("F", rul, 1) && rules->floor_color[0] != -1)
+	else if (!ft_strncmp("F", rul, 1) && rules->floor_color[0] != 127)
 		die("Rule defined multiple times");
-	else if (!ft_strncmp("C", rul, 1) && rules->ceiling_color[0] == -1)
+	else if (!ft_strncmp("C", rul, 1) && rules->ceiling_color[0] == 127)
 		copy_rgb(rules->ceiling_color, &rul[1]);
-	else if (!ft_strncmp("C", rul, 1) && rules->ceiling_color[0] != -1)
+	else if (!ft_strncmp("C", rul, 1) && rules->ceiling_color[0] != 127)
 		die("Rule defined multiple times");
 }

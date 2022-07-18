@@ -6,7 +6,7 @@
 /*   By: ddelladi <ddelladi@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/17 21:55:43 by ddelladi          #+#    #+#             */
-/*   Updated: 2022/07/18 00:31:01 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/07/18 12:27:47 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void	draw_3d(t_rules *rules, float dist, int x, float ray_angle)
 	xy2[0] = x;
 	xy2[1] = line_height + line_off;
 	i = 0;
-	while (i++ < 6)
+	while (i++ < 3)
 	{
 		bresenham(xy, xy2, 0x000000FF, rules);
 		xy[0]++;

@@ -6,7 +6,7 @@
 /*   By: ddelladi <ddelladi@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/16 21:06:51 by ddelladi          #+#    #+#             */
-/*   Updated: 2022/07/17 21:33:30 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/07/18 12:32:13 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ int verify_collide(t_rules *rules, char *dir, int next_c[2])
 {
 	if (!(next_c[0] % rules->mini_block_width) && !ft_strncmp(dir, "left", 4))
 	{
-		if (rules->map[next_c[1] / rules->mini_block_width - 1][next_c[0] / rules->mini_block_width - 1] == '1')
+		if (rules->map[next_c[1] / rules->mini_block_width][next_c[0] / rules->mini_block_width - 1] == '1')
 			return (1);
 	}
 	else if (!(next_c[0] % rules->mini_block_width) && !ft_strncmp(dir, "right", 5))

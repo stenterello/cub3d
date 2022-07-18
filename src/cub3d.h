@@ -6,7 +6,7 @@
 /*   By: ddelladi <ddelladi@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/22 13:34:25 by ddelladi          #+#    #+#             */
-/*   Updated: 2022/07/18 10:25:47 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/07/18 13:00:20 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,8 +53,8 @@ typedef struct s_rules
 	char		*south_texture_path;
 	char		*east_texture_path;
 	char		*west_texture_path;
-	char		floor_color[3];
-	char		ceiling_color[3];
+	int			floor_color[3];
+	int			ceiling_color[3];
 	void		*mlx;
 	void		*mlx_win;
 	int			win_width;
@@ -88,6 +88,7 @@ void	bresenham(int xy[2], int xy2[2], int color, t_rules *rules);
 int		virtual_horizontal_colliding(int rayX, int rayY, t_rules *rules, int dir);
 int		virtual_vertical_colliding(int rayX, int rayY, t_rules *rules, int dir);
 void	draw_3d(t_rules *rules, float dist, int x, float ray_angle);
-int		get_hex_color(char rgb[3]);
+int		get_hex_color(int rgb[3]);
+void	check_player(char *tmp, t_rules *rules, int y);
 
 #endif

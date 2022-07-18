@@ -6,7 +6,7 @@
 /*   By: ddelladi <ddelladi@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/22 13:35:27 by ddelladi          #+#    #+#             */
-/*   Updated: 2022/07/16 17:42:16 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/07/18 12:29:09 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,12 @@ void	input_check_and_rules_gen(int argc, char **argv, t_rules *rules)
 	fd = open(argv[1], O_RDONLY);
 	if (fd < 0)
 		die("Can't open file");
+	rules->map_height = count_map_height_and_max_width(fd, rules);
+	close(fd);
+	fd = open(argv[1], O_RDONLY);
+	if (fd < 0)
+		die("Can't open file");
 	generate_rules(fd, rules, argv[1]);
-	//print_map(rules);
+	print_map(rules);
 	close(fd);
 }

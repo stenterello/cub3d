@@ -6,7 +6,7 @@
 /*   By: ddelladi <ddelladi@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/16 17:13:13 by ddelladi          #+#    #+#             */
-/*   Updated: 2022/07/17 17:01:39 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/07/18 12:18:37 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,12 +81,8 @@ void	define_map(int fd, t_rules *rules)
 	char	*tmp;
 	int		i;
 
-	rules->map = malloc(sizeof(char *) * (rules->map_height + 1));
-	rules->map_height--;
-	if (!rules->map)
-		die ("Malloc error");
 	tmp = get_next_line(fd);
-	i = 0;
+	i = 1;
 	while (tmp)
 	{
 		rules->map[i] = malloc(sizeof(char) * ft_strlen(tmp) + 1);

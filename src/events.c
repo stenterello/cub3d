@@ -6,7 +6,7 @@
 /*   By: ddelladi <ddelladi@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/16 18:32:06 by ddelladi          #+#    #+#             */
-/*   Updated: 2022/07/17 22:39:23 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/07/18 11:13:28 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ int	events(int keycode, t_rules *rules) // i keycode sono attualmente per linux.
 		move_player(keycode, rules);
 	else if (keycode == 65361 || keycode == 65363)
 		move_view(keycode, rules);
-	printf("%d\n", keycode);
+	printf("keycode: %d\n", keycode);
 	return (0);
 }
 
