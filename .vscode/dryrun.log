@@ -1,6 +1,7 @@
 make --dry-run --always-make --keep-going --print-directory
 make: Entering directory '/home/davide/Documenti/Codici/42/cub3d'
 make -C ./include/mlx_linux
+ 
 make[1]: Entering directory '/home/davide/Documenti/Codici/42/cub3d/include/mlx_linux'
 ./configure
 make[1]: Leaving directory '/home/davide/Documenti/Codici/42/cub3d/include/mlx_linux'

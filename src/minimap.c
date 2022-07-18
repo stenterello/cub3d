@@ -6,7 +6,7 @@
 /*   By: ddelladi <ddelladi@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/16 18:33:06 by ddelladi          #+#    #+#             */
-/*   Updated: 2022/07/18 00:28:58 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/07/18 10:26:06 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,13 +81,18 @@ void	paint_bg(t_rules *rules)
 
 	bg.img = mlx_new_image(rules->mlx, rules->win_width, rules->win_height);
 	bg.addr = mlx_get_data_addr(bg.img, &bg.bpp, &bg.line_length, &bg.endian);
-	i = 0;
-	while (i < rules->win_height)
+	i = -1;
+	while (++i < rules->win_height / 2)
 	{
 		j = 0;
 		while (j < rules->win_width)
-			easy_pixel_put(&bg, j++, i, 0x00000000);
-		i++;
+			easy_pixel_put(&bg, j++, i, get_hex_color(rules->ceiling_color));
+	}
+	while (i++ < rules->win_height)
+	{
+		j = 0;
+		while (j < rules->win_width)
+			easy_pixel_put(&bg, j++, i, get_hex_color(rules->floor_color));
 	}
 	mlx_put_image_to_window(rules->mlx, rules->mlx_win, bg.img, 0, 0);
 }

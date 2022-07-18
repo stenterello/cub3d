@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   map_gen_utils.c                                    :+:      :+:    :+:   */
+/*   take_rules_utils.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ddelladi <ddelladi@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/22 14:42:37 by ddelladi          #+#    #+#             */
-/*   Updated: 2022/07/16 17:11:54 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/07/18 10:28:11 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ static void	copy_into(char **dst, char *src)
 	ft_strlcpy(*dst, &src[i], ft_strlen(&src[i]) + 1);
 }
 
-static int	take_number(char *str, int *i)
+static char	take_number(char *str, int *i)
 {
 	int	ret;
 	int	j;
@@ -81,7 +81,7 @@ static int	take_number(char *str, int *i)
 	return (ret);
 }
 
-static void	copy_rgb(int *dst, char *src)
+static void	copy_rgb(char *dst, char *src)
 {
 	int		i;
 	int		n;
