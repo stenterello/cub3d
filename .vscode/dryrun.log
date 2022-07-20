@@ -1,6 +1,7 @@
 make --dry-run --always-make --keep-going --print-directory
 make: Entering directory '/home/davide/Documenti/Codici/42/cub3d'
 make -C ./include/mlx_linux
+ 
 make[1]: Entering directory '/home/davide/Documenti/Codici/42/cub3d/include/mlx_linux'
 ./configure
 make[1]: Leaving directory '/home/davide/Documenti/Codici/42/cub3d/include/mlx_linux'
@@ -21,6 +22,7 @@ gcc    -c -o ft_strlcat.o ft_strlcat.c
 gcc    -c -o ft_toupper.o ft_toupper.c
 gcc    -c -o ft_tolower.o ft_tolower.c
 gcc    -c -o ft_strchr.o ft_strchr.c
+ 
 gcc    -c -o ft_strrchr.o ft_strrchr.c
 gcc    -c -o ft_strncmp.o ft_strncmp.c
 gcc    -c -o ft_memchr.o ft_memchr.c

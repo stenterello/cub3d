@@ -6,7 +6,7 @@
 /*   By: ddelladi <ddelladi@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/16 18:33:06 by ddelladi          #+#    #+#             */
-/*   Updated: 2022/07/18 20:24:38 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/07/20 11:43:37 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,8 @@ void	draw_view_rays(t_rules *rules)
 	counter = 0;
 	while (angle < rules->player.dir + (ANGLE_UNIT * 45))
 	{
-		raycast_bresenham(angle, rules, counter);
-		angle += ANGLE_UNIT / 8;
-		counter += 3;
+		raycast_bresenham(angle, rules, &counter);
+		angle += ANGLE_UNIT / 4;
 	}
 	// testing-only one-ray
 	// raycast_bresenham(rules->player.dir, rules);
@@ -84,7 +83,7 @@ void	paint_bg(t_rules *rules)
 	i = -1;
 	printf("ceiling_color: %0x\n", get_hex_color(rules->ceiling_color));
 	printf("floor_color: %0x\n", get_hex_color(rules->floor_color));
-	while (++i < rules->win_height / 2 - 15)
+	while (++i < rules->win_height / 2)
 	{
 		j = 0;
 		while (j < rules->win_width)

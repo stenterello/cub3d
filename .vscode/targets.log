@@ -7,7 +7,7 @@ make -C ./include/mlx_linux
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Mon Jul 18 14:56:57 2022
+# Make data base, printed on Wed Jul 20 11:21:11 2022
 
 # Variables
 
@@ -42,7 +42,7 @@ SHELL = /bin/sh
 # environment
 GDM_LANG = it
 # environment
-VSCODE_NLS_CONFIG = {"locale":"it","availableLanguages":{"*":"it"},"_languagePackId":"ab4c584458951cae9fe6dd31374e1344.it","_translationsConfigFile":"/home/davide/.config/Code/clp/ab4c584458951cae9fe6dd31374e1344.it/tcf.json","_cacheRoot":"/home/davide/.config/Code/clp/ab4c584458951cae9fe6dd31374e1344.it","_resolvedLanguagePackCoreLocation":"/home/davide/.config/Code/clp/ab4c584458951cae9fe6dd31374e1344.it/b06ae3b2d2dbfe28bca3134cc6be65935cdfea6a","_corruptedFile":"/home/davide/.config/Code/clp/ab4c584458951cae9fe6dd31374e1344.it/corrupted.info","_languagePackSupport":true}
+VSCODE_NLS_CONFIG = {"locale":"it","availableLanguages":{"*":"it"},"_languagePackId":"ab4c584458951cae9fe6dd31374e1344.it","_translationsConfigFile":"/home/davide/.config/Code/clp/ab4c584458951cae9fe6dd31374e1344.it/tcf.json","_cacheRoot":"/home/davide/.config/Code/clp/ab4c584458951cae9fe6dd31374e1344.it","_resolvedLanguagePackCoreLocation":"/home/davide/.config/Code/clp/ab4c584458951cae9fe6dd31374e1344.it/3b889b090b5ad5793f524b5d1d39fda662b96a2a","_corruptedFile":"/home/davide/.config/Code/clp/ab4c584458951cae9fe6dd31374e1344.it/corrupted.info","_languagePackSupport":true}
 # environment
 _ = /usr/share/code/code
 # environment
@@ -78,7 +78,7 @@ GPG_AGENT_INFO = /run/user/1000/gnupg/S.gpg-agent:0:1
 # environment
 PG_OF_PATH = /home/davide/Programmi/OpenFrameworks/of_v0.11.2_linux64gcc6_release
 # environment
-SESSION_MANAGER = local/ThinkPad-E550:@/tmp/.ICE-unix/1435,unix/ThinkPad-E550:/tmp/.ICE-unix/1435
+SESSION_MANAGER = local/ThinkPad-E550:@/tmp/.ICE-unix/3003,unix/ThinkPad-E550:/tmp/.ICE-unix/3003
 # environment
 XDG_RUNTIME_DIR = /run/user/1000
 # environment
@@ -96,7 +96,7 @@ XDG_SESSION_DESKTOP = cinnamon
 # environment
 SSH_AUTH_SOCK = /run/user/1000/keyring/ssh
 # environment
-GIO_LAUNCHED_DESKTOP_FILE_PID = 98100
+GIO_LAUNCHED_DESKTOP_FILE_PID = 22723
 # automatic
 %F = $(notdir $%)
 # environment
@@ -110,7 +110,7 @@ QT_QPA_PLATFORMTHEME = qt5ct
 # environment
 XDG_SEAT = seat0
 # environment
-SSH_AGENT_PID = 1505
+SSH_AGENT_PID = 3073
 # environment
 ORIGINAL_XDG_CURRENT_DESKTOP = X-Cinnamon
 # environment
@@ -122,7 +122,7 @@ HOME = /home/davide
 # environment
 LESSCLOSE = /usr/bin/lesspipe %s %s
 # environment
-VSCODE_CODE_CACHE_PATH = /home/davide/.config/Code/CachedData/b06ae3b2d2dbfe28bca3134cc6be65935cdfea6a
+VSCODE_CODE_CACHE_PATH = /home/davide/.config/Code/CachedData/3b889b090b5ad5793f524b5d1d39fda662b96a2a
 # environment
 LOGNAME = davide
 # environment
@@ -164,7 +164,7 @@ LANGUAGE = it
 # environment
 XDG_SEAT_PATH = /org/freedesktop/DisplayManager/Seat0
 # environment
-VSCODE_IPC_HOOK = /run/user/1000/vscode-c5f300b3-1.69.1-main.sock
+VSCODE_IPC_HOOK = /run/user/1000/vscode-c5f300b3-1.69.2-main.sock
 # makefile
 MAKEFLAGS = pqrRw
 # environment
@@ -206,7 +206,7 @@ GJS_DEBUG_OUTPUT = stderr
 # environment
 LANG = C
 # environment
-VSCODE_PID = 98100
+VSCODE_PID = 22723
 # variable set hash-table stats:
 # Load=98/1024=10%, Rehash=0, Collisions=7/128=5%
 
@@ -216,9 +216,9 @@ VSCODE_PID = 98100
 
 # Directories
 
-# . (device 2049, inode 17653782): 50 files, no impossibilities.
+# . (device 2049, inode 19620236): 52 files, no impossibilities.
 
-# 50 files, no impossibilities in 1 directories.
+# 52 files, no impossibilities in 1 directories.
 
 # Implicit Rules
 
@@ -270,7 +270,7 @@ all: do_configure
 # Not a target:
 Makefile:
 #  Implicit rule search has been done.
-#  Last modified 2022-07-18 14:56:37.483595575
+#  Last modified 2022-07-19 11:33:11.115854293
 #  File has been updated.
 #  Successfully updated.
 
@@ -278,12 +278,12 @@ Makefile:
 .DEFAULT:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
+ 
 #  File has not been updated.
 
 re: clean all
 #  Implicit rule search has not been done.
 #  Modification time never checked.
- 
 #  File has not been updated.
 
 clean:
@@ -301,13 +301,13 @@ clean:
 
 # No general ('VPATH' variable) search path.
 
-# strcache buffers: 1 (0) / strings = 59 / storage = 832 B / avg = 14 B
-# current buf: size = 8162 B / used = 832 B / count = 59 / avg = 14 B
+# strcache buffers: 1 (0) / strings = 61 / storage = 856 B / avg = 14 B
+# current buf: size = 8162 B / used = 856 B / count = 61 / avg = 14 B
 
-# strcache performance: lookups = 70 / hit rate = 15%
+# strcache performance: lookups = 72 / hit rate = 15%
 # hash-table stats:
-# Load=59/8192=1%, Rehash=0, Collisions=1/70=1%
-# Finished Make data base on Mon Jul 18 14:57:00 2022
+# Load=61/8192=1%, Rehash=0, Collisions=1/72=1%
+# Finished Make data base on Wed Jul 20 11:21:12 2022
 
 # GNU Make 4.2.1
 # Built for x86_64-pc-linux-gnu
@@ -316,7 +316,7 @@ clean:
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Mon Jul 18 14:57:00 2022
+# Make data base, printed on Wed Jul 20 11:21:12 2022
 
 # Variables
 
@@ -353,7 +353,7 @@ SHELL = /bin/sh
 # environment
 GDM_LANG = it
 # environment
-VSCODE_NLS_CONFIG = {"locale":"it","availableLanguages":{"*":"it"},"_languagePackId":"ab4c584458951cae9fe6dd31374e1344.it","_translationsConfigFile":"/home/davide/.config/Code/clp/ab4c584458951cae9fe6dd31374e1344.it/tcf.json","_cacheRoot":"/home/davide/.config/Code/clp/ab4c584458951cae9fe6dd31374e1344.it","_resolvedLanguagePackCoreLocation":"/home/davide/.config/Code/clp/ab4c584458951cae9fe6dd31374e1344.it/b06ae3b2d2dbfe28bca3134cc6be65935cdfea6a","_corruptedFile":"/home/davide/.config/Code/clp/ab4c584458951cae9fe6dd31374e1344.it/corrupted.info","_languagePackSupport":true}
+VSCODE_NLS_CONFIG = {"locale":"it","availableLanguages":{"*":"it"},"_languagePackId":"ab4c584458951cae9fe6dd31374e1344.it","_translationsConfigFile":"/home/davide/.config/Code/clp/ab4c584458951cae9fe6dd31374e1344.it/tcf.json","_cacheRoot":"/home/davide/.config/Code/clp/ab4c584458951cae9fe6dd31374e1344.it","_resolvedLanguagePackCoreLocation":"/home/davide/.config/Code/clp/ab4c584458951cae9fe6dd31374e1344.it/3b889b090b5ad5793f524b5d1d39fda662b96a2a","_corruptedFile":"/home/davide/.config/Code/clp/ab4c584458951cae9fe6dd31374e1344.it/corrupted.info","_languagePackSupport":true}
 # environment
 _ = /usr/share/code/code
 # environment
@@ -391,7 +391,7 @@ GPG_AGENT_INFO = /run/user/1000/gnupg/S.gpg-agent:0:1
 # environment
 PG_OF_PATH = /home/davide/Programmi/OpenFrameworks/of_v0.11.2_linux64gcc6_release
 # environment
-SESSION_MANAGER = local/ThinkPad-E550:@/tmp/.ICE-unix/1435,unix/ThinkPad-E550:/tmp/.ICE-unix/1435
+SESSION_MANAGER = local/ThinkPad-E550:@/tmp/.ICE-unix/3003,unix/ThinkPad-E550:/tmp/.ICE-unix/3003
 # environment
 XDG_RUNTIME_DIR = /run/user/1000
 # environment
@@ -411,7 +411,7 @@ XDG_SESSION_DESKTOP = cinnamon
 # environment
 SSH_AUTH_SOCK = /run/user/1000/keyring/ssh
 # environment
-GIO_LAUNCHED_DESKTOP_FILE_PID = 98100
+GIO_LAUNCHED_DESKTOP_FILE_PID = 22723
 # automatic
 %F = $(notdir $%)
 # environment
@@ -425,7 +425,7 @@ QT_QPA_PLATFORMTHEME = qt5ct
 # environment
 XDG_SEAT = seat0
 # environment
-SSH_AGENT_PID = 1505
+SSH_AGENT_PID = 3073
 # environment
 ORIGINAL_XDG_CURRENT_DESKTOP = X-Cinnamon
 # environment
@@ -437,7 +437,7 @@ HOME = /home/davide
 # environment
 LESSCLOSE = /usr/bin/lesspipe %s %s
 # environment
-VSCODE_CODE_CACHE_PATH = /home/davide/.config/Code/CachedData/b06ae3b2d2dbfe28bca3134cc6be65935cdfea6a
+VSCODE_CODE_CACHE_PATH = /home/davide/.config/Code/CachedData/3b889b090b5ad5793f524b5d1d39fda662b96a2a
 # environment
 LOGNAME = davide
 # environment
@@ -487,7 +487,7 @@ LANGUAGE = it
 # environment
 XDG_SEAT_PATH = /org/freedesktop/DisplayManager/Seat0
 # environment
-VSCODE_IPC_HOOK = /run/user/1000/vscode-c5f300b3-1.69.1-main.sock
+VSCODE_IPC_HOOK = /run/user/1000/vscode-c5f300b3-1.69.2-main.sock
 # makefile
 MAKEFLAGS = pqrR
 # environment
@@ -533,7 +533,7 @@ NAME = cub3d
 # environment
 LANG = C
 # environment
-VSCODE_PID = 98100
+VSCODE_PID = 22723
 # variable set hash-table stats:
 # Load=107/1024=10%, Rehash=0, Collisions=14/146=10%
 
@@ -543,9 +543,9 @@ VSCODE_PID = 98100
 
 # Directories
 
-# . (device 2049, inode 17653761): 8 files, no impossibilities.
+# . (device 2049, inode 17653761): 9 files, no impossibilities.
 
-# 8 files, no impossibilities in 1 directories.
+# 9 files, no impossibilities in 1 directories.
 
 # Implicit Rules
 
@@ -566,12 +566,12 @@ all: cub3d
 #  File does not exist.
 #  File has not been updated.
 # variable set hash-table stats:
+ 
 # Load=0/32=0%, Rehash=0, Collisions=0/5=0%
 
 .PHONY: all clean fclean re
 #  Implicit rule search has not been done.
 #  Modification time never checked.
- 
 #  File has not been updated.
 
 # Not a target:
@@ -594,7 +594,7 @@ src/colliding.o:
 
 cub3d: include/mlx_linux/mlx_linux.a include/libft/libft.a src/main.o src/error.o src/memory.o src/memory2.o src/check.o src/map_gen.o src/take_rules_utils.o src/map_gen_utils.o src/events.o src/window.o src/minimap.o src/raycast.o src/colliding.o src/bresenham.o src/utils.o src/3d.o
 #  Implicit rule search has not been done.
-#  File does not exist.
+#  Last modified 2022-07-19 11:36:57.585959778
 #  File has not been updated.
 # variable set hash-table stats:
 # Load=0/32=0%, Rehash=0, Collisions=0/5=0%
@@ -616,7 +616,7 @@ src/minimap.o:
 # Not a target:
 Makefile:
 #  Implicit rule search has been done.
-#  Last modified 2022-07-18 14:56:37.479595577
+#  Last modified 2022-07-19 11:33:11.111854409
 #  File has been updated.
 #  Successfully updated.
 
@@ -762,9 +762,9 @@ src/map_gen.o:
 # strcache buffers: 1 (0) / strings = 36 / storage = 407 B / avg = 11 B
 # current buf: size = 8162 B / used = 407 B / count = 36 / avg = 11 B
 
-# strcache performance: lookups = 60 / hit rate = 40%
+# strcache performance: lookups = 61 / hit rate = 40%
 # hash-table stats:
-# Load=36/8192=0%, Rehash=0, Collisions=1/60=2%
-# Finished Make data base on Mon Jul 18 14:57:00 2022
+# Load=36/8192=0%, Rehash=0, Collisions=1/61=2%
+# Finished Make data base on Wed Jul 20 11:21:12 2022
 
  

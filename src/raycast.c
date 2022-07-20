@@ -6,7 +6,7 @@
 /*   By: ddelladi <ddelladi@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/16 19:22:22 by ddelladi          #+#    #+#             */
-/*   Updated: 2022/07/18 14:58:20 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/07/20 11:42:41 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,7 +106,7 @@ void	vertical_lines_check(float angle, int xy[2], t_rules *rules, int ret[2])
 	// 	bresenham(xy, ret, 0x00000000, rules);
 }
 
-void	raycast_bresenham(float angle, t_rules *rules, int counter)
+void	raycast_bresenham(double angle, t_rules *rules, int *counter)
 {
 	int		xy[2];
 	int		f_pts[2];

@@ -6,7 +6,7 @@
 /*   By: ddelladi <ddelladi@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/22 13:34:25 by ddelladi          #+#    #+#             */
-/*   Updated: 2022/07/18 16:03:43 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/07/20 11:42:50 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,13 +81,13 @@ void	init_window(t_rules *rules);
 void	easy_pixel_put(t_frame *frame, int x, int y, int color);
 void	draw_mini_block(t_rules *rules, int coord[2], int color);
 void	free_rules(t_rules *rules);
-void	raycast_bresenham(float angle, t_rules *rules, int counter);
+void	raycast_bresenham(double angle, t_rules *rules, int *counter);
 int		colliding(t_rules *rules, char *dir);
 int		get_abs(int n);
 void	bresenham(int xy[2], int xy2[2], int color, t_rules *rules);
 int		virtual_horizontal_colliding(int rayX, int rayY, t_rules *rules, int dir);
 int		virtual_vertical_colliding(int rayX, int rayY, t_rules *rules, int dir);
-void	draw_3d(t_rules *rules, float dist, int x, float ray_angle);
+void	draw_3d(t_rules *rules, float dist, int *x, double ray_angle);
 int		get_hex_color(int rgb[3]);
 void	check_player(char *tmp, t_rules *rules, int y);
 
