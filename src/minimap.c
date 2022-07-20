@@ -6,7 +6,7 @@
 /*   By: ddelladi <ddelladi@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/16 18:33:06 by ddelladi          #+#    #+#             */
-/*   Updated: 2022/07/20 11:43:37 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/07/20 16:03:36 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,20 +14,64 @@
 
 // eliminare dalla map il newline alla fine della riga... è inutile
 
+double	decrement_angle(double angle, int off)
+{
+	int		i;
+
+	i = 0;
+	while (i++ < off)
+	{
+		angle -= ANGLE_UNIT;
+		if (angle < 0)
+			angle = 2 * PI;
+	}
+	if (angle < 0)
+		angle = 2 * PI;
+	return (angle);
+}
+
+double	increment_angle(double angle, int off)
+{
+	int		i;
+
+	i = 0;
+	while (i++ < off)
+	{
+		if (angle > 2 * PI)
+			angle = 0;
+		angle += ANGLE_UNIT;
+	}
+	if (angle > 2 * PI)
+		angle = 0;
+	return (angle);
+}
+
 void	draw_view_rays(t_rules *rules)
 {
-	float	angle;
 	int		counter;
+	double	start;
+	// float	end;
 
-	angle = rules->player.dir - (ANGLE_UNIT * 45);
+	start = decrement_angle(rules->player.dir, 45);
+	// end = increment_angle(rules->player.dir, 45);
 	counter = 0;
-	while (angle < rules->player.dir + (ANGLE_UNIT * 45))
+	while (start != increment_angle(rules->player.dir, 45))
 	{
-		raycast_bresenham(angle, rules, &counter);
-		angle += ANGLE_UNIT / 4;
+		raycast_bresenham(start, rules, &counter);
+		start += ANGLE_UNIT;
+		if (start < 0)
+			start = 2 * PI;
+		else if (start > 2 * PI)
+			start = 0;
 	}
 	// testing-only one-ray
-	// raycast_bresenham(rules->player.dir, rules);
+	// mini_raycast(rules->player.dir, rules);
+}
+
+void	update_miniplayer(t_rules *rules)
+{
+	rules->player.miniplayer.x = rules->mini_block_width * rules->player.x / rules->block_width;
+	rules->player.miniplayer.y = rules->mini_block_width * rules->player.y / rules->block_width;
 }
 
 void	draw_mini_player(t_rules *rules)
@@ -38,6 +82,7 @@ void	draw_mini_player(t_rules *rules)
 
 	// i = 0;
 	// j = 0;
+	// update_miniplayer(rules);
 	// pl.img = mlx_new_image(rules->mlx, rules->mini_block_width / 3, rules->mini_block_width / 3);
 	// pl.addr = mlx_get_data_addr(pl.img, &pl.bpp, &pl.line_length, &pl.endian);
 	// while (i < rules->mini_block_width / 3)
@@ -47,7 +92,7 @@ void	draw_mini_player(t_rules *rules)
 	// 		easy_pixel_put(&pl, i, j++, 0x000000FF);
 	// 	i++;
 	// }
-	// mlx_put_image_to_window(rules->mlx, rules->mlx_win, pl.img, rules->player.x - ((rules->mini_block_width / 3) / 2), rules->player.y - ((rules->mini_block_width / 3) / 2));
+	// mlx_put_image_to_window(rules->mlx, rules->mlx_win, pl.img, rules->player.miniplayer.x - ((rules->mini_block_width / 3) / 2), rules->player.miniplayer.y - ((rules->mini_block_width / 3) / 2));
 	draw_view_rays(rules);
 }
 

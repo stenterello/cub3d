@@ -6,7 +6,7 @@
 /*   By: ddelladi <ddelladi@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/22 13:36:34 by ddelladi          #+#    #+#             */
-/*   Updated: 2022/07/20 11:38:16 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/07/20 11:58:43 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,8 @@ void	init_rules(t_rules *rules)
 	rules->west_texture_path = NULL;
 	rules->win_width = 800;
 	rules->win_height = 600;
-	rules->mini_block_width = 250;
+	rules->mini_block_width = 20;
+	rules->block_width = 250;
 	rules->map_width = 0;
 	rules->ceiling_color[0] = INT_MAX;
 	rules->ceiling_color[1] = INT_MAX;

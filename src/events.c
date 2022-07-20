@@ -6,7 +6,7 @@
 /*   By: ddelladi <ddelladi@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/16 18:32:06 by ddelladi          #+#    #+#             */
-/*   Updated: 2022/07/18 16:06:16 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/07/20 14:41:36 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,13 @@
 void	move_player(int keycode, t_rules *rules)
 {
 	if (keycode == 119 && !colliding(rules, "up"))
-		rules->player.y -= rules->mini_block_width / 10;
+		rules->player.y -= rules->block_width / 10;
 	else if (keycode == 115 && !colliding(rules, "down"))
-		rules->player.y += rules->mini_block_width / 10;
+		rules->player.y += rules->block_width / 10;
 	else if (keycode == 97 && !colliding(rules, "left"))
-		rules->player.x -= rules->mini_block_width / 10;
+		rules->player.x -= rules->block_width / 10;
 	else if (keycode == 100 && !colliding(rules, "right"))
-		rules->player.x += rules->mini_block_width / 10;
+		rules->player.x += rules->block_width / 10;
 	minimap(rules);
 }
 

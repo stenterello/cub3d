@@ -6,7 +6,7 @@
 /*   By: ddelladi <ddelladi@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/22 13:34:25 by ddelladi          #+#    #+#             */
-/*   Updated: 2022/07/20 11:42:50 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/07/20 16:01:03 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,9 @@
 
 typedef struct s_ray
 {
-	float	angle;
-	int		x;
-	int		y;
+	double		angle;
+	int			x;
+	int			y;
 }				t_ray;
 
 typedef struct s_frame
@@ -37,13 +37,20 @@ typedef struct s_frame
 	int		endian;
 }				t_frame;
 
+typedef struct s_miniplayer
+{
+	int	x;
+	int	y;
+}				t_miniplayer;
+
 typedef struct s_player
 {
-	int		x;
-	int		y;
-	float	d_x;
-	float	d_y;
-	float	dir;
+	int				x;
+	int				y;
+	double			d_x;
+	double			d_y;
+	double			dir;
+	t_miniplayer	miniplayer;
 }				t_player;
 
 typedef struct s_rules
@@ -55,6 +62,7 @@ typedef struct s_rules
 	char		*west_texture_path;
 	int			floor_color[3];
 	int			ceiling_color[3];
+	unsigned int	floor;
 	void		*mlx;
 	void		*mlx_win;
 	int			win_width;
@@ -62,6 +70,7 @@ typedef struct s_rules
 	int			map_height;
 	int			map_width;
 	int			mini_block_width;
+	int			block_width;
 	t_player	player;
 }				t_rules;
 
@@ -84,11 +93,15 @@ void	free_rules(t_rules *rules);
 void	raycast_bresenham(double angle, t_rules *rules, int *counter);
 int		colliding(t_rules *rules, char *dir);
 int		get_abs(int n);
-void	bresenham(int xy[2], int xy2[2], int color, t_rules *rules);
+void	bresenham(int xy[2], int xy2[2], unsigned int color, t_rules *rules);
 int		virtual_horizontal_colliding(int rayX, int rayY, t_rules *rules, int dir);
 int		virtual_vertical_colliding(int rayX, int rayY, t_rules *rules, int dir);
-void	draw_3d(t_rules *rules, float dist, int *x, double ray_angle);
+void	draw_3d(t_rules *rules, double dist, int *x, double ray_angle, int color);
 int		get_hex_color(int rgb[3]);
 void	check_player(char *tmp, t_rules *rules, int y);
+void	mini_raycast(double angle, t_rules *rules);
+double	decrement_angle(double angle, int off);
+double	increment_angle(double angle, int off);
+int		encode_rgb(u_int8_t alpha, u_int8_t red, u_int8_t green, u_int8_t blue, t_rules *rules);
 
 #endif

@@ -7,7 +7,7 @@ make -C ./include/mlx_linux
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Wed Jul 20 11:21:11 2022
+# Make data base, printed on Wed Jul 20 15:25:51 2022
 
 # Variables
 
@@ -68,7 +68,7 @@ LESSOPEN = | /usr/bin/lesspipe %s
 # environment
 VSCODE_CWD = /home/davide
 # environment
-XDG_SESSION_PATH = /org/freedesktop/DisplayManager/Session0
+XDG_SESSION_PATH = /org/freedesktop/DisplayManager/Session3
 # default
 MAKE_HOST := x86_64-pc-linux-gnu
 # environment
@@ -78,7 +78,7 @@ GPG_AGENT_INFO = /run/user/1000/gnupg/S.gpg-agent:0:1
 # environment
 PG_OF_PATH = /home/davide/Programmi/OpenFrameworks/of_v0.11.2_linux64gcc6_release
 # environment
-SESSION_MANAGER = local/ThinkPad-E550:@/tmp/.ICE-unix/3003,unix/ThinkPad-E550:/tmp/.ICE-unix/3003
+SESSION_MANAGER = local/ThinkPad-E550:@/tmp/.ICE-unix/98497,unix/ThinkPad-E550:/tmp/.ICE-unix/98497
 # environment
 XDG_RUNTIME_DIR = /run/user/1000
 # environment
@@ -96,7 +96,7 @@ XDG_SESSION_DESKTOP = cinnamon
 # environment
 SSH_AUTH_SOCK = /run/user/1000/keyring/ssh
 # environment
-GIO_LAUNCHED_DESKTOP_FILE_PID = 22723
+GIO_LAUNCHED_DESKTOP_FILE_PID = 99006
 # automatic
 %F = $(notdir $%)
 # environment
@@ -110,7 +110,7 @@ QT_QPA_PLATFORMTHEME = qt5ct
 # environment
 XDG_SEAT = seat0
 # environment
-SSH_AGENT_PID = 3073
+SSH_AGENT_PID = 98567
 # environment
 ORIGINAL_XDG_CURRENT_DESKTOP = X-Cinnamon
 # environment
@@ -142,7 +142,7 @@ MAKE = $(MAKE_COMMAND)
 # environment
 SHLVL = 0
 # environment
-XDG_SESSION_ID = c2
+XDG_SESSION_ID = c8
 # environment
 USER = davide
 # makefile
@@ -206,7 +206,7 @@ GJS_DEBUG_OUTPUT = stderr
 # environment
 LANG = C
 # environment
-VSCODE_PID = 22723
+VSCODE_PID = 99006
 # variable set hash-table stats:
 # Load=98/1024=10%, Rehash=0, Collisions=7/128=5%
 
@@ -307,7 +307,7 @@ clean:
 # strcache performance: lookups = 72 / hit rate = 15%
 # hash-table stats:
 # Load=61/8192=1%, Rehash=0, Collisions=1/72=1%
-# Finished Make data base on Wed Jul 20 11:21:12 2022
+# Finished Make data base on Wed Jul 20 15:25:51 2022
 
 # GNU Make 4.2.1
 # Built for x86_64-pc-linux-gnu
@@ -316,7 +316,7 @@ clean:
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Wed Jul 20 11:21:12 2022
+# Make data base, printed on Wed Jul 20 15:25:51 2022
 
 # Variables
 
@@ -381,7 +381,7 @@ LESSOPEN = | /usr/bin/lesspipe %s
 # environment
 VSCODE_CWD = /home/davide
 # environment
-XDG_SESSION_PATH = /org/freedesktop/DisplayManager/Session0
+XDG_SESSION_PATH = /org/freedesktop/DisplayManager/Session3
 # default
 MAKE_HOST := x86_64-pc-linux-gnu
 # environment
@@ -391,7 +391,7 @@ GPG_AGENT_INFO = /run/user/1000/gnupg/S.gpg-agent:0:1
 # environment
 PG_OF_PATH = /home/davide/Programmi/OpenFrameworks/of_v0.11.2_linux64gcc6_release
 # environment
-SESSION_MANAGER = local/ThinkPad-E550:@/tmp/.ICE-unix/3003,unix/ThinkPad-E550:/tmp/.ICE-unix/3003
+SESSION_MANAGER = local/ThinkPad-E550:@/tmp/.ICE-unix/98497,unix/ThinkPad-E550:/tmp/.ICE-unix/98497
 # environment
 XDG_RUNTIME_DIR = /run/user/1000
 # environment
@@ -411,7 +411,7 @@ XDG_SESSION_DESKTOP = cinnamon
 # environment
 SSH_AUTH_SOCK = /run/user/1000/keyring/ssh
 # environment
-GIO_LAUNCHED_DESKTOP_FILE_PID = 22723
+GIO_LAUNCHED_DESKTOP_FILE_PID = 99006
 # automatic
 %F = $(notdir $%)
 # environment
@@ -425,7 +425,7 @@ QT_QPA_PLATFORMTHEME = qt5ct
 # environment
 XDG_SEAT = seat0
 # environment
-SSH_AGENT_PID = 3073
+SSH_AGENT_PID = 98567
 # environment
 ORIGINAL_XDG_CURRENT_DESKTOP = X-Cinnamon
 # environment
@@ -465,7 +465,7 @@ LIBFT = ./include/libft/libft.a
 # makefile (from 'Makefile', line 2)
 CC = gcc
 # environment
-XDG_SESSION_ID = c2
+XDG_SESSION_ID = c8
 # environment
 USER = davide
 # makefile
@@ -533,7 +533,7 @@ NAME = cub3d
 # environment
 LANG = C
 # environment
-VSCODE_PID = 22723
+VSCODE_PID = 99006
 # variable set hash-table stats:
 # Load=107/1024=10%, Rehash=0, Collisions=14/146=10%
 
@@ -560,13 +560,13 @@ src/raycast.o:
 #  File has not been updated.
 
 all: cub3d
+ 
 #  Phony target (prerequisite of .PHONY).
 #  Command line target.
 #  Implicit rule search has not been done.
 #  File does not exist.
 #  File has not been updated.
 # variable set hash-table stats:
- 
 # Load=0/32=0%, Rehash=0, Collisions=0/5=0%
 
 .PHONY: all clean fclean re
@@ -594,7 +594,7 @@ src/colliding.o:
 
 cub3d: include/mlx_linux/mlx_linux.a include/libft/libft.a src/main.o src/error.o src/memory.o src/memory2.o src/check.o src/map_gen.o src/take_rules_utils.o src/map_gen_utils.o src/events.o src/window.o src/minimap.o src/raycast.o src/colliding.o src/bresenham.o src/utils.o src/3d.o
 #  Implicit rule search has not been done.
-#  Last modified 2022-07-19 11:36:57.585959778
+#  Last modified 2022-07-20 15:22:51.187549114
 #  File has not been updated.
 # variable set hash-table stats:
 # Load=0/32=0%, Rehash=0, Collisions=0/5=0%
@@ -616,7 +616,7 @@ src/minimap.o:
 # Not a target:
 Makefile:
 #  Implicit rule search has been done.
-#  Last modified 2022-07-19 11:33:11.111854409
+#  Last modified 2022-07-20 15:22:48.695542205
 #  File has been updated.
 #  Successfully updated.
 
@@ -765,6 +765,6 @@ src/map_gen.o:
 # strcache performance: lookups = 61 / hit rate = 40%
 # hash-table stats:
 # Load=36/8192=0%, Rehash=0, Collisions=1/61=2%
-# Finished Make data base on Wed Jul 20 11:21:12 2022
+# Finished Make data base on Wed Jul 20 15:25:51 2022
 
  
