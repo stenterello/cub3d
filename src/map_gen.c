@@ -6,7 +6,7 @@
 /*   By: ddelladi <ddelladi@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/22 14:24:52 by ddelladi          #+#    #+#             */
-/*   Updated: 2022/07/18 13:06:04 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/07/21 14:04:46 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -129,12 +129,12 @@ void	generate_rules(int fd, t_rules *rules, char *file)
 	char	*benchmark;
 
 	benchmark = take_rules(fd, rules);
-	rules->map_height = count_map_height_and_max_width(fd, rules);
 	close(fd);
 	fd = open(file, O_RDONLY);
 	if (fd < 0)
 		die("Can't open file");
 	skip_to_benchmark(fd, benchmark);
+	rules->map_height = count_map_height_and_max_width(fd, rules);
 	rules->map = malloc(sizeof(char *) * (rules->map_height + 1));
 	if (!rules->map)
 		die ("Malloc error");
@@ -142,10 +142,17 @@ void	generate_rules(int fd, t_rules *rules, char *file)
 	rules->map[0] = malloc(sizeof(char) * ft_strlen(benchmark) + 1);
 	if (!rules->map[0])
 		die("Malloc error");
-	check_player(benchmark, rules, 0);
 	ft_strlcpy(rules->map[0], benchmark, ft_strlen(benchmark) + 1);
+	check_player(benchmark, rules, 0);
 	free(benchmark);
+	close(fd);
+	fd = open(file, O_RDONLY);
+	if (fd < 0)
+		die("Can't open file");
+	skip_to_benchmark(fd, benchmark);
 	define_map(fd, rules);
+	define_texture(rules->west_texture_path, &rules->west_texture);
+	define_texture(rules->north_texture_path, &rules->north_texture);
 	// if (!check_map(rules))
 	// 	die("Map error");
 }

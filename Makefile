@@ -16,7 +16,9 @@ SRC=main.c \
 	colliding.c \
 	bresenham.c \
 	utils.c \
-	3d.c
+	3d.c \
+	xpm.c \
+	texture.c
 SRCS=$(addprefix src/, $(SRC))
 OBJS=$(SRCS:.c=.o)
 LIBFT=./include/libft/libft.a

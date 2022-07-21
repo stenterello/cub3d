@@ -6,7 +6,7 @@
 /*   By: ddelladi <ddelladi@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/22 13:34:25 by ddelladi          #+#    #+#             */
-/*   Updated: 2022/07/20 16:01:03 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/07/21 14:19:44 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,24 @@
 # include <limits.h>
 # define PI 3.1415926535
 # define ANGLE_UNIT 0.0174533
+
+typedef struct s_xpm t_xpm;
+
+typedef struct s_texture
+{
+	char	**encoded;
+	t_xpm	*pairs;
+	int		last_x;
+	int		size[2];
+	int		n_colors;
+}				t_texture;
+
+typedef struct s_xpm
+{
+	char	*key;
+	char	*value;
+	t_xpm	*next;
+}				t_xpm;
 
 typedef struct s_ray
 {
@@ -62,7 +80,10 @@ typedef struct s_rules
 	char		*west_texture_path;
 	int			floor_color[3];
 	int			ceiling_color[3];
-	unsigned int	floor;
+	t_texture	north_texture;
+	t_texture	south_texture;
+	t_texture	east_texture;
+	t_texture	west_texture;
 	void		*mlx;
 	void		*mlx_win;
 	int			win_width;
@@ -96,12 +117,15 @@ int		get_abs(int n);
 void	bresenham(int xy[2], int xy2[2], unsigned int color, t_rules *rules);
 int		virtual_horizontal_colliding(int rayX, int rayY, t_rules *rules, int dir);
 int		virtual_vertical_colliding(int rayX, int rayY, t_rules *rules, int dir);
-void	draw_3d(t_rules *rules, double dist, int *x, double ray_angle, int color);
+void	draw_3d(t_rules *rules, double dist, int *x, double ray_angle);//, int color);
 int		get_hex_color(int rgb[3]);
 void	check_player(char *tmp, t_rules *rules, int y);
 void	mini_raycast(double angle, t_rules *rules);
 double	decrement_angle(double angle, int off);
 double	increment_angle(double angle, int off);
-int		encode_rgb(u_int8_t alpha, u_int8_t red, u_int8_t green, u_int8_t blue, t_rules *rules);
+void	define_texture(char *path, t_texture *texture);
+int		get_nbr_hex(char *str);
+void	draw_texture(int xy[2], int xy2[2], t_rules *rules, float line_height);
+int		get_line_width(t_rules *rules);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: ddelladi <ddelladi@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/16 17:13:13 by ddelladi          #+#    #+#             */
-/*   Updated: 2022/07/20 15:53:15 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/07/20 19:49:02 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,8 @@ int	count_map_height_and_max_width(int fd, t_rules *rules)
 	return (count);
 }
 
-int	encode_rgb(u_int8_t alpha, u_int8_t red, u_int8_t green, u_int8_t blue, t_rules *rules)
+int	encode_rgb(u_int8_t alpha, u_int8_t red, u_int8_t green, u_int8_t blue)
 {
-	printf("COLOR VALUE: %d\n", mlx_get_color_value(rules->mlx, 0xFF0000FF));
 	return (alpha << 24 | red << 16 | green << 8 | blue);
 }
 

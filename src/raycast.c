@@ -6,7 +6,7 @@
 /*   By: ddelladi <ddelladi@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/16 19:22:22 by ddelladi          #+#    #+#             */
-/*   Updated: 2022/07/20 16:04:55 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/07/21 01:03:32 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -259,11 +259,11 @@ void	raycast_bresenham(double angle, t_rules *rules, int *counter)
 	if (final_length(xy[0], xy[1], s_pts) == INT_MAX || final_length(xy[0], xy[1], f_pts) < final_length(xy[0], xy[1], s_pts))
 	{
 		// bresenham(xy, f_pts, 0x00FFFFFF, rules);
-		draw_3d(rules, final_length(xy[0], xy[1], f_pts), counter, angle, 0x000000FF);
+		draw_3d(rules, final_length(xy[0], xy[1], f_pts), counter, angle);//, 0x000000FF);
 	}
 	else
 	{
 		// bresenham(xy, s_pts, 0x00FFFFFF, rules);
-		draw_3d(rules, final_length(xy[0], xy[1], s_pts), counter, angle, 0x000000DC);
+		draw_3d(rules, final_length(xy[0], xy[1], s_pts), counter, angle);//, 0x000000DC);
 	}
 }

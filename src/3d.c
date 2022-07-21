@@ -6,7 +6,7 @@
 /*   By: ddelladi <ddelladi@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/17 21:55:43 by ddelladi          #+#    #+#             */
-/*   Updated: 2022/07/20 16:03:37 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/07/21 14:19:46 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,14 +26,14 @@ int	get_line_width(t_rules *rules)
 			start = 0;
 		ret++;
 	}
-	return (rules->win_width / ret);
+	return (rules->win_width / ret + 1);
 }
 
-void	draw_3d(t_rules *rules, double dist, int *x, double ray_angle, int color)
+void	draw_3d(t_rules *rules, double dist, int *x, double ray_angle)//, int color)
 {
 	float	line_height;
 	float	line_off;
-	int		i;
+	// int		i;
 	int		xy[2];
 	int		xy2[2];
 	float	angle_diff;
@@ -50,12 +50,10 @@ void	draw_3d(t_rules *rules, double dist, int *x, double ray_angle, int color)
 	xy[1] = line_off;
 	xy2[0] = *x;
 	xy2[1] = line_height + line_off;
-	i = 0;
-	while (i++ <= get_line_width(rules))
-	{
-		bresenham(xy, xy2, color, rules);
-		xy[0]++;
-		xy2[0]++;
-		(*x)++;
-	}
+	// i = 0;
+	//bresenham(xy, xy2, color, rules);
+	draw_texture(xy, xy2, rules, line_height);
+	xy[0] += get_line_width(rules);
+	xy2[0] += get_line_width(rules);
+	(*x) += get_line_width(rules);
 }

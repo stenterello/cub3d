@@ -6,7 +6,7 @@
 /*   By: ddelladi <ddelladi@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/22 13:35:27 by ddelladi          #+#    #+#             */
-/*   Updated: 2022/07/18 12:29:09 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/07/21 13:56:49 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,11 +35,6 @@ void	input_check_and_rules_gen(int argc, char **argv, t_rules *rules)
 		usage();
 	if (ft_strncmp(&argv[1][ft_strlen(argv[1]) - 4], ".cub\0", 4))
 		die("File to read must have .cub extension");
-	fd = open(argv[1], O_RDONLY);
-	if (fd < 0)
-		die("Can't open file");
-	rules->map_height = count_map_height_and_max_width(fd, rules);
-	close(fd);
 	fd = open(argv[1], O_RDONLY);
 	if (fd < 0)
 		die("Can't open file");
