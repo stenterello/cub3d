@@ -6,7 +6,7 @@
 /*   By: ddelladi <ddelladi@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/22 13:36:34 by ddelladi          #+#    #+#             */
-/*   Updated: 2022/07/21 14:05:30 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/07/21 21:38:57 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ void	init_rules(t_rules *rules)
 	rules->floor_color[0] = INT_MAX;
 	rules->floor_color[1] = INT_MAX;
 	rules->floor_color[2] = INT_MAX;
+	rules->d_angle = PI / 2 / rules->win_width;
 }
 
 void	free_rules(t_rules *rules)
@@ -51,7 +52,7 @@ int	main(int argc, char **argv)
 	init_rules(&rules);
 	input_check_and_rules_gen(argc, argv, &rules);
 	init_window(&rules);
-	minimap(&rules);
+	game(&rules);
 	add_events(&rules);
 	mlx_loop(rules.mlx);
 	free_rules(&rules);

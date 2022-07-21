@@ -6,13 +6,13 @@
 /*   By: ddelladi <ddelladi@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/16 19:22:22 by ddelladi          #+#    #+#             */
-/*   Updated: 2022/07/21 01:03:32 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/07/21 22:14:53 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-double	final_length(int start_x, int start_y, int rxy[2])
+double	final_length(float start_x, float start_y, float rxy[2])
 {
 	if (rxy[0] == INT_MAX)
 		return (INT_MAX);
@@ -22,12 +22,12 @@ double	final_length(int start_x, int start_y, int rxy[2])
 // attualmente casta solo un raggio con una lunghezza prefissata,
 // non va a cercare la collisione con il muro
 
-void	horizontal_lines_check(double angle, int xy[2], t_rules *rules, int ret[2])
+void	horizontal_lines_check(double angle, float xy[2], t_rules *rules, float ret[2])
 {
 	t_ray	ray;
 	double	aTan;
-	int		xyoff[2];
-	int		dir;
+	float		xyoff[2];
+	float		dir;
 
 	ray.angle = angle;
 	aTan = -1 / tan(ray.angle);
@@ -39,7 +39,7 @@ void	horizontal_lines_check(double angle, int xy[2], t_rules *rules, int ret[2])
 	}
 	else if (ray.angle > PI)
 	{
-		ray.y = xy[1] + (rules->block_width - (xy[1] % rules->block_width));
+		ray.y = xy[1] + (rules->block_width - ((int)xy[1] % rules->block_width));
 		ray.x = (xy[1] - ray.y) * aTan + xy[0];
 		xyoff[1] = rules->block_width;
 		xyoff[0] = -xyoff[1] * aTan;
@@ -47,7 +47,7 @@ void	horizontal_lines_check(double angle, int xy[2], t_rules *rules, int ret[2])
 	}
 	else if (ray.angle < PI)
 	{
-		ray.y = xy[1] - (xy[1] % rules->block_width);
+		ray.y = xy[1] - ((int)xy[1] % rules->block_width);
 		ray.x = (xy[1] - ray.y) * aTan + xy[0] + 1;
 		xyoff[1] = -rules->block_width;
 		xyoff[0] = -xyoff[1] * aTan;
@@ -64,12 +64,12 @@ void	horizontal_lines_check(double angle, int xy[2], t_rules *rules, int ret[2])
 	// 	bresenham(xy, ret, 0x00FFFFFF, rules);
 }
 
-void	vertical_lines_check(double angle, int xy[2], t_rules *rules, int ret[2])
+void	vertical_lines_check(double angle, float xy[2], t_rules *rules, float ret[2])
 {
 	t_ray	ray;
 	double	nTan;
-	int		xyoff[2];
-	int		dir;
+	float		xyoff[2];
+	float		dir;
 
 	ray.angle = angle;
 	nTan = -tan(ray.angle);
@@ -81,14 +81,14 @@ void	vertical_lines_check(double angle, int xy[2], t_rules *rules, int ret[2])
 	}
 	else if (ray.angle > PI / 2 && ray.angle < 3 * PI / 2)
 	{
-		ray.x = xy[0] + (rules->block_width - (xy[0] % rules->block_width));
+		ray.x = xy[0] + (rules->block_width - ((int)xy[0] % rules->block_width));
 		ray.y = (xy[0] - ray.x) * nTan + xy[1];
 		xyoff[0] = rules->block_width;
 		xyoff[1] = -xyoff[0] * nTan;
 	}
 	else if (ray.angle < PI / 2 || ray.angle > 3 * PI / 2)
 	{
-		ray.x = xy[0] - (xy[0] % rules->block_width);
+		ray.x = xy[0] - ((int)xy[0] % rules->block_width);
 		ray.y = (xy[0] - ray.x) * nTan + xy[1];
 		xyoff[0] = -rules->block_width;
 		xyoff[1] = -xyoff[0] * nTan;
@@ -106,7 +106,7 @@ void	vertical_lines_check(double angle, int xy[2], t_rules *rules, int ret[2])
 	// 	bresenham(xy, ret, 0x00000000, rules);
 }
 
-int	mini_virtual_horizontal_colliding(int rayX, int rayY, t_rules *rules, int dir)
+int	mini_virtual_horizontal_colliding(float rayX, float rayY, t_rules *rules, int dir)
 {
 	int	mapX;
 	int	mapY;
@@ -140,11 +140,11 @@ int	mini_virtual_vertical_colliding(int rayX, int rayY, t_rules *rules, int dir)
 	return (0);
 }
 
-void	mini_horizontal_lines_check(double angle, int xy[2], t_rules *rules, int ret[2])
+void	mini_horizontal_lines_check(double angle, float xy[2], t_rules *rules, float ret[2])
 {
 	t_ray	ray;
 	double	aTan;
-	int		xyoff[2];
+	float		xyoff[2];
 	int		dir;
 
 	ray.angle = angle;
@@ -157,7 +157,7 @@ void	mini_horizontal_lines_check(double angle, int xy[2], t_rules *rules, int re
 	}
 	else if (ray.angle > PI)
 	{
-		ray.y = xy[1] + (rules->mini_block_width - (xy[1] % rules->mini_block_width));
+		ray.y = xy[1] + (rules->mini_block_width - ((int)xy[1] % rules->mini_block_width));
 		ray.x = (xy[1] - ray.y) * aTan + xy[0];
 		xyoff[1] = rules->mini_block_width;
 		xyoff[0] = -xyoff[1] * aTan;
@@ -165,8 +165,8 @@ void	mini_horizontal_lines_check(double angle, int xy[2], t_rules *rules, int re
 	}
 	else if (ray.angle < PI)
 	{
-		ray.y = xy[1] - (xy[1] % rules->mini_block_width);
-		ray.x = (xy[1] - ray.y) * aTan + xy[0] + 1; // QUESTO + 1 E' MESSO A CAZZO MA PARE FUNZIONARE COSI'
+		ray.y = xy[1] - ((int)xy[1] % rules->mini_block_width);
+		ray.x = (xy[1] - ray.y) * aTan + xy[0] + 2; // QUESTO + 1 E' MESSO A CAZZO MA PARE FUNZIONARE COSI'
 		xyoff[1] = -rules->mini_block_width;
 		xyoff[0] = -xyoff[1] * aTan;
 	}
@@ -182,12 +182,12 @@ void	mini_horizontal_lines_check(double angle, int xy[2], t_rules *rules, int re
 	// 	bresenham(xy, ret, 0x00FFFFFF, rules);
 }
 
-void	mini_vertical_lines_check(double angle, int xy[2], t_rules *rules, int ret[2])
+void	mini_vertical_lines_check(double angle, float xy[2], t_rules *rules, float ret[2])
 {
 	t_ray	ray;
 	double	nTan;
-	int		xyoff[2];
-	int		dir;
+	float		xyoff[2];
+	float		dir;
 
 	ray.angle = angle;
 	nTan = -tan(ray.angle);
@@ -199,14 +199,14 @@ void	mini_vertical_lines_check(double angle, int xy[2], t_rules *rules, int ret[
 	}
 	else if (ray.angle > PI / 2 && ray.angle < 3 * PI / 2)
 	{
-		ray.x = xy[0] + (rules->mini_block_width - (xy[0] % rules->mini_block_width));
+		ray.x = xy[0] + (rules->mini_block_width - ((int)xy[0] % rules->mini_block_width));
 		ray.y = (xy[0] - ray.x) * nTan + xy[1];
 		xyoff[0] = rules->mini_block_width;
 		xyoff[1] = -xyoff[0] * nTan;
 	}
 	else if (ray.angle < PI / 2 || ray.angle > 3 * PI / 2)
 	{
-		ray.x = xy[0] - (xy[0] % rules->mini_block_width);
+		ray.x = xy[0] - ((int)xy[0] % rules->mini_block_width);
 		ray.y = (xy[0] - ray.x) * nTan + xy[1];
 		xyoff[0] = -rules->mini_block_width;
 		xyoff[1] = -xyoff[0] * nTan;
@@ -226,9 +226,9 @@ void	mini_vertical_lines_check(double angle, int xy[2], t_rules *rules, int ret[
 
 void	mini_raycast(double angle, t_rules *rules)
 {
-	int		xy[2];
-	int		f_pts[2];
-	int		s_pts[2];
+	float		xy[2];
+	float		f_pts[2];
+	float		s_pts[2];
 
 	xy[0] = rules->player.miniplayer.x;
 	xy[1] = rules->player.miniplayer.y;
@@ -246,24 +246,50 @@ void	mini_raycast(double angle, t_rules *rules)
 	}
 }
 
-void	raycast_bresenham(double angle, t_rules *rules, int *counter)
+void	raycast_bresenham(double angle, t_rules *rules, int *counter, t_frame *scene)
 {
-	int		xy[2];
-	int		f_pts[2];
-	int		s_pts[2];
+	float		xy[2];
+	float		f_pts[2];
+	float		s_pts[2];
+	double		line_height;
+	float		line_off;
+	float		angle_diff;
+	double		dist;
 
+	
 	xy[0] = rules->player.x;
 	xy[1] = rules->player.y;
 	horizontal_lines_check(angle, xy, rules, f_pts);
 	vertical_lines_check(angle, xy, rules, s_pts);
 	if (final_length(xy[0], xy[1], s_pts) == INT_MAX || final_length(xy[0], xy[1], f_pts) < final_length(xy[0], xy[1], s_pts))
 	{
+		dist = final_length(xy[0], xy[1], f_pts);
+		angle_diff = rules->player.dir - angle;
+		if (angle_diff < 0)
+			angle_diff += (float)(2 * PI);
+		else if (angle_diff > (float)(2 * PI))
+			angle_diff -= 2 * PI;
+		dist *= cos(angle_diff);
+		line_height = rules->block_width * rules->win_height / dist;
+		line_off = rules->win_height / 2 - line_height / 2;
 		// bresenham(xy, f_pts, 0x00FFFFFF, rules);
-		draw_3d(rules, final_length(xy[0], xy[1], f_pts), counter, angle);//, 0x000000FF);
+		//draw_3d(rules, final_length(xy[0], xy[1], f_pts), counter, angle);//, 0x000000FF);
+		draw_texture(*counter, line_off, line_height + line_off, rules, scene);
 	}
 	else
 	{
+		dist = final_length(xy[0], xy[1], s_pts);
+		angle_diff = rules->player.dir - angle;
+		if (angle_diff < 0)
+			angle_diff += (float)(2 * PI);
+		else if (angle_diff > (float)(2 * PI))
+			angle_diff -= 2 * PI;
+		dist *= cos(angle_diff);
+		line_height = rules->block_width * rules->win_height / dist;
+		line_off = rules->win_height / 2 - line_height / 2;
 		// bresenham(xy, s_pts, 0x00FFFFFF, rules);
-		draw_3d(rules, final_length(xy[0], xy[1], s_pts), counter, angle);//, 0x000000DC);
+		//draw_3d(rules, final_length(xy[0], xy[1], s_pts), counter, angle);//, 0x000000DC);
+		draw_texture(*counter, line_off, line_height + line_off, rules, scene);
 	}
+	(*counter)++;
 }

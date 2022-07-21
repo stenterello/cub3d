@@ -5,7 +5,6 @@ make[1]: Entering directory '/home/davide/Documenti/Codici/42/cub3d/include/mlx_
 ./configure
 make[1]: Leaving directory '/home/davide/Documenti/Codici/42/cub3d/include/mlx_linux'
 make bonus -C ./include/libft
- 
 make[1]: Entering directory '/home/davide/Documenti/Codici/42/cub3d/include/libft'
 gcc    -c -o ft_isalpha.o ft_isalpha.c
 gcc    -c -o ft_isdigit.o ft_isdigit.c
@@ -26,7 +25,6 @@ gcc    -c -o ft_strrchr.o ft_strrchr.c
 gcc    -c -o ft_strncmp.o ft_strncmp.c
 gcc    -c -o ft_memchr.o ft_memchr.c
 gcc    -c -o ft_memcmp.o ft_memcmp.c
- 
 gcc    -c -o ft_strnstr.o ft_strnstr.c
 gcc    -c -o ft_atoi.o ft_atoi.c
 gcc    -c -o ft_calloc.o ft_calloc.c
@@ -37,7 +35,6 @@ gcc    -c -o ft_strtrim.o ft_strtrim.c
 gcc    -c -o ft_split.o ft_split.c
 gcc    -c -o ft_itoa.o ft_itoa.c
 gcc    -c -o ft_strmapi.o ft_strmapi.c
- 
 gcc    -c -o ft_striteri.o ft_striteri.c
 gcc    -c -o ft_putchar_fd.o ft_putchar_fd.c
 gcc    -c -o ft_putstr_fd.o ft_putstr_fd.c
@@ -70,10 +67,8 @@ gcc    -c -o src/minimap.o src/minimap.c
 gcc    -c -o src/raycast.o src/raycast.c
 gcc    -c -o src/colliding.o src/colliding.c
 gcc    -c -o src/bresenham.o src/bresenham.c
- 
 gcc    -c -o src/utils.o src/utils.c
 gcc    -c -o src/3d.o src/3d.c
- 
 gcc    -c -o src/xpm.o src/xpm.c
 gcc    -c -o src/texture.o src/texture.c
 gcc -Wall -Werror -Wextra -g src/main.c src/error.c src/memory.c src/memory2.c src/check.c src/map_gen.c src/take_rules_utils.c src/map_gen_utils.c src/events.c src/window.c src/minimap.c src/raycast.c src/colliding.c src/bresenham.c src/utils.c src/3d.c src/xpm.c src/texture.c ./include/libft/libft.a ./include/mlx_linux/libmlx.a -Linclude/mlx_linux -L/usr/lib -L/usr/include -Iinclude/mlx_linux -lXext -lX11 -lm -lz -o cub3d

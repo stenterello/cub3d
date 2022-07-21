@@ -6,7 +6,7 @@
 /*   By: ddelladi <ddelladi@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/22 13:34:25 by ddelladi          #+#    #+#             */
-/*   Updated: 2022/07/21 14:19:44 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/07/21 21:47:56 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,8 @@ typedef struct s_xpm
 typedef struct s_ray
 {
 	double		angle;
-	int			x;
-	int			y;
+	float		x;
+	float		y;
 }				t_ray;
 
 typedef struct s_frame
@@ -93,6 +93,7 @@ typedef struct s_rules
 	int			mini_block_width;
 	int			block_width;
 	t_player	player;
+	double		d_angle;
 }				t_rules;
 
 void	usage(void);
@@ -111,10 +112,10 @@ void	init_window(t_rules *rules);
 void	easy_pixel_put(t_frame *frame, int x, int y, int color);
 void	draw_mini_block(t_rules *rules, int coord[2], int color);
 void	free_rules(t_rules *rules);
-void	raycast_bresenham(double angle, t_rules *rules, int *counter);
+void	raycast_bresenham(double angle, t_rules *rules, int *counter, t_frame *scene);
 int		colliding(t_rules *rules, char *dir);
 int		get_abs(int n);
-void	bresenham(int xy[2], int xy2[2], unsigned int color, t_rules *rules);
+void	bresenham(float xy[2], float xy2[2], unsigned int color, t_rules *rules);
 int		virtual_horizontal_colliding(int rayX, int rayY, t_rules *rules, int dir);
 int		virtual_vertical_colliding(int rayX, int rayY, t_rules *rules, int dir);
 void	draw_3d(t_rules *rules, double dist, int *x, double ray_angle);//, int color);
@@ -125,7 +126,9 @@ double	decrement_angle(double angle, int off);
 double	increment_angle(double angle, int off);
 void	define_texture(char *path, t_texture *texture);
 int		get_nbr_hex(char *str);
-void	draw_texture(int xy[2], int xy2[2], t_rules *rules, float line_height);
+void	draw_texture(int x, int y1, int y2, t_rules *rules, t_frame *scene);
 int		get_line_width(t_rules *rules);
+void	game(t_rules *rules);
+void	draw_view_rays(t_rules *rules);
 
 #endif

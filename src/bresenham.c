@@ -6,13 +6,13 @@
 /*   By: ddelladi <ddelladi@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/17 02:45:13 by ddelladi          #+#    #+#             */
-/*   Updated: 2022/07/21 11:15:37 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/07/21 21:40:03 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void	bresenham(int xy[2], int xy2[2], unsigned int color, t_rules *rules)
+void	bresenham(float xy[2], float xy2[2], unsigned int color, t_rules *rules)
 {
 	double	deltaX;
 	double	deltaY;

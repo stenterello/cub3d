@@ -6,7 +6,7 @@
 /*   By: ddelladi <ddelladi@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/17 21:55:43 by ddelladi          #+#    #+#             */
-/*   Updated: 2022/07/21 14:19:46 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/07/21 20:00:57 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,8 +52,8 @@ void	draw_3d(t_rules *rules, double dist, int *x, double ray_angle)//, int color
 	xy2[1] = line_height + line_off;
 	// i = 0;
 	//bresenham(xy, xy2, color, rules);
-	draw_texture(xy, xy2, rules, line_height);
-	xy[0] += get_line_width(rules);
-	xy2[0] += get_line_width(rules);
-	(*x) += get_line_width(rules);
+	//draw_texture(*x, line_off, xy2[1], rules);
+	xy[0]++;
+	xy2[0]++;
+	(*x)++;
 }

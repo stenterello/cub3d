@@ -6,7 +6,7 @@
 /*   By: ddelladi <ddelladi@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/16 18:32:06 by ddelladi          #+#    #+#             */
-/*   Updated: 2022/07/20 14:41:36 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/07/21 22:05:27 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	move_player(int keycode, t_rules *rules)
 		rules->player.x -= rules->block_width / 10;
 	else if (keycode == 100 && !colliding(rules, "right"))
 		rules->player.x += rules->block_width / 10;
-	minimap(rules);
+	draw_view_rays(rules);
 }
 
 void	move_view(int keycode, t_rules *rules)
@@ -41,7 +41,7 @@ void	move_view(int keycode, t_rules *rules)
 	}
 	rules->player.d_x = cos(rules->player.dir) * 5;
 	rules->player.d_y = -sin(rules->player.dir) * 5;
-	minimap(rules);
+	draw_view_rays(rules);
 }
 
 int	events(int keycode, t_rules *rules) // i keycode sono attualmente per linux... se possibile scriverli qui: { TASTO : linux : mac }
