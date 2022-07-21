@@ -6,7 +6,7 @@
 /*   By: ddelladi <ddelladi@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/22 13:34:25 by ddelladi          #+#    #+#             */
-/*   Updated: 2022/07/21 21:47:56 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/07/21 22:22:14 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,7 +126,7 @@ double	decrement_angle(double angle, int off);
 double	increment_angle(double angle, int off);
 void	define_texture(char *path, t_texture *texture);
 int		get_nbr_hex(char *str);
-void	draw_texture(int x, int y1, int y2, t_rules *rules, t_frame *scene);
+void	draw_texture(int x, float y1, float y2, t_rules *rules, t_frame *scene);
 int		get_line_width(t_rules *rules);
 void	game(t_rules *rules);
 void	draw_view_rays(t_rules *rules);

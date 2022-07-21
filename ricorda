@@ -1,0 +1,2 @@
+// PROVA QUESTOOOOOO get_xpm_color(&rules->north_texture, ty / rules->north_texture.size[0], x * ty)
+ // E QUESTOOOOOOO get_xpm_color(&rules->north_texture, ty / rules->north_texture.size[0], x / ty)

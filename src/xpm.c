@@ -6,7 +6,7 @@
 /*   By: ddelladi <ddelladi@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 00:22:27 by ddelladi          #+#    #+#             */
-/*   Updated: 2022/07/21 13:55:59 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/07/21 22:37:58 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@ void	read_pairs(t_texture *texture, int fd)
 	char	*tmp;
 	int		j;
 	t_xpm	*ptr;
+	int		i;
 
 	
 	j = 0;
@@ -62,6 +63,7 @@ void	read_pairs(t_texture *texture, int fd)
 	ptr = texture->pairs;
 	while (j++ < texture->n_colors)
 	{
+		i = 1;
 		if (j > 1)
 		{
 			ptr->next = malloc(sizeof(t_xpm));
@@ -73,11 +75,19 @@ void	read_pairs(t_texture *texture, int fd)
 		ptr->key = malloc(sizeof(char) * 3);
 		if (!ptr->key)
 			die("Malloc error");
-		ft_strlcpy(ptr->key, &tmp[1], 3);
+		ft_strlcpy(ptr->key, &tmp[i], 3);
+		while (ft_isascii(tmp[i]) && tmp[i] != ' ')
+			i++;
+		while (tmp[i] == ' ')
+			i++;
+		if (tmp[i] == 'c')
+			i++;
+		while (tmp[i] == ' ' || tmp[i] == '#')
+			i++;
 		ptr->value = malloc(sizeof(char) * 7);
 		if (!ptr->value)
 			die("Malloc error");
-		ft_strlcpy(ptr->value, &tmp[6], 7);
+		ft_strlcpy(ptr->value, &tmp[i], 7);
 		free(tmp);
 	}
 	ptr->next = NULL;
