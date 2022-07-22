@@ -6,7 +6,7 @@
 /*   By: ddelladi <ddelladi@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 11:15:51 by ddelladi          #+#    #+#             */
-/*   Updated: 2022/07/21 23:05:45 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/07/22 14:50:55 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,14 +34,20 @@ int	get_xpm_color(t_texture *texture, int y, int x)
 	return (get_nbr_hex(get_pair(&texture->encoded[y % 32][x * 2 % 32], texture)));
 }
 
-void	draw_texture(int x, float y1, float y2, t_rules *rules, t_frame *scene)
+void	draw_texture(int x, double dist, t_rules *rules, t_frame *scene)
 {
 	float	ty_step;
 	float	ty_off;
 	float	ty;
 	float	tx;
+	double	line_height;
+	float	y2;
+	float	y1;
 
+	line_height = rules->block_width * rules->win_height / dist;
+	y1 = rules->win_height / 2 - line_height / 2;
 	ty_off = 0;
+	y2 = line_height + y1;
 	ty_step = rules->north_texture.size[0] / (y2 - y1);
 	if (y2 - y1 > rules->win_height)
 	{

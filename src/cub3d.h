@@ -6,7 +6,7 @@
 /*   By: ddelladi <ddelladi@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/22 13:34:25 by ddelladi          #+#    #+#             */
-/*   Updated: 2022/07/21 22:22:14 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/07/22 14:47:43 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,6 +94,14 @@ typedef struct s_rules
 	int			block_width;
 	t_player	player;
 	double		d_angle;
+	int			nframes;
+	int			rate;
+	int			w_pressed;
+	int			a_pressed;
+	int			s_pressed;
+	int			d_pressed;
+	int			l_pressed;
+	int			r_pressed;
 }				t_rules;
 
 void	usage(void);
@@ -112,7 +120,7 @@ void	init_window(t_rules *rules);
 void	easy_pixel_put(t_frame *frame, int x, int y, int color);
 void	draw_mini_block(t_rules *rules, int coord[2], int color);
 void	free_rules(t_rules *rules);
-void	raycast_bresenham(double angle, t_rules *rules, int *counter, t_frame *scene);
+void	raycast_bresenham(double angle, t_rules *rules, int counter, t_frame *scene);
 int		colliding(t_rules *rules, char *dir);
 int		get_abs(int n);
 void	bresenham(float xy[2], float xy2[2], unsigned int color, t_rules *rules);
@@ -126,7 +134,7 @@ double	decrement_angle(double angle, int off);
 double	increment_angle(double angle, int off);
 void	define_texture(char *path, t_texture *texture);
 int		get_nbr_hex(char *str);
-void	draw_texture(int x, float y1, float y2, t_rules *rules, t_frame *scene);
+void	draw_texture(int x, double dist, t_rules *rules, t_frame *scene);
 int		get_line_width(t_rules *rules);
 void	game(t_rules *rules);
 void	draw_view_rays(t_rules *rules);

@@ -6,7 +6,7 @@
 /*   By: ddelladi <ddelladi@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/16 19:22:22 by ddelladi          #+#    #+#             */
-/*   Updated: 2022/07/21 22:14:53 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/07/22 14:48:57 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -246,50 +246,28 @@ void	mini_raycast(double angle, t_rules *rules)
 	}
 }
 
-void	raycast_bresenham(double angle, t_rules *rules, int *counter, t_frame *scene)
+void	raycast_bresenham(double angle, t_rules *rules, int counter, t_frame *scene)
 {
 	float		xy[2];
 	float		f_pts[2];
 	float		s_pts[2];
-	double		line_height;
-	float		line_off;
 	float		angle_diff;
 	double		dist;
 
 	
 	xy[0] = rules->player.x;
 	xy[1] = rules->player.y;
+	angle_diff = rules->player.dir - angle;
+	if (angle_diff < 0)
+		angle_diff += (float)(2 * PI);
+	else if (angle_diff > (float)(2 * PI))
+		angle_diff -= 2 * PI;
 	horizontal_lines_check(angle, xy, rules, f_pts);
 	vertical_lines_check(angle, xy, rules, s_pts);
 	if (final_length(xy[0], xy[1], s_pts) == INT_MAX || final_length(xy[0], xy[1], f_pts) < final_length(xy[0], xy[1], s_pts))
-	{
 		dist = final_length(xy[0], xy[1], f_pts);
-		angle_diff = rules->player.dir - angle;
-		if (angle_diff < 0)
-			angle_diff += (float)(2 * PI);
-		else if (angle_diff > (float)(2 * PI))
-			angle_diff -= 2 * PI;
-		dist *= cos(angle_diff);
-		line_height = rules->block_width * rules->win_height / dist;
-		line_off = rules->win_height / 2 - line_height / 2;
-		// bresenham(xy, f_pts, 0x00FFFFFF, rules);
-		//draw_3d(rules, final_length(xy[0], xy[1], f_pts), counter, angle);//, 0x000000FF);
-		draw_texture(*counter, line_off, line_height + line_off, rules, scene);
-	}
 	else
-	{
 		dist = final_length(xy[0], xy[1], s_pts);
-		angle_diff = rules->player.dir - angle;
-		if (angle_diff < 0)
-			angle_diff += (float)(2 * PI);
-		else if (angle_diff > (float)(2 * PI))
-			angle_diff -= 2 * PI;
-		dist *= cos(angle_diff);
-		line_height = rules->block_width * rules->win_height / dist;
-		line_off = rules->win_height / 2 - line_height / 2;
-		// bresenham(xy, s_pts, 0x00FFFFFF, rules);
-		//draw_3d(rules, final_length(xy[0], xy[1], s_pts), counter, angle);//, 0x000000DC);
-		draw_texture(*counter, line_off, line_height + line_off, rules, scene);
-	}
-	(*counter)++;
+	dist *= cos(angle_diff);
+	draw_texture(counter, dist, rules, scene);
 }
