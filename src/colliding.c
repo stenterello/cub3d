@@ -6,7 +6,7 @@
 /*   By: ddelladi <ddelladi@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/16 21:06:51 by ddelladi          #+#    #+#             */
-/*   Updated: 2022/07/22 14:54:15 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/07/22 19:17:45 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void next_coordinates(t_rules *rules, char *dir, int next_c[2])
 	}
 }
 
-int verify_collide(t_rules *rules, char *dir, int next_c[2])
+int	verify_collide(t_rules *rules, char *dir, int next_c[2])
 {
 	if (!ft_strncmp(dir, "left", 4))
 	{
@@ -58,6 +58,15 @@ int verify_collide(t_rules *rules, char *dir, int next_c[2])
 		if (rules->map[next_c[1] / rules->block_width][next_c[0] / rules->block_width] == '1')
 			return (1);
 	}
+	return (0);
+}
+
+int	verify_collide2(t_rules *rules, int next[2])
+{
+	if (next[0] < 0 || next[1] < 0 || next[0] > rules->map_width || next[1] > rules->map_height)
+		return (1);
+	if (rules->map[next[1]][next[0]] == '1')
+		return (1);
 	return (0);
 }
 
@@ -95,6 +104,36 @@ int	virtual_vertical_colliding(int rayX, int rayY, t_rules *rules, int dir)
 	return (0);
 }
 
+int colliding2(t_rules *rules, float ray_cos, float ray_sin, int plus)
+{
+	int next_c[2];
+	int	act[2];
+	int	next[2];
+
+	act[0] = rules->player.x / rules->block_width;
+	act[1] = rules->player.y / rules->block_width;
+	if (plus)
+	{
+		next[0] = (rules->player.x + ray_cos) / rules->block_width;
+		next[1] = (rules->player.y + ray_sin) / rules->block_width;
+		next_c[0] = rules->player.x + ray_cos;
+		next_c[1] = rules->player.y + ray_sin;
+	}
+	else
+	{
+		next[0] = (rules->player.x - ray_cos) / rules->block_width;
+		next[1] = (rules->player.y - ray_sin) / rules->block_width;
+		next_c[0] = rules->player.x - ray_cos;
+		next_c[1] = rules->player.y - ray_sin;
+	}
+	if (act[0] != next[0] || act[1] != next[1] || !(next_c[0] % rules->block_width) || !(next_c[1] % rules->block_width))
+	{
+		if (verify_collide2(rules, next))
+			return (1);
+	}
+	return (0);
+}
+
 int colliding(t_rules *rules, char *dir)
 {
 	int next_c[2];
@@ -108,7 +147,7 @@ int colliding(t_rules *rules, char *dir)
 	next[1] = next_c[1] / rules->block_width;
 	if (act[0] != next[0] || act[1] != next[1] || !(next_c[0] % rules->block_width) || !(next_c[1] % rules->block_width))
 	{
-		if (verify_collide(rules, dir, next_c))
+		if (verify_collide(rules, dir, next))
 			return (1);
 	}
 	return (0);

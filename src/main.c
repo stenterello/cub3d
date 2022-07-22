@@ -6,7 +6,7 @@
 /*   By: ddelladi <ddelladi@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/22 13:36:34 by ddelladi          #+#    #+#             */
-/*   Updated: 2022/07/22 14:58:38 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/07/22 19:18:50 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,24 +53,66 @@ void	free_rules(t_rules *rules)
 		free(rules->west_texture_path);
 }
 
+void	move_player(t_rules *rules, char *dir)
+{
+	float	ray_cos;
+	float	ray_sin;
+
+	ray_cos = rules->player.d_x * rules->player.speed;
+	ray_sin = rules->player.d_y * rules->player.speed;
+	if (!ft_strncmp("up", dir, 2))
+	{
+		if (!colliding2(rules, ray_cos, 0, 1))
+			rules->player.x += rules->player.d_x * rules->player.speed;
+		if (!colliding2(rules, 0, ray_sin, 1))
+			rules->player.y += rules->player.d_y * rules->player.speed;
+	}
+	if (!ft_strncmp("down", dir, 4))
+	{
+		if (!colliding2(rules, ray_cos, 0, 0))
+			rules->player.x -= rules->player.d_x * rules->player.speed;
+		if (!colliding2(rules, 0, ray_sin, 0))
+			rules->player.y -= rules->player.d_y * rules->player.speed;
+	}
+	if (!ft_strncmp("left", dir, 4))
+	{
+		if (!colliding2(rules, ray_cos, 0, 1))
+			rules->player.x += rules->player.d_y * rules->player.speed;
+		if (!colliding2(rules, 0, ray_sin, 0))
+			rules->player.y -= rules->player.d_x * rules->player.speed;
+	}
+	if (!ft_strncmp("right", dir, 5))
+	{
+		if (!colliding2(rules, ray_cos, 0, 0))
+			rules->player.x -= rules->player.d_y * rules->player.speed;
+		if (!colliding2(rules, 0, ray_sin, 1))
+			rules->player.y += rules->player.d_x * rules->player.speed;
+	}
+}
+
 void	update_pov(t_rules *rules)
 {
-	if (rules->w_pressed && !colliding(rules, "up"))
-		rules->player.y -= rules->block_width / 10;
-	if (!colliding(rules, "left") && rules->a_pressed)
-		rules->player.x -= rules->block_width / 10;
-	if (rules->s_pressed && !colliding(rules, "down"))
-		rules->player.y += rules->block_width / 10;
-	if (rules->d_pressed && !colliding(rules, "right"))
-		rules->player.x += rules->block_width / 10;
+	if (rules->w_pressed)
+		move_player(rules, "up");
+	if (rules->a_pressed)
+		move_player(rules, "left");
+	if (rules->s_pressed)
+		move_player(rules, "down");
+	if (rules->d_pressed)
+		move_player(rules, "right");
 	if (rules->l_pressed)
-		rules->player.dir -= ANGLE_UNIT * 5;
-	if (rules->r_pressed)
 		rules->player.dir += ANGLE_UNIT * 5;
+	if (rules->r_pressed)
+		rules->player.dir -= ANGLE_UNIT * 5;
 	if (rules->player.dir < 0)
 		rules->player.dir = 2 * PI;
 	if (rules->player.dir > 2 * PI)
 		rules->player.dir = 0;
+	rules->player.d_x = cos(rules->player.dir);
+	if (rules->player.dir == (double)PI)
+		rules->player.d_y = 0;
+	else
+		rules->player.d_y = -sin(rules->player.dir);
 }
 
 int	update_screen(t_rules *rules)
@@ -78,7 +120,7 @@ int	update_screen(t_rules *rules)
 	if (rules->nframes % rules->rate == 0)
 	{
 		update_pov(rules);
-		draw_view_rays(rules);
+		game(rules);
 	}
 	rules->nframes++;
 	return (0);

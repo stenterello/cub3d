@@ -6,7 +6,7 @@
 /*   By: ddelladi <ddelladi@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/16 18:33:06 by ddelladi          #+#    #+#             */
-/*   Updated: 2022/07/22 14:17:41 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/07/22 18:03:56 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,20 +80,16 @@ void	draw_mini_view_rays(t_rules *rules)
 	int		counter;
 	double	start;
 	t_frame	scene;
-	// float	end;
 
 	scene.img = mlx_new_image(rules->mlx, rules->win_width, rules->win_height);
 	scene.addr = mlx_get_data_addr(scene.img, &scene.bpp, &scene.line_length, &scene.endian);
-	start = decrement_angle(rules->player.dir, 45);
-	// end = increment_angle(rules->player.dir, 45);
+	start = increment_angle(rules->player.dir, 45);
 	counter = 0;
 	while (counter < rules->win_width)
 	{
-		if (start > 3.205)
-			printf("ECCO");
 		mini_raycast(start, rules);//, &counter, &scene);
 		counter++;
-		start += rules->d_angle;
+		start -= rules->d_angle;
 		if (start < 0)
 			start = 2 * PI;
 		else if (start > 2 * PI)
@@ -185,15 +181,15 @@ void	game(t_rules *rules)
 	double	start;
 	t_frame	scene;
 
-	paint_bg(rules);
+	// paint_bg(rules);
 	scene.img = mlx_new_image(rules->mlx, rules->win_width, rules->win_height);
 	scene.addr = mlx_get_data_addr(scene.img, &scene.bpp, &scene.line_length, &scene.endian);
-	start = decrement_angle(rules->player.dir, 45);
+	start = increment_angle(rules->player.dir, 45);
 	counter = 0;
 	while (counter < rules->win_width)
 	{
 		raycast_bresenham(start, rules, counter, &scene);
-		start += rules->d_angle;
+		start -= rules->d_angle;
 		if (start < 0)
 			start = 2 * PI;
 		else if (start > 2 * PI)

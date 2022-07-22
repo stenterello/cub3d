@@ -6,7 +6,7 @@
 /*   By: ddelladi <ddelladi@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/16 17:13:13 by ddelladi          #+#    #+#             */
-/*   Updated: 2022/07/20 19:49:02 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/07/22 18:59:48 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,9 +68,13 @@ void	define_player(char *tmp, t_rules *rules, int y)
 	rules->player.x = i * (rules->block_width) + rules->block_width / 2;
 	rules->player.y = y * (rules->block_width) + rules->block_width / 2;
 	rules->player.d_x = cos(rules->player.dir) * 5;
-	rules->player.d_y = -sin(rules->player.dir) * 5;
+	if (rules->player.dir == (double)PI)
+		rules->player.d_y = 0;
+	else
+		rules->player.d_y = -sin(rules->player.dir) * 5;
 	rules->player.miniplayer.x = rules->mini_block_width * rules->player.x / rules->block_width;
 	rules->player.miniplayer.y = rules->mini_block_width * rules->player.y / rules->block_width;
+	rules->player.speed = rules->block_width / 10;
 }
 
 void	check_player(char *tmp, t_rules *rules, int y)

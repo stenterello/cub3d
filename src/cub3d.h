@@ -6,7 +6,7 @@
 /*   By: ddelladi <ddelladi@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/22 13:34:25 by ddelladi          #+#    #+#             */
-/*   Updated: 2022/07/22 14:47:43 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/07/22 19:50:06 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,7 @@ typedef struct s_player
 	double			d_x;
 	double			d_y;
 	double			dir;
+	float			speed;
 	t_miniplayer	miniplayer;
 }				t_player;
 
@@ -134,9 +135,12 @@ double	decrement_angle(double angle, int off);
 double	increment_angle(double angle, int off);
 void	define_texture(char *path, t_texture *texture);
 int		get_nbr_hex(char *str);
-void	draw_texture(int x, double dist, t_rules *rules, t_frame *scene);
+void	draw_texture(int x, double dist, t_rules *rules, t_frame *scene, int color_unit_x);
 int		get_line_width(t_rules *rules);
 void	game(t_rules *rules);
 void	draw_view_rays(t_rules *rules);
+int 	colliding2(t_rules *rules, float ray_cos, float ray_sin, int plus);
+void	update_pov(t_rules *rules);
+int		verify_collide2(t_rules *rules, int next_c[2]);
 
 #endif

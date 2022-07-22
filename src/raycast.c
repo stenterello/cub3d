@@ -6,7 +6,7 @@
 /*   By: ddelladi <ddelladi@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/16 19:22:22 by ddelladi          #+#    #+#             */
-/*   Updated: 2022/07/22 14:48:57 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/07/22 19:54:12 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,27 +30,27 @@ void	horizontal_lines_check(double angle, float xy[2], t_rules *rules, float ret
 	float		dir;
 
 	ray.angle = angle;
-	aTan = -1 / tan(ray.angle);
+	aTan = 1 / tan(ray.angle);
 	dir = 0;
 	if (ray.angle == 0 || ray.angle == (double)PI)
 	{
 		ray.x = INT_MAX;
 		ray.y = INT_MAX;
 	}
+	else if (ray.angle < PI)
+	{
+		ray.y = xy[1] - (rules->block_width - (rules->block_width - ((int)xy[1] % rules->block_width)));
+		ray.x = (xy[1] - ray.y) * aTan + xy[0];
+		xyoff[1] = -rules->block_width;
+		xyoff[0] = -xyoff[1] * aTan;
+	}
 	else if (ray.angle > PI)
 	{
 		ray.y = xy[1] + (rules->block_width - ((int)xy[1] % rules->block_width));
-		ray.x = (xy[1] - ray.y) * aTan + xy[0];
+		ray.x = (xy[1] - ray.y) * aTan + xy[0] + 2;
 		xyoff[1] = rules->block_width;
 		xyoff[0] = -xyoff[1] * aTan;
 		dir = 1;
-	}
-	else if (ray.angle < PI)
-	{
-		ray.y = xy[1] - ((int)xy[1] % rules->block_width);
-		ray.x = (xy[1] - ray.y) * aTan + xy[0] + 1;
-		xyoff[1] = -rules->block_width;
-		xyoff[0] = -xyoff[1] * aTan;
 	}
 	while (!virtual_horizontal_colliding(ray.x, ray.y, rules, dir) && ray.angle != 0 && ray.angle != (double)PI && ray.x != INT_MAX)
 	{
@@ -79,19 +79,19 @@ void	vertical_lines_check(double angle, float xy[2], t_rules *rules, float ret[2
 		ray.x = INT_MAX;
 		ray.y = INT_MAX;
 	}
-	else if (ray.angle > PI / 2 && ray.angle < 3 * PI / 2)
-	{
-		ray.x = xy[0] + (rules->block_width - ((int)xy[0] % rules->block_width));
-		ray.y = (xy[0] - ray.x) * nTan + xy[1];
-		xyoff[0] = rules->block_width;
-		xyoff[1] = -xyoff[0] * nTan;
-	}
 	else if (ray.angle < PI / 2 || ray.angle > 3 * PI / 2)
 	{
+		ray.x = xy[0] + (rules->block_width - ((int)xy[0] % rules->block_width));
+		ray.y = xy[1] - (xy[0] - ray.x) * nTan;
+		xyoff[0] = rules->block_width;
+		xyoff[1] = xyoff[0] * nTan;
+	}
+	else if (ray.angle > PI / 2 || ray.angle < 3 * PI / 2)
+	{
 		ray.x = xy[0] - ((int)xy[0] % rules->block_width);
-		ray.y = (xy[0] - ray.x) * nTan + xy[1];
+		ray.y = xy[1] - (xy[0] - ray.x) * nTan;
 		xyoff[0] = -rules->block_width;
-		xyoff[1] = -xyoff[0] * nTan;
+		xyoff[1] = xyoff[0] * nTan;
 		dir = 1;
 	}
 	while (!virtual_vertical_colliding(ray.x, ray.y, rules, dir) && ray.angle != (double)PI / 2 && ray.angle != (double)(3 * PI / 2) && ray.x != INT_MAX)
@@ -148,27 +148,27 @@ void	mini_horizontal_lines_check(double angle, float xy[2], t_rules *rules, floa
 	int		dir;
 
 	ray.angle = angle;
-	aTan = -1 / tan(ray.angle);
+	aTan = 1 / tan(ray.angle);
 	dir = 0;
 	if (ray.angle == 0 || ray.angle == (double)PI)
 	{
 		ray.x = INT_MAX;
 		ray.y = INT_MAX;
 	}
+	else if (ray.angle < PI)
+	{
+		ray.y = xy[1] - (rules->mini_block_width - (rules->mini_block_width - ((int)xy[1] % rules->mini_block_width)));
+		ray.x = (xy[1] - ray.y) * aTan + xy[0];
+		xyoff[1] = -rules->mini_block_width;
+		xyoff[0] = -xyoff[1] * aTan;
+	}
 	else if (ray.angle > PI)
 	{
 		ray.y = xy[1] + (rules->mini_block_width - ((int)xy[1] % rules->mini_block_width));
-		ray.x = (xy[1] - ray.y) * aTan + xy[0];
+		ray.x = (xy[1] - ray.y) * aTan + xy[0] + 2; // QUESTO + 1 E' MESSO A CAZZO MA PARE FUNZIONARE COSI'
 		xyoff[1] = rules->mini_block_width;
 		xyoff[0] = -xyoff[1] * aTan;
 		dir = 1;
-	}
-	else if (ray.angle < PI)
-	{
-		ray.y = xy[1] - ((int)xy[1] % rules->mini_block_width);
-		ray.x = (xy[1] - ray.y) * aTan + xy[0] + 2; // QUESTO + 1 E' MESSO A CAZZO MA PARE FUNZIONARE COSI'
-		xyoff[1] = -rules->mini_block_width;
-		xyoff[0] = -xyoff[1] * aTan;
 	}
 	while (!mini_virtual_horizontal_colliding(ray.x, ray.y, rules, dir) && ray.angle != 0 && ray.angle != (double)PI && ray.x != INT_MAX)
 	{
@@ -197,19 +197,19 @@ void	mini_vertical_lines_check(double angle, float xy[2], t_rules *rules, float 
 		ray.x = INT_MAX;
 		ray.y = INT_MAX;
 	}
-	else if (ray.angle > PI / 2 && ray.angle < 3 * PI / 2)
-	{
-		ray.x = xy[0] + (rules->mini_block_width - ((int)xy[0] % rules->mini_block_width));
-		ray.y = (xy[0] - ray.x) * nTan + xy[1];
-		xyoff[0] = rules->mini_block_width;
-		xyoff[1] = -xyoff[0] * nTan;
-	}
 	else if (ray.angle < PI / 2 || ray.angle > 3 * PI / 2)
 	{
+		ray.x = xy[0] + (rules->mini_block_width - ((int)xy[0] % rules->mini_block_width));
+		ray.y = xy[1] - (xy[0] - ray.x) * nTan;
+		xyoff[0] = rules->mini_block_width;
+		xyoff[1] = xyoff[0] * nTan;
+	}
+	else if (ray.angle > PI / 2 && ray.angle < 3 * PI / 2)
+	{
 		ray.x = xy[0] - ((int)xy[0] % rules->mini_block_width);
-		ray.y = (xy[0] - ray.x) * nTan + xy[1];
+		ray.y = xy[1] - (xy[0] - ray.x) * nTan;
 		xyoff[0] = -rules->mini_block_width;
-		xyoff[1] = -xyoff[0] * nTan;
+		xyoff[1] = xyoff[0] * nTan;
 		dir = 1;
 	}
 	while (!mini_virtual_vertical_colliding(ray.x, ray.y, rules, dir) && ray.angle != (double)PI / 2 && ray.angle != (double)(3 * PI / 2) && ray.x != INT_MAX)
@@ -253,6 +253,7 @@ void	raycast_bresenham(double angle, t_rules *rules, int counter, t_frame *scene
 	float		s_pts[2];
 	float		angle_diff;
 	double		dist;
+	int			color_unit_x;
 
 	
 	xy[0] = rules->player.x;
@@ -269,5 +270,8 @@ void	raycast_bresenham(double angle, t_rules *rules, int counter, t_frame *scene
 	else
 		dist = final_length(xy[0], xy[1], s_pts);
 	dist *= cos(angle_diff);
-	draw_texture(counter, dist, rules, scene);
+	color_unit_x = counter / round((rules->block_width * rules->win_height / dist) / rules->north_texture.size[0]);
+	if (color_unit_x >= rules->north_texture.size[0])
+		color_unit_x %= rules->north_texture.size[0];
+	draw_texture(counter, dist, rules, scene, color_unit_x);
 }
