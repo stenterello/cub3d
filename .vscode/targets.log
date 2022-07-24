@@ -1,6 +1,5 @@
 make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 make -C ./include/mlx_linux
- 
 # GNU Make 4.2.1
 # Built for x86_64-pc-linux-gnu
 # Copyright (C) 1988-2016 Free Software Foundation, Inc.
@@ -8,7 +7,7 @@ make -C ./include/mlx_linux
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Sun Jul 24 14:21:46 2022
+# Make data base, printed on Sun Jul 24 18:03:02 2022
 
 # Variables
 
@@ -97,7 +96,7 @@ XDG_SESSION_DESKTOP = cinnamon
 # environment
 SSH_AUTH_SOCK = /run/user/1000/keyring/ssh
 # environment
-GIO_LAUNCHED_DESKTOP_FILE_PID = 3043
+GIO_LAUNCHED_DESKTOP_FILE_PID = 54039
 # automatic
 %F = $(notdir $%)
 # environment
@@ -207,7 +206,7 @@ GJS_DEBUG_OUTPUT = stderr
 # environment
 LANG = C
 # environment
-VSCODE_PID = 3043
+VSCODE_PID = 54039
 # variable set hash-table stats:
 # Load=98/1024=10%, Rehash=0, Collisions=7/128=5%
 
@@ -280,29 +279,18 @@ Makefile:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
- 
 
- 
 re: clean all
- 
 #  Implicit rule search has not been done.
- 
 #  Modification time never checked.
- 
 #  File has not been updated.
- 
 
  
 clean:
- 
 #  Implicit rule search has not been done.
- 
 #  Modification time never checked.
- 
 #  File has not been updated.
- 
 #  recipe to execute (from 'Makefile', line 20):
- 
 	./configure clean
 
 # files hash-table stats:
@@ -319,7 +307,7 @@ clean:
 # strcache performance: lookups = 72 / hit rate = 15%
 # hash-table stats:
 # Load=61/8192=1%, Rehash=0, Collisions=1/72=1%
-# Finished Make data base on Sun Jul 24 14:21:46 2022
+# Finished Make data base on Sun Jul 24 18:03:02 2022
 
 # GNU Make 4.2.1
 # Built for x86_64-pc-linux-gnu
@@ -328,7 +316,7 @@ clean:
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Sun Jul 24 14:21:46 2022
+# Make data base, printed on Sun Jul 24 18:03:02 2022
 
 # Variables
 
@@ -423,7 +411,7 @@ XDG_SESSION_DESKTOP = cinnamon
 # environment
 SSH_AUTH_SOCK = /run/user/1000/keyring/ssh
 # environment
-GIO_LAUNCHED_DESKTOP_FILE_PID = 3043
+GIO_LAUNCHED_DESKTOP_FILE_PID = 54039
 # automatic
 %F = $(notdir $%)
 # environment
@@ -545,7 +533,7 @@ NAME = cub3d
 # environment
 LANG = C
 # environment
-VSCODE_PID = 3043
+VSCODE_PID = 54039
 # variable set hash-table stats:
 # Load=107/1024=10%, Rehash=0, Collisions=14/146=10%
 
@@ -579,12 +567,12 @@ all: cub3d
 #  File has not been updated.
 # variable set hash-table stats:
 # Load=0/32=0%, Rehash=0, Collisions=0/5=0%
+ 
 
 .PHONY: all clean fclean re
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
- 
 
 # Not a target:
 src/main.o:
@@ -606,7 +594,7 @@ src/colliding.o:
 
 cub3d: include/mlx_linux/mlx_linux.a include/libft/libft.a src/main.o src/error.o src/memory.o src/memory2.o src/check.o src/map_gen.o src/take_rules_utils.o src/map_gen_utils.o src/events.o src/window.o src/minimap.o src/raycast.o src/colliding.o src/bresenham.o src/utils.o src/3d.o src/xpm.o src/texture.o
 #  Implicit rule search has not been done.
-#  Last modified 2022-07-24 14:11:59.43658327
+#  Last modified 2022-07-24 14:43:03.756449704
 #  File has not been updated.
 # variable set hash-table stats:
 # Load=0/32=0%, Rehash=0, Collisions=0/5=0%
@@ -789,6 +777,6 @@ src/map_gen.o:
 # strcache performance: lookups = 66 / hit rate = 37%
 # hash-table stats:
 # Load=41/8192=1%, Rehash=0, Collisions=1/66=2%
-# Finished Make data base on Sun Jul 24 14:21:46 2022
+# Finished Make data base on Sun Jul 24 18:03:02 2022
 
  

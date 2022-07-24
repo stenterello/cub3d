@@ -6,7 +6,7 @@
 /*   By: ddelladi <ddelladi@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/22 13:34:25 by ddelladi          #+#    #+#             */
-/*   Updated: 2022/07/23 17:48:32 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/07/24 19:09:52 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,35 @@ typedef struct s_player
 	float			speed;
 	t_miniplayer	miniplayer;
 }				t_player;
+
+typedef struct s_map
+{
+	char	**map;
+	char	**floor;
+	char	**ceiling;
+	int		map_width;
+	int		map_height;
+	int		block_width;
+	int		mini_block_width;
+}				t_map;
+
+typedef struct s_keys
+{
+	int			w_pressed;
+	int			a_pressed;
+	int			s_pressed;
+	int			d_pressed;
+	int			l_pressed;
+	int			r_pressed;
+}				t_keys;
+
+typedef struct s_mlx
+{
+	void		*mlx;
+	void		*mlx_win;
+	int			win_width;
+	int			win_height;
+}				t_mlx;
 
 typedef struct s_rules
 {
