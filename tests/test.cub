@@ -1,4 +1,4 @@
-WE ./textures/texture2.xpm
+WE ./textures/texture.xpm
 NO ./textures/texture.xpm
 
 SO ./path_to_the_south_texture

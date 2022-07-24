@@ -8,7 +8,7 @@ make -C ./include/mlx_linux
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Fri Jul 22 18:30:53 2022
+# Make data base, printed on Sun Jul 24 14:21:46 2022
 
 # Variables
 
@@ -69,10 +69,9 @@ LESSOPEN = | /usr/bin/lesspipe %s
 # environment
 VSCODE_CWD = /home/davide
 # environment
-XDG_SESSION_PATH = /org/freedesktop/DisplayManager/Session2
+XDG_SESSION_PATH = /org/freedesktop/DisplayManager/Session0
 # default
 MAKE_HOST := x86_64-pc-linux-gnu
- 
 # environment
 PATH = /home/davide/.local/bin:/home/davide/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games
 # environment
@@ -80,7 +79,7 @@ GPG_AGENT_INFO = /run/user/1000/gnupg/S.gpg-agent:0:1
 # environment
 PG_OF_PATH = /home/davide/Programmi/OpenFrameworks/of_v0.11.2_linux64gcc6_release
 # environment
-SESSION_MANAGER = local/ThinkPad-E550:@/tmp/.ICE-unix/153423,unix/ThinkPad-E550:/tmp/.ICE-unix/153423
+SESSION_MANAGER = local/ThinkPad-E550:@/tmp/.ICE-unix/2259,unix/ThinkPad-E550:/tmp/.ICE-unix/2259
 # environment
 XDG_RUNTIME_DIR = /run/user/1000
 # environment
@@ -98,7 +97,7 @@ XDG_SESSION_DESKTOP = cinnamon
 # environment
 SSH_AUTH_SOCK = /run/user/1000/keyring/ssh
 # environment
-GIO_LAUNCHED_DESKTOP_FILE_PID = 153968
+GIO_LAUNCHED_DESKTOP_FILE_PID = 3043
 # automatic
 %F = $(notdir $%)
 # environment
@@ -112,7 +111,7 @@ QT_QPA_PLATFORMTHEME = qt5ct
 # environment
 XDG_SEAT = seat0
 # environment
-SSH_AGENT_PID = 153493
+SSH_AGENT_PID = 2329
 # environment
 ORIGINAL_XDG_CURRENT_DESKTOP = X-Cinnamon
 # environment
@@ -144,7 +143,7 @@ MAKE = $(MAKE_COMMAND)
 # environment
 SHLVL = 0
 # environment
-XDG_SESSION_ID = c6
+XDG_SESSION_ID = c2
 # environment
 USER = davide
 # makefile
@@ -180,6 +179,8 @@ GDK_BACKEND = x11
 # automatic
 +F = $(notdir $+)
 # environment
+CINNAMON_VERSION = 5.2.7
+# environment
 QT_ACCESSIBILITY = 1
 # environment
 DEFAULTS_PATH = /usr/share/gconf/cinnamon.default.path
@@ -189,6 +190,8 @@ MAKEFILES :=
 <F = $(notdir $<)
 # environment
 LC_ALL = C
+# environment
+GJS_DEBUG_TOPICS = JS ERROR;JS LOG
 # automatic
 ^F = $(notdir $^)
 # default
@@ -197,14 +200,16 @@ SUFFIXES :=
 CHROME_DESKTOP = code-url-handler.desktop
 # default
 .INCLUDE_DIRS = /usr/include /usr/local/include /usr/include
+# environment
+GJS_DEBUG_OUTPUT = stderr
 # default
 .RECIPEPREFIX := 
 # environment
 LANG = C
 # environment
-VSCODE_PID = 153968
+VSCODE_PID = 3043
 # variable set hash-table stats:
-# Load=95/1024=9%, Rehash=0, Collisions=7/125=6%
+# Load=98/1024=10%, Rehash=0, Collisions=7/128=5%
 
 # Pattern-specific Variable Values
 
@@ -275,17 +280,29 @@ Makefile:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
+ 
 
+ 
 re: clean all
+ 
 #  Implicit rule search has not been done.
+ 
 #  Modification time never checked.
+ 
 #  File has not been updated.
+ 
 
+ 
 clean:
+ 
 #  Implicit rule search has not been done.
+ 
 #  Modification time never checked.
+ 
 #  File has not been updated.
+ 
 #  recipe to execute (from 'Makefile', line 20):
+ 
 	./configure clean
 
 # files hash-table stats:
@@ -302,7 +319,7 @@ clean:
 # strcache performance: lookups = 72 / hit rate = 15%
 # hash-table stats:
 # Load=61/8192=1%, Rehash=0, Collisions=1/72=1%
-# Finished Make data base on Fri Jul 22 18:30:53 2022
+# Finished Make data base on Sun Jul 24 14:21:46 2022
 
 # GNU Make 4.2.1
 # Built for x86_64-pc-linux-gnu
@@ -311,7 +328,7 @@ clean:
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Fri Jul 22 18:30:53 2022
+# Make data base, printed on Sun Jul 24 14:21:46 2022
 
 # Variables
 
@@ -354,7 +371,6 @@ _ = /usr/share/code/code
 # environment
 XDG_CONFIG_DIRS = /etc/xdg/xdg-cinnamon:/etc/xdg
 # environment
- 
 GTK_OVERLAY_SCROLLING = 1
 # makefile (from 'Makefile', line 1)
 MAKEFILE_LIST :=  Makefile
@@ -377,7 +393,7 @@ LESSOPEN = | /usr/bin/lesspipe %s
 # environment
 VSCODE_CWD = /home/davide
 # environment
-XDG_SESSION_PATH = /org/freedesktop/DisplayManager/Session2
+XDG_SESSION_PATH = /org/freedesktop/DisplayManager/Session0
 # default
 MAKE_HOST := x86_64-pc-linux-gnu
 # environment
@@ -387,7 +403,7 @@ GPG_AGENT_INFO = /run/user/1000/gnupg/S.gpg-agent:0:1
 # environment
 PG_OF_PATH = /home/davide/Programmi/OpenFrameworks/of_v0.11.2_linux64gcc6_release
 # environment
-SESSION_MANAGER = local/ThinkPad-E550:@/tmp/.ICE-unix/153423,unix/ThinkPad-E550:/tmp/.ICE-unix/153423
+SESSION_MANAGER = local/ThinkPad-E550:@/tmp/.ICE-unix/2259,unix/ThinkPad-E550:/tmp/.ICE-unix/2259
 # environment
 XDG_RUNTIME_DIR = /run/user/1000
 # environment
@@ -407,7 +423,7 @@ XDG_SESSION_DESKTOP = cinnamon
 # environment
 SSH_AUTH_SOCK = /run/user/1000/keyring/ssh
 # environment
-GIO_LAUNCHED_DESKTOP_FILE_PID = 153968
+GIO_LAUNCHED_DESKTOP_FILE_PID = 3043
 # automatic
 %F = $(notdir $%)
 # environment
@@ -421,7 +437,7 @@ QT_QPA_PLATFORMTHEME = qt5ct
 # environment
 XDG_SEAT = seat0
 # environment
-SSH_AGENT_PID = 153493
+SSH_AGENT_PID = 2329
 # environment
 ORIGINAL_XDG_CURRENT_DESKTOP = X-Cinnamon
 # environment
@@ -461,7 +477,7 @@ LIBFT = ./include/libft/libft.a
 # makefile (from 'Makefile', line 2)
 CC = gcc
 # environment
-XDG_SESSION_ID = c6
+XDG_SESSION_ID = c2
 # environment
 USER = davide
 # makefile
@@ -497,6 +513,8 @@ GDK_BACKEND = x11
 # automatic
 +F = $(notdir $+)
 # environment
+CINNAMON_VERSION = 5.2.7
+# environment
 QT_ACCESSIBILITY = 1
 # environment
 DEFAULTS_PATH = /usr/share/gconf/cinnamon.default.path
@@ -506,6 +524,8 @@ MAKEFILES :=
 <F = $(notdir $<)
 # environment
 LC_ALL = C
+# environment
+GJS_DEBUG_TOPICS = JS ERROR;JS LOG
 # automatic
 ^F = $(notdir $^)
 # default
@@ -516,6 +536,8 @@ FLAGS = -Wall -Werror -Wextra -g
 CHROME_DESKTOP = code-url-handler.desktop
 # default
 .INCLUDE_DIRS = /usr/include /usr/local/include /usr/include
+# environment
+GJS_DEBUG_OUTPUT = stderr
 # makefile (from 'Makefile', line 1)
 NAME = cub3d
 # default
@@ -523,9 +545,9 @@ NAME = cub3d
 # environment
 LANG = C
 # environment
-VSCODE_PID = 153968
+VSCODE_PID = 3043
 # variable set hash-table stats:
-# Load=104/1024=10%, Rehash=0, Collisions=14/143=10%
+# Load=107/1024=10%, Rehash=0, Collisions=14/146=10%
 
 # Pattern-specific Variable Values
 
@@ -562,6 +584,7 @@ all: cub3d
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
+ 
 
 # Not a target:
 src/main.o:
@@ -583,7 +606,7 @@ src/colliding.o:
 
 cub3d: include/mlx_linux/mlx_linux.a include/libft/libft.a src/main.o src/error.o src/memory.o src/memory2.o src/check.o src/map_gen.o src/take_rules_utils.o src/map_gen_utils.o src/events.o src/window.o src/minimap.o src/raycast.o src/colliding.o src/bresenham.o src/utils.o src/3d.o src/xpm.o src/texture.o
 #  Implicit rule search has not been done.
-#  Last modified 2022-07-22 18:29:46.538603016
+#  Last modified 2022-07-24 14:11:59.43658327
 #  File has not been updated.
 # variable set hash-table stats:
 # Load=0/32=0%, Rehash=0, Collisions=0/5=0%
@@ -633,7 +656,6 @@ fclean: clean
 #  File does not exist.
 #  File has not been updated.
 #  recipe to execute (from 'Makefile', line 44):
- 
 	rm -f $(NAME)
 	$(MAKE) fclean -C ./include/libft
 
@@ -767,6 +789,6 @@ src/map_gen.o:
 # strcache performance: lookups = 66 / hit rate = 37%
 # hash-table stats:
 # Load=41/8192=1%, Rehash=0, Collisions=1/66=2%
-# Finished Make data base on Fri Jul 22 18:30:53 2022
+# Finished Make data base on Sun Jul 24 14:21:46 2022
 
  

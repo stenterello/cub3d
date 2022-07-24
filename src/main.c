@@ -6,7 +6,7 @@
 /*   By: ddelladi <ddelladi@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/22 13:36:34 by ddelladi          #+#    #+#             */
-/*   Updated: 2022/07/22 19:18:50 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/07/23 17:48:41 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ void	init_rules(t_rules *rules)
 	rules->d_pressed = 0;
 	rules->l_pressed = 0;
 	rules->r_pressed = 0;
+	rules->f = 0;
 }
 
 void	free_rules(t_rules *rules)
@@ -76,16 +77,16 @@ void	move_player(t_rules *rules, char *dir)
 	}
 	if (!ft_strncmp("left", dir, 4))
 	{
-		if (!colliding2(rules, ray_cos, 0, 1))
+		if (!colliding2(rules, ray_sin, 0, 1))
 			rules->player.x += rules->player.d_y * rules->player.speed;
-		if (!colliding2(rules, 0, ray_sin, 0))
+		if (!colliding2(rules, 0, ray_cos, 0))
 			rules->player.y -= rules->player.d_x * rules->player.speed;
 	}
 	if (!ft_strncmp("right", dir, 5))
 	{
-		if (!colliding2(rules, ray_cos, 0, 0))
+		if (!colliding2(rules, ray_sin, 0, 0))
 			rules->player.x -= rules->player.d_y * rules->player.speed;
-		if (!colliding2(rules, 0, ray_sin, 1))
+		if (!colliding2(rules, 0, ray_cos, 1))
 			rules->player.y += rules->player.d_x * rules->player.speed;
 	}
 }
@@ -150,5 +151,7 @@ int	main(int argc, char **argv)
 	.check sulla mappa (funzione map_check(rules))
 - il Makefile RELINKA!
 - visione errata quando ci si attacca ai muri in alto e a sinistra!! (distanza dal muro = 0)
+- textures da aggiustare
+
 
 */

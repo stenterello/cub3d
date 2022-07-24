@@ -6,7 +6,7 @@
 /*   By: ddelladi <ddelladi@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/22 13:34:25 by ddelladi          #+#    #+#             */
-/*   Updated: 2022/07/22 19:50:06 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/07/23 17:48:32 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,8 @@ typedef struct s_player
 typedef struct s_rules
 {
 	char		**map;
+	char		**floor;
+	char		**ceiling;
 	char		*north_texture_path;
 	char		*south_texture_path;
 	char		*east_texture_path;
@@ -103,6 +105,7 @@ typedef struct s_rules
 	int			d_pressed;
 	int			l_pressed;
 	int			r_pressed;
+	int			f;
 }				t_rules;
 
 void	usage(void);
@@ -142,5 +145,6 @@ void	draw_view_rays(t_rules *rules);
 int 	colliding2(t_rules *rules, float ray_cos, float ray_sin, int plus);
 void	update_pov(t_rules *rules);
 int		verify_collide2(t_rules *rules, int next_c[2]);
+int		get_xpm_color(t_texture *texture, int y, int x);
 
 #endif

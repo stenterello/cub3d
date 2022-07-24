@@ -6,7 +6,7 @@
 /*   By: ddelladi <ddelladi@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 11:15:51 by ddelladi          #+#    #+#             */
-/*   Updated: 2022/07/22 19:54:16 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/07/24 14:33:45 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,9 +31,20 @@ char	*get_pair(char *str, t_texture *texture)
 
 int	get_xpm_color(t_texture *texture, int y, int x)
 {
-	return (get_nbr_hex(get_pair(&texture->encoded[y % 32][x * 2 % 32], texture)));
+	return (get_nbr_hex(get_pair(&texture->encoded[y % texture->size[0]][x % texture->size[0]], texture)));
 }
 
+void	draw_ceiling(int x, int y1, t_frame *scene)
+{
+	int	i;
+
+	i = 0;
+	while (i < y1)
+	{
+		easy_pixel_put(scene, x, i++, 0x000000A3);
+	}
+}
+	
 void	draw_texture(int x, double dist, t_rules *rules, t_frame *scene, int color_unit_x)
 {
 	float	ty_step;
@@ -43,7 +54,7 @@ void	draw_texture(int x, double dist, t_rules *rules, t_frame *scene, int color_
 	double	line_height;
 	float	y2;
 	int		y1;
-	int		color_unit;
+	double		color_unit_y;
 	int		i2;
 	int		i;
 
@@ -63,17 +74,21 @@ void	draw_texture(int x, double dist, t_rules *rules, t_frame *scene, int color_
 	if (y2 > rules->win_height)
 		y2 = rules->win_height;
 	if (line_height > rules->north_texture.size[0])
-		color_unit = round(line_height / rules->north_texture.size[0]);
+		color_unit_y = line_height / rules->north_texture.size[0];
 	else
-		color_unit = round(rules->north_texture.size[0] / line_height);
+		color_unit_y = rules->north_texture.size[0] / line_height;
 	i2 = 0;
 	i = 0;
+	draw_ceiling(x, y1, scene);
 	while (y1 < y2)
 	{
-		easy_pixel_put(scene, x, y1++, mlx_get_color_value(rules->mlx, (get_xpm_color(&rules->north_texture, i2, color_unit_x))));
+		easy_pixel_put(scene, x, y1++, get_xpm_color(&rules->north_texture, i2, color_unit_x));
 		ty += ty_step;
 		i++;
-		if (i % color_unit == 0)
+		if (i > color_unit_y)
+		{
+			i = 0;
 			i2++;
+		}
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: ddelladi <ddelladi@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/16 18:33:06 by ddelladi          #+#    #+#             */
-/*   Updated: 2022/07/22 18:03:56 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/07/23 17:50:19 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,7 @@ void	draw_view_rays(t_rules *rules)
 	// testing-only one-ray
 	// mini_raycast(rules->player.dir, rules);
 	mlx_put_image_to_window(rules->mlx, rules->mlx_win, scene.img, 0, 0);
+	rules->f = 0;
 }
 
 void	draw_mini_view_rays(t_rules *rules)
@@ -199,6 +200,7 @@ void	game(t_rules *rules)
 	// testing-only one-ray
 	// mini_raycast(rules->player.dir, rules);
 	mlx_put_image_to_window(rules->mlx, rules->mlx_win, scene.img, 0, 0);
+	rules->f = 0;
 }
 
 void	minimap(t_rules *rules)

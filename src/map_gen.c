@@ -6,7 +6,7 @@
 /*   By: ddelladi <ddelladi@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/22 14:24:52 by ddelladi          #+#    #+#             */
-/*   Updated: 2022/07/21 22:03:53 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/07/23 14:47:27 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,6 +124,40 @@ void	skip_to_benchmark(int fd, char *benchmark)
 // 	return (1);
 // }
 
+void	define_ceiling(t_rules *rules)
+{
+	int	i;
+
+	i = -1;
+	rules->ceiling = malloc(sizeof(char *) * (rules->map_height + 1));
+	if (!rules->ceiling)
+		die("Malloc error");
+	while (++i < rules->map_width)
+	{
+		rules->ceiling[i] = malloc(sizeof(char) * (rules->map_width + 1));
+		if (!rules->ceiling[i])
+			die("Malloc error");
+		ft_memset(rules->ceiling[i], '0', rules->map_width);
+	}
+}
+
+void	define_floor(t_rules *rules)
+{
+	int	i;
+
+	i = -1;
+	rules->floor = malloc(sizeof(char *) * (rules->map_height + 1));
+	if (!rules->floor)
+		die("Malloc error");
+	while (++i < rules->map_width)
+	{
+		rules->floor[i] = malloc(sizeof(char) * (rules->map_width + 1));
+		if (!rules->floor[i])
+			die("Malloc error");
+		ft_memset(rules->floor[i], '0', rules->map_width);
+	}
+}
+
 void	generate_rules(int fd, t_rules *rules, char *file)
 {
 	char	*benchmark;
@@ -151,6 +185,8 @@ void	generate_rules(int fd, t_rules *rules, char *file)
 	skip_to_benchmark(fd, benchmark);
 	free(benchmark);
 	define_map(fd, rules);
+	define_floor(rules);
+	define_ceiling(rules);
 	define_texture(rules->west_texture_path, &rules->west_texture);
 	define_texture(rules->north_texture_path, &rules->north_texture);
 	// if (!check_map(rules))
