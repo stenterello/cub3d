@@ -1,5 +1,5 @@
 WE ./textures/texture2.xpm
-NO ./textures/texture.xpm
+NO ./textures/no_exit.xpm
 
 SO ./path_to_the_south_texture
 

@@ -6,7 +6,7 @@
 /*   By: ddelladi <ddelladi@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 00:22:27 by ddelladi          #+#    #+#             */
-/*   Updated: 2022/07/25 16:07:12 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/07/25 17:04:06 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,12 +69,116 @@ void	take_key(char *dst, char *src, int k, int j)
 	dst[1] = src[i];
 }
 
+int	name_len(char *str)
+{
+	int	i;
+
+	i = 0;
+	while (str[i] && str[i] != '"')
+		i++;
+	return (i);
+}
+
+int	found(char *tmp, char *str)
+{
+	int		i;
+	char	*key;
+
+	i = 0;
+	if (tmp[i] == '{')
+		return (0);
+	while (tmp[i] && tmp[i] != '\"')
+		i++;
+	if (tmp[i] != '"')
+		return (0);
+	i++;
+	key = malloc(sizeof(char) * (name_len(&tmp[i]) + 1));
+	if (!key)
+		die("Malloc error");
+	ft_strlcpy(key, &tmp[i], name_len(&tmp[i]) + 1);
+	if (!ft_strncmp(key, str, ft_strlen(key)))
+	{
+		free(key);
+		return (1);
+	}
+	free(key);
+	return (0);
+}
+
+char	*to_lower_str(char *str)
+{
+	char	*ret;
+	int		i;
+
+	ret = malloc(sizeof(char) * (ft_strlen(str) + 1));
+	if (!ret)
+		die("Malloc error");
+	i = -1;
+	while (str[++i])
+		ret[i] = ft_tolower(str[i]);
+	ret[i] = '\0';
+	return (ret);
+}
+
+char	*only_color(char *str)
+{
+	int		i;
+	char	*ret;
+
+	i = 0;
+	while (str[i] && str[i] != '#')
+		i++;
+	if (str[i] != '#')
+		return (NULL);
+	i++;
+	ret = malloc(sizeof(char) * 7);
+	if (!ret)
+		die("Malloc error");
+	ft_strlcpy(ret, &str[i], 7);
+	return (ret);
+}
+
+char	*manual_color(char *str)
+{
+	char	*ret;
+	char	*tmp;
+	char	*color;
+	int		fd;
+
+	fd = open("utils/css-color-names.json", O_RDONLY);
+	if (fd < 0)
+		die("Error while opening css-color-names.json");
+	color = to_lower_str(str);
+	tmp = get_next_line(fd);
+	while (tmp && !found(tmp, color))
+	{
+		free(tmp);
+		tmp = NULL;
+		tmp = get_next_line(fd);
+	}
+	if (!tmp)
+	{
+		free(color);
+		return (NULL);
+	}
+	free(color);
+	color = only_color(tmp);
+	ret = malloc(sizeof(char) * 7);
+	ft_strlcpy(ret, only_color(tmp), 7);
+	free(tmp);
+	free(color);
+	close(fd);
+	return (ret);
+}
+
 void	read_pairs(t_texture *texture, int fd)
 {
 	char	*tmp;
 	int		j;
 	t_xpm	*ptr;
 	int		i;
+	char	*manual;
+	char	*result;
 
 	
 	j = 0;
@@ -114,7 +218,22 @@ void	read_pairs(t_texture *texture, int fd)
 		ptr->value = malloc(sizeof(char) * 7);
 		if (!ptr->value)
 			die("Malloc error");
-		ft_strlcpy(ptr->value, &tmp[i], 7);
+		if (tmp[i - 1] == '#')
+			ft_strlcpy(ptr->value, &tmp[i], 7);
+		else
+		{
+			manual = malloc(sizeof(char) * (ft_strlen(&tmp[i]) + 1));
+			ft_strlcpy(manual, &tmp[i], ft_strlen(&tmp[i]) + 1);
+			result = manual_color(manual);
+			if (result)
+			{
+				ft_strlcpy(ptr->value, result, 7);
+				free(result);
+			}
+			else
+				ptr->value = NULL;
+			free(manual);
+		}
 		free(tmp);
 	}
 	ptr->next = NULL;
