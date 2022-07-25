@@ -6,7 +6,7 @@
 /*   By: ddelladi <ddelladi@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/17 02:52:07 by ddelladi          #+#    #+#             */
-/*   Updated: 2022/07/21 11:23:20 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/07/25 17:37:10 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ int	get_nbr_hex(char *str)
 			n = ft_toupper(str[i] - 55);
 		else
 			break ;
-		ret += (n *  pow(base_len, n_len--));
+		ret += (n * pow(base_len, n_len--));
 		i++;
 	}
 	return (ret);

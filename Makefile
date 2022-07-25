@@ -27,7 +27,7 @@ LIBFT=./include/libft/libft.a
 MINILIBX_LIN=./include/mlx_linux/mlx_linux.a
 
 $(NAME): $(MINILIBX_LIN) $(LIBFT) $(OBJS)
-	$(CC) $(FLAGS) $(SRCS) $(LIBFT) ./include/mlx_linux/libmlx.a -Linclude/mlx_linux -L/usr/lib -L/usr/include -Iinclude/mlx_linux -lXext -lX11 -lm -lz -o $(NAME)
+	$(CC) $(FLAGS) $(SRCS) include/libft/*.c ./include/mlx_linux/libmlx.a -Linclude/mlx_linux -L/usr/lib -L/usr/include -Iinclude/mlx_linux -lXext -lX11 -lm -lz -o $(NAME)
 
 $(LIBFT):
 	$(MAKE) bonus -C ./include/libft

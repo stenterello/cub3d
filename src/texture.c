@@ -6,7 +6,7 @@
 /*   By: ddelladi <ddelladi@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 11:15:51 by ddelladi          #+#    #+#             */
-/*   Updated: 2022/07/25 16:03:49 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/07/25 19:48:06 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,17 +48,13 @@ void	draw_ceiling(int x, int y1, t_frame *scene, t_rules *rules)
 
 	i = 0;
 	while (i < y1)
-	{
 		easy_pixel_put(scene, x, i++, mlx_get_color_value(rules->mlx, get_hex_color(rules->ceiling_color)));
-	}
 }
 
 void	draw_floor(int x, int y1, t_frame *scene, t_rules *rules)
 {
 	while (y1 < rules->win_height)
-	{
 		easy_pixel_put(scene, x, y1++, mlx_get_color_value(rules->mlx, get_hex_color(rules->floor_color)));
-	}
 }
 	
 void	draw_texture(int x, double dist, t_rules *rules, t_frame *scene, int color_unit_x)
@@ -79,6 +75,8 @@ void	draw_texture(int x, double dist, t_rules *rules, t_frame *scene, int color_
 	off = y1;
 	while (y1 < y2)
 	{
+		if (get_pair(&rules->north_texture.encoded[(int)((y1 - off) * rules->north_texture.size[0] / line_height) % rules->north_texture.size[0]][color_unit_x % rules->north_texture.size[0]], &rules->north_texture) == NULL)
+			printf("%s\n", rules->north_texture.encoded[(int)((y1 - off) * rules->north_texture.size[0] / line_height) % rules->north_texture.size[0]][color_unit_x % rules->north_texture.size[0]]);
 		easy_pixel_put(scene, x, y1, get_xpm_color(&rules->north_texture, (y1 - off) * rules->north_texture.size[0] / line_height, color_unit_x));
 		y1++;
 	}

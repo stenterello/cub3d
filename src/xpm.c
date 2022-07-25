@@ -6,7 +6,7 @@
 /*   By: ddelladi <ddelladi@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 00:22:27 by ddelladi          #+#    #+#             */
-/*   Updated: 2022/07/25 17:04:06 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/07/25 19:42:20 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -164,6 +164,8 @@ char	*manual_color(char *str)
 	free(color);
 	color = only_color(tmp);
 	ret = malloc(sizeof(char) * 7);
+	if (!ret)
+		die("Malloc error");
 	ft_strlcpy(ret, only_color(tmp), 7);
 	free(tmp);
 	free(color);
@@ -171,14 +173,87 @@ char	*manual_color(char *str)
 	return (ret);
 }
 
-void	read_pairs(t_texture *texture, int fd)
+int	gray(char *str)
+{
+	int	i;
+
+	i = 0;
+	while (str[i] && str[i] != ' ')
+		i++;
+	while (str[i] == ' ' || str[i] == 'c')
+		i++;
+	if (!ft_strncmp("gray", &str[i], 4) && ft_isdigit(str[i + 4]))
+		return (1);
+	return (0);
+}
+
+char	*gray_rgb(int rgb[3], char *tmp)
+{
+	int		i;
+	int		percent;
+	char	*ret;
+	int		res;
+
+	i = 0;
+	while (tmp[i] && tmp[i] != ' ')
+		i++;
+	while (tmp[i] == ' ' || tmp[i] == 'c')
+		i++;
+	i += 4;
+	percent = ft_atoi(&tmp[i]);
+	i = 0;
+	while (i < 3)
+	{
+		rgb[i] = (int)(((float)256 / 100) * percent);
+		i++;
+	}
+	res = encode_rgb(0, rgb[0], rgb[1], rgb[2]);
+	ret = ft_itoa(res);
+	return (ret);
+}
+
+void	adjust_color_names(t_texture *texture, int fd)
+{
+	char	*tmp;
+	t_xpm	*ptr;
+	char	*result;
+	int		i;
+
+	ptr = texture->pairs;
+	i = 0;
+	while (i++ < 4)
+	{
+		tmp = get_next_line(fd);
+		free(tmp);
+	}
+	tmp = get_next_line(fd);
+	while (ptr && tmp)
+	{
+		result = manual_color(ptr->value);
+		if (result)
+		{
+			free(ptr->value);
+			ptr->value = malloc(sizeof(char) * 7);
+			ft_strlcpy(ptr->value, result, 7);
+			free(result);
+		}
+		ptr = ptr->next;
+		free(tmp);
+		tmp = NULL;
+		tmp = get_next_line(fd);
+	}
+	if (tmp)
+		free(tmp);
+}
+
+void	read_pairs(t_texture *texture, int fd, char *path)
 {
 	char	*tmp;
 	int		j;
 	t_xpm	*ptr;
 	int		i;
 	char	*manual;
-	char	*result;
+	int		rgb[3];
 
 	
 	j = 0;
@@ -220,24 +295,33 @@ void	read_pairs(t_texture *texture, int fd)
 			die("Malloc error");
 		if (tmp[i - 1] == '#')
 			ft_strlcpy(ptr->value, &tmp[i], 7);
+		else if (!gray(tmp))
+		{
+			free(ptr->value);
+			ptr->value = malloc(sizeof(char) * (name_len(&tmp[i]) + 1));
+			if (!ptr->value)
+				die("Malloc error");
+			ft_strlcpy(ptr->value, &tmp[i], name_len(&tmp[i]) + 1);
+		}
 		else
 		{
-			manual = malloc(sizeof(char) * (ft_strlen(&tmp[i]) + 1));
-			ft_strlcpy(manual, &tmp[i], ft_strlen(&tmp[i]) + 1);
-			result = manual_color(manual);
-			if (result)
+			manual = gray_rgb(rgb, tmp);
+			if (manual)
 			{
-				ft_strlcpy(ptr->value, result, 7);
-				free(result);
+				ft_strlcpy(ptr->value, manual, 7);
+				free(manual);
 			}
-			else
-				ptr->value = NULL;
-			free(manual);
 		}
 		free(tmp);
 	}
 	ptr->next = NULL;
 	take_encoded_xpm(texture, fd);
+	close(fd);
+	fd = open(path, O_RDONLY);
+	if (fd < 0)
+		die("Error while opening texture file");
+	adjust_color_names(texture, fd);
+	close(fd);
 }
 
 void	take_size(char *tmp, t_texture *texture)
@@ -287,6 +371,5 @@ void	define_texture(char *path, t_texture *texture)
 	texture->last_x = 0;
 	take_size(tmp, texture);
 	free(tmp);
-	read_pairs(texture, fd);
-	close(fd);
+	read_pairs(texture, fd, path);
 }

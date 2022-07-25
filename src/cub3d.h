@@ -6,7 +6,7 @@
 /*   By: ddelladi <ddelladi@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/22 13:34:25 by ddelladi          #+#    #+#             */
-/*   Updated: 2022/07/25 01:22:00 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/07/25 17:26:55 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -176,5 +176,6 @@ int 	colliding2(t_rules *rules, float ray_cos, float ray_sin, int plus);
 void	update_pov(t_rules *rules);
 int		verify_collide2(t_rules *rules, int next_c[2]);
 int		get_xpm_color(t_texture *texture, int y, int x);
+int		encode_rgb(u_int8_t alpha, u_int8_t red, u_int8_t green, u_int8_t blue);
 
 #endif
