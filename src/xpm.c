@@ -6,7 +6,7 @@
 /*   By: ddelladi <ddelladi@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 00:22:27 by ddelladi          #+#    #+#             */
-/*   Updated: 2022/07/25 10:50:02 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/07/25 16:07:12 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -139,6 +139,8 @@ void	take_size(char *tmp, t_texture *texture)
 	while (tmp[i] == 32)
 		i++;
 	texture->n_colors = ft_atoi(&tmp[i]);
+	if (texture->n_colors > 70)
+		printf("One texture exceeds 70 colors: slow running of cub3d is predictable.\n");
 	if (!texture->size[0] || !texture->size[1] || !texture->n_colors)
 		die("Empty texture or no colors at all!");
 }

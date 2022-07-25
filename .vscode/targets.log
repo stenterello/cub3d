@@ -2,31 +2,56 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 make -C ./include/mlx_linux
  
 # GNU Make 4.2.1
+ 
 # Built for x86_64-pc-linux-gnu
+ 
 # Copyright (C) 1988-2016 Free Software Foundation, Inc.
+ 
 # License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+ 
 # This is free software: you are free to change and redistribute it.
+ 
 # There is NO WARRANTY, to the extent permitted by law.
+ 
 
-# Make data base, printed on Mon Jul 25 09:54:00 2022
+ 
+# Make data base, printed on Mon Jul 25 16:02:13 2022
+ 
 
 # Variables
+ 
 
+ 
 # automatic
+ 
 <D = $(patsubst %/,%,$(dir $<))
+ 
 # automatic
+ 
 ?F = $(notdir $?)
+ 
 # environment
+ 
 DESKTOP_SESSION = cinnamon
+ 
 # default
+ 
 .SHELLFLAGS := -c
+ 
 # environment
+ 
 XDG_SESSION_CLASS = user
+ 
 # environment
+ 
 XDG_SESSION_TYPE = x11
+ 
 # environment
+ 
 GTK3_MODULES = xapp-gtk3-module
+ 
 # automatic
+ 
 ?D = $(patsubst %/,%,$(dir $?))
 # automatic
 @D = $(patsubst %/,%,$(dir $@))
@@ -97,7 +122,7 @@ XDG_SESSION_DESKTOP = cinnamon
 # environment
 SSH_AUTH_SOCK = /run/user/1000/keyring/ssh
 # environment
-GIO_LAUNCHED_DESKTOP_FILE_PID = 10928
+GIO_LAUNCHED_DESKTOP_FILE_PID = 119508
 # automatic
 %F = $(notdir $%)
 # environment
@@ -207,7 +232,7 @@ GJS_DEBUG_OUTPUT = stderr
 # environment
 LANG = C
 # environment
-VSCODE_PID = 10928
+VSCODE_PID = 119508
 # variable set hash-table stats:
 # Load=98/1024=10%, Rehash=0, Collisions=7/128=5%
 
@@ -307,7 +332,8 @@ clean:
 # strcache performance: lookups = 72 / hit rate = 15%
 # hash-table stats:
 # Load=61/8192=1%, Rehash=0, Collisions=1/72=1%
-# Finished Make data base on Mon Jul 25 09:54:00 2022
+ 
+# Finished Make data base on Mon Jul 25 16:02:13 2022
 
  
 # GNU Make 4.2.1
@@ -317,7 +343,7 @@ clean:
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Mon Jul 25 09:54:00 2022
+# Make data base, printed on Mon Jul 25 16:02:13 2022
 
 # Variables
 
@@ -399,7 +425,7 @@ XDG_RUNTIME_DIR = /run/user/1000
 ELECTRON_RUN_AS_NODE = 1
 # default
 .FEATURES := target-specific order-only second-expansion else-if shortest-stem undefine oneshell archives jobserver output-sync check-symlink load
-# makefile (from 'Makefile', line 25)
+# makefile (from 'Makefile', line 27)
 MINILIBX_LIN = ./include/mlx_linux/mlx_linux.a
 # environment
 XDG_GREETER_DATA_DIR = /var/lib/lightdm-data/davide
@@ -412,7 +438,7 @@ XDG_SESSION_DESKTOP = cinnamon
 # environment
 SSH_AUTH_SOCK = /run/user/1000/keyring/ssh
 # environment
-GIO_LAUNCHED_DESKTOP_FILE_PID = 10928
+GIO_LAUNCHED_DESKTOP_FILE_PID = 119508
 # automatic
 %F = $(notdir $%)
 # environment
@@ -461,7 +487,7 @@ MAKECMDGOALS := all
 SRCS = $(addprefix src/, $(SRC))
 # environment
 SHLVL = 0
-# makefile (from 'Makefile', line 24)
+# makefile (from 'Makefile', line 26)
 LIBFT = ./include/libft/libft.a
 # makefile (from 'Makefile', line 2)
 CC = gcc
@@ -505,6 +531,8 @@ GDK_BACKEND = x11
 CINNAMON_VERSION = 5.2.7
 # environment
 QT_ACCESSIBILITY = 1
+# makefile (from 'Makefile', line 24)
+BONUSSRC = $(addprefix bonus/, $(SRCS))
 # environment
 DEFAULTS_PATH = /usr/share/gconf/cinnamon.default.path
 # default
@@ -531,12 +559,14 @@ GJS_DEBUG_OUTPUT = stderr
 NAME = cub3d
 # default
 .RECIPEPREFIX := 
+# makefile (from 'Makefile', line 25)
+BONUSOBJS = $(BONUSSRC:.c=.o)
 # environment
 LANG = C
 # environment
-VSCODE_PID = 10928
+VSCODE_PID = 119508
 # variable set hash-table stats:
-# Load=107/1024=10%, Rehash=0, Collisions=14/146=10%
+# Load=109/1024=11%, Rehash=0, Collisions=16/154=10%
 
 # Pattern-specific Variable Values
 
@@ -555,6 +585,18 @@ VSCODE_PID = 10928
 # Files
 
 # Not a target:
+bonus/src/memory.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+bonus/src/xpm.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
 src/raycast.o:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
@@ -569,7 +611,14 @@ all: cub3d
 # variable set hash-table stats:
 # Load=0/32=0%, Rehash=0, Collisions=0/5=0%
 
-.PHONY: all clean fclean re
+.PHONY: all clean fclean re bonus
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+ 
+
+# Not a target:
+bonus/src/window.o:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
@@ -592,15 +641,26 @@ src/colliding.o:
 #  Modification time never checked.
 #  File has not been updated.
 
+# Not a target:
+bonus/src/map_gen_utils.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+bonus/src/take_rules_utils.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
 cub3d: include/mlx_linux/mlx_linux.a include/libft/libft.a src/main.o src/error.o src/memory.o src/memory2.o src/check.o src/map_gen.o src/take_rules_utils.o src/map_gen_utils.o src/events.o src/window.o src/minimap.o src/raycast.o src/colliding.o src/bresenham.o src/utils.o src/3d.o src/xpm.o src/texture.o
 #  Implicit rule search has not been done.
- 
-#  Last modified 2022-07-25 01:28:20.006914026
+#  Last modified 2022-07-25 12:06:16.209731288
 #  File has not been updated.
 # variable set hash-table stats:
 # Load=0/32=0%, Rehash=0, Collisions=0/5=0%
-#  recipe to execute (from 'Makefile', line 28):
-	$(CC) $(FLAGS) $(SRCS) $(LIBFT) ./include/mlx_linux/libmlx.a -Linclude/mlx_linux -L/usr/lib -L/usr/include -Iinclude/mlx_linux -lXext -lX11 -lm -lz -o $(NAME)
+#  recipe to execute (from 'Makefile', line 30):
+	$(CC) $(FLAGS) $(OBJS) $(LIBFT) ./include/mlx_linux/libmlx.a -Linclude/mlx_linux -L/usr/lib -L/usr/include -Iinclude/mlx_linux -lXext -lX11 -lm -lz -o $(NAME)
 
 # Not a target:
 src/minimap.o:
@@ -617,12 +677,24 @@ src/minimap.o:
 # Not a target:
 Makefile:
 #  Implicit rule search has been done.
-#  Last modified 2022-07-22 13:33:59.642071456
+#  Last modified 2022-07-25 11:17:47.128931001
 #  File has been updated.
 #  Successfully updated.
 
 # Not a target:
 src/memory.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+bonus/src/texture.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+bonus/src/utils.o:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
@@ -634,19 +706,51 @@ src/xpm.o:
 #  File has not been updated.
 
 # Not a target:
+bonus/src/check.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+bonus/src/3d.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+bonus/src/bresenham.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
 src/window.o:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
+
+bonus: include/mlx_linux/mlx_linux.a include/libft/libft.a bonus/src/main.o bonus/src/error.o bonus/src/memory.o bonus/src/memory2.o bonus/src/check.o bonus/src/map_gen.o bonus/src/take_rules_utils.o bonus/src/map_gen_utils.o bonus/src/events.o bonus/src/window.o bonus/src/minimap.o bonus/src/raycast.o bonus/src/colliding.o bonus/src/bresenham.o bonus/src/utils.o bonus/src/3d.o bonus/src/xpm.o bonus/src/texture.o
+#  Phony target (prerequisite of .PHONY).
+#  Implicit rule search has not been done.
+#  File does not exist.
+#  File has not been updated.
+#  recipe to execute (from 'Makefile', line 52):
+	$(CC) $(FLAGS) $(BONUSOBJS) $(LIBFT) ./include/mlx_linux/libmlx.a -Linclude/mlx_linux -L/usr/lib -L/usr/include -Iinclude/mlx_linux -lXext -lX11 -lm -lz -o $(NAME)
 
 fclean: clean
 #  Phony target (prerequisite of .PHONY).
 #  Implicit rule search has not been done.
 #  File does not exist.
 #  File has not been updated.
-#  recipe to execute (from 'Makefile', line 44):
+#  recipe to execute (from 'Makefile', line 46):
 	rm -f $(NAME)
 	$(MAKE) fclean -C ./include/libft
+
+# Not a target:
+bonus/src/memory2.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
 
 # Not a target:
 src/map_gen_utils.o:
@@ -662,6 +766,12 @@ src/take_rules_utils.o:
 
 # Not a target:
 src/events.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+bonus/src/map_gen.o:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
@@ -700,7 +810,7 @@ include/libft/libft.a:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
-#  recipe to execute (from 'Makefile', line 31):
+#  recipe to execute (from 'Makefile', line 33):
 	$(MAKE) bonus -C ./include/libft
 
 re: fclean all
@@ -720,10 +830,16 @@ clean:
 #  Implicit rule search has not been done.
 #  File does not exist.
 #  File has not been updated.
-#  recipe to execute (from 'Makefile', line 39):
+#  recipe to execute (from 'Makefile', line 41):
 	rm -f $(OBJS)
 	$(MAKE) clean -C ./include/libft
 	$(MAKE) clean -C ./include/mlx_linux
+
+# Not a target:
+bonus/src/events.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
 
 include/mlx_linux/mlx_linux.a:
 #  Implicit rule search has not been done.
@@ -749,11 +865,17 @@ include/mlx_linux/mlx_linux.a:
 # ? := 
 # variable set hash-table stats:
 # Load=8/32=25%, Rehash=0, Collisions=2/13=15%
-#  recipe to execute (from 'Makefile', line 34):
+#  recipe to execute (from 'Makefile', line 36):
 	$(MAKE) -C ./include/mlx_linux
 
 # Not a target:
 src/memory2.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+bonus/src/raycast.o:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
@@ -764,20 +886,45 @@ src/map_gen.o:
 #  Modification time never checked.
 #  File has not been updated.
 
+# Not a target:
+bonus/src/main.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+ 
+# Not a target:
+bonus/src/error.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+bonus/src/colliding.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+bonus/src/minimap.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
 # files hash-table stats:
-# Load=29/1024=3%, Rehash=0, Collisions=0/72=0%
+# Load=48/1024=5%, Rehash=0, Collisions=2/112=2%
 # VPATH Search Paths
 
 # No 'vpath' search paths.
 
 # No general ('VPATH' variable) search path.
 
-# strcache buffers: 1 (0) / strings = 42 / storage = 471 B / avg = 11 B
-# current buf: size = 8162 B / used = 471 B / count = 42 / avg = 11 B
+# strcache buffers: 1 (0) / strings = 60 / storage = 831 B / avg = 13 B
+# current buf: size = 8162 B / used = 831 B / count = 60 / avg = 13 B
 
-# strcache performance: lookups = 67 / hit rate = 37%
+# strcache performance: lookups = 90 / hit rate = 33%
 # hash-table stats:
-# Load=42/8192=1%, Rehash=0, Collisions=1/67=1%
-# Finished Make data base on Mon Jul 25 09:54:00 2022
+# Load=60/8192=1%, Rehash=0, Collisions=1/90=1%
+# Finished Make data base on Mon Jul 25 16:02:13 2022
 
  
