@@ -1,5 +1,6 @@
 make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 make -C ./include/mlx_linux
+ 
 # GNU Make 4.2.1
 # Built for x86_64-pc-linux-gnu
 # Copyright (C) 1988-2016 Free Software Foundation, Inc.
@@ -7,7 +8,7 @@ make -C ./include/mlx_linux
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Sun Jul 24 18:03:02 2022
+# Make data base, printed on Mon Jul 25 09:54:00 2022
 
 # Variables
 
@@ -78,7 +79,7 @@ GPG_AGENT_INFO = /run/user/1000/gnupg/S.gpg-agent:0:1
 # environment
 PG_OF_PATH = /home/davide/Programmi/OpenFrameworks/of_v0.11.2_linux64gcc6_release
 # environment
-SESSION_MANAGER = local/ThinkPad-E550:@/tmp/.ICE-unix/2259,unix/ThinkPad-E550:/tmp/.ICE-unix/2259
+SESSION_MANAGER = local/ThinkPad-E550:@/tmp/.ICE-unix/1454,unix/ThinkPad-E550:/tmp/.ICE-unix/1454
 # environment
 XDG_RUNTIME_DIR = /run/user/1000
 # environment
@@ -96,7 +97,7 @@ XDG_SESSION_DESKTOP = cinnamon
 # environment
 SSH_AUTH_SOCK = /run/user/1000/keyring/ssh
 # environment
-GIO_LAUNCHED_DESKTOP_FILE_PID = 54039
+GIO_LAUNCHED_DESKTOP_FILE_PID = 10928
 # automatic
 %F = $(notdir $%)
 # environment
@@ -110,7 +111,7 @@ QT_QPA_PLATFORMTHEME = qt5ct
 # environment
 XDG_SEAT = seat0
 # environment
-SSH_AGENT_PID = 2329
+SSH_AGENT_PID = 1524
 # environment
 ORIGINAL_XDG_CURRENT_DESKTOP = X-Cinnamon
 # environment
@@ -206,7 +207,7 @@ GJS_DEBUG_OUTPUT = stderr
 # environment
 LANG = C
 # environment
-VSCODE_PID = 54039
+VSCODE_PID = 10928
 # variable set hash-table stats:
 # Load=98/1024=10%, Rehash=0, Collisions=7/128=5%
 
@@ -285,7 +286,6 @@ re: clean all
 #  Modification time never checked.
 #  File has not been updated.
 
- 
 clean:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
@@ -307,8 +307,9 @@ clean:
 # strcache performance: lookups = 72 / hit rate = 15%
 # hash-table stats:
 # Load=61/8192=1%, Rehash=0, Collisions=1/72=1%
-# Finished Make data base on Sun Jul 24 18:03:02 2022
+# Finished Make data base on Mon Jul 25 09:54:00 2022
 
+ 
 # GNU Make 4.2.1
 # Built for x86_64-pc-linux-gnu
 # Copyright (C) 1988-2016 Free Software Foundation, Inc.
@@ -316,7 +317,7 @@ clean:
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Sun Jul 24 18:03:02 2022
+# Make data base, printed on Mon Jul 25 09:54:00 2022
 
 # Variables
 
@@ -391,7 +392,7 @@ GPG_AGENT_INFO = /run/user/1000/gnupg/S.gpg-agent:0:1
 # environment
 PG_OF_PATH = /home/davide/Programmi/OpenFrameworks/of_v0.11.2_linux64gcc6_release
 # environment
-SESSION_MANAGER = local/ThinkPad-E550:@/tmp/.ICE-unix/2259,unix/ThinkPad-E550:/tmp/.ICE-unix/2259
+SESSION_MANAGER = local/ThinkPad-E550:@/tmp/.ICE-unix/1454,unix/ThinkPad-E550:/tmp/.ICE-unix/1454
 # environment
 XDG_RUNTIME_DIR = /run/user/1000
 # environment
@@ -411,7 +412,7 @@ XDG_SESSION_DESKTOP = cinnamon
 # environment
 SSH_AUTH_SOCK = /run/user/1000/keyring/ssh
 # environment
-GIO_LAUNCHED_DESKTOP_FILE_PID = 54039
+GIO_LAUNCHED_DESKTOP_FILE_PID = 10928
 # automatic
 %F = $(notdir $%)
 # environment
@@ -425,7 +426,7 @@ QT_QPA_PLATFORMTHEME = qt5ct
 # environment
 XDG_SEAT = seat0
 # environment
-SSH_AGENT_PID = 2329
+SSH_AGENT_PID = 1524
 # environment
 ORIGINAL_XDG_CURRENT_DESKTOP = X-Cinnamon
 # environment
@@ -533,7 +534,7 @@ NAME = cub3d
 # environment
 LANG = C
 # environment
-VSCODE_PID = 54039
+VSCODE_PID = 10928
 # variable set hash-table stats:
 # Load=107/1024=10%, Rehash=0, Collisions=14/146=10%
 
@@ -543,9 +544,9 @@ VSCODE_PID = 54039
 
 # Directories
 
-# . (device 2049, inode 17317889): 12 files, no impossibilities.
+# . (device 2049, inode 17317889): 13 files, no impossibilities.
 
-# 12 files, no impossibilities in 1 directories.
+# 13 files, no impossibilities in 1 directories.
 
 # Implicit Rules
 
@@ -567,7 +568,6 @@ all: cub3d
 #  File has not been updated.
 # variable set hash-table stats:
 # Load=0/32=0%, Rehash=0, Collisions=0/5=0%
- 
 
 .PHONY: all clean fclean re
 #  Implicit rule search has not been done.
@@ -594,7 +594,8 @@ src/colliding.o:
 
 cub3d: include/mlx_linux/mlx_linux.a include/libft/libft.a src/main.o src/error.o src/memory.o src/memory2.o src/check.o src/map_gen.o src/take_rules_utils.o src/map_gen_utils.o src/events.o src/window.o src/minimap.o src/raycast.o src/colliding.o src/bresenham.o src/utils.o src/3d.o src/xpm.o src/texture.o
 #  Implicit rule search has not been done.
-#  Last modified 2022-07-24 14:43:03.756449704
+ 
+#  Last modified 2022-07-25 01:28:20.006914026
 #  File has not been updated.
 # variable set hash-table stats:
 # Load=0/32=0%, Rehash=0, Collisions=0/5=0%
@@ -771,12 +772,12 @@ src/map_gen.o:
 
 # No general ('VPATH' variable) search path.
 
-# strcache buffers: 1 (0) / strings = 41 / storage = 467 B / avg = 11 B
-# current buf: size = 8162 B / used = 467 B / count = 41 / avg = 11 B
+# strcache buffers: 1 (0) / strings = 42 / storage = 471 B / avg = 11 B
+# current buf: size = 8162 B / used = 471 B / count = 42 / avg = 11 B
 
-# strcache performance: lookups = 66 / hit rate = 37%
+# strcache performance: lookups = 67 / hit rate = 37%
 # hash-table stats:
-# Load=41/8192=1%, Rehash=0, Collisions=1/66=2%
-# Finished Make data base on Sun Jul 24 18:03:02 2022
+# Load=42/8192=1%, Rehash=0, Collisions=1/67=1%
+# Finished Make data base on Mon Jul 25 09:54:00 2022
 
  
