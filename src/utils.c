@@ -6,7 +6,7 @@
 /*   By: ddelladi <ddelladi@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/17 02:52:07 by ddelladi          #+#    #+#             */
-/*   Updated: 2022/07/25 17:37:10 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/07/25 22:40:05 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,8 @@ int	get_nbr_hex(char *str)
 	int	n;
 	int	n_len;
 
+	if (!ft_strncmp("ffffff", str, 6))
+		return (16777215);
 	base_len = 16;
 	n_len = ft_strlen(str) - 1;
 	if (!str)

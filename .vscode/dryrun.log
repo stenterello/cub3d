@@ -5,7 +5,6 @@ make[1]: Entering directory '/home/davide/Documenti/Codici/42/cub3d/include/mlx_
 ./configure
 make[1]: Leaving directory '/home/davide/Documenti/Codici/42/cub3d/include/mlx_linux'
 make bonus -C ./include/libft
- 
 make[1]: Entering directory '/home/davide/Documenti/Codici/42/cub3d/include/libft'
 gcc    -c -o ft_isalpha.o ft_isalpha.c
 gcc    -c -o ft_isdigit.o ft_isdigit.c
