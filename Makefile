@@ -21,11 +21,13 @@ SRC=main.c \
 	texture.c
 SRCS=$(addprefix src/, $(SRC))
 OBJS=$(SRCS:.c=.o)
+BONUSSRC=$(addprefix bonus/, $(SRCS))
+BONUSOBJS=$(BONUSSRC:.c=.o)
 LIBFT=./include/libft/libft.a
 MINILIBX_LIN=./include/mlx_linux/mlx_linux.a
 
 $(NAME): $(MINILIBX_LIN) $(LIBFT) $(OBJS)
-	$(CC) $(FLAGS) $(SRCS) $(LIBFT) ./include/mlx_linux/libmlx.a -Linclude/mlx_linux -L/usr/lib -L/usr/include -Iinclude/mlx_linux -lXext -lX11 -lm -lz -o $(NAME)
+	$(CC) $(FLAGS) $(OBJS) $(LIBFT) ./include/mlx_linux/libmlx.a -Linclude/mlx_linux -L/usr/lib -L/usr/include -Iinclude/mlx_linux -lXext -lX11 -lm -lz -o $(NAME)
 
 $(LIBFT):
 	$(MAKE) bonus -C ./include/libft
@@ -46,4 +48,7 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all clean fclean re
+bonus: $(MINILIBX_LIN) $(LIBFT) $(BONUSOBJS)
+	$(CC) $(FLAGS) $(BONUSOBJS) $(LIBFT) ./include/mlx_linux/libmlx.a -Linclude/mlx_linux -L/usr/lib -L/usr/include -Iinclude/mlx_linux -lXext -lX11 -lm -lz -o $(NAME)
+
+.PHONY: all clean fclean re bonus
