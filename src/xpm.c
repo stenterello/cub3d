@@ -6,7 +6,7 @@
 /*   By: ddelladi <ddelladi@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 00:22:27 by ddelladi          #+#    #+#             */
-/*   Updated: 2022/07/25 19:42:20 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/07/25 20:17:10 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,8 @@ void	take_encoded_xpm(t_texture *texture, int fd)
 		k = 2;
 		while (j < texture->size[1])
 		{
+			if (j == 95)
+				printf("ecco");
 			l = k - 1;
 			texture->encoded[i][j] = malloc(sizeof(char) * 3);
 			if (ft_strchr(texture->delimiters, tmp[k]) != NULL)
@@ -361,7 +363,7 @@ void	define_texture(char *path, t_texture *texture)
 	while (i++ < 3)
 	{
 		tmp = get_next_line(fd);
-		printf("%s", tmp);
+	//	printf("%s", tmp);
 		free(tmp);
 	}
 	tmp = get_next_line(fd);

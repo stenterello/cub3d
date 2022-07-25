@@ -6,7 +6,7 @@
 /*   By: ddelladi <ddelladi@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 11:15:51 by ddelladi          #+#    #+#             */
-/*   Updated: 2022/07/25 19:48:06 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/07/25 20:11:19 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ char	*get_pair(char **str, t_texture *texture)
 	char	tmp[2];
 	t_xpm	*ptr;
 
+	if (!*str)
+		return (NULL);
 	tmp[0] = str[0][0];
 	tmp[1] = str[0][1];
 	ptr = texture->pairs;
@@ -75,8 +77,8 @@ void	draw_texture(int x, double dist, t_rules *rules, t_frame *scene, int color_
 	off = y1;
 	while (y1 < y2)
 	{
-		if (get_pair(&rules->north_texture.encoded[(int)((y1 - off) * rules->north_texture.size[0] / line_height) % rules->north_texture.size[0]][color_unit_x % rules->north_texture.size[0]], &rules->north_texture) == NULL)
-			printf("%s\n", rules->north_texture.encoded[(int)((y1 - off) * rules->north_texture.size[0] / line_height) % rules->north_texture.size[0]][color_unit_x % rules->north_texture.size[0]]);
+		// if (get_pair(&rules->north_texture.encoded[(int)((y1 - off) * rules->north_texture.size[0] / line_height) % rules->north_texture.size[0]][color_unit_x % rules->north_texture.size[0]], &rules->north_texture) == NULL)
+		// 	printf("%s\n", rules->north_texture.encoded[(int)((y1 - off) * rules->north_texture.size[0] / line_height) % rules->north_texture.size[0]][color_unit_x % rules->north_texture.size[0]]);
 		easy_pixel_put(scene, x, y1, get_xpm_color(&rules->north_texture, (y1 - off) * rules->north_texture.size[0] / line_height, color_unit_x));
 		y1++;
 	}

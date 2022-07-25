@@ -6,7 +6,7 @@
 /*   By: ddelladi <ddelladi@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/16 18:33:06 by ddelladi          #+#    #+#             */
-/*   Updated: 2022/07/23 17:50:19 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/07/25 19:55:15 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -159,8 +159,8 @@ void	paint_bg(t_rules *rules)
 	bg.img = mlx_new_image(rules->mlx, rules->win_width, rules->win_height);
 	bg.addr = mlx_get_data_addr(bg.img, &bg.bpp, &bg.line_length, &bg.endian);
 	i = -1;
-	printf("ceiling_color: %0x\n", get_hex_color(rules->ceiling_color));
-	printf("floor_color: %0x\n", get_hex_color(rules->floor_color));
+	//printf("ceiling_color: %0x\n", get_hex_color(rules->ceiling_color));
+	//printf("floor_color: %0x\n", get_hex_color(rules->floor_color));
 	while (++i < rules->win_height / 2)
 	{
 		j = 0;

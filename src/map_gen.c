@@ -6,7 +6,7 @@
 /*   By: ddelladi <ddelladi@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/22 14:24:52 by ddelladi          #+#    #+#             */
-/*   Updated: 2022/07/23 14:47:27 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/07/25 19:57:10 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -187,7 +187,7 @@ void	generate_rules(int fd, t_rules *rules, char *file)
 	define_map(fd, rules);
 	define_floor(rules);
 	define_ceiling(rules);
-	define_texture(rules->west_texture_path, &rules->west_texture);
+	//define_texture(rules->west_texture_path, &rules->west_texture);
 	define_texture(rules->north_texture_path, &rules->north_texture);
 	// if (!check_map(rules))
 	// 	die("Map error");
