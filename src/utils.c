@@ -6,7 +6,7 @@
 /*   By: ddelladi <ddelladi@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/17 02:52:07 by ddelladi          #+#    #+#             */
-/*   Updated: 2022/07/26 13:09:20 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/07/26 14:34:13 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,4 +68,17 @@ void	skip_to_benchmark(int fd, char *benchmark)
 	}
 	if (!ft_strncmp(tmp, benchmark, ft_strlen(benchmark)))
 		free(tmp);
+}
+
+int	choose_texture(int n, int flag)
+{
+	if (!flag && !n)
+		return (0);
+	if (!flag && n)
+		return (1);
+	if (flag && !n)
+		return (2);
+	if (flag && n)
+		return (3);
+	return (0);
 }

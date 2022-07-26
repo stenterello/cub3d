@@ -6,7 +6,7 @@
 /*   By: ddelladi <ddelladi@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/22 13:34:25 by ddelladi          #+#    #+#             */
-/*   Updated: 2022/07/26 13:11:19 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/07/26 14:59:30 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ typedef struct s_bres_info
 	unsigned int	color;
 }				t_bres_info;
 
-typedef struct s_xpm t_xpm;
+typedef struct s_xpm	t_xpm;
 
 typedef struct s_texture
 {
@@ -55,6 +55,7 @@ typedef struct s_ray
 	double		angle;
 	float		x;
 	float		y;
+	float		xyoff[2];
 }				t_ray;
 
 typedef struct s_frame
@@ -125,7 +126,15 @@ typedef struct s_rules
 	double		d_angle;
 	int			nframes;
 	int			rate;
+	int			counter;
 }				t_rules;
+
+typedef struct s_texture_info
+{
+	t_rules		*rules;
+	t_frame		*scene;
+	t_texture	*texture;
+}				t_texture_info;
 
 void	usage(void);
 void	die(char *str);
@@ -143,13 +152,17 @@ void	init_window(t_rules *rules);
 void	easy_pixel_put(t_frame *frame, int x, int y, int color);
 void	draw_mini_block(t_rules *rules, int coord[2], int color);
 void	free_rules(t_rules *rules);
-void	raycast_bresenham(double angle, t_rules *rules, int counter, t_frame *scene);
+void	raycast_bresenham(double angle, t_rules *rules, t_frame *scene);
 int		colliding(t_rules *rules, char *dir);
 int		get_abs(int n);
-void	bresenham(float xy[2], float xy2[2], unsigned int color, t_rules *rules);
-int		virtual_horizontal_colliding(int rayX, int rayY, t_rules *rules, int dir);
-int		virtual_vertical_colliding(int rayX, int rayY, t_rules *rules, int dir);
-void	draw_3d(t_rules *rules, double dist, int *x, double ray_angle);//, int color);
+void	bresenham(float xy[2], float xy2[2],
+			unsigned int color, t_rules *rules);
+int		virtual_horizontal_colliding(int ray_x, int ray_y,
+			t_rules *rules, int dir);
+int		virtual_vertical_colliding(int ray_x, int ray_y,
+			t_rules *rules, int dir);
+void	draw_3d(t_rules *rules, double dist, int *x,
+			double ray_angle);
 int		get_hex_color(int rgb[3]);
 void	check_player(char *tmp, t_rules *rules, int y);
 void	mini_raycast(double angle, t_rules *rules);
@@ -157,11 +170,12 @@ double	decrement_angle(double angle, int off);
 double	increment_angle(double angle, int off);
 void	define_texture(char *path, t_texture *texture);
 int		get_nbr_hex(char *str);
-void	draw_texture(int x, double dist, t_rules *rules, t_frame *scene, int color_unit_x, t_texture *texture);
+void	draw_texture(int x, double dist,
+			t_texture_info *info, int color_unit_x);
 int		get_line_width(t_rules *rules);
 void	game(t_rules *rules);
 void	draw_view_rays(t_rules *rules);
-int 	colliding2(t_rules *rules, float ray_cos, float ray_sin, int plus);
+int		colliding2(t_rules *rules, float ray_cos, float ray_sin, int plus);
 void	update_pov(t_rules *rules);
 int		verify_collide2(t_rules *rules, int next_c[2]);
 int		get_xpm_color(t_texture *texture, int y, int x);
@@ -169,9 +183,22 @@ int		encode_rgb(u_int8_t alpha, u_int8_t red, u_int8_t green, u_int8_t blue);
 void	skip_to_benchmark(int fd, char *benchmark);
 void	define_player(char *tmp, t_rules *rules, int y);
 void	define_map(int fd, t_rules *rules);
-void	define_ceiling(t_rules *rules);
-void	define_floor(t_rules *rules);
-void	define_textures(t_rules *rules);
+void	define_paint(t_rules *rules, float pts[3],
+			double angle, t_frame *scene);
 void	move_player(t_rules *rules, char *dir);
+double	final_length(float start_x, float start_y, float rxy[2]);
+int		choose_texture(int n, int flag);
+int		mini_virtual_horizontal_colliding(float ray_x, float ray_y,
+			t_rules *rules, int dir);
+int		mini_virtual_vertical_colliding(int ray_x, int ray_y,
+			t_rules *rules, int dir);
+void	get_next_plus(t_rules *rules, float ray_cos,
+			float ray_sin, int next[2]);
+void	get_next_minus(t_rules *rules, float ray_cos,
+			float ray_sin, int next[2]);
+void	get_next_c_plus(t_rules *rules, float ray_cos,
+			float ray_sin, int next_c[2]);
+void	get_next_c_minus(t_rules *rules, float ray_cos,
+			float ray_sin, int next_c[2]);
 
 #endif

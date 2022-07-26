@@ -6,7 +6,7 @@
 /*   By: ddelladi <ddelladi@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/22 13:35:27 by ddelladi          #+#    #+#             */
-/*   Updated: 2022/07/26 13:03:52 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/07/26 14:44:13 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	input_check_and_rules_gen(int argc, char **argv, t_rules *rules)
 {
 	int	fd;
-	
+
 	if (argc != 2)
 		usage();
 	if (ft_strncmp(&argv[1][ft_strlen(argv[1]) - 4], ".cub\0", 4))

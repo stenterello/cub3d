@@ -1,6 +1,6 @@
 NAME=cub3d
 CC=gcc
-FLAGS=-Wall -Werror -Wextra -g
+FLAGS=-Wall -Werror -Wextra -g -ffunction-sections -Wl,--gc-sections -Wl,--print-gc-sections
 SRC=main.c \
 	error.c \
 	memory.c \
@@ -13,14 +13,18 @@ SRC=main.c \
 	window.c \
 	minimap.c \
 	raycast.c \
+	mini_raycast.c \
 	colliding.c \
+	mini_colliding.c \
 	bresenham.c \
 	utils.c \
+	utils2.c \
 	3d.c \
 	xpm.c \
 	texture.c \
 	move.c \
-	define.c
+	define.c \
+	define2.c
 SRCS=$(addprefix src/, $(SRC))
 OBJS=$(SRCS:.c=.o)
 BONUSSRC=$(addprefix bonus/, $(SRCS))

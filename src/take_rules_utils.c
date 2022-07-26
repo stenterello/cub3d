@@ -6,7 +6,7 @@
 /*   By: ddelladi <ddelladi@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/22 14:42:37 by ddelladi          #+#    #+#             */
-/*   Updated: 2022/07/26 11:52:01 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/07/26 14:35:24 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,9 +70,9 @@ static void	copy_into(char **dst, char *src)
 
 static void	copy_rgb(int rgb[3], char *src)
 {
-	int		i;
+	int	i;
 	int	i2;
-	int		n;
+	int	n;
 
 	i = 0;
 	n = 0;

@@ -6,7 +6,7 @@
 /*   By: ddelladi <ddelladi@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/22 14:24:52 by ddelladi          #+#    #+#             */
-/*   Updated: 2022/07/26 13:09:50 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/07/26 13:14:00 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,7 +115,4 @@ void	generate_rules(int fd, t_rules *rules, char *file)
 	skip_to_benchmark(fd, benchmark);
 	free(benchmark);
 	define_map(fd, rules);
-	define_floor(rules);
-	define_ceiling(rules);
-	define_textures(rules);
 }

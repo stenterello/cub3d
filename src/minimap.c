@@ -6,7 +6,7 @@
 /*   By: ddelladi <ddelladi@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/16 18:33:06 by ddelladi          #+#    #+#             */
-/*   Updated: 2022/07/26 12:04:14 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/07/26 14:30:27 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,23 +48,22 @@ double	increment_angle(double angle, int off)
 
 void	draw_view_rays(t_rules *rules)
 {
-	int		counter;
 	double	start;
 	t_frame	scene;
 
 	scene.img = mlx_new_image(rules->mlx.mlx, rules->mlx.win_width, rules->mlx.win_height);
 	scene.addr = mlx_get_data_addr(scene.img, &scene.bpp, &scene.line_length, &scene.endian);
 	start = decrement_angle(rules->player.dir, 45);
-	counter = 0;
-	while (counter < rules->mlx.win_width)
+	rules->counter = 0;
+	while (rules->counter < rules->mlx.win_width)
 	{
-		raycast_bresenham(start, rules, counter, &scene);
+		raycast_bresenham(start, rules, &scene);
 		start += rules->d_angle;
 		if (start < 0)
 			start = 2 * PI;
 		else if (start > 2 * PI)
 			start = 0;
-		counter++;
+		rules->counter++;
 	}
 	// testing-only one-ray
 	// mini_raycast(rules->player.dir, rules);
@@ -171,23 +170,22 @@ void	paint_bg(t_rules *rules)
 
 void	game(t_rules *rules)
 {
-	int		counter;
 	double	start;
 	t_frame	scene;
 
 	scene.img = mlx_new_image(rules->mlx.mlx, rules->mlx.win_width, rules->mlx.win_height);
 	scene.addr = mlx_get_data_addr(scene.img, &scene.bpp, &scene.line_length, &scene.endian);
 	start = increment_angle(rules->player.dir, 45);
-	counter = 0;
-	while (counter < rules->mlx.win_width)
+	rules->counter = 0;
+	while (rules->counter < rules->mlx.win_width)
 	{
-		raycast_bresenham(start, rules, counter, &scene);
+		raycast_bresenham(start, rules, &scene);
 		start -= rules->d_angle;
 		if (start < 0)
 			start = 2 * PI;
 		else if (start > 2 * PI)
 			start = 0;
-		counter++;
+		rules->counter++;
 	}
 	// testing-only one-ray
 	// mini_raycast(rules->player.dir, rules);

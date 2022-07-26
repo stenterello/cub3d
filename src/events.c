@@ -6,7 +6,7 @@
 /*   By: ddelladi <ddelladi@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/16 18:32:06 by ddelladi          #+#    #+#             */
-/*   Updated: 2022/07/26 12:53:56 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/07/26 14:45:49 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	move_view(int keycode, t_rules *rules)
 	rules->player.d_y = -sin(rules->player.dir) * 5;
 }
 
-int	press(int keycode, t_rules *rules)
+static void	check_keys(int keycode, t_rules *rules)
 {
 	if (keycode == 65307)
 	{
@@ -40,7 +40,7 @@ int	press(int keycode, t_rules *rules)
 	}
 	else if (keycode == 119)
 		rules->keys.w_pressed = 1;
-	else if(keycode == 97)
+	else if (keycode == 97)
 		rules->keys.a_pressed = 1;
 	else if (keycode == 115)
 		rules->keys.s_pressed = 1;
@@ -50,6 +50,11 @@ int	press(int keycode, t_rules *rules)
 		rules->keys.l_pressed = 1;
 	else if (keycode == 65363)
 		rules->keys.r_pressed = 1;
+}
+
+int	press(int keycode, t_rules *rules)
+{
+	check_keys(keycode, rules);
 	if (rules->keys.l_pressed)
 		rules->player.dir += ANGLE_UNIT * 5;
 	if (rules->keys.r_pressed)
@@ -71,7 +76,7 @@ int	release(int keycode, t_rules *rules)
 	}
 	else if (keycode == 119)
 		rules->keys.w_pressed = 0;
-	else if(keycode == 97)
+	else if (keycode == 97)
 		rules->keys.a_pressed = 0;
 	else if (keycode == 115)
 		rules->keys.s_pressed = 0;

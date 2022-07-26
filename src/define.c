@@ -6,7 +6,7 @@
 /*   By: ddelladi <ddelladi@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/26 13:07:44 by ddelladi          #+#    #+#             */
-/*   Updated: 2022/07/26 13:10:35 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/07/26 13:47:38 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,32 @@ void	define_player(char *tmp, t_rules *rules, int y)
 	rules->player.speed = rules->map.block / 10;
 }
 
+static void	define_bg(t_rules *rules, char ***dst)
+{
+	int	i;
+
+	i = -1;
+	*dst = malloc(sizeof(char *) * (rules->map.map_height + 1));
+	if (!*dst)
+		die("Malloc error");
+	while (++i < rules->map.map_width)
+	{
+		(*dst)[i] = malloc(sizeof(char) * (rules->map.map_width + 1));
+		if (!(*dst)[i])
+			die("Malloc error");
+		ft_memset((*dst)[i], '0', rules->map.map_width);
+	}
+}
+
+static void	define_textures(t_rules *rules)
+{
+	int	i;
+
+	i = -1;
+	while (++i < 4)
+		define_texture(rules->paths[i], &rules->textures[i]);
+}
+
 void	define_map(int fd, t_rules *rules)
 {
 	char	*tmp;
@@ -73,48 +99,7 @@ void	define_map(int fd, t_rules *rules)
 		tmp = NULL;
 	}
 	rules->map.map[i] = NULL;
-}
-
-void	define_ceiling(t_rules *rules)
-{
-	int	i;
-
-	i = -1;
-	rules->map.ceiling = malloc(sizeof(char *) * (rules->map.map_height + 1));
-	if (!rules->map.ceiling)
-		die("Malloc error");
-	while (++i < rules->map.map_width)
-	{
-		rules->map.ceiling[i] = malloc(sizeof(char)
-				* (rules->map.map_width + 1));
-		if (!rules->map.ceiling[i])
-			die("Malloc error");
-		ft_memset(rules->map.ceiling[i], '0', rules->map.map_width);
-	}
-}
-
-void	define_floor(t_rules *rules)
-{
-	int	i;
-
-	i = -1;
-	rules->map.floor = malloc(sizeof(char *) * (rules->map.map_height + 1));
-	if (!rules->map.floor)
-		die("Malloc error");
-	while (++i < rules->map.map_width)
-	{
-		rules->map.floor[i] = malloc(sizeof(char) * (rules->map.map_width + 1));
-		if (!rules->map.floor[i])
-			die("Malloc error");
-		ft_memset(rules->map.floor[i], '0', rules->map.map_width);
-	}
-}
-
-void	define_textures(t_rules *rules)
-{
-	int	i;
-
-	i = -1;
-	while (++i < 4)
-		define_texture(rules->paths[i], &rules->textures[i]);
+	define_bg(rules, &rules->map.ceiling);
+	define_bg(rules, &rules->map.floor);
+	define_textures(rules);
 }

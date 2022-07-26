@@ -6,7 +6,7 @@
 /*   By: ddelladi <ddelladi@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/17 21:55:43 by ddelladi          #+#    #+#             */
-/*   Updated: 2022/07/26 12:16:48 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/07/26 14:50:31 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,14 +29,14 @@ int	get_line_width(t_rules *rules)
 	return (rules->mlx.win_width / ret + 1);
 }
 
-void	draw_3d(t_rules *rules, double dist, int *x, double ray_angle)//, int color)
+void	draw_3d(t_rules *rules, double dist, int *x, double ray_angle)
 {
 	float	line_height;
 	float	line_off;
-	// int		i;
 	int		xy[2];
 	int		xy2[2];
 	float	angle_diff;
+	//int	i;
 
 	angle_diff = rules->player.dir - ray_angle;
 	if (angle_diff < 0)
