@@ -1,15 +1,13 @@
 make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 make -C ./include/mlx_linux
- 
 # GNU Make 4.2.1
 # Built for x86_64-pc-linux-gnu
 # Copyright (C) 1988-2016 Free Software Foundation, Inc.
 # License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
- 
 
-# Make data base, printed on Tue Jul 26 14:50:00 2022
+# Make data base, printed on Tue Jul 26 15:29:41 2022
 
 # Variables
 
@@ -98,7 +96,7 @@ XDG_SESSION_DESKTOP = cinnamon
 # environment
 SSH_AUTH_SOCK = /run/user/1000/keyring/ssh
 # environment
-GIO_LAUNCHED_DESKTOP_FILE_PID = 25679
+GIO_LAUNCHED_DESKTOP_FILE_PID = 113870
 # automatic
 %F = $(notdir $%)
 # environment
@@ -170,7 +168,6 @@ VSCODE_IPC_HOOK = /run/user/1000/vscode-c5f300b3-1.69.2-main.sock
 # makefile
 MAKEFLAGS = pqrRw
 # environment
- 
 MFLAGS = -pqrRw
 # automatic
 *D = $(patsubst %/,%,$(dir $*))
@@ -209,7 +206,7 @@ GJS_DEBUG_OUTPUT = stderr
 # environment
 LANG = C
 # environment
-VSCODE_PID = 25679
+VSCODE_PID = 113870
 # variable set hash-table stats:
 # Load=98/1024=10%, Rehash=0, Collisions=7/128=5%
 
@@ -291,6 +288,7 @@ re: clean all
 clean:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
+ 
 #  File has not been updated.
 #  recipe to execute (from 'Makefile', line 20):
 	./configure clean
@@ -309,9 +307,8 @@ clean:
 # strcache performance: lookups = 72 / hit rate = 15%
 # hash-table stats:
 # Load=61/8192=1%, Rehash=0, Collisions=1/72=1%
-# Finished Make data base on Tue Jul 26 14:50:00 2022
+# Finished Make data base on Tue Jul 26 15:29:41 2022
 
- 
 # GNU Make 4.2.1
 # Built for x86_64-pc-linux-gnu
 # Copyright (C) 1988-2016 Free Software Foundation, Inc.
@@ -319,7 +316,7 @@ clean:
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Tue Jul 26 14:50:00 2022
+# Make data base, printed on Tue Jul 26 15:29:41 2022
 
 # Variables
 
@@ -414,7 +411,7 @@ XDG_SESSION_DESKTOP = cinnamon
 # environment
 SSH_AUTH_SOCK = /run/user/1000/keyring/ssh
 # environment
-GIO_LAUNCHED_DESKTOP_FILE_PID = 25679
+GIO_LAUNCHED_DESKTOP_FILE_PID = 113870
 # automatic
 %F = $(notdir $%)
 # environment
@@ -454,6 +451,7 @@ GNOME_DESKTOP_SESSION_ID = this-is-deprecated
 # environment
 XDG_VTNR = 7
 # environment
+ 
 MAKELEVEL := 0
 # default
 MAKE = $(MAKE_COMMAND)
@@ -540,7 +538,7 @@ BONUSOBJS = $(BONUSSRC:.c=.o)
 # environment
 LANG = C
 # environment
-VSCODE_PID = 25679
+VSCODE_PID = 113870
 # variable set hash-table stats:
 # Load=109/1024=11%, Rehash=0, Collisions=16/154=10%
 
@@ -590,7 +588,6 @@ src/define.o:
 #  Modification time never checked.
 #  File has not been updated.
 
- 
 # Not a target:
 src/move.o:
 #  Implicit rule search has not been done.
@@ -661,7 +658,7 @@ bonus/src/take_rules_utils.o:
 
 cub3d: include/mlx_linux/mlx_linux.a include/libft/libft.a src/main.o src/error.o src/memory.o src/memory2.o src/check.o src/map_gen.o src/take_rules_utils.o src/map_gen_utils.o src/events.o src/window.o src/minimap.o src/raycast.o src/mini_raycast.o src/colliding.o src/mini_colliding.o src/bresenham.o src/utils.o src/utils2.o src/3d.o src/xpm.o src/texture.o src/move.o src/define.o src/define2.o
 #  Implicit rule search has not been done.
-#  Last modified 2022-07-26 14:49:27.591293562
+#  Last modified 2022-07-26 15:18:08.667317489
 #  File has not been updated.
 # variable set hash-table stats:
 # Load=0/32=0%, Rehash=0, Collisions=0/5=0%
@@ -740,6 +737,7 @@ src/define2.o:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
+ 
 
 # Not a target:
 bonus/src/mini_raycast.o:
@@ -867,7 +865,6 @@ src/mini_raycast.o:
 
 include/mlx_linux/mlx_linux.a:
 #  Implicit rule search has not been done.
- 
 #  Implicit/static pattern stem: ''
 #  Modification time never checked.
 #  File has been updated.
@@ -973,6 +970,6 @@ bonus/src/minimap.o:
 # strcache performance: lookups = 103 / hit rate = 28%
 # hash-table stats:
 # Load=74/8192=1%, Rehash=0, Collisions=1/103=1%
-# Finished Make data base on Tue Jul 26 14:50:00 2022
+# Finished Make data base on Tue Jul 26 15:29:41 2022
 
  

@@ -6,7 +6,7 @@
 /*   By: ddelladi <ddelladi@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/22 13:34:25 by ddelladi          #+#    #+#             */
-/*   Updated: 2022/07/26 14:59:30 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/07/26 15:32:58 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -134,6 +134,7 @@ typedef struct s_texture_info
 	t_rules		*rules;
 	t_frame		*scene;
 	t_texture	*texture;
+	int			flag;
 }				t_texture_info;
 
 void	usage(void);
@@ -183,8 +184,8 @@ int		encode_rgb(u_int8_t alpha, u_int8_t red, u_int8_t green, u_int8_t blue);
 void	skip_to_benchmark(int fd, char *benchmark);
 void	define_player(char *tmp, t_rules *rules, int y);
 void	define_map(int fd, t_rules *rules);
-void	define_paint(t_rules *rules, float pts[3],
-			double angle, t_frame *scene);
+void	define_paint(t_texture_info *info, float pts[3],
+			double angle);
 void	move_player(t_rules *rules, char *dir);
 double	final_length(float start_x, float start_y, float rxy[2]);
 int		choose_texture(int n, int flag);

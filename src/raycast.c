@@ -6,7 +6,7 @@
 /*   By: ddelladi <ddelladi@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/16 19:22:22 by ddelladi          #+#    #+#             */
-/*   Updated: 2022/07/26 14:34:29 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/07/26 15:31:48 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,15 +116,27 @@ static void	vertical_lines_check(double angle,
 
 void	raycast_bresenham(double angle, t_rules *rules, t_frame *scene)
 {
-	float		f_pts[3];
-	float		s_pts[3];
+	float			f_pts[3];
+	float			s_pts[3];
+	t_texture_info	*info;
 
 	horizontal_lines_check(angle, rules, f_pts);
 	vertical_lines_check(angle, rules, s_pts);
+	info = malloc(sizeof(t_texture_info));
+	if (!info)
+		die("Malloc error");
+	info->rules = rules;
+	info->scene = scene;
 	if (final_length(rules->player.x, rules->player.y, s_pts) == INT_MAX
 		|| final_length(rules->player.x, rules->player.y, f_pts)
 		< final_length(rules->player.x, rules->player.y, s_pts))
-		define_paint(rules, f_pts, angle, scene);
+	{
+		info->flag = 0;
+		define_paint(info, f_pts, angle);
+	}
 	else
-		define_paint(rules, s_pts, angle, scene);
+	{
+		info->flag = 1;
+		define_paint(info, s_pts, angle);
+	}
 }
