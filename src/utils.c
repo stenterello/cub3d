@@ -6,7 +6,7 @@
 /*   By: ddelladi <ddelladi@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/17 02:52:07 by ddelladi          #+#    #+#             */
-/*   Updated: 2022/07/25 22:40:05 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/07/26 13:09:20 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@ int	get_hex_color(int rgb[3])
 
 int	get_nbr_hex(char *str)
 {
-	int	base_len;
 	int	i;
 	int	ret;
 	int	n;
@@ -38,7 +37,6 @@ int	get_nbr_hex(char *str)
 
 	if (!ft_strncmp("ffffff", str, 6))
 		return (16777215);
-	base_len = 16;
 	n_len = ft_strlen(str) - 1;
 	if (!str)
 		return (0x0);
@@ -52,8 +50,22 @@ int	get_nbr_hex(char *str)
 			n = ft_toupper(str[i] - 55);
 		else
 			break ;
-		ret += (n * pow(base_len, n_len--));
+		ret += (n * pow(16, n_len--));
 		i++;
 	}
 	return (ret);
+}
+
+void	skip_to_benchmark(int fd, char *benchmark)
+{
+	char	*tmp;
+
+	tmp = get_next_line(fd);
+	while (tmp && ft_strncmp(tmp, benchmark, ft_strlen(benchmark)))
+	{
+		free(tmp);
+		tmp = get_next_line(fd);
+	}
+	if (!ft_strncmp(tmp, benchmark, ft_strlen(benchmark)))
+		free(tmp);
 }

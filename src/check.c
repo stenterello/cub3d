@@ -6,26 +6,11 @@
 /*   By: ddelladi <ddelladi@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/22 13:35:27 by ddelladi          #+#    #+#             */
-/*   Updated: 2022/07/21 13:56:49 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/07/26 13:03:52 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
-
-void	print_map(t_rules *rules)
-{
-	int	i;
-	int	j;
-
-	i = 0;
-	while (rules->map[i])
-	{
-		j = 0;
-		while (rules->map[i][j])
-			ft_putchar_fd(rules->map[i][j++], 1);
-		i++;
-	}
-}
 
 void	input_check_and_rules_gen(int argc, char **argv, t_rules *rules)
 {
@@ -39,6 +24,33 @@ void	input_check_and_rules_gen(int argc, char **argv, t_rules *rules)
 	if (fd < 0)
 		die("Can't open file");
 	generate_rules(fd, rules, argv[1]);
-	print_map(rules);
 	close(fd);
+}
+
+int	count_map_height_and_max_width(int fd, t_rules *rules)
+{
+	char	*tmp;
+	int		count;
+
+	count = 0;
+	tmp = get_next_line(fd);
+	while (tmp)
+	{
+		if ((int)ft_strlen(tmp) - 1 > rules->map.map_width)
+			rules->map.map_width = ft_strlen(tmp) - 1;
+		free(tmp);
+		count++;
+		tmp = get_next_line(fd);
+	}
+	return (count);
+}
+
+void	check_player(char *tmp, t_rules *rules, int y)
+{
+	if (ft_strchr(tmp, 'N') != NULL
+		|| ft_strchr(tmp, 'S') != NULL
+		|| ft_strchr(tmp, 'W') != NULL
+		|| ft_strchr(tmp, 'E') != NULL)
+		define_player(tmp, rules, y);
+	return ;
 }

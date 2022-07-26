@@ -18,7 +18,9 @@ SRC=main.c \
 	utils.c \
 	3d.c \
 	xpm.c \
-	texture.c
+	texture.c \
+	move.c \
+	define.c
 SRCS=$(addprefix src/, $(SRC))
 OBJS=$(SRCS:.c=.o)
 BONUSSRC=$(addprefix bonus/, $(SRCS))

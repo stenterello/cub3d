@@ -6,7 +6,7 @@
 /*   By: ddelladi <ddelladi@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/22 13:36:34 by ddelladi          #+#    #+#             */
-/*   Updated: 2022/07/25 11:03:09 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/07/26 12:54:13 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,96 +14,45 @@
 
 void	init_rules(t_rules *rules)
 {
-	rules->map = NULL;
-	rules->north_texture_path = NULL;
-	rules->south_texture_path = NULL;
-	rules->east_texture_path = NULL;
-	rules->west_texture_path = NULL;
-	rules->win_width = 600;
-	rules->win_height = 480;
-	rules->mini_block_width = 20;
-	rules->block_width = 250;
-	rules->map_width = 0;
+	rules->mlx.win_width = 600;
+	rules->mlx.win_height = 480;
+	rules->map.map = NULL;
+	rules->map.mini_block = 20;
+	rules->map.block = 250;
+	rules->map.map_width = 0;
+	rules->paths = malloc(sizeof(char *) * 5);
+	if (!rules->paths)
+		die("Malloc error");
 	rules->ceiling_color[0] = INT_MAX;
 	rules->ceiling_color[1] = INT_MAX;
 	rules->ceiling_color[2] = INT_MAX;
 	rules->floor_color[0] = INT_MAX;
 	rules->floor_color[1] = INT_MAX;
 	rules->floor_color[2] = INT_MAX;
-	rules->d_angle = PI / 2 / rules->win_width;
+	rules->d_angle = PI / 2 / rules->mlx.win_width;
 	rules->nframes = 0;
 	rules->rate = 20;
-	rules->w_pressed = 0;
-	rules->a_pressed = 0;
-	rules->s_pressed = 0;
-	rules->d_pressed = 0;
-	rules->l_pressed = 0;
-	rules->r_pressed = 0;
-	rules->f = 0;
-}
-
-void	free_rules(t_rules *rules)
-{
-	if (rules->north_texture_path)
-		free(rules->north_texture_path);
-	if (rules->south_texture_path)
-		free(rules->south_texture_path);
-	if (rules->east_texture_path)
-		free(rules->east_texture_path);
-	if (rules->west_texture_path)
-		free(rules->west_texture_path);
-}
-
-void	move_player(t_rules *rules, char *dir)
-{
-	float	ray_cos;
-	float	ray_sin;
-
-	ray_cos = rules->player.d_x * rules->player.speed;
-	ray_sin = rules->player.d_y * rules->player.speed;
-	if (!ft_strncmp("up", dir, 2))
-	{
-		if (!colliding2(rules, ray_cos, 0, 1))
-			rules->player.x += rules->player.d_x * rules->player.speed;
-		if (!colliding2(rules, 0, ray_sin, 1))
-			rules->player.y += rules->player.d_y * rules->player.speed;
-	}
-	if (!ft_strncmp("down", dir, 4))
-	{
-		if (!colliding2(rules, ray_cos, 0, 0))
-			rules->player.x -= rules->player.d_x * rules->player.speed;
-		if (!colliding2(rules, 0, ray_sin, 0))
-			rules->player.y -= rules->player.d_y * rules->player.speed;
-	}
-	if (!ft_strncmp("left", dir, 4))
-	{
-		if (!colliding2(rules, ray_sin, 0, 1))
-			rules->player.x += rules->player.d_y * rules->player.speed;
-		if (!colliding2(rules, 0, ray_cos, 0))
-			rules->player.y -= rules->player.d_x * rules->player.speed;
-	}
-	if (!ft_strncmp("right", dir, 5))
-	{
-		if (!colliding2(rules, ray_sin, 0, 0))
-			rules->player.x -= rules->player.d_y * rules->player.speed;
-		if (!colliding2(rules, 0, ray_cos, 1))
-			rules->player.y += rules->player.d_x * rules->player.speed;
-	}
+	rules->keys.w_pressed = 0;
+	rules->keys.a_pressed = 0;
+	rules->keys.s_pressed = 0;
+	rules->keys.d_pressed = 0;
+	rules->keys.l_pressed = 0;
+	rules->keys.r_pressed = 0;
 }
 
 void	update_pov(t_rules *rules)
 {
-	if (rules->w_pressed)
+	if (rules->keys.w_pressed)
 		move_player(rules, "up");
-	if (rules->a_pressed)
+	if (rules->keys.a_pressed)
 		move_player(rules, "left");
-	if (rules->s_pressed)
+	if (rules->keys.s_pressed)
 		move_player(rules, "down");
-	if (rules->d_pressed)
+	if (rules->keys.d_pressed)
 		move_player(rules, "right");
-	if (rules->l_pressed)
+	if (rules->keys.l_pressed)
 		rules->player.dir += ANGLE_UNIT * 5;
-	if (rules->r_pressed)
+	if (rules->keys.r_pressed)
 		rules->player.dir -= ANGLE_UNIT * 5;
 	if (rules->player.dir < 0)
 		rules->player.dir = 2 * PI;
@@ -136,8 +85,8 @@ int	main(int argc, char **argv)
 	init_window(&rules);
 	game(&rules);
 	add_events(&rules);
-	mlx_loop_hook(rules.mlx, update_screen, &rules);
-	mlx_loop(rules.mlx);
+	mlx_loop_hook(rules.mlx.mlx, update_screen, &rules);
+	mlx_loop(rules.mlx.mlx);
 	free_rules(&rules);
 	return (0);
 }
@@ -145,14 +94,13 @@ int	main(int argc, char **argv)
 
 /*
 
-- quando si prendono i parametri all'inizio, verificare che i path forniti siano a file esistenti e per cui si possiedono permessi [ da implementare nel file ]
-- print_map in check.c funzione solo di test, poi dovrà essere cancellata
 - da fare:
 	.check sulla mappa (funzione map_check(rules))
 - il Makefile RELINKA!
 - visione errata quando ci si attacca ai muri in alto e a sinistra!! (distanza dal muro = 0)
-- textures da aggiustare
-- da migliorare acquisizione colori XPM: alcuni punti non vengono bene
 - deformazione verso il basso della texture quando si cammina accanto al muro
+- il colore "None" dell'xpm attualmente viene processato come bianco
+- rimane un bordo nero alla fine della texture
+- rendere più visibile nello stdout <quale> texture sta creando problemi
 
 */

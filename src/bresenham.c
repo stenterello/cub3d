@@ -6,66 +6,77 @@
 /*   By: ddelladi <ddelladi@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/17 02:45:13 by ddelladi          #+#    #+#             */
-/*   Updated: 2022/07/21 21:40:03 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/07/26 13:11:55 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void	bresenham(float xy[2], float xy2[2], unsigned int color, t_rules *rules)
+void	bres_swap(double *delta_x, double *delta_y, int *swap)
 {
-	double	deltaX;
-	double	deltaY;
-	double	swap;
-	double	a;
-	double	b;
-	double	d;
-	double	k;
-	int		s;
-	int		q;
-	int		ax;
-	int		ay;
-
-	swap = 0;
-	deltaX = xy2[0] - xy[0];
-	deltaY = xy2[1] - xy[1];
-	if (get_abs(deltaX) < get_abs(deltaY))
+	if (get_abs(*delta_x) < get_abs(*delta_y))
 	{
-		swap = deltaX;
-		deltaX = deltaY;
-		deltaY = swap;
-		swap = 1;
+		*swap = *delta_x;
+		*delta_x = *delta_y;
+		*delta_y = *swap;
+		*swap = 1;
 	}
-	a = get_abs(deltaY);
-	b = -get_abs(deltaX);
-	ax = xy[0];
-	ay = xy[1];
-	d = 2 * a + b;
-	s = 1;
-	q = 1;
-	if (ax > xy2[0])
-		q = -1;
-	if (ay > xy2[1])
-		s = -1;
+}
+
+void	bres_define(int axy[2], float xy2[2], int sq[2])
+{
+	if (axy[0] > xy2[0])
+		sq[1] = -1;
+	if (axy[1] > xy2[1])
+		sq[0] = -1;
+}
+
+void	bres_draw(t_bres_info *info, t_rules *rules)
+{
+	int	k;
+
 	k = 0;
-	while (k++ < -b)
+	while (k++ < -info->ab[1])
 	{
-		if (d > 0)
+		if (info->d > 0)
 		{
-			ax += q;
-			ay += s;
-			d += 2 * (a + b);
+			info->axy[0] += info->sq[1];
+			info->axy[1] += info->sq[2];
+			info->d += 2 * (info->ab[0] + info->ab[1]);
 		}
 		else
 		{
-			ax += q;
-			if (swap)
+			info->axy[0] += info->sq[1];
+			if (info->swap)
 			{
-				ay += s;
-				ax -= q;
+				info->axy[1] += info->sq[0];
+				info->axy[0] -= info->sq[1];
 			}
-			d += 2 * a;
+			info->d += 2 * info->ab[0];
 		}
-		mlx_pixel_put(rules->mlx, rules->mlx_win, ax, ay, color);
+		mlx_pixel_put(rules->mlx.mlx, rules->mlx.mlx_win,
+			info->axy[0], info->axy[1], info->color);
 	}
+}
+
+void	bresenham(float xy[2], float xy2[2], unsigned int color, t_rules *rules)
+{
+	double		delta_x;
+	double		delta_y;
+	t_bres_info	info;
+
+	info.swap = 0;
+	delta_x = xy2[0] - xy[0];
+	delta_y = xy2[1] - xy[1];
+	bres_swap(&delta_x, &delta_y, &info.swap);
+	info.ab[0] = get_abs(delta_y);
+	info.ab[1] = -get_abs(delta_x);
+	info.d = 2 * info.ab[0] + info.ab[1];
+	info.sq[0] = 1;
+	info.sq[1] = 1;
+	info.axy[0] = xy[0];
+	info.axy[1] = xy[1];
+	info.color = color;
+	bres_define(info.axy, xy, info.sq);
+	bres_draw(&info, rules);
 }

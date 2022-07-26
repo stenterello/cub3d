@@ -6,7 +6,7 @@
 /*   By: ddelladi <ddelladi@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 00:22:27 by ddelladi          #+#    #+#             */
-/*   Updated: 2022/07/25 22:41:08 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/07/26 12:28:16 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -295,6 +295,8 @@ void	read_pairs(t_texture *texture, int fd, char *path)
 			die("Malloc error");
 		if (tmp[i - 1] == '#')
 			ft_strlcpy(ptr->value, &tmp[i], 7);
+		else if (!ft_strncmp("None", &tmp[i], 4))
+			ft_strlcpy(ptr->value, "FFFFFF", 7);
 		else if (!gray(tmp))
 		{
 			free(ptr->value);
@@ -361,7 +363,6 @@ void	define_texture(char *path, t_texture *texture)
 	while (i++ < 3)
 	{
 		tmp = get_next_line(fd);
-	//	printf("%s", tmp);
 		free(tmp);
 	}
 	tmp = get_next_line(fd);

@@ -1,9 +1,9 @@
 WE ./textures/texture2.xpm
 NO ./textures/no_exit.xpm
 
-SO ./path_to_the_south_texture
+SO ./textures/texture.xpm
 
-EA ./path_to_the_east_texture
+EA ./textures/texture4.xpm
 F 220, 100,0
 C 225,30,0
 1111111111111111111111111

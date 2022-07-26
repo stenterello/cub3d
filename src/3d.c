@@ -6,7 +6,7 @@
 /*   By: ddelladi <ddelladi@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/17 21:55:43 by ddelladi          #+#    #+#             */
-/*   Updated: 2022/07/21 20:00:57 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/07/26 12:16:48 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int	get_line_width(t_rules *rules)
 			start = 0;
 		ret++;
 	}
-	return (rules->win_width / ret + 1);
+	return (rules->mlx.win_width / ret + 1);
 }
 
 void	draw_3d(t_rules *rules, double dist, int *x, double ray_angle)//, int color)
@@ -44,8 +44,8 @@ void	draw_3d(t_rules *rules, double dist, int *x, double ray_angle)//, int color
 	else if (angle_diff > (float)(2 * PI))
 		angle_diff -= 2 * PI;
 	dist *= cos(angle_diff);
-	line_height = rules->block_width * rules->win_height / dist;
-	line_off = rules->win_height / 2 - line_height / 2;
+	line_height = rules->map.block * rules->mlx.win_height / dist;
+	line_off = rules->mlx.win_height / 2 - line_height / 2;
 	xy[0] = *x;
 	xy[1] = line_off;
 	xy2[0] = *x;

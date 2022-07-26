@@ -6,7 +6,7 @@
 /*   By: ddelladi <ddelladi@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/22 13:34:25 by ddelladi          #+#    #+#             */
-/*   Updated: 2022/07/25 17:26:55 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/07/26 13:11:19 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,16 @@
 # include <limits.h>
 # define PI 3.1415926535
 # define ANGLE_UNIT 0.0174533
+
+typedef struct s_bres_info
+{
+	int				swap;
+	double			ab[2];
+	double			d;
+	int				sq[2];
+	int				axy[2];
+	unsigned int	color;
+}				t_bres_info;
 
 typedef struct s_xpm t_xpm;
 
@@ -80,8 +90,8 @@ typedef struct s_map
 	char	**ceiling;
 	int		map_width;
 	int		map_height;
-	int		block_width;
-	int		mini_block_width;
+	int		block;
+	int		mini_block;
 }				t_map;
 
 typedef struct s_keys
@@ -104,38 +114,17 @@ typedef struct s_mlx
 
 typedef struct s_rules
 {
-	char		**map;
-	char		**floor;
-	char		**ceiling;
-	char		*north_texture_path;
-	char		*south_texture_path;
-	char		*east_texture_path;
-	char		*west_texture_path;
+	t_mlx		mlx;
+	t_map		map;
+	t_player	player;
+	t_texture	textures[4];
+	t_keys		keys;
+	char		**paths;
 	int			floor_color[3];
 	int			ceiling_color[3];
-	t_texture	north_texture;
-	t_texture	south_texture;
-	t_texture	east_texture;
-	t_texture	west_texture;
-	void		*mlx;
-	void		*mlx_win;
-	int			win_width;
-	int			win_height;
-	int			map_height;
-	int			map_width;
-	int			mini_block_width;
-	int			block_width;
-	t_player	player;
 	double		d_angle;
 	int			nframes;
 	int			rate;
-	int			w_pressed;
-	int			a_pressed;
-	int			s_pressed;
-	int			d_pressed;
-	int			l_pressed;
-	int			r_pressed;
-	int			f;
 }				t_rules;
 
 void	usage(void);
@@ -168,7 +157,7 @@ double	decrement_angle(double angle, int off);
 double	increment_angle(double angle, int off);
 void	define_texture(char *path, t_texture *texture);
 int		get_nbr_hex(char *str);
-void	draw_texture(int x, double dist, t_rules *rules, t_frame *scene, int color_unit_x);
+void	draw_texture(int x, double dist, t_rules *rules, t_frame *scene, int color_unit_x, t_texture *texture);
 int		get_line_width(t_rules *rules);
 void	game(t_rules *rules);
 void	draw_view_rays(t_rules *rules);
@@ -177,5 +166,12 @@ void	update_pov(t_rules *rules);
 int		verify_collide2(t_rules *rules, int next_c[2]);
 int		get_xpm_color(t_texture *texture, int y, int x);
 int		encode_rgb(u_int8_t alpha, u_int8_t red, u_int8_t green, u_int8_t blue);
+void	skip_to_benchmark(int fd, char *benchmark);
+void	define_player(char *tmp, t_rules *rules, int y);
+void	define_map(int fd, t_rules *rules);
+void	define_ceiling(t_rules *rules);
+void	define_floor(t_rules *rules);
+void	define_textures(t_rules *rules);
+void	move_player(t_rules *rules, char *dir);
 
 #endif

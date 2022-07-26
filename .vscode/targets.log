@@ -1,13 +1,15 @@
 make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 make -C ./include/mlx_linux
+ 
 # GNU Make 4.2.1
 # Built for x86_64-pc-linux-gnu
 # Copyright (C) 1988-2016 Free Software Foundation, Inc.
 # License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
+ 
 
-# Make data base, printed on Mon Jul 25 22:29:36 2022
+# Make data base, printed on Tue Jul 26 13:10:20 2022
 
 # Variables
 
@@ -78,7 +80,7 @@ GPG_AGENT_INFO = /run/user/1000/gnupg/S.gpg-agent:0:1
 # environment
 PG_OF_PATH = /home/davide/Programmi/OpenFrameworks/of_v0.11.2_linux64gcc6_release
 # environment
-SESSION_MANAGER = local/ThinkPad-E550:@/tmp/.ICE-unix/2317,unix/ThinkPad-E550:/tmp/.ICE-unix/2317
+SESSION_MANAGER = local/ThinkPad-E550:@/tmp/.ICE-unix/1444,unix/ThinkPad-E550:/tmp/.ICE-unix/1444
 # environment
 XDG_RUNTIME_DIR = /run/user/1000
 # environment
@@ -96,7 +98,7 @@ XDG_SESSION_DESKTOP = cinnamon
 # environment
 SSH_AUTH_SOCK = /run/user/1000/keyring/ssh
 # environment
-GIO_LAUNCHED_DESKTOP_FILE_PID = 59945
+GIO_LAUNCHED_DESKTOP_FILE_PID = 25679
 # automatic
 %F = $(notdir $%)
 # environment
@@ -110,7 +112,7 @@ QT_QPA_PLATFORMTHEME = qt5ct
 # environment
 XDG_SEAT = seat0
 # environment
-SSH_AGENT_PID = 2387
+SSH_AGENT_PID = 1514
 # environment
 ORIGINAL_XDG_CURRENT_DESKTOP = X-Cinnamon
 # environment
@@ -188,6 +190,7 @@ MAKEFILES :=
 # automatic
 <F = $(notdir $<)
 # environment
+ 
 LC_ALL = C
 # environment
 GJS_DEBUG_TOPICS = JS ERROR;JS LOG
@@ -206,7 +209,7 @@ GJS_DEBUG_OUTPUT = stderr
 # environment
 LANG = C
 # environment
-VSCODE_PID = 59945
+VSCODE_PID = 25679
 # variable set hash-table stats:
 # Load=98/1024=10%, Rehash=0, Collisions=7/128=5%
 
@@ -278,7 +281,6 @@ Makefile:
 .DEFAULT:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
- 
 #  File has not been updated.
 
 re: clean all
@@ -307,7 +309,7 @@ clean:
 # strcache performance: lookups = 72 / hit rate = 15%
 # hash-table stats:
 # Load=61/8192=1%, Rehash=0, Collisions=1/72=1%
-# Finished Make data base on Mon Jul 25 22:29:37 2022
+# Finished Make data base on Tue Jul 26 13:10:20 2022
 
 # GNU Make 4.2.1
 # Built for x86_64-pc-linux-gnu
@@ -316,7 +318,7 @@ clean:
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Mon Jul 25 22:29:37 2022
+# Make data base, printed on Tue Jul 26 13:10:20 2022
 
 # Variables
 
@@ -331,9 +333,10 @@ DESKTOP_SESSION = cinnamon
 # environment
 XDG_SESSION_CLASS = user
 # makefile (from 'Makefile', line 4)
-SRC = main.c error.c memory.c memory2.c check.c map_gen.c take_rules_utils.c map_gen_utils.c events.c window.c minimap.c raycast.c colliding.c bresenham.c utils.c 3d.c xpm.c texture.c
+SRC = main.c error.c memory.c memory2.c check.c map_gen.c take_rules_utils.c map_gen_utils.c events.c window.c minimap.c raycast.c colliding.c bresenham.c utils.c 3d.c xpm.c texture.c move.c define.c
 # environment
 XDG_SESSION_TYPE = x11
+ 
 # environment
 GTK3_MODULES = xapp-gtk3-module
 # automatic
@@ -374,7 +377,7 @@ MANDATORY_PATH = /usr/share/gconf/cinnamon.mandatory.path
 XDG_DATA_DIRS = /usr/share/cinnamon:/usr/share/gnome:/home/davide/.local/share/flatpak/exports/share:/var/lib/flatpak/exports/share:/usr/local/share:/usr/share
 # environment
 DBUS_SESSION_BUS_ADDRESS = unix:path=/run/user/1000/bus
-# makefile (from 'Makefile', line 23)
+# makefile (from 'Makefile', line 25)
 OBJS = $(SRCS:.c=.o)
 # environment
 LESSOPEN = | /usr/bin/lesspipe %s
@@ -391,14 +394,14 @@ GPG_AGENT_INFO = /run/user/1000/gnupg/S.gpg-agent:0:1
 # environment
 PG_OF_PATH = /home/davide/Programmi/OpenFrameworks/of_v0.11.2_linux64gcc6_release
 # environment
-SESSION_MANAGER = local/ThinkPad-E550:@/tmp/.ICE-unix/2317,unix/ThinkPad-E550:/tmp/.ICE-unix/2317
+SESSION_MANAGER = local/ThinkPad-E550:@/tmp/.ICE-unix/1444,unix/ThinkPad-E550:/tmp/.ICE-unix/1444
 # environment
 XDG_RUNTIME_DIR = /run/user/1000
 # environment
 ELECTRON_RUN_AS_NODE = 1
 # default
 .FEATURES := target-specific order-only second-expansion else-if shortest-stem undefine oneshell archives jobserver output-sync check-symlink load
-# makefile (from 'Makefile', line 27)
+# makefile (from 'Makefile', line 29)
 MINILIBX_LIN = ./include/mlx_linux/mlx_linux.a
 # environment
 XDG_GREETER_DATA_DIR = /var/lib/lightdm-data/davide
@@ -411,7 +414,7 @@ XDG_SESSION_DESKTOP = cinnamon
 # environment
 SSH_AUTH_SOCK = /run/user/1000/keyring/ssh
 # environment
-GIO_LAUNCHED_DESKTOP_FILE_PID = 59945
+GIO_LAUNCHED_DESKTOP_FILE_PID = 25679
 # automatic
 %F = $(notdir $%)
 # environment
@@ -425,7 +428,7 @@ QT_QPA_PLATFORMTHEME = qt5ct
 # environment
 XDG_SEAT = seat0
 # environment
-SSH_AGENT_PID = 2387
+SSH_AGENT_PID = 1514
 # environment
 ORIGINAL_XDG_CURRENT_DESKTOP = X-Cinnamon
 # environment
@@ -456,11 +459,11 @@ MAKELEVEL := 0
 MAKE = $(MAKE_COMMAND)
 # default
 MAKECMDGOALS := all
-# makefile (from 'Makefile', line 22)
+# makefile (from 'Makefile', line 24)
 SRCS = $(addprefix src/, $(SRC))
 # environment
 SHLVL = 0
-# makefile (from 'Makefile', line 26)
+# makefile (from 'Makefile', line 28)
 LIBFT = ./include/libft/libft.a
 # makefile (from 'Makefile', line 2)
 CC = gcc
@@ -504,7 +507,7 @@ GDK_BACKEND = x11
 CINNAMON_VERSION = 5.2.7
 # environment
 QT_ACCESSIBILITY = 1
-# makefile (from 'Makefile', line 24)
+# makefile (from 'Makefile', line 26)
 BONUSSRC = $(addprefix bonus/, $(SRCS))
 # environment
 DEFAULTS_PATH = /usr/share/gconf/cinnamon.default.path
@@ -532,12 +535,12 @@ GJS_DEBUG_OUTPUT = stderr
 NAME = cub3d
 # default
 .RECIPEPREFIX := 
-# makefile (from 'Makefile', line 25)
+# makefile (from 'Makefile', line 27)
 BONUSOBJS = $(BONUSSRC:.c=.o)
 # environment
 LANG = C
 # environment
-VSCODE_PID = 59945
+VSCODE_PID = 25679
 # variable set hash-table stats:
 # Load=109/1024=11%, Rehash=0, Collisions=16/154=10%
 
@@ -547,9 +550,9 @@ VSCODE_PID = 59945
 
 # Directories
 
-# . (device 2049, inode 17317889): 13 files, no impossibilities.
+# . (device 2049, inode 17317889): 14 files, no impossibilities.
 
-# 13 files, no impossibilities in 1 directories.
+# 14 files, no impossibilities in 1 directories.
 
 # Implicit Rules
 
@@ -560,7 +563,6 @@ VSCODE_PID = 59945
 # Not a target:
 bonus/src/memory.o:
 #  Implicit rule search has not been done.
- 
 #  Modification time never checked.
 #  File has not been updated.
 
@@ -572,6 +574,18 @@ bonus/src/xpm.o:
 
 # Not a target:
 src/raycast.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+src/define.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+src/move.o:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
@@ -626,13 +640,14 @@ bonus/src/take_rules_utils.o:
 #  Modification time never checked.
 #  File has not been updated.
 
-cub3d: include/mlx_linux/mlx_linux.a include/libft/libft.a src/main.o src/error.o src/memory.o src/memory2.o src/check.o src/map_gen.o src/take_rules_utils.o src/map_gen_utils.o src/events.o src/window.o src/minimap.o src/raycast.o src/colliding.o src/bresenham.o src/utils.o src/3d.o src/xpm.o src/texture.o
+cub3d: include/mlx_linux/mlx_linux.a include/libft/libft.a src/main.o src/error.o src/memory.o src/memory2.o src/check.o src/map_gen.o src/take_rules_utils.o src/map_gen_utils.o src/events.o src/window.o src/minimap.o src/raycast.o src/colliding.o src/bresenham.o src/utils.o src/3d.o src/xpm.o src/texture.o src/move.o src/define.o
+ 
 #  Implicit rule search has not been done.
-#  Last modified 2022-07-25 21:53:49.53994585
+#  Last modified 2022-07-26 12:34:30.655047851
 #  File has not been updated.
 # variable set hash-table stats:
 # Load=0/32=0%, Rehash=0, Collisions=0/5=0%
-#  recipe to execute (from 'Makefile', line 30):
+#  recipe to execute (from 'Makefile', line 32):
 	$(CC) $(FLAGS) $(SRCS) include/libft/*.c ./include/mlx_linux/libmlx.a -Linclude/mlx_linux -L/usr/lib -L/usr/include -Iinclude/mlx_linux -lXext -lX11 -lm -lz -o $(NAME)
 
 # Not a target:
@@ -650,7 +665,7 @@ src/minimap.o:
 # Not a target:
 Makefile:
 #  Implicit rule search has been done.
-#  Last modified 2022-07-25 17:57:46.401726443
+#  Last modified 2022-07-26 13:10:16.013618025
 #  File has been updated.
 #  Successfully updated.
 
@@ -702,12 +717,12 @@ src/window.o:
 #  Modification time never checked.
 #  File has not been updated.
 
-bonus: include/mlx_linux/mlx_linux.a include/libft/libft.a bonus/src/main.o bonus/src/error.o bonus/src/memory.o bonus/src/memory2.o bonus/src/check.o bonus/src/map_gen.o bonus/src/take_rules_utils.o bonus/src/map_gen_utils.o bonus/src/events.o bonus/src/window.o bonus/src/minimap.o bonus/src/raycast.o bonus/src/colliding.o bonus/src/bresenham.o bonus/src/utils.o bonus/src/3d.o bonus/src/xpm.o bonus/src/texture.o
+bonus: include/mlx_linux/mlx_linux.a include/libft/libft.a bonus/src/main.o bonus/src/error.o bonus/src/memory.o bonus/src/memory2.o bonus/src/check.o bonus/src/map_gen.o bonus/src/take_rules_utils.o bonus/src/map_gen_utils.o bonus/src/events.o bonus/src/window.o bonus/src/minimap.o bonus/src/raycast.o bonus/src/colliding.o bonus/src/bresenham.o bonus/src/utils.o bonus/src/3d.o bonus/src/xpm.o bonus/src/texture.o bonus/src/move.o bonus/src/define.o
 #  Phony target (prerequisite of .PHONY).
 #  Implicit rule search has not been done.
 #  File does not exist.
 #  File has not been updated.
-#  recipe to execute (from 'Makefile', line 52):
+#  recipe to execute (from 'Makefile', line 54):
 	$(CC) $(FLAGS) $(BONUSOBJS) $(LIBFT) ./include/mlx_linux/libmlx.a -Linclude/mlx_linux -L/usr/lib -L/usr/include -Iinclude/mlx_linux -lXext -lX11 -lm -lz -o $(NAME)
 
 fclean: clean
@@ -715,7 +730,7 @@ fclean: clean
 #  Implicit rule search has not been done.
 #  File does not exist.
 #  File has not been updated.
-#  recipe to execute (from 'Makefile', line 46):
+#  recipe to execute (from 'Makefile', line 48):
 	rm -f $(NAME)
 	$(MAKE) fclean -C ./include/libft
 
@@ -783,7 +798,7 @@ include/libft/libft.a:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
-#  recipe to execute (from 'Makefile', line 33):
+#  recipe to execute (from 'Makefile', line 35):
 	$(MAKE) bonus -C ./include/libft
 
 re: fclean all
@@ -803,7 +818,7 @@ clean:
 #  Implicit rule search has not been done.
 #  File does not exist.
 #  File has not been updated.
-#  recipe to execute (from 'Makefile', line 41):
+#  recipe to execute (from 'Makefile', line 43):
 	rm -f $(OBJS)
 	$(MAKE) clean -C ./include/libft
 	$(MAKE) clean -C ./include/mlx_linux
@@ -814,6 +829,7 @@ bonus/src/events.o:
 #  Modification time never checked.
 #  File has not been updated.
 
+ 
 include/mlx_linux/mlx_linux.a:
 #  Implicit rule search has not been done.
 #  Implicit/static pattern stem: ''
@@ -837,9 +853,8 @@ include/mlx_linux/mlx_linux.a:
 # automatic
 # ? := 
 # variable set hash-table stats:
- 
 # Load=8/32=25%, Rehash=0, Collisions=2/13=15%
-#  recipe to execute (from 'Makefile', line 36):
+#  recipe to execute (from 'Makefile', line 38):
 	$(MAKE) -C ./include/mlx_linux
 
 # Not a target:
@@ -850,6 +865,18 @@ src/memory2.o:
 
 # Not a target:
 bonus/src/raycast.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+bonus/src/define.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+bonus/src/move.o:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
@@ -885,19 +912,19 @@ bonus/src/minimap.o:
 #  File has not been updated.
 
 # files hash-table stats:
-# Load=48/1024=5%, Rehash=0, Collisions=2/112=2%
+# Load=52/1024=5%, Rehash=0, Collisions=2/120=2%
 # VPATH Search Paths
 
 # No 'vpath' search paths.
 
 # No general ('VPATH' variable) search path.
 
-# strcache buffers: 1 (0) / strings = 61 / storage = 837 B / avg = 13 B
-# current buf: size = 8162 B / used = 837 B / count = 61 / avg = 13 B
+# strcache buffers: 1 (0) / strings = 66 / storage = 900 B / avg = 13 B
+# current buf: size = 8162 B / used = 900 B / count = 66 / avg = 13 B
 
-# strcache performance: lookups = 90 / hit rate = 32%
+# strcache performance: lookups = 95 / hit rate = 30%
 # hash-table stats:
-# Load=61/8192=1%, Rehash=0, Collisions=1/90=1%
-# Finished Make data base on Mon Jul 25 22:29:37 2022
+# Load=66/8192=1%, Rehash=0, Collisions=1/95=1%
+# Finished Make data base on Tue Jul 26 13:10:20 2022
 
  
