@@ -6,7 +6,7 @@
 /*   By: ddelladi <ddelladi@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/26 13:07:44 by ddelladi          #+#    #+#             */
-/*   Updated: 2022/07/26 13:47:38 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/07/26 19:21:13 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,18 @@ static void	define_textures(t_rules *rules)
 		define_texture(rules->paths[i], &rules->textures[i]);
 }
 
+void	print_map(char **map)
+{
+	int	i;
+
+	i = 0;
+	while (map[i])
+	{
+		printf("%s\n", map[i]);
+		i++;
+	}
+}
+
 void	define_map(int fd, t_rules *rules)
 {
 	char	*tmp;
@@ -85,11 +97,11 @@ void	define_map(int fd, t_rules *rules)
 	i = 1;
 	while (tmp)
 	{
-		rules->map.map[i] = malloc(sizeof(char) * ft_strlen(tmp) + 1);
+		rules->map.map[i] = malloc(sizeof(char) * ft_strlen_rl(tmp) + 1);
 		if (!rules->map.map[i])
 			die("Malloc error");
 		check_player(tmp, rules, i);
-		ft_strlcpy(rules->map.map[i++], tmp, ft_strlen(tmp) + 1);
+		ft_strlcpy(rules->map.map[i++], tmp, ft_strlen_rl(tmp) + 1);
 		free(tmp);
 		tmp = get_next_line(fd);
 	}
@@ -102,4 +114,5 @@ void	define_map(int fd, t_rules *rules)
 	define_bg(rules, &rules->map.ceiling);
 	define_bg(rules, &rules->map.floor);
 	define_textures(rules);
+	print_map(rules->map.map);
 }

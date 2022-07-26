@@ -6,7 +6,7 @@
 /*   By: ddelladi <ddelladi@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/16 18:32:06 by ddelladi          #+#    #+#             */
-/*   Updated: 2022/07/26 14:45:49 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/07/26 20:11:38 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,8 @@ int	press(int keycode, t_rules *rules)
 		rules->player.dir = 2 * PI;
 	if (rules->player.dir > 2 * PI)
 		rules->player.dir = 0;
+	// update_pov(rules);
+	// minimap(rules);
 	return (0);
 }
 

@@ -6,7 +6,7 @@
 /*   By: ddelladi <ddelladi@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/22 13:36:34 by ddelladi          #+#    #+#             */
-/*   Updated: 2022/07/26 14:29:43 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/07/26 20:11:32 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,7 @@ int	main(int argc, char **argv)
 	init_rules(&rules);
 	input_check_and_rules_gen(argc, argv, &rules);
 	init_window(&rules);
-	game(&rules);
+	minimap(&rules);
 	add_events(&rules);
 	mlx_loop_hook(rules.mlx.mlx, update_screen, &rules);
 	mlx_loop(rules.mlx.mlx);
@@ -96,9 +96,9 @@ int	main(int argc, char **argv)
 
 - da fare:
 	.check sulla mappa (funzione map_check(rules))
+	.non va in errore se non c'è il player nella mappa
 - il Makefile RELINKA!
 - visione errata quando ci si attacca ai muri in alto e a sinistra!! (distanza dal muro = 0)
-- deformazione verso il basso della texture quando si cammina accanto al muro
 - il colore "None" dell'xpm attualmente viene processato come bianco
 - rimane un bordo nero alla fine della texture
 - rendere più visibile nello stdout <quale> texture sta creando problemi

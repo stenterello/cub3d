@@ -6,7 +6,7 @@
 /*   By: ddelladi <ddelladi@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/16 18:32:43 by ddelladi          #+#    #+#             */
-/*   Updated: 2022/07/26 12:37:29 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/07/26 19:16:20 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,4 +25,14 @@ void	easy_pixel_put(t_frame *frame, int x, int y, int color)
 
 	dst = frame->addr + (y * frame->line_length + x * (frame->bpp / 8));
 	*(unsigned int *)dst = color;
+}
+
+int	ft_strlen_rl(char *str)
+{
+	int	i;
+
+	i = 0;
+	while (str[i] && str[i] != '\n')
+		i++;
+	return (i);
 }

@@ -6,7 +6,7 @@
 /*   By: ddelladi <ddelladi@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/22 14:24:52 by ddelladi          #+#    #+#             */
-/*   Updated: 2022/07/26 13:14:00 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/07/26 20:11:05 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,6 +86,11 @@ static char	*take_rules(int fd, t_rules *rules)
 		free(tmp);
 		tmp = get_next_line(fd);
 	}
+	while (!ft_strncmp("\n", tmp, 1))
+	{
+		free(tmp);
+		tmp = get_next_line(fd);
+	}
 	return (tmp);
 }
 
@@ -100,13 +105,13 @@ void	generate_rules(int fd, t_rules *rules, char *file)
 		die("Can't open file");
 	skip_to_benchmark(fd, benchmark);
 	rules->map.map_height = count_map_height_and_max_width(fd, rules);
-	rules->map.map = malloc(sizeof(char *) * (rules->map.map_height-- + 1));
+	rules->map.map = malloc(sizeof(char *) * (rules->map.map_height + 1));
 	if (!rules->map.map)
 		die ("Malloc error");
-	rules->map.map[0] = malloc(sizeof(char) * ft_strlen(benchmark) + 1);
+	rules->map.map[0] = malloc(sizeof(char) * ft_strlen_rl(benchmark) + 1);
 	if (!rules->map.map[0])
 		die("Malloc error");
-	ft_strlcpy(rules->map.map[0], benchmark, ft_strlen(benchmark) + 1);
+	ft_strlcpy(rules->map.map[0], benchmark, ft_strlen_rl(benchmark) + 1);
 	check_player(benchmark, rules, 0);
 	close(fd);
 	fd = open(file, O_RDONLY);

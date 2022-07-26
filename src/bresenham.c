@@ -6,7 +6,7 @@
 /*   By: ddelladi <ddelladi@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/17 02:45:13 by ddelladi          #+#    #+#             */
-/*   Updated: 2022/07/26 13:11:55 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/07/26 20:03:47 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,13 +41,13 @@ void	bres_draw(t_bres_info *info, t_rules *rules)
 		if (info->d > 0)
 		{
 			info->axy[0] += info->sq[1];
-			info->axy[1] += info->sq[2];
+			info->axy[1] += info->sq[0];
 			info->d += 2 * (info->ab[0] + info->ab[1]);
 		}
 		else
 		{
 			info->axy[0] += info->sq[1];
-			if (info->swap)
+			if (info->swap == 1)
 			{
 				info->axy[1] += info->sq[0];
 				info->axy[0] -= info->sq[1];
@@ -71,12 +71,12 @@ void	bresenham(float xy[2], float xy2[2], unsigned int color, t_rules *rules)
 	bres_swap(&delta_x, &delta_y, &info.swap);
 	info.ab[0] = get_abs(delta_y);
 	info.ab[1] = -get_abs(delta_x);
+	info.axy[0] = xy[0];
+	info.axy[1] = xy[1];
 	info.d = 2 * info.ab[0] + info.ab[1];
 	info.sq[0] = 1;
 	info.sq[1] = 1;
-	info.axy[0] = xy[0];
-	info.axy[1] = xy[1];
 	info.color = color;
-	bres_define(info.axy, xy, info.sq);
+	bres_define(info.axy, xy2, info.sq);
 	bres_draw(&info, rules);
 }

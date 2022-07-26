@@ -6,7 +6,7 @@
 /*   By: ddelladi <ddelladi@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/22 13:34:25 by ddelladi          #+#    #+#             */
-/*   Updated: 2022/07/26 15:32:58 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/07/26 19:16:29 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -146,7 +146,6 @@ int		is_path(char *str);
 void	insert_rule(char *rul, t_rules *rules);
 void	malloc_c(char **dst, int len);
 int		count_map_height_and_max_width(int fd, t_rules *rules);
-void	define_map(int fd, t_rules *rules);
 void	add_events(t_rules *rules);
 void	minimap(t_rules *rules);
 void	init_window(t_rules *rules);
@@ -201,5 +200,6 @@ void	get_next_c_plus(t_rules *rules, float ray_cos,
 			float ray_sin, int next_c[2]);
 void	get_next_c_minus(t_rules *rules, float ray_cos,
 			float ray_sin, int next_c[2]);
+int		ft_strlen_rl(char *str);
 
 #endif

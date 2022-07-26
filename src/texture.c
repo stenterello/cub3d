@@ -6,7 +6,7 @@
 /*   By: ddelladi <ddelladi@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 11:15:51 by ddelladi          #+#    #+#             */
-/*   Updated: 2022/07/26 15:01:05 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/07/26 17:02:20 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,8 @@ char	*get_pair(char **str, t_texture *texture)
 
 int	get_xpm_color(t_texture *texture, int y, int x)
 {
+	if (x % texture->size[0] == texture->size[0])
+		printf("ecco");
 	return (get_nbr_hex(get_pair(&texture->encoded
 				[y % texture->size[0]][x % texture->size[0]], texture)));
 }
@@ -74,12 +76,12 @@ void	draw_texture(int x, double dist, t_texture_info *info, int color_unit_x)
 	line_height = info->rules->map.block * info->rules->mlx.win_height / dist;
 	y1 = info->rules->mlx.win_height / 2 - line_height / 2;
 	y2 = line_height + y1;
+	off = y1;
 	if (y1 < 0)
 		y1 = 0;
 	if (y2 > info->rules->mlx.win_height)
 		y2 = info->rules->mlx.win_height;
 	draw_ceiling(x, y1, info->scene, info->rules);
-	off = y1;
 	while (y1 < y2)
 	{
 		easy_pixel_put(info->scene, x, y1,
