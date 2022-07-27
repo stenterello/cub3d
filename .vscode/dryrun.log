@@ -77,6 +77,6 @@ gcc    -c -o src/texture.o src/texture.c
 gcc    -c -o src/move.o src/move.c
 gcc    -c -o src/define.o src/define.c
 gcc    -c -o src/define2.o src/define2.c
-gcc -Wall -Werror -Wextra -g -ffunction-sections -Wl,--gc-sections -Wl,--print-gc-sections src/main.c src/error.c src/memory.c src/memory2.c src/check.c src/map_gen.c src/take_rules_utils.c src/map_gen_utils.c src/events.c src/window.c src/minimap.c src/raycast.c src/mini_raycast.c src/colliding.c src/mini_colliding.c src/bresenham.c src/utils.c src/utils2.c src/3d.c src/xpm.c src/texture.c src/move.c src/define.c src/define2.c include/libft/*.c ./include/mlx_linux/libmlx.a -Linclude/mlx_linux -L/usr/lib -L/usr/include -Iinclude/mlx_linux -lXext -lX11 -lm -lz -o cub3d
+gcc -Wall -Werror -Wextra -g -ffunction-sections -Wl,--gc-sections -Wl,--print-gc-sections src/main.c src/error.c src/memory.c src/memory2.c src/check.c src/map_gen.c src/take_rules_utils.c src/map_gen_utils.c src/events.c src/window.c src/minimap.c src/raycast.c src/mini_raycast.c src/colliding.c src/mini_colliding.c src/bresenham.c src/utils.c src/utils2.c src/3d.c src/xpm.c src/texture.c src/move.c src/define.c src/define2.c ./include/libft/libft.a ./include/mlx_linux/libmlx.a -Linclude/mlx_linux -L/usr/lib -L/usr/include -Iinclude/mlx_linux -lXext -lX11 -lm -lz -o cub3d
 make: Leaving directory '/home/davide/Documenti/Codici/42/cub3d'
  

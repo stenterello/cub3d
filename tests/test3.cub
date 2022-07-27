@@ -1,9 +1,9 @@
-WE ./textures/specchio.xpm
-NO ./textures/no_exit.xpm
+WE ./textures/valerio.xpm
+NO ./textures/tutti.xpm
 
-SO ./textures/texture.xpm
+SO ./textures/michele_daniele_gianluca.xpm
 
-EA ./textures/texture3.xpm
+EA ./textures/dav_stef.xpm
 F 220, 100,0
 C 225,30,0
 1111111111111111111111111
