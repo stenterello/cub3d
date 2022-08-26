@@ -2,6 +2,11 @@
 	"makefile.extensionOutputFolder": "./.vscode",
 	"files.associations": {
 		"inttypes.h": "c",
-		"stdint.h": "c"
+		"stdint.h": "c",
+		"stdio.h": "c",
+		"stdlib.h": "c",
+		"mlx.h": "c",
+		"__mutex_base": "c",
+		"memory": "c"
 	}
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gimartin <gimartin@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ddelladi <ddelladi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/26 14:35:11 by gimartin          #+#    #+#             */
-/*   Updated: 2022/08/26 14:57:00 by gimartin         ###   ########.fr       */
+/*   Updated: 2022/08/26 18:35:40 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,12 @@ void	read_file(char *file, t_rules *rules)
 	if (fd < 0)
 		die("Error opening file");
 	take_rules(fd, rules);
-	map_checks(file, fd, rules);
+	map_save(file, fd, rules);
+	close(fd);
+	rules->map.block_width = rules->mlx.win_width
+		/ (rules->map.map_height_len[0] - 1);
+	map_checks(rules);
+	//print_map(rules->map.map);
 }
 
 int	main(int argc, char **argv)
@@ -63,14 +68,14 @@ int	main(int argc, char **argv)
 		die("Usage: ./cub3d [.cub file]");
 	init_rules(&rules);
 	read_file(argv[1], &rules);
+	init_window(&rules);
+	add_events(&rules);
+	minimap(&rules);
+	mlx_loop_hook(rules.mlx.mlx, loop_events, &rules);
+	mlx_loop(rules.mlx.mlx);
 	return (0);
 }
 
 /*
-
-CHECKS:
-
-- la mappa deve essere circondata da 1
-- deve esserci la posizione del giocatore e deve essere NSWE
 
 */

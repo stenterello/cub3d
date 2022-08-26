@@ -1,19 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   checks.c                                           :+:      :+:    :+:   */
+/*   map_save.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gimartin <gimartin@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ddelladi <ddelladi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/26 14:39:54 by gimartin          #+#    #+#             */
-/*   Updated: 2022/08/26 15:00:30 by gimartin         ###   ########.fr       */
+/*   Updated: 2022/08/26 18:17:16 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void	copy_map_checks(int i, t_rules *rules, char *tmp, int fd)
+void	copy_map_save(int i, t_rules *rules, char *tmp, int fd)
 {
+	int	j;
+
 	while (i++ < rules->line_offset)
 	{
 		free(tmp);
@@ -22,36 +24,41 @@ void	copy_map_checks(int i, t_rules *rules, char *tmp, int fd)
 	i = 0;
 	while (tmp)
 	{
-		ft_strlcpy(rules->map[i++], tmp, ft_strlen(tmp) + 1);
+		j = ft_strlen(tmp);
+		ft_strlcpy(rules->map.map[i], tmp, j + 1);
+		while (j < rules->map.map_height_len[0])
+			rules->map.map[i][j++] = ' ';
+		rules->map.map[i][j++] = '\0';
+		i++;
 		free(tmp);
 		tmp = get_next_line(fd);
 	}
-	print_map(rules->map);
 }
 
-void	map_checks(char *file, int fd, t_rules *rules)
+void	map_save(char *file, int fd, t_rules *rules)
 {
 	char	*tmp;
-	int		measures[2];
 	int		i;
 
-	ft_bzero(&measures, 8);
-	get_measures(fd, measures);
-	rules->map = malloc(sizeof(char *) * (measures[1] + 1));
-	if (!rules->map)
+	ft_bzero(rules->map.map_height_len, 8);
+	get_measures(fd, rules->map.map_height_len);
+	rules->map.map = malloc(sizeof(char *)
+			* (rules->map.map_height_len[1] + 1));
+	if (!rules->map.map)
 		die("Malloc error");
 	i = 0;
-	while (i < measures[1])
+	while (i < rules->map.map_height_len[1])
 	{
-		rules->map[i] = malloc(sizeof(char) * (measures[0] + 1));
-		if (!rules->map[i++])
+		rules->map.map[i] = malloc(sizeof(char)
+				* (rules->map.map_height_len[0] + 1));
+		if (!rules->map.map[i++])
 			die("Malloc error");
 	}
-	rules->map[i] = NULL;
+	rules->map.map[i] = NULL;
 	fd = open(file, O_RDONLY);
 	if (fd < 0)
 		die("Error opening file");
 	i = 0;
 	tmp = get_next_line(fd);
-	copy_map_checks(i, rules, tmp, fd);
+	copy_map_save(i, rules, tmp, fd);
 }

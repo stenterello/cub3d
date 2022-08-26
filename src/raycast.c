@@ -1,22 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print.c                                            :+:      :+:    :+:   */
+/*   raycast.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ddelladi <ddelladi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/26 14:39:33 by gimartin          #+#    #+#             */
-/*   Updated: 2022/08/26 18:10:17 by ddelladi         ###   ########.fr       */
+/*   Created: 2022/08/26 18:28:56 by ddelladi          #+#    #+#             */
+/*   Updated: 2022/08/26 18:48:21 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void	print_map(char **map)
-{
-	int	i;
-
-	i = 0;
-	while (map[i])
-		printf("%s", map[i++]);
-}
+// void	raycast(t_rules *rules, t_image *image)
+// {
+// }
