@@ -6,7 +6,7 @@
 /*   By: ddelladi <ddelladi@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/26 14:35:18 by gimartin          #+#    #+#             */
-/*   Updated: 2022/09/01 22:42:27 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/09/01 23:27:08 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,6 +99,19 @@ typedef struct s_ray
 	float		y;
 	float		xyoff[2];
 }				t_ray;
+
+typedef struct s_couples
+{
+	char	*key;
+	char	*value;
+	void	*next;
+}				t_couples;
+
+typedef struct s_xpm
+{
+	char		**encoded;
+	t_couples	couples;
+}				t_xpm;
 
 void	map_save(char *file, int fd, t_rules *rules);
 void	map_checks(t_rules *rules);

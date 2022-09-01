@@ -6,7 +6,7 @@
 /*   By: ddelladi <ddelladi@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/26 16:57:44 by ddelladi          #+#    #+#             */
-/*   Updated: 2022/09/01 22:49:32 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/09/01 23:50:23 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,162 @@ void draw_mini_player(t_rules *rules, t_image *image)
 	}
 }
 
+int	get_n_colors_and_size(char *s, int size[2])
+{
+	int	ret;
+	int	i;
+	int	i2;
+
+	i = 0;
+	i2 = 0;
+	while (i < 2)
+	{
+		size[i++] = ft_atoi(&s[i2]);
+		while (s[i2] != ' ')
+			i2++;
+		i2++;
+	}
+	ret = ft_atoi(&s[i2]);
+	return (ret);
+}
+
+char	*take_key(char *s)
+{
+	int		i;
+	int		i2;
+	char	*ret;
+
+	i = 1;
+	i2 = 0;
+	ret = malloc(sizeof(char) * 3);
+	if (!ret)
+		die("Malloc error");
+	while (s[i] != 'c' && i < 3)
+		ret[i2++] = s[i++];
+	ret[i2] = '\0';
+	return (ret);
+}
+
+char	*take_value(char *s)
+{
+	int		i;
+	int		i2;
+	char	*ret;
+
+	i = 3;
+	i2 = 0;
+	ret = malloc(sizeof(char) * 7);
+	if (!ret)
+		die("Malloc error");
+	while (s[i] && s[i] != '#')
+		i++;
+	i++;
+	while (s[i] && s[i] != '"')
+		ret[i2++] = s[i++];
+	ret[i2] = '\0';
+	return (ret);
+}
+
+t_couples	take_rgb_couples(int fd)
+{
+	char		*tmp;
+	t_couples	ret;
+	t_couples	*act;
+
+	act = &ret;
+	tmp = get_next_line(fd);
+	while (tmp && ft_strncmp("/* pixels */", tmp, 12))
+	{
+		act->key = take_key(tmp);
+		act->value = take_value(tmp);
+		act->next = NULL;
+		free(tmp);
+		tmp = get_next_line(fd);
+		if (tmp && ft_strncmp("/* pixels */", tmp, 12))
+		{
+			act->next = malloc(sizeof(t_couples));
+			if (!act->next)
+				die("Malloc error");
+			act = act->next;
+		}
+	}
+	if (tmp)
+		free(tmp);
+	return (ret);
+}
+
+char	**take_encoded_xpm(int fd, int size[2])
+{
+	char	*tmp;
+	char	**ret;
+	int		i;
+
+	ret = malloc(sizeof(char *) * (size[1] + 1));
+	if (!ret)
+		die("Malloc error");
+	i = 0;
+	tmp = get_next_line(fd);
+	while (tmp && ft_strncmp("};", tmp, 2))
+	{
+		ret[i] = malloc(sizeof(char) * (ft_strlen(tmp) - 1));
+		if (!ret[i])
+			die("Malloc error");
+		ft_strlcpy(ret[i++], &tmp[1], ft_strlen(tmp) - 3);
+		free(tmp);
+		tmp = get_next_line(fd);
+	}
+	if (tmp)
+		free(tmp);
+	return (ret);
+}
+
+void	print_xpm(t_xpm xpm)
+{
+	int			i;
+	t_couples	*act;
+
+	i = 0;
+	printf("\n");
+	while (xpm.encoded[i])
+		printf("%s\n", xpm.encoded[i++]);
+	act = &xpm.couples;
+	while (act)
+	{
+		printf("%s c %s\n", act->key, act->value);
+		act = act->next;
+	}
+	exit(0);
+}
+
+void	load_player(void)
+{
+	int		fd;
+	char	*tmp;
+	int		i;
+	int		n_colors;
+	int		size[2];
+	t_xpm	xpm;
+
+	fd = open("img/fps_player.xpm", O_RDONLY);
+	if (fd < 0)
+		printf("Error: missing fps_player.xpm file!\n");
+	i = 0;
+	while (i++ < 3)
+	{
+		tmp = get_next_line(fd);
+		free(tmp);
+	}
+	tmp = get_next_line(fd);
+	n_colors = get_n_colors_and_size(tmp, size);
+	if (n_colors > 70)
+		printf("Texture with too many colors... It could go slower\n");
+	free(tmp);
+	xpm.couples = take_rgb_couples(fd);
+	xpm.encoded = take_encoded_xpm(fd, size);
+	close(fd);
+	print_xpm(xpm);
+}
+
 void minimap(t_rules *rules)
 {
 	int i;
@@ -101,5 +257,5 @@ void minimap(t_rules *rules)
 	mlx_put_image_to_window(rules->mlx.mlx, rules->mlx.mlx_win, view.img, 0, 0);
 	mlx_put_image_to_window(rules->mlx.mlx, rules->mlx.mlx_win,
 							minimap.img, 0, 0);
-	
+	load_player();
 }
