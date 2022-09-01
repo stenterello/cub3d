@@ -13,7 +13,8 @@ SRC		=	main.c \
 			minimap.c \
 			raycast.c \
 			events.c \
-			bresenham.c
+			bresenham.c \
+			draw_view.c
 SRCS	=	${addprefix src/, $(SRC)}
 MAC_CMD	=	src/move.c
 LIN_CMD	=	src/lin_move.c
@@ -48,13 +49,12 @@ $(MLX)	:
 	$(MAKE) -C ./include/mlx
 
 clean	:
+	$(MAKE) clean -C ./include/mlx_linux
 	$(MAKE) clean -C ./include/libft
-	# $(MAKE) clean -C ./include/mlx
 	rm -f $(OBJS) $(M_CMD_O) $(L_CMD_O)
 
 fclean	:	clean
 	$(MAKE) fclean -C ./include/libft
-	# $(MAKE) fclean -C ./include/mlx
 	rm -f $(NAME)
 
 re	:	fclean all

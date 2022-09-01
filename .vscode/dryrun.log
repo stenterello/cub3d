@@ -1,5 +1,6 @@
 make --dry-run --keep-going --print-directory
 make: Entering directory '/home/davide/Documenti/Codici/42/cub3d'
-make: Nothing to be done for 'all'.
+gcc -Wall -Werror -Wextra -g -c src/draw_view.c -o src/draw_view.o -Iinclude
+gcc -Wall -Werror -Wextra -g -lmlx -framework OpenGL -framework AppKit ./include/libft/libft.a src/main.o src/map_checks.o src/map_save.o src/init.o src/map_utils.o src/print.o src/rules.o src/utils.o src/open_window.o src/minimap.o src/raycast.o src/events.o src/bresenham.o src/draw_view.o src/move.o -o cub3d -Iinclude
 make: Leaving directory '/home/davide/Documenti/Codici/42/cub3d'
  

@@ -7,7 +7,7 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # There is NO WARRANTY, to the extent permitted by law.
  
 
-# Make data base, printed on Thu Sep  1 22:03:22 2022
+# Make data base, printed on Thu Sep  1 22:43:33 2022
 
 # Variables
 
@@ -15,27 +15,27 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 <D = $(patsubst %/,%,$(dir $<))
 # automatic
 ?F = $(notdir $?)
-# makefile (from 'Makefile', line 19)
+# makefile (from 'Makefile', line 20)
 LIN_CMD = src/lin_move.c
 # environment
 DESKTOP_SESSION = cinnamon
-# makefile (from 'Makefile', line 21)
+# makefile (from 'Makefile', line 22)
 L_CMD_O = src/lin_move.o
 # default
 .SHELLFLAGS := -c
-# makefile (from 'Makefile', line 20)
+# makefile (from 'Makefile', line 21)
 M_CMD_O = src/move.o
 # environment
 XDG_SESSION_CLASS = user
 # makefile (from 'Makefile', line 4)
-SRC = main.c map_checks.c map_save.c init.c map_utils.c print.c rules.c utils.c open_window.c minimap.c raycast.c events.c bresenham.c
+SRC = main.c map_checks.c map_save.c init.c map_utils.c print.c rules.c utils.c open_window.c minimap.c raycast.c events.c bresenham.c draw_view.c
 # environment
 XDG_SESSION_TYPE = x11
 # environment
 GTK3_MODULES = xapp-gtk3-module
 # automatic
 ?D = $(patsubst %/,%,$(dir $?))
-# makefile (from 'Makefile', line 24)
+# makefile (from 'Makefile', line 25)
 OPTS = -Iinclude
 # automatic
 @D = $(patsubst %/,%,$(dir $@))
@@ -49,13 +49,13 @@ MAKE_VERSION := 4.2.1
 CURDIR := /home/davide/Documenti/Codici/42/cub3d
 # makefile
 SHELL = /bin/sh
-# makefile (from 'Makefile', line 27)
+# makefile (from 'Makefile', line 28)
 MLX_LIN = ./include/mlx_linux/libmlx.a
 # environment
 GDM_LANG = it
 # environment
 VSCODE_NLS_CONFIG = {"locale":"it","availableLanguages":{"*":"it"},"_languagePackId":"712a61babeaf7b66367c01733516ce6a.it","_translationsConfigFile":"/home/davide/.config/Code/clp/712a61babeaf7b66367c01733516ce6a.it/tcf.json","_cacheRoot":"/home/davide/.config/Code/clp/712a61babeaf7b66367c01733516ce6a.it","_resolvedLanguagePackCoreLocation":"/home/davide/.config/Code/clp/712a61babeaf7b66367c01733516ce6a.it/e4503b30fc78200f846c62cf8091b76ff5547662","_corruptedFile":"/home/davide/.config/Code/clp/712a61babeaf7b66367c01733516ce6a.it/corrupted.info","_languagePackSupport":true}
-# makefile (from 'Makefile', line 25)
+# makefile (from 'Makefile', line 26)
 MLX = ./include/mlx/libmlx.a
 # environment
 _ = /usr/share/code/code
@@ -71,7 +71,7 @@ MAKEFILE_LIST :=  Makefile
 GIO_LAUNCHED_DESKTOP_FILE = /usr/share/applications/code.desktop
 # 'override' directive
 GNUMAKEFLAGS := 
-# makefile (from 'Makefile', line 28)
+# makefile (from 'Makefile', line 29)
 LIN_OPT = -Linclude/mlx_linux -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz
 # environment
 MANDATORY_PATH = /usr/share/gconf/cinnamon.mandatory.path
@@ -79,7 +79,7 @@ MANDATORY_PATH = /usr/share/gconf/cinnamon.mandatory.path
 XDG_DATA_DIRS = /usr/share/cinnamon:/usr/share/gnome:/home/davide/.local/share/flatpak/exports/share:/var/lib/flatpak/exports/share:/usr/local/share:/usr/share
 # environment
 DBUS_SESSION_BUS_ADDRESS = unix:path=/run/user/1000/bus
-# makefile (from 'Makefile', line 22)
+# makefile (from 'Makefile', line 23)
 OBJS = ${SRCS:.c=.o}
 # environment
 LESSOPEN = | /usr/bin/lesspipe %s
@@ -119,7 +119,7 @@ GIO_LAUNCHED_DESKTOP_FILE_PID = 4262
 %F = $(notdir $%)
 # environment
 DISPLAY = :0
-# makefile (from 'Makefile', line 26)
+# makefile (from 'Makefile', line 27)
 MLX_OPT = -lmlx -framework OpenGL -framework AppKit
 # environment
 PWD = /home/davide/Documenti/Codici/42/cub3d
@@ -161,11 +161,11 @@ MAKELEVEL := 0
 MAKE = $(MAKE_COMMAND)
 # default
 MAKECMDGOALS := all
-# makefile (from 'Makefile', line 17)
+# makefile (from 'Makefile', line 18)
 SRCS = ${addprefix src/, $(SRC)}
 # environment
 SHLVL = 0
-# makefile (from 'Makefile', line 23)
+# makefile (from 'Makefile', line 24)
 LIBFT = ./include/libft/libft.a
 # makefile (from 'Makefile', line 2)
 CC = gcc
@@ -181,7 +181,7 @@ XDG_CURRENT_DESKTOP = X-Cinnamon
 LIBVIRT_DEFAULT_URI = qemu:///system
 # automatic
 %D = $(patsubst %/,%,$(dir $%))
-# makefile (from 'Makefile', line 18)
+# makefile (from 'Makefile', line 19)
 MAC_CMD = src/move.c
 # default
 MAKE_COMMAND := make
@@ -234,10 +234,9 @@ NAME = cub3d
 # environment
 LANG = C
 # environment
- 
 VSCODE_PID = 4262
 # variable set hash-table stats:
-# Load=112/1024=11%, Rehash=0, Collisions=18/153=12%
+# Load=112/1024=11%, Rehash=0, Collisions=18/159=11%
 
 # Pattern-specific Variable Values
 
@@ -245,15 +244,15 @@ VSCODE_PID = 4262
 
 # Directories
 
-# . (device 2049, inode 17317889): 11 files, no impossibilities.
-# src (device 2049, inode 17317914): 28 files, no impossibilities so far.
+# . (device 2049, inode 17317889): 9 files, no impossibilities.
+# src (device 2049, inode 17317914): 30 files, no impossibilities so far.
 
 # 39 files, no impossibilities in 2 directories.
 
 # Implicit Rules
 
 %.o: %.c
-#  recipe to execute (from 'Makefile', line 36):
+#  recipe to execute (from 'Makefile', line 37):
 	$(CC) $(FLAGS) -c $< -o $@ $(OPTS)
 
 # 1 implicit rules, 0 (0.0%) terminal.
@@ -263,36 +262,33 @@ VSCODE_PID = 4262
 # Not a target:
 src/bresenham.c:
 #  Implicit rule search has been done.
-#  Last modified 2022-09-01 21:36:52.880279125
+#  Last modified 2022-09-01 22:40:31.152431189
 #  File has been updated.
 #  Successfully updated.
 
 src/open_window.o: src/open_window.c
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: 'src/open_window'
-#  Last modified 2022-09-01 21:55:37.991367334
+#  Last modified 2022-09-01 22:06:37.24493907
 #  File has been updated.
 #  Successfully updated.
-#  recipe to execute (from 'Makefile', line 36):
+#  recipe to execute (from 'Makefile', line 37):
 	$(CC) $(FLAGS) -c $< -o $@ $(OPTS)
 
 src/raycast.o: src/raycast.c
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: 'src/raycast'
-#  Last modified 2022-09-01 21:55:38.139366927
+#  Last modified 2022-09-01 22:42:19.671975734
 #  File has been updated.
 #  Successfully updated.
-#  recipe to execute (from 'Makefile', line 36):
+#  recipe to execute (from 'Makefile', line 37):
 	$(CC) $(FLAGS) -c $< -o $@ $(OPTS)
 
-src/move.o: src/move.c
-#  Implicit rule search has been done.
-#  Implicit/static pattern stem: 'src/move'
-#  Last modified 2022-09-01 21:55:38.183366806
-#  File has been updated.
-#  Successfully updated.
-#  recipe to execute (from 'Makefile', line 36):
-	$(CC) $(FLAGS) -c $< -o $@ $(OPTS)
+# Not a target:
+src/move.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
 
 all: cub3d
 #  Phony target (prerequisite of .PHONY).
@@ -300,22 +296,31 @@ all: cub3d
 #  Implicit rule search has not been done.
 #  File does not exist.
 #  File has been updated.
-#  Successfully updated.
+#  Needs to be updated (-q is set).
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/6=0%
 
-lin: include/libft/libft.a include/mlx_linux/libmlx.a src/main.o src/map_checks.o src/map_save.o src/init.o src/map_utils.o src/print.o src/rules.o src/utils.o src/open_window.o src/minimap.o src/raycast.o src/events.o src/bresenham.o src/lin_move.o
+lin: include/libft/libft.a include/mlx_linux/libmlx.a src/main.o src/map_checks.o src/map_save.o src/init.o src/map_utils.o src/print.o src/rules.o src/utils.o src/open_window.o src/minimap.o src/raycast.o src/events.o src/bresenham.o src/draw_view.o src/lin_move.o
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
-#  recipe to execute (from 'Makefile', line 39):
+#  recipe to execute (from 'Makefile', line 40):
 	$(CC) $(FLAGS) $(OBJS) $(L_CMD_O) $(LIBFT) $(MLX_LIN) $(LIN_OPT) -o $(NAME)
+
+# Not a target:
+src/draw_view.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-09-01 22:43:11.864238814
+#  File has been updated.
+#  Successfully updated.
 
 src/map_checks.o: src/map_checks.c
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: 'src/map_checks'
-#  Last modified 2022-09-01 21:55:37.507368665
+#  Last modified 2022-09-01 22:06:36.796940904
 #  File has been updated.
 #  Successfully updated.
-#  recipe to execute (from 'Makefile', line 36):
+#  recipe to execute (from 'Makefile', line 37):
 	$(CC) $(FLAGS) -c $< -o $@ $(OPTS)
 
 .PHONY: all clean fclean re
@@ -326,34 +331,36 @@ src/map_checks.o: src/map_checks.c
 src/main.o: src/main.c
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: 'src/main'
-#  Last modified 2022-09-01 21:55:37.439368852
+#  Last modified 2022-09-01 22:18:37.153941118
 #  File has been updated.
 #  Successfully updated.
-#  recipe to execute (from 'Makefile', line 36):
+#  recipe to execute (from 'Makefile', line 37):
 	$(CC) $(FLAGS) -c $< -o $@ $(OPTS)
 
-cub3d: include/libft/libft.a src/main.o src/map_checks.o src/map_save.o src/init.o src/map_utils.o src/print.o src/rules.o src/utils.o src/open_window.o src/minimap.o src/raycast.o src/events.o src/bresenham.o src/move.o
+cub3d: include/libft/libft.a src/main.o src/map_checks.o src/map_save.o src/init.o src/map_utils.o src/print.o src/rules.o src/utils.o src/open_window.o src/minimap.o src/raycast.o src/events.o src/bresenham.o src/draw_view.o src/move.o
 #  Implicit rule search has not been done.
-#  Last modified 2022-09-01 21:59:16.446662267
+#  File does not exist.
 #  File has been updated.
-#  Successfully updated.
-#  recipe to execute (from 'Makefile', line 33):
+#  Needs to be updated (-q is set).
+ 
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/6=0%
+#  recipe to execute (from 'Makefile', line 34):
 	$(CC) $(FLAGS) $(MLX_OPT) $(LIBFT) $(OBJS) $(M_CMD_O) -o $(NAME) $(OPTS)
 
 src/minimap.o: src/minimap.c
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: 'src/minimap'
-#  Last modified 2022-09-01 21:55:38.059367147
+#  Last modified 2022-09-01 22:36:39.333404055
 #  File has been updated.
 #  Successfully updated.
-#  recipe to execute (from 'Makefile', line 36):
+#  recipe to execute (from 'Makefile', line 37):
 	$(CC) $(FLAGS) -c $< -o $@ $(OPTS)
 
 # Not a target:
 Makefile:
 #  Implicit rule search has been done.
-#  Last modified 2022-09-01 22:02:46.769866699
- 
+#  Last modified 2022-09-01 22:43:29.616337039
 #  File has been updated.
 #  Successfully updated.
 
@@ -367,19 +374,19 @@ src/utils.c:
 src/utils.o: src/utils.c
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: 'src/utils'
-#  Last modified 2022-09-01 21:55:37.875367654
+#  Last modified 2022-09-01 22:06:37.184939316
 #  File has been updated.
 #  Successfully updated.
-#  recipe to execute (from 'Makefile', line 36):
+#  recipe to execute (from 'Makefile', line 37):
 	$(CC) $(FLAGS) -c $< -o $@ $(OPTS)
 
 src/rules.o: src/rules.c
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: 'src/rules'
-#  Last modified 2022-09-01 21:55:37.831367774
+#  Last modified 2022-09-01 22:06:37.132939528
 #  File has been updated.
 #  Successfully updated.
-#  recipe to execute (from 'Makefile', line 36):
+#  recipe to execute (from 'Makefile', line 37):
 	$(CC) $(FLAGS) -c $< -o $@ $(OPTS)
 
 # Not a target:
@@ -392,25 +399,18 @@ src/open_window.c:
 # Not a target:
 src/raycast.c:
 #  Implicit rule search has been done.
-#  Last modified 2022-09-01 21:46:58.473229933
+#  Last modified 2022-09-01 22:42:00.84805474
 #  File has been updated.
 #  Successfully updated.
 
 src/map_utils.o: src/map_utils.c
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: 'src/map_utils'
-#  Last modified 2022-09-01 21:55:37.723368072
+#  Last modified 2022-09-01 22:06:36.956940249
 #  File has been updated.
 #  Successfully updated.
-#  recipe to execute (from 'Makefile', line 36):
+#  recipe to execute (from 'Makefile', line 37):
 	$(CC) $(FLAGS) -c $< -o $@ $(OPTS)
-
-# Not a target:
-src/move.c:
-#  Implicit rule search has been done.
-#  Last modified 2022-09-01 21:36:52.880279125
-#  File has been updated.
-#  Successfully updated.
 
 # Not a target:
 src/lin_move.o:
@@ -422,7 +422,7 @@ include/mlx_linux/libmlx.a:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
-#  recipe to execute (from 'Makefile', line 42):
+#  recipe to execute (from 'Makefile', line 43):
 	$(MAKE) -C ./include/mlx_linux/
 
 # Not a target:
@@ -435,10 +435,10 @@ src/map_checks.c:
 src/map_save.o: src/map_save.c
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: 'src/map_save'
-#  Last modified 2022-09-01 21:55:37.559368522
+#  Last modified 2022-09-01 22:06:36.852940675
 #  File has been updated.
 #  Successfully updated.
-#  recipe to execute (from 'Makefile', line 36):
+#  recipe to execute (from 'Makefile', line 37):
 	$(CC) $(FLAGS) -c $< -o $@ $(OPTS)
 
 fclean: clean
@@ -446,7 +446,8 @@ fclean: clean
 #  Implicit rule search has not been done.
 #  File does not exist.
 #  File has not been updated.
-#  recipe to execute (from 'Makefile', line 56):
+#  recipe to execute (from 'Makefile', line 58):
+	$(MAKE) fclean -C ./include/mlx_linux
 	$(MAKE) fclean -C ./include/libft
 	# $(MAKE) fclean -C ./include/mlx
 	rm -f $(NAME)
@@ -454,27 +455,26 @@ fclean: clean
 # Not a target:
 src/main.c:
 #  Implicit rule search has been done.
-#  Last modified 2022-09-01 21:36:52.880279125
+#  Last modified 2022-09-01 22:14:47.310902263
 #  File has been updated.
 #  Successfully updated.
 
 src/events.o: src/events.c
- 
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: 'src/events'
-#  Last modified 2022-09-01 21:55:37.939367478
+#  Last modified 2022-09-01 22:25:54.208110216
 #  File has been updated.
 #  Successfully updated.
-#  recipe to execute (from 'Makefile', line 36):
+#  recipe to execute (from 'Makefile', line 37):
 	$(CC) $(FLAGS) -c $< -o $@ $(OPTS)
 
 src/init.o: src/init.c
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: 'src/init'
-#  Last modified 2022-09-01 21:55:37.639368303
+#  Last modified 2022-09-01 22:06:36.904940462
 #  File has been updated.
 #  Successfully updated.
-#  recipe to execute (from 'Makefile', line 36):
+#  recipe to execute (from 'Makefile', line 37):
 	$(CC) $(FLAGS) -c $< -o $@ $(OPTS)
 
 # Not a target:
@@ -486,25 +486,25 @@ src/init.o: src/init.c
 # Not a target:
 src/minimap.c:
 #  Implicit rule search has been done.
-#  Last modified 2022-09-01 21:36:52.880279125
+#  Last modified 2022-09-01 22:26:41.195913213
 #  File has been updated.
 #  Successfully updated.
 
 include/libft/libft.a:
 #  Implicit rule search has not been done.
-#  Last modified 2022-09-01 21:55:37.379369017
+#  Last modified 2022-09-01 22:06:36.656941477
 #  File has been updated.
 #  Successfully updated.
-#  recipe to execute (from 'Makefile', line 45):
+#  recipe to execute (from 'Makefile', line 46):
 	$(MAKE) -C ./include/libft
 
 src/print.o: src/print.c
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: 'src/print'
-#  Last modified 2022-09-01 21:55:37.775367928
+#  Last modified 2022-09-01 22:06:37.05693984
 #  File has been updated.
 #  Successfully updated.
-#  recipe to execute (from 'Makefile', line 36):
+#  recipe to execute (from 'Makefile', line 37):
 	$(CC) $(FLAGS) -c $< -o $@ $(OPTS)
 
 re: fclean all
@@ -516,10 +516,10 @@ re: fclean all
 src/bresenham.o: src/bresenham.c
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: 'src/bresenham'
-#  Last modified 2022-09-01 21:55:38.247366629
+#  Last modified 2022-09-01 22:43:14.220252137
 #  File has been updated.
 #  Successfully updated.
-#  recipe to execute (from 'Makefile', line 36):
+#  recipe to execute (from 'Makefile', line 37):
 	$(CC) $(FLAGS) -c $< -o $@ $(OPTS)
 
 clean:
@@ -527,10 +527,11 @@ clean:
 #  Implicit rule search has not been done.
 #  File does not exist.
 #  File has not been updated.
-#  recipe to execute (from 'Makefile', line 51):
+#  recipe to execute (from 'Makefile', line 52):
+	$(MAKE) clean -C ./include/mlx_linux
 	$(MAKE) clean -C ./include/libft
 	# $(MAKE) clean -C ./include/mlx
-	rm -f $(OBJS)
+	rm -f $(OBJS) $(M_CMD_O) $(L_CMD_O)
 
 # Not a target:
 src/rules.c:
@@ -546,11 +547,38 @@ src/map_utils.c:
 #  File has been updated.
 #  Successfully updated.
 
+src/draw_view.o: src/draw_view.c
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: 'src/draw_view'
+#  File does not exist.
+#  File has been updated.
+#  Needs to be updated (-q is set).
+# automatic
+# @ := src/draw_view.o
+# automatic
+# % := 
+# automatic
+# * := src/draw_view
+# automatic
+# + := src/draw_view.c
+# automatic
+# | := 
+# automatic
+# < := src/draw_view.c
+# automatic
+# ^ := src/draw_view.c
+# automatic
+# ? := src/draw_view.c
+# variable set hash-table stats:
+# Load=8/32=25%, Rehash=0, Collisions=1/16=6%
+#  recipe to execute (from 'Makefile', line 37):
+	$(CC) $(FLAGS) -c $< -o $@ $(OPTS)
+
 include/mlx/libmlx.a:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
-#  recipe to execute (from 'Makefile', line 48):
+#  recipe to execute (from 'Makefile', line 49):
 	$(MAKE) -C ./include/mlx
 
 # Not a target:
@@ -563,11 +591,10 @@ src/map_save.c:
 # Not a target:
 src/events.c:
 #  Implicit rule search has been done.
-#  Last modified 2022-09-01 21:36:52.880279125
+#  Last modified 2022-09-01 22:25:52.244118449
 #  File has been updated.
 #  Successfully updated.
 
- 
 # Not a target:
 src/init.c:
 #  Implicit rule search has been done.
@@ -583,19 +610,20 @@ src/print.c:
 #  Successfully updated.
 
 # files hash-table stats:
-# Load=42/1024=4%, Rehash=0, Collisions=8/137=6%
+# Load=43/1024=4%, Rehash=0, Collisions=8/140=6%
 # VPATH Search Paths
 
+ 
 # No 'vpath' search paths.
 
 # No general ('VPATH' variable) search path.
 
-# strcache buffers: 1 (0) / strings = 94 / storage = 1032 B / avg = 10 B
-# current buf: size = 8162 B / used = 1032 B / count = 94 / avg = 10 B
+# strcache buffers: 1 (0) / strings = 96 / storage = 1070 B / avg = 11 B
+# current buf: size = 8162 B / used = 1070 B / count = 96 / avg = 11 B
 
-# strcache performance: lookups = 152 / hit rate = 38%
+# strcache performance: lookups = 154 / hit rate = 37%
 # hash-table stats:
-# Load=94/8192=1%, Rehash=0, Collisions=2/152=1%
-# Finished Make data base on Thu Sep  1 22:03:22 2022
+# Load=96/8192=1%, Rehash=0, Collisions=2/154=1%
+# Finished Make data base on Thu Sep  1 22:43:33 2022
 
  

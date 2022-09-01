@@ -6,7 +6,7 @@
 /*   By: ddelladi <ddelladi@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/26 14:35:18 by gimartin          #+#    #+#             */
-/*   Updated: 2022/09/01 21:53:44 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/09/01 22:42:27 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ typedef struct s_map
 	char	**map;
 	int		map_height_len[2];
 	float	block_width;
+	float	mini_block_width;
 }				t_map;
 
 typedef struct s_mlx
@@ -118,9 +119,11 @@ void	take_rules(int fd, t_rules *rules);
 void	copy_rule(char *str, char **str2);
 void	insert_rule(char *str, t_rules *rules);
 void	die(char *str);
-void	raycast(t_rules *rules, t_image *image);
-void	bresenham(float xy[2], float xy2[2], unsigned int color, t_image *image);
+void	raycast(t_rules *rules, t_image *view, t_image *minimap);
+void	bresenham(float xy[2], float xy2[2], unsigned int color, t_image *minimap, t_image *view, int x, t_rules *rules);
 int		get_abs(int n);
 void	my_mlx_pixel_put(t_image *image, int x, int y, int color);
+double	final_length(float start_x, float start_y, float rxy[2]);
+void	draw_view(float xy[2], float xy2[2], t_image *view, int x, t_rules *rules);
 
 #endif

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ddelladi <ddelladi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ddelladi <ddelladi@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/26 14:35:11 by gimartin          #+#    #+#             */
-/*   Updated: 2022/09/01 19:30:37 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/09/01 22:14:47 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@ void	read_file(char *file, t_rules *rules)
 	close(fd);
 	rules->map.block_width = (rules->mlx.win_width
 		/ (rules->map.map_height_len[0] - 1));
+	rules->map.mini_block_width = rules->map.block_width / 4;
 	map_checks(rules);
 	printf("BLOCK WIDTH: %f\n", rules->map.block_width);
 	print_map(rules->map.map);

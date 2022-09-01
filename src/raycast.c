@@ -6,7 +6,7 @@
 /*   By: ddelladi <ddelladi@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/26 18:28:56 by ddelladi          #+#    #+#             */
-/*   Updated: 2022/09/01 21:46:58 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/09/01 22:42:00 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -197,16 +197,18 @@ int	times(double dir1, double dir2)
 	return (ret);
 }
 
-void	raycast(t_rules *rules, t_image *image)
+void	raycast(t_rules *rules, t_image *view, t_image *minimap)
 {
 	float	f_pts[3];
 	float	s_pts[3];
 	float	src[2];
 	double	dir1;
 	int		i;
+	int		x;
 
 	dir1 = increment_angle(rules->player.dir, 45);
 	i = 0;
+	x = 0;
 	while (i++ < 200)
 	{
 		horizontal_lines_check(dir1, rules, f_pts);
@@ -217,12 +219,13 @@ void	raycast(t_rules *rules, t_image *image)
 			|| final_length(rules->player.x, rules->player.y, f_pts)
 			< final_length(rules->player.x, rules->player.y, s_pts))
 		{
-			bresenham(src, f_pts, 0x00FFFFFF, image);
+			bresenham(src, f_pts, 0x00FFFFFF, minimap, view, x, rules);
 		}
 		else
 		{
-			bresenham(src, s_pts, 0x00FFFFFF, image);
+			bresenham(src, s_pts, 0x00FFFFFF, minimap, view, x, rules);
 		}
+		x += rules->mlx.win_width / 200;
 		dir1 = decrement_angle(dir1, 1);
 	}
 }
