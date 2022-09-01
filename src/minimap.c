@@ -6,7 +6,7 @@
 /*   By: ddelladi <ddelladi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/26 16:57:44 by ddelladi          #+#    #+#             */
-/*   Updated: 2022/08/26 19:23:33 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/09/01 18:49:21 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,6 +93,7 @@ void	minimap(t_rules *rules)
 			draw_mini_block(rules, i, j, &image);
 	}
 	draw_mini_player(rules, &image);
+	raycast(rules, &image);
 	mlx_put_image_to_window(rules->mlx.mlx, rules->mlx.mlx_win,
 		image.img, 0, 0);
 }

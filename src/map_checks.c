@@ -6,7 +6,7 @@
 /*   By: ddelladi <ddelladi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/26 15:22:38 by ddelladi          #+#    #+#             */
-/*   Updated: 2022/08/26 18:21:19 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/09/01 17:27:54 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,11 +65,11 @@ void	define_player(t_rules *rules, char c, int i, int j)
 	else if (c == 'E')
 		rules->player.dir = 2 * M_PI;
 	rules->map.map[i][j] = '0';
-	rules->player.x = ++i * rules->map.block_width
+	rules->player.x = ++j * rules->map.block_width
 		- (rules->map.block_width / 2);
-	rules->player.y = ++j * rules->map.block_width
+	rules->player.y = ++i * rules->map.block_width
 		- (rules->map.block_width / 2);
-	printf("PLAYER INFO\n");
+	printf("PLAYER.NFO\n");
 	printf("DIR: %f\n", rules->player.dir);
 	printf("X: %f\n", rules->player.x);
 	printf("Y: %f\n", rules->player.y);

@@ -6,7 +6,7 @@
 /*   By: ddelladi <ddelladi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/26 14:35:18 by gimartin          #+#    #+#             */
-/*   Updated: 2022/08/26 18:47:21 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/09/01 17:51:15 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,14 @@
 # include <stdio.h>
 # define _USE_MATH_DEFINES
 # include <math.h>
+# include <limits.h>
+# define ANGLE_UNIT 0.008727
 
 typedef struct s_player
 {
 	float	x;
 	float	y;
-	float	dir;
+	double	dir;
 }				t_player;
 
 typedef struct s_map
@@ -79,6 +81,24 @@ typedef struct s_rules
 	int			n_frames;
 }				t_rules;
 
+typedef struct s_bres_info
+{
+	int				swap;
+	double			ab[2];
+	double			d;
+	int				sq[2];
+	int				axy[2];
+	unsigned int	color;
+}				t_bres_info;
+
+typedef struct s_ray
+{
+	double		angle;
+	float		x;
+	float		y;
+	float		xyoff[2];
+}				t_ray;
+
 void	map_save(char *file, int fd, t_rules *rules);
 void	map_checks(t_rules *rules);
 void	init_rules(t_rules *rules);
@@ -98,5 +118,9 @@ void	take_rules(int fd, t_rules *rules);
 void	copy_rule(char *str, char **str2);
 void	insert_rule(char *str, t_rules *rules);
 void	die(char *str);
+void	raycast(t_rules *rules, t_image *image);
+void	bresenham(float xy[2], float xy2[2], unsigned int color, t_image *image);
+int		get_abs(int n);
+void	my_mlx_pixel_put(t_image *image, int x, int y, int color);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: ddelladi <ddelladi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/26 14:35:11 by gimartin          #+#    #+#             */
-/*   Updated: 2022/08/26 18:35:40 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/09/01 19:30:37 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,10 +54,11 @@ void	read_file(char *file, t_rules *rules)
 	take_rules(fd, rules);
 	map_save(file, fd, rules);
 	close(fd);
-	rules->map.block_width = rules->mlx.win_width
-		/ (rules->map.map_height_len[0] - 1);
+	rules->map.block_width = (rules->mlx.win_width
+		/ (rules->map.map_height_len[0] - 1));
 	map_checks(rules);
-	//print_map(rules->map.map);
+	printf("BLOCK WIDTH: %f\n", rules->map.block_width);
+	print_map(rules->map.map);
 }
 
 int	main(int argc, char **argv)

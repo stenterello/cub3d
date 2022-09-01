@@ -13,7 +13,8 @@ SRC		=	main.c \
 			open_window.c \
 			minimap.c \
 			raycast.c \
-			move.c
+			move.c \
+			bresenham.c
 SRCS	=	${addprefix src/, $(SRC)}
 OBJS	=	${SRCS:.c=.o}
 LIBFT	=	./include/libft/libft.a

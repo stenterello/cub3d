@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gimartin <gimartin@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ddelladi <ddelladi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/26 14:38:55 by gimartin          #+#    #+#             */
-/*   Updated: 2022/08/26 14:39:14 by gimartin         ###   ########.fr       */
+/*   Updated: 2022/09/01 14:08:51 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,4 +16,11 @@ void	die(char *str)
 {
 	ft_putendl_fd(str, 2);
 	exit(1);
+}
+
+int	get_abs(int n)
+{
+	if (n < 0)
+		return (-n);
+	return (n);
 }

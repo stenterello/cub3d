@@ -6,7 +6,7 @@
 /*   By: ddelladi <ddelladi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/26 18:46:17 by ddelladi          #+#    #+#             */
-/*   Updated: 2022/08/26 18:47:47 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/09/01 14:10:37 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,10 @@ int	press(int keycode, t_rules *rules)
 		rules->keys.s_pressed = 1;
 	if (keycode == 2)
 		rules->keys.d_pressed = 1;
+	if (keycode == 123)
+		rules->keys.l_pressed = 1;
+	if (keycode == 124)
+		rules->keys.r_pressed = 1;
 	return (0);
 }
 
@@ -41,5 +45,9 @@ int	release(int keycode, t_rules *rules)
 		rules->keys.s_pressed = 0;
 	if (keycode == 2)
 		rules->keys.d_pressed = 0;
+	if (keycode == 123)
+		rules->keys.l_pressed = 0;
+	if (keycode == 124)
+		rules->keys.r_pressed = 0;
 	return (0);
 }
