@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   events.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ddelladi <ddelladi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ddelladi <ddelladi@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/26 16:45:37 by ddelladi          #+#    #+#             */
-/*   Updated: 2022/09/01 17:30:08 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/09/01 22:04:59 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	mouse_exit(t_rules *rules)
 void	add_events(t_rules *rules)
 {
 	mlx_hook(rules->mlx.mlx_win, 2, 1L << 0, press, rules);
-	mlx_hook(rules->mlx.mlx_win, 3, 1L << 0, release, rules);
+	mlx_hook(rules->mlx.mlx_win, 3, 1L << 1, release, rules);
 	mlx_hook(rules->mlx.mlx_win, 17, 0, mouse_exit, rules);
 }
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycast.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ddelladi <ddelladi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ddelladi <ddelladi@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/26 18:28:56 by ddelladi          #+#    #+#             */
-/*   Updated: 2022/09/01 19:31:29 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/09/01 21:46:58 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -203,11 +203,9 @@ void	raycast(t_rules *rules, t_image *image)
 	float	s_pts[3];
 	float	src[2];
 	double	dir1;
-	double	dir2;
 	int		i;
 
 	dir1 = increment_angle(rules->player.dir, 45);
-	dir2 = decrement_angle(rules->player.dir, 45);
 	i = 0;
 	while (i++ < 200)
 	{
