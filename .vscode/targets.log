@@ -1,15 +1,13 @@
 make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 make -C ./include/libft
- 
 # GNU Make 4.2.1
 # Built for x86_64-pc-linux-gnu
 # Copyright (C) 1988-2016 Free Software Foundation, Inc.
 # License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
- 
 
-# Make data base, printed on Thu Sep  1 23:14:44 2022
+# Make data base, printed on Fri Sep  2 00:30:19 2022
 
 # Variables
 
@@ -44,7 +42,7 @@ SHELL = /bin/sh
 # environment
 GDM_LANG = it
 # environment
-VSCODE_NLS_CONFIG = {"locale":"it","availableLanguages":{"*":"it"},"_languagePackId":"712a61babeaf7b66367c01733516ce6a.it","_translationsConfigFile":"/home/davide/.config/Code/clp/712a61babeaf7b66367c01733516ce6a.it/tcf.json","_cacheRoot":"/home/davide/.config/Code/clp/712a61babeaf7b66367c01733516ce6a.it","_resolvedLanguagePackCoreLocation":"/home/davide/.config/Code/clp/712a61babeaf7b66367c01733516ce6a.it/e4503b30fc78200f846c62cf8091b76ff5547662","_corruptedFile":"/home/davide/.config/Code/clp/712a61babeaf7b66367c01733516ce6a.it/corrupted.info","_languagePackSupport":true}
+VSCODE_NLS_CONFIG = {"locale":"it","availableLanguages":{"*":"it"},"_languagePackId":"66d85f830c1ca9817eff9c3d4829c38b.it","_translationsConfigFile":"/home/davide/.config/Code/clp/66d85f830c1ca9817eff9c3d4829c38b.it/tcf.json","_cacheRoot":"/home/davide/.config/Code/clp/66d85f830c1ca9817eff9c3d4829c38b.it","_resolvedLanguagePackCoreLocation":"/home/davide/.config/Code/clp/66d85f830c1ca9817eff9c3d4829c38b.it/784b0177c56c607789f9638da7b6bf3230d47a8c","_corruptedFile":"/home/davide/.config/Code/clp/66d85f830c1ca9817eff9c3d4829c38b.it/corrupted.info","_languagePackSupport":true}
 # environment
 _ = /usr/share/code/code
 # environment
@@ -76,7 +74,7 @@ XDG_SESSION_PATH = /org/freedesktop/DisplayManager/Session0
 # default
 MAKE_HOST := x86_64-pc-linux-gnu
 # environment
-PATH = /home/davide/.local/bin:/home/davide/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games
+PATH = /home/davide/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
 # environment
 GPG_AGENT_INFO = /run/user/1000/gnupg/S.gpg-agent:0:1
 # environment
@@ -102,7 +100,7 @@ XDG_SESSION_DESKTOP = cinnamon
 # environment
 SSH_AUTH_SOCK = /tmp/ssh-KVgwY2BFGC21/agent.1393
 # environment
-GIO_LAUNCHED_DESKTOP_FILE_PID = 4262
+GIO_LAUNCHED_DESKTOP_FILE_PID = 87920
 # automatic
 %F = $(notdir $%)
 # environment
@@ -126,10 +124,9 @@ VSCODE_AMD_ENTRYPOINT = vs/workbench/api/node/extensionHostProcess
 # environment
 HOME = /home/davide
 # environment
- 
 LESSCLOSE = /usr/bin/lesspipe %s %s
 # environment
-VSCODE_CODE_CACHE_PATH = /home/davide/.config/Code/CachedData/e4503b30fc78200f846c62cf8091b76ff5547662
+VSCODE_CODE_CACHE_PATH = /home/davide/.config/Code/CachedData/784b0177c56c607789f9638da7b6bf3230d47a8c
 # environment
 LOGNAME = davide
 # environment
@@ -175,7 +172,7 @@ LANGUAGE = it
 # environment
 XDG_SEAT_PATH = /org/freedesktop/DisplayManager/Seat0
 # environment
-VSCODE_IPC_HOOK = /run/user/1000/vscode-c5f300b3-1.70.2-main.sock
+VSCODE_IPC_HOOK = /run/user/1000/vscode-c5f300b3-1.71.0-main.sock
 # makefile
 MAKEFLAGS = pqrRw
 # environment
@@ -188,6 +185,8 @@ MFLAGS = -pqrRw
 GDK_BACKEND = x11
 # automatic
 +F = $(notdir $+)
+# environment
+NO_AT_BRIDGE = 1
 # environment
 QT_ACCESSIBILITY = 1
 # environment
@@ -217,9 +216,9 @@ BONUSFLS = ft_lstnew.c ft_lstadd_front.c ft_lstsize.c ft_lstlast.c ft_lstadd_bac
 # environment
 LANG = C
 # environment
-VSCODE_PID = 4262
+VSCODE_PID = 86624
 # variable set hash-table stats:
-# Load=102/1024=10%, Rehash=0, Collisions=16/143=11%
+# Load=103/1024=10%, Rehash=0, Collisions=16/144=11%
 
 # Pattern-specific Variable Values
 
@@ -278,6 +277,7 @@ ft_isdigit.o:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
+ 
 
 all: libft.a
 #  Implicit rule search has not been done.
@@ -404,53 +404,29 @@ ft_lstnew.o:
 #  File has not been updated.
 
 bonus: ft_isalpha.o ft_isdigit.o ft_isalnum.o ft_isascii.o ft_isprint.o ft_strlen.o ft_memset.o ft_bzero.o ft_memcpy.o ft_memmove.o ft_strlcpy.o ft_strlcat.o ft_toupper.o ft_tolower.o ft_strchr.o ft_strrchr.o ft_strncmp.o ft_memchr.o ft_memcmp.o ft_strnstr.o ft_atoi.o ft_calloc.o ft_strdup.o ft_substr.o ft_strjoin.o ft_strtrim.o ft_split.o ft_itoa.o ft_strmapi.o ft_striteri.o ft_putchar_fd.o ft_putstr_fd.o ft_putnbr_fd.o ft_putendl_fd.o get_next_line.o get_next_line_utils.o ft_lstnew.o ft_lstadd_front.o ft_lstsize.o ft_lstlast.o ft_lstadd_back.o ft_lstdelone.o ft_lstclear.o ft_lstiter.o ft_lstmap.o
- 
 #  Implicit rule search has not been done.
- 
 #  Modification time never checked.
- 
 #  File has not been updated.
- 
 #  recipe to execute (from 'Makefile', line 81):
- 
 	ar rcs $(NAME) $(OBJS) $(OBJSB)
- 
 
- 
 # Not a target:
- 
 ft_putnbr_fd.o:
- 
 #  Implicit rule search has not been done.
- 
 #  Modification time never checked.
- 
 #  File has not been updated.
- 
 
- 
 fclean: clean
- 
 #  Implicit rule search has not been done.
- 
 #  Modification time never checked.
- 
 #  File has not been updated.
- 
 #  recipe to execute (from 'Makefile', line 76):
- 
 	rm -rf $(NAME)
- 
 
- 
 # Not a target:
- 
 ft_calloc.o:
- 
 #  Implicit rule search has not been done.
- 
 #  Modification time never checked.
- 
 #  File has not been updated.
 
 # Not a target:
@@ -579,6 +555,7 @@ ft_putchar_fd.o:
 #  Modification time never checked.
 #  File has not been updated.
 
+ 
 # Not a target:
 ft_isascii.o:
 #  Implicit rule search has not been done.
@@ -623,7 +600,7 @@ ft_putendl_fd.o:
 # strcache performance: lookups = 120 / hit rate = 11%
 # hash-table stats:
 # Load=106/8192=1%, Rehash=0, Collisions=2/120=2%
-# Finished Make data base on Thu Sep  1 23:14:44 2022
+# Finished Make data base on Fri Sep  2 00:30:19 2022
 
 # GNU Make 4.2.1
 # Built for x86_64-pc-linux-gnu
@@ -632,13 +609,12 @@ ft_putendl_fd.o:
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Thu Sep  1 23:14:44 2022
+# Make data base, printed on Fri Sep  2 00:30:19 2022
 
 # Variables
 
 # automatic
 <D = $(patsubst %/,%,$(dir $<))
- 
 # automatic
 ?F = $(notdir $?)
 # makefile (from 'Makefile', line 20)
@@ -680,7 +656,7 @@ MLX_LIN = ./include/mlx_linux/libmlx.a
 # environment
 GDM_LANG = it
 # environment
-VSCODE_NLS_CONFIG = {"locale":"it","availableLanguages":{"*":"it"},"_languagePackId":"712a61babeaf7b66367c01733516ce6a.it","_translationsConfigFile":"/home/davide/.config/Code/clp/712a61babeaf7b66367c01733516ce6a.it/tcf.json","_cacheRoot":"/home/davide/.config/Code/clp/712a61babeaf7b66367c01733516ce6a.it","_resolvedLanguagePackCoreLocation":"/home/davide/.config/Code/clp/712a61babeaf7b66367c01733516ce6a.it/e4503b30fc78200f846c62cf8091b76ff5547662","_corruptedFile":"/home/davide/.config/Code/clp/712a61babeaf7b66367c01733516ce6a.it/corrupted.info","_languagePackSupport":true}
+VSCODE_NLS_CONFIG = {"locale":"it","availableLanguages":{"*":"it"},"_languagePackId":"66d85f830c1ca9817eff9c3d4829c38b.it","_translationsConfigFile":"/home/davide/.config/Code/clp/66d85f830c1ca9817eff9c3d4829c38b.it/tcf.json","_cacheRoot":"/home/davide/.config/Code/clp/66d85f830c1ca9817eff9c3d4829c38b.it","_resolvedLanguagePackCoreLocation":"/home/davide/.config/Code/clp/66d85f830c1ca9817eff9c3d4829c38b.it/784b0177c56c607789f9638da7b6bf3230d47a8c","_corruptedFile":"/home/davide/.config/Code/clp/66d85f830c1ca9817eff9c3d4829c38b.it/corrupted.info","_languagePackSupport":true}
 # makefile (from 'Makefile', line 26)
 MLX = ./include/mlx/libmlx.a
 # environment
@@ -716,7 +692,7 @@ XDG_SESSION_PATH = /org/freedesktop/DisplayManager/Session0
 # default
 MAKE_HOST := x86_64-pc-linux-gnu
 # environment
-PATH = /home/davide/.local/bin:/home/davide/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games
+PATH = /home/davide/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
 # environment
 GPG_AGENT_INFO = /run/user/1000/gnupg/S.gpg-agent:0:1
 # environment
@@ -740,7 +716,7 @@ XDG_SESSION_DESKTOP = cinnamon
 # environment
 SSH_AUTH_SOCK = /tmp/ssh-KVgwY2BFGC21/agent.1393
 # environment
-GIO_LAUNCHED_DESKTOP_FILE_PID = 4262
+GIO_LAUNCHED_DESKTOP_FILE_PID = 87920
 # automatic
 %F = $(notdir $%)
 # environment
@@ -768,7 +744,7 @@ HOME = /home/davide
 # environment
 LESSCLOSE = /usr/bin/lesspipe %s %s
 # environment
-VSCODE_CODE_CACHE_PATH = /home/davide/.config/Code/CachedData/e4503b30fc78200f846c62cf8091b76ff5547662
+VSCODE_CODE_CACHE_PATH = /home/davide/.config/Code/CachedData/784b0177c56c607789f9638da7b6bf3230d47a8c
 # environment
 LOGNAME = davide
 # environment
@@ -820,7 +796,7 @@ LANGUAGE = it
 # environment
 XDG_SEAT_PATH = /org/freedesktop/DisplayManager/Seat0
 # environment
-VSCODE_IPC_HOOK = /run/user/1000/vscode-c5f300b3-1.70.2-main.sock
+VSCODE_IPC_HOOK = /run/user/1000/vscode-c5f300b3-1.71.0-main.sock
 # makefile
 MAKEFLAGS = pqrR
 # environment
@@ -833,6 +809,8 @@ MFLAGS = -pqrR
 GDK_BACKEND = x11
 # automatic
 +F = $(notdir $+)
+# environment
+NO_AT_BRIDGE = 1
 # environment
 QT_ACCESSIBILITY = 1
 # environment
@@ -847,7 +825,6 @@ LC_ALL = C
 ^F = $(notdir $^)
 # default
 SUFFIXES := 
- 
 # makefile (from 'Makefile', line 3)
 FLAGS = -Wall -Werror -Wextra -g
 # environment
@@ -859,11 +836,12 @@ NAME = cub3d
 # default
 .RECIPEPREFIX := 
 # environment
+ 
 LANG = C
 # environment
-VSCODE_PID = 4262
+VSCODE_PID = 86624
 # variable set hash-table stats:
-# Load=112/1024=11%, Rehash=0, Collisions=18/158=11%
+# Load=113/1024=11%, Rehash=0, Collisions=18/159=11%
 
 # Pattern-specific Variable Values
 
@@ -1013,7 +991,6 @@ fclean: clean
 # Not a target:
 src/events.o:
 #  Implicit rule search has not been done.
- 
 #  Modification time never checked.
 #  File has not been updated.
 
@@ -1111,6 +1088,6 @@ include/mlx/libmlx.a:
 # strcache performance: lookups = 83 / hit rate = 49%
 # hash-table stats:
 # Load=42/8192=1%, Rehash=0, Collisions=1/83=1%
-# Finished Make data base on Thu Sep  1 23:14:44 2022
+# Finished Make data base on Fri Sep  2 00:30:19 2022
 
  

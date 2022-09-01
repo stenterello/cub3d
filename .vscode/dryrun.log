@@ -1,4 +1,4 @@
-make --dry-run --keep-going --print-directory
+make --dry-run --always-make --keep-going --print-directory
 make: Entering directory '/home/davide/Documenti/Codici/42/cub3d'
 make -C ./include/libft
 make[1]: Entering directory '/home/davide/Documenti/Codici/42/cub3d/include/libft'

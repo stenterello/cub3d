@@ -6,7 +6,7 @@
 /*   By: ddelladi <ddelladi@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/26 14:35:18 by gimartin          #+#    #+#             */
-/*   Updated: 2022/09/01 23:27:08 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/09/02 00:51:44 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,13 +21,6 @@
 # include <math.h>
 # include <limits.h>
 # define ANGLE_UNIT 0.008727
-
-typedef struct s_player
-{
-	float	x;
-	float	y;
-	double	dir;
-}				t_player;
 
 typedef struct s_map
 {
@@ -64,24 +57,6 @@ typedef struct s_keys
 	int	r_pressed;
 }				t_keys;
 
-typedef struct s_rules
-{
-	t_map		map;
-	t_player	player;
-	t_mlx		mlx;
-	t_keys		keys;
-	char		*north_path;
-	char		*east_path;
-	char		*south_path;
-	char		*west_path;
-	int			floor_color[3];
-	int			ceiling_color[3];
-	int			floor;
-	int			ceiling;
-	int			line_offset;
-	int			n_frames;
-}				t_rules;
-
 typedef struct s_bres_info
 {
 	int				swap;
@@ -102,16 +77,43 @@ typedef struct s_ray
 
 typedef struct s_couples
 {
-	char	*key;
-	char	*value;
-	void	*next;
+	char			*key;
+	unsigned int	value;
+	void			*next;
 }				t_couples;
 
 typedef struct s_xpm
 {
 	char		**encoded;
 	t_couples	couples;
+	int			size[2];
 }				t_xpm;
+
+typedef struct s_player
+{
+	float	x;
+	float	y;
+	double	dir;
+	t_xpm	img;
+}				t_player;
+
+typedef struct s_rules
+{
+	t_map		map;
+	t_player	player;
+	t_mlx		mlx;
+	t_keys		keys;
+	char		*north_path;
+	char		*east_path;
+	char		*south_path;
+	char		*west_path;
+	int			floor_color[3];
+	int			ceiling_color[3];
+	int			floor;
+	int			ceiling;
+	int			line_offset;
+	int			n_frames;
+}				t_rules;
 
 void	map_save(char *file, int fd, t_rules *rules);
 void	map_checks(t_rules *rules);
