@@ -6,7 +6,7 @@
 /*   By: ddelladi <ddelladi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/26 14:35:18 by gimartin          #+#    #+#             */
-/*   Updated: 2022/09/02 18:01:09 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/09/02 19:06:19 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,6 +87,8 @@ typedef struct s_xpm
 	char		**encoded;
 	t_couples	couples;
 	int			size[2];
+	int			n_colors;
+	int			char_n;
 }				t_xpm;
 
 typedef struct s_player
@@ -110,6 +112,7 @@ typedef struct s_rules
 	char		*east_path;
 	char		*south_path;
 	char		*west_path;
+	t_xpm		north;
 	int			floor_color[3];
 	int			ceiling_color[3];
 	int			floor;
@@ -125,6 +128,7 @@ typedef struct s_bres_data
 	unsigned int	color;
 	int				x;
 	double			dir1;
+	t_xpm			texture;
 }				t_bres_data;
 
 void	map_save(char *file, int fd, t_rules *rules);
@@ -172,5 +176,6 @@ int		virtual_horizontal_colliding(int ray_x, int ray_y,
 			t_rules *rules, int dir);
 int		virtual_vertical_colliding(int ray_x, int ray_y,
 			t_rules *rules, int dir);
+t_xpm	get_texture(t_rules *rules);
 
 #endif

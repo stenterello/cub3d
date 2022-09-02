@@ -5,57 +5,62 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: ddelladi <ddelladi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/02 12:40:31 by ddelladi          #+#    #+#             */
-/*   Updated: 2022/09/02 17:21:53 by ddelladi         ###   ########.fr       */
+/*   Created: 2022/09/02 18:26:00 by ddelladi          #+#    #+#             */
+/*   Updated: 2022/09/02 19:05:12 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int	get_n_colors_and_size(char *s, int size[2])
+int	next_num(int i, char *s)
 {
-	int	ret;
-	int	i;
-	int	i2;
-
-	i = 0;
-	i2 = 1;
-	while (i < 2)
-	{
-		size[i++] = ft_atoi(&s[i2]);
-		while (s[i2] != ' ')
-			i2++;
-		i2++;
-	}
-	ret = ft_atoi(&s[i2]);
-	return (ret);
+	while (s[i] != ' ')
+		i++;
+	return (++i);
 }
 
-char	*take_key(char *s)
+void	get_size_and_colors(int fd, t_xpm *ret)
 {
 	int		i;
-	int		i2;
-	char	*ret;
+	char	*tmp;
 
+	i = 0;
+	tmp = get_next_line(fd);
+	while (tmp && i++ < 3)
+	{
+		free(tmp);
+		tmp = get_next_line(fd);
+	}
 	i = 1;
-	i2 = 0;
-	ret = malloc(sizeof(char) * 3);
-	if (!ret)
-		die("Malloc error");
-	while (s[i] != 'c' && i < 3)
-		ret[i2++] = s[i++];
-	ret[i2] = '\0';
-	return (ret);
+	ret->size[0] = ft_atoi(&tmp[i]);
+	i = next_num(i, tmp);
+	ret->size[1] = ft_atoi(&tmp[i]);
+	if (ret->size[0] != ret->size[1])
+		die("Textures must be square. Aborting");
+	i = next_num(i, tmp);
+	ret->n_colors = ft_atoi(&tmp[i]);
+	i = next_num(i, tmp);
+	ret->char_n = ft_atoi(&tmp[i]);
+	if (tmp)
+		free(tmp);
 }
 
-int	get_nbr_hex(char *str)
+int	to_color(int i, char *tmp)
+{
+	while (tmp && tmp[i] != 'c')
+		i++;
+	i += 3;
+	return (i);
+}
+
+unsigned int	get_hex_color(char *str)
 {
 	int	i;
 	int	ret;
 	int	n;
 	int	n_len;
 
-	if (!ft_strncmp("ffffff", str, 6))
+	if (!ft_strncmp("ffffff", str, 6) || !ft_strncmp("FFFFFF", str, 6))
 		return (16777215);
 	n_len = ft_strlen(str) - 1;
 	if (!str)
@@ -76,182 +81,75 @@ int	get_nbr_hex(char *str)
 	return (ret);
 }
 
-int	take_value(char *s)
+void	get_couples(int fd, t_xpm *ret)
 {
-	int		i;
-	int		i2;
-	char	*ter;
-
-	i = 3;
-	i2 = 0;
-	ter = malloc(sizeof(char) * 7);
-	if (!ter)
-		die("Malloc error");
-	while (s[i] && s[i] != '#')
-		i++;
-	i++;
-	while (s[i] && s[i] != '"')
-		ter[i2++] = s[i++];
-	ter[i2] = '\0';
-	return (get_nbr_hex(ter));
-}
-
-t_couples	take_rgb_couples(int fd)
-{
-	char		*tmp;
-	t_couples	ret;
 	t_couples	*act;
+	char		*tmp;
+	int			i;
 
-	act = &ret;
+	act = &ret->couples;
+	act->next = NULL;
 	tmp = get_next_line(fd);
 	while (tmp && ft_strncmp("/* pixels */", tmp, 12))
 	{
-		act->key = take_key(tmp);
-		act->value = take_value(tmp);
-		act->next = NULL;
+		act->key = malloc(sizeof(char) * (ret->char_n + 1));
+		if (!act->key)
+			die("Malloc error");
+		ft_strlcpy(act->key, &tmp[1], ret->char_n + 1);
+		i = ret->char_n + 1;
+		i = to_color(i, tmp);
+		act->value = get_hex_color(&tmp[i]);
 		free(tmp);
 		tmp = get_next_line(fd);
-		if (tmp && ft_strncmp("/* pixels */", tmp, 12))
+		if (tmp)
 		{
 			act->next = malloc(sizeof(t_couples));
 			if (!act->next)
 				die("Malloc error");
 			act = act->next;
+			act->next = NULL;
 		}
 	}
 	if (tmp)
 		free(tmp);
-	return (ret);
 }
 
-char	**take_encoded_xpm(int fd, int size[2])
+void	get_encoded(int fd, t_xpm *ret)
 {
-	char	*tmp;
-	char	**ret;
 	int		i;
+	char	*tmp;
 
-	ret = malloc(sizeof(char *) * (size[1] + 1));
-	if (!ret)
+	ret->encoded = malloc(sizeof(char *) * (ret->size[0] + 1));
+	if (!ret->encoded)
 		die("Malloc error");
 	i = 0;
 	tmp = get_next_line(fd);
-	while (tmp && ft_strncmp("};", tmp, 2))
+	while (tmp && i < ret->size[0])
 	{
-		ret[i] = malloc(sizeof(char) * (ft_strlen(tmp) - 1));
-		if (!ret[i])
+		ret->encoded[i] = malloc(sizeof(char) * (ret->size[0] * ret->char_n + 1));
+		if (!ret->encoded[i])
 			die("Malloc error");
-		ft_strlcpy(ret[i++], &tmp[1], ft_strlen(tmp) - 3);
+		ft_strlcpy(ret->encoded[i], &tmp[1], ft_strlen(tmp) - 3);
+		printf("%s\n", ret->encoded[i++]);
 		free(tmp);
 		tmp = get_next_line(fd);
 	}
 	if (tmp)
 		free(tmp);
-	return (ret);
+	ret->encoded[i] = NULL;
 }
 
-void	print_xpm(t_xpm xpm)
-{
-	int			i;
-	t_couples	*act;
-
-	i = 0;
-	printf("\n");
-	while (xpm.encoded[i])
-		printf("%s\n", xpm.encoded[i++]);
-	act = &xpm.couples;
-	while (act)
-	{
-		printf("%s c %d\n", act->key, act->value);
-		act = act->next;
-	}
-	exit(0);
-}
-
-t_xpm	load_player(void)
+t_xpm	get_texture(t_rules *rules)
 {
 	int		fd;
-	char	*tmp;
-	int		i;
-	int		n_colors;
-	t_xpm	xpm;
+	t_xpm	ret;
 
-	fd = open("img/fps_player.xpm", O_RDONLY);
+	fd = open(rules->north_path, O_RDONLY);
 	if (fd < 0)
-		printf("Error: missing fps_player.xpm file!\n");
-	i = 0;
-	while (i++ < 3)
-	{
-		tmp = get_next_line(fd);
-		free(tmp);
-	}
-	tmp = get_next_line(fd);
-	n_colors = get_n_colors_and_size(tmp, xpm.size);
-	if (n_colors > 70)
-		printf("Texture with too many colors... It could go slower\n");
-	free(tmp);
-	xpm.couples = take_rgb_couples(fd);
-	xpm.encoded = take_encoded_xpm(fd, xpm.size);
+		die("Can't read texture file. Aborting");
+	get_size_and_colors(fd, &ret);
+	get_couples(fd, &ret);
+	get_encoded(fd, &ret);
 	close(fd);
-	return (xpm);
-}
-
-t_couples	*get_pair(char *encoded, t_xpm xpm)
-{
-	t_couples	*act;
-
-	act = &xpm.couples;
-	while (act)
-	{
-		if (act->key[1] == ' ' && !ft_strncmp(act->key, encoded, 1))
-			return (act);
-		else if (!ft_strncmp(act->key, encoded, 2))
-			return (act);
-		act = act->next;
-	}
-	return (NULL);
-}
-
-int	get_xpm_color(char *encoded, t_xpm xpm)
-{
-	t_couples		*match;
-
-	match = get_pair(encoded, xpm);
-	if (!match)
-		return (200);
-	if (match->value == 0)
-		return (100);
-	return ((int)match->value);
-}
-
-void	draw_player(t_xpm xpm, t_rules *rules)
-{
-	t_image	*pl;
-	int		start_x;
-	int		start_y;
-	int		end_x;
-	int		end_y;
-	int		b_y;
-
-	pl = mlx_new_image(rules->mlx.mlx, xpm.size[0], xpm.size[1]);
-	pl->addr = mlx_get_data_addr(&rules->mlx, &pl->bpp, &pl->line_length, &pl->endian);
-	start_x = rules->mlx.win_width / 2 - (xpm.size[0] / 2);
-	end_x = rules->mlx.win_width / 2 + (xpm.size[0] / 2);
-	start_y = rules->mlx.win_height - xpm.size[1];
-	end_y = rules->mlx.win_height;
-	b_y = start_y;
-	while (start_x < end_x)
-	{
-		start_y = b_y;
-		while (start_y < end_y)
-		{
-			if (get_xpm_color(&xpm.encoded[start_y % xpm.size[1]][start_x % xpm.size[0]], xpm) != -1)
-			{
-						easy_pxl(pl, start_x, start_y, get_xpm_color(&xpm.encoded[start_y % xpm.size[1]][start_x % xpm.size[0]], xpm));
-						printf("%x\n", get_xpm_color(&xpm.encoded[start_y % xpm.size[1]][start_x % xpm.size[0]], xpm));
-			}
-			start_y++;
-		}
-		start_x++;
-	}
-	mlx_put_image_to_window(rules->mlx.mlx, rules->mlx.mlx_win, pl, rules->mlx.win_width / 2, rules->mlx.win_height / 2);
+	return (ret);
 }

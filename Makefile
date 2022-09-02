@@ -19,7 +19,8 @@ SRC		=	main.c \
 			draw_view.c \
 			collision.c \
 			collision2.c \
-			move2.c
+			move2.c \
+			xpm.c
 SRCS	=	${addprefix src/, $(SRC)}
 MAC_CMD	=	src/move.c
 LIN_CMD	=	src/lin_move.c

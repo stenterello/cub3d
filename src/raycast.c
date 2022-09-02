@@ -6,7 +6,7 @@
 /*   By: ddelladi <ddelladi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/02 17:56:50 by ddelladi          #+#    #+#             */
-/*   Updated: 2022/09/02 18:11:02 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/09/02 19:06:29 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,5 @@ void	raycast(t_rules *rules, t_image *view, t_image *minimap)
 	data.x = 0;
 	data.color = 0x00FFFFFF;
 	while (i++ < 725)
-	{
 		copy_ray(&data, rules, view, minimap);
-	}
 }
