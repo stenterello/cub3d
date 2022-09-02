@@ -6,7 +6,7 @@
 /*   By: ddelladi <ddelladi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/26 14:35:18 by gimartin          #+#    #+#             */
-/*   Updated: 2022/09/02 17:05:04 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/09/02 18:01:09 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,6 +118,15 @@ typedef struct s_rules
 	int			n_frames;
 }				t_rules;
 
+typedef struct s_bres_data
+{
+	float			xy[2];
+	float			xy2[2];
+	unsigned int	color;
+	int				x;
+	double			dir1;
+}				t_bres_data;
+
 void	map_save(char *file, int fd, t_rules *rules);
 void	map_checks(t_rules *rules);
 void	init_rules(t_rules *rules);
@@ -139,12 +148,29 @@ void	die(char *str);
 void	raycast(t_rules *rules, t_image *view, t_image *minimap);
 int		wall_coll(t_rules rules);
 int		colliding(t_rules *rules, float ray_cos, float ray_sin, int plus);
-void	bresenham(float xy[2], float xy2[2], unsigned int color, t_image *minimap, t_image *view, int x, t_rules *rules, double dir1);
+void	bresenham(t_bres_data data, t_image *minimap,
+			t_image *view, t_rules *rules);
 int		get_abs(int n);
-void	my_mlx_pixel_put(t_image *image, int x, int y, int color);
+void	easy_pxl(t_image *image, int x, int y, int color);
 double	final_length(float start_x, float start_y, float rxy[2]);
-void	draw_view(float xy[2], float xy2[2], t_image *view, int x, t_rules *rules, double dir1);
+void	draw_view(t_bres_data d, t_image *view, t_rules *rules);
 void	move_player(t_rules *rules, char *dir);
 double	our_modulo(double x, double y);
+void	get_next_plus(t_rules *rules, float r_cos, float r_sin, int next[2]);
+void	get_next_minus(t_rules *rules, float r_cos, float r_sin, int next[2]);
+void	get_next_c_plus(t_rules *rules, float r_cos,
+			float r_sin, int next_c[2]);
+void	get_c_minus(t_rules *rules, float r_cos, float r_sin, int next_c[2]);
+void	draw_mini_player(t_rules *rules, t_image *image);
+void	copy_game(t_rules *rules, t_image *minimap);
+double	increment_angle(double angle, int t);
+double	decrement_angle(double angle, int t);
+int		times(double dir1, double dir2);
+void	vertical_lines_check(double angle,	t_rules *rules, float ret[3]);
+void	horizontal_lines_check(double angle, t_rules *rules, float ret[3]);
+int		virtual_horizontal_colliding(int ray_x, int ray_y,
+			t_rules *rules, int dir);
+int		virtual_vertical_colliding(int ray_x, int ray_y,
+			t_rules *rules, int dir);
 
 #endif

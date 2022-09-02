@@ -7,13 +7,18 @@ SRC		=	main.c \
 			map_utils.c \
 			rules.c \
 			utils.c	\
+			utils2.c	\
 			open_window.c \
 			game.c \
+			game2.c \
 			raycast.c \
+			raycast2.c \
+			raycast3.c \
 			events.c \
 			bresenham.c \
 			draw_view.c \
 			collision.c \
+			collision2.c \
 			move2.c
 SRCS	=	${addprefix src/, $(SRC)}
 MAC_CMD	=	src/move.c

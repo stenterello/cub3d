@@ -6,7 +6,7 @@
 /*   By: ddelladi <ddelladi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/17 02:45:13 by ddelladi          #+#    #+#             */
-/*   Updated: 2022/09/02 17:05:19 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/09/02 17:29:40 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,29 +54,29 @@ void	bres_draw(t_bres_info *info, t_image *image)
 			}
 			info->d += 2 * info->ab[0];
 		}
-		my_mlx_pixel_put(image, (info->axy[0] / 4), (info->axy[1] / 4), info->color);
+		easy_pxl(image, (info->axy[0] / 4), (info->axy[1] / 4), info->color);
 	}
 }
 
-void	bresenham(float xy[2], float xy2[2], unsigned int color, t_image *minimap, t_image *view, int x, t_rules *rules, double dir1)
+void	bresenham(t_bres_data d, t_image *min, t_image *view, t_rules *rules)
 {
 	double		delta_x;
 	double		delta_y;
 	t_bres_info	info;
 
 	info.swap = 0;
-	delta_x = xy2[0] - xy[0];
-	delta_y = xy2[1] - xy[1];
+	delta_x = d.xy2[0] - d.xy[0];
+	delta_y = d.xy2[1] - d.xy[1];
 	bres_swap(&delta_x, &delta_y, &info.swap);
 	info.ab[0] = get_abs(delta_y);
 	info.ab[1] = -get_abs(delta_x);
-	info.axy[0] = xy[0];
-	info.axy[1] = xy[1];
+	info.axy[0] = d.xy[0];
+	info.axy[1] = d.xy[1];
 	info.d = 2 * info.ab[0] + info.ab[1];
 	info.sq[0] = 1;
 	info.sq[1] = 1;
-	info.color = color;
-	bres_define(info.axy, xy2, info.sq);
-	bres_draw(&info, minimap);
-	draw_view(xy, xy2, view, x, rules, dir1);
+	info.color = d.color;
+	bres_define(info.axy, d.xy2, info.sq);
+	bres_draw(&info, min);
+	draw_view(d, view, rules);
 }

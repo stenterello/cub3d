@@ -6,7 +6,7 @@
 /*   By: ddelladi <ddelladi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/02 12:40:31 by ddelladi          #+#    #+#             */
-/*   Updated: 2022/09/02 12:41:04 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/09/02 17:21:53 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -246,7 +246,7 @@ void	draw_player(t_xpm xpm, t_rules *rules)
 		{
 			if (get_xpm_color(&xpm.encoded[start_y % xpm.size[1]][start_x % xpm.size[0]], xpm) != -1)
 			{
-						my_mlx_pixel_put(pl, start_x, start_y, get_xpm_color(&xpm.encoded[start_y % xpm.size[1]][start_x % xpm.size[0]], xpm));
+						easy_pxl(pl, start_x, start_y, get_xpm_color(&xpm.encoded[start_y % xpm.size[1]][start_x % xpm.size[0]], xpm));
 						printf("%x\n", get_xpm_color(&xpm.encoded[start_y % xpm.size[1]][start_x % xpm.size[0]], xpm));
 			}
 			start_y++;

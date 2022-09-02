@@ -6,7 +6,7 @@
 /*   By: ddelladi <ddelladi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/26 14:35:11 by gimartin          #+#    #+#             */
-/*   Updated: 2022/09/02 12:45:20 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/09/02 17:53:26 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	read_file(char *file, t_rules *rules)
 	map_save(file, fd, rules);
 	close(fd);
 	rules->map.block_width = (rules->mlx.win_width
-		/ (rules->map.map_height_len[0] - 1));
+			/ (rules->map.map_height_len[0] - 1));
 	rules->map.mini_block_width = rules->map.block_width / 4;
 	map_checks(rules);
 }
