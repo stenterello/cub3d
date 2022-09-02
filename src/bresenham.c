@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   bresenham.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ddelladi <ddelladi@student.42roma.it>      +#+  +:+       +#+        */
+/*   By: ddelladi <ddelladi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/17 02:45:13 by ddelladi          #+#    #+#             */
-/*   Updated: 2022/09/01 22:40:31 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/09/02 13:26:00 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ void	bres_draw(t_bres_info *info, t_image *image)
 	}
 }
 
-void	bresenham(float xy[2], float xy2[2], unsigned int color, t_image *minimap, t_image *view, int x, t_rules *rules)
+void	bresenham(float xy[2], float xy2[2], unsigned int color, t_image *minimap, t_image *view, int x, t_rules *rules)//, double dir1)
 {
 	double		delta_x;
 	double		delta_y;
@@ -78,5 +78,5 @@ void	bresenham(float xy[2], float xy2[2], unsigned int color, t_image *minimap, 
 	info.color = color;
 	bres_define(info.axy, xy2, info.sq);
 	bres_draw(&info, minimap);
-	draw_view(xy, xy2, view, x, rules);
+	draw_view(xy, xy2, view, x, rules);//, dir1);
 }

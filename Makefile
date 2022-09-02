@@ -4,17 +4,16 @@ FLAGS	=	-Wall -Werror -Wextra -g
 SRC		=	main.c \
 			map_checks.c \
 			map_save.c \
-			init.c \
 			map_utils.c \
-			print.c \
 			rules.c \
 			utils.c	\
 			open_window.c \
-			minimap.c \
+			game.c \
 			raycast.c \
 			events.c \
 			bresenham.c \
-			draw_view.c
+			draw_view.c \
+			collision.c
 SRCS	=	${addprefix src/, $(SRC)}
 MAC_CMD	=	src/move.c
 LIN_CMD	=	src/lin_move.c
@@ -49,7 +48,7 @@ $(MLX)	:
 	$(MAKE) -C ./include/mlx
 
 clean	:
-	$(MAKE) clean -C ./include/mlx_linux
+#$(MAKE) clean -C ./include/mlx_linux
 	$(MAKE) clean -C ./include/libft
 	rm -f $(OBJS) $(M_CMD_O) $(L_CMD_O)
 

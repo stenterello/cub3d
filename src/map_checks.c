@@ -6,7 +6,7 @@
 /*   By: ddelladi <ddelladi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/26 15:22:38 by ddelladi          #+#    #+#             */
-/*   Updated: 2022/09/01 17:27:54 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/09/02 13:11:01 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,12 @@ void	define_player(t_rules *rules, char c, int i, int j)
 		- (rules->map.block_width / 2);
 	rules->player.y = ++i * rules->map.block_width
 		- (rules->map.block_width / 2);
+	rules->player.d_x = cos(rules->player.dir) * 5;
+	if (rules->player.dir == (double)M_PI)
+		rules->player.d_y = 0;
+	else
+		rules->player.d_y = -sin(rules->player.dir) * 5;
+	rules->player.speed = 0.5;
 	printf("PLAYER.NFO\n");
 	printf("DIR: %f\n", rules->player.dir);
 	printf("X: %f\n", rules->player.x);

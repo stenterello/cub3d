@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ddelladi <ddelladi@student.42roma.it>      +#+  +:+       +#+        */
+/*   By: ddelladi <ddelladi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/26 14:35:18 by gimartin          #+#    #+#             */
-/*   Updated: 2022/09/02 00:51:44 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/09/02 13:42:14 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 # define _USE_MATH_DEFINES
 # include <math.h>
 # include <limits.h>
-# define ANGLE_UNIT 0.008727
+# define ANGLE_UNIT 0.0033
 
 typedef struct s_map
 {
@@ -93,7 +93,10 @@ typedef struct s_player
 {
 	float	x;
 	float	y;
+	double	d_x;
+	double	d_y;
 	double	dir;
+	float	speed;
 	t_xpm	img;
 }				t_player;
 
@@ -123,22 +126,22 @@ void	add_events(t_rules *rules);
 int		loop_events(t_rules *rules);
 int		press(int keycode, t_rules *rules);
 int		release(int keycode, t_rules *rules);
-void	minimap(t_rules *rules);
+void	game(t_rules *rules);
 int		path_start(char *str);
 int		take_rgb(char *str, int rgb[3]);
 void	read_file(char *file, t_rules *rules);
 void	get_measures(int fd, int hl[2]);
-void	print_map(char **map);
 int		rules_completed(t_rules *rules);
 void	take_rules(int fd, t_rules *rules);
 void	copy_rule(char *str, char **str2);
 void	insert_rule(char *str, t_rules *rules);
 void	die(char *str);
 void	raycast(t_rules *rules, t_image *view, t_image *minimap);
-void	bresenham(float xy[2], float xy2[2], unsigned int color, t_image *minimap, t_image *view, int x, t_rules *rules);
+int		wall_coll(t_rules rules, float x, float y);
+void	bresenham(float xy[2], float xy2[2], unsigned int color, t_image *minimap, t_image *view, int x, t_rules *rules);//), double dir1);
 int		get_abs(int n);
 void	my_mlx_pixel_put(t_image *image, int x, int y, int color);
 double	final_length(float start_x, float start_y, float rxy[2]);
-void	draw_view(float xy[2], float xy2[2], t_image *view, int x, t_rules *rules);
+void	draw_view(float xy[2], float xy2[2], t_image *view, int x, t_rules *rules);//), double dir1);
 
 #endif

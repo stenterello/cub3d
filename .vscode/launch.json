@@ -5,7 +5,7 @@
 	"version": "0.2.0",
 	"configurations": [
 		{
-			"name": "(gdb) Launch",
+			"name": "(lldb) Launch",
 			"type": "cppdbg",
 			"request": "launch",
 			"program": "${workspaceFolder}/cub3d",
@@ -14,7 +14,7 @@
 			"cwd": "${workspaceFolder}",
 			"environment": [],
 			"externalConsole": false,
-			"MIMode": "gdb",
+			"MIMode": "lldb",
 			// "justMyCode": true,
 			// "setupCommands": [
 			// 	{
@@ -33,7 +33,7 @@
 			// 	}
 			// ],
 			"preLaunchTask": "C/C++: gcc compila il file attivo",
-			"miDebuggerPath": "/usr/bin/gdb"
+			//"miDebuggerPath": "/usr/bin/gdb"
 		}
 	]
 }
