@@ -6,7 +6,7 @@
 /*   By: ddelladi <ddelladi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/26 18:28:56 by ddelladi          #+#    #+#             */
-/*   Updated: 2022/09/02 13:47:45 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/09/02 17:05:24 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ static int	define_hor_ray_and_offset(t_rules *rules, t_ray *ray,
 	if (ray->angle < M_PI)
 	{
 		ray->y = xy[1] - (rules->map.block_width - (rules->map.block_width
-					- ((int)xy[1] % (int)rules->map.block_width)));
+					- our_modulo(xy[1], rules->map.block_width)));
 		ray->x = (xy[1] - ray->y) * a_tan + xy[0];
 		ray->xyoff[1] = -rules->map.block_width;
 		ray->xyoff[0] = -ray->xyoff[1] * a_tan;
@@ -71,7 +71,7 @@ static int	define_hor_ray_and_offset(t_rules *rules, t_ray *ray,
 	}
 	else
 	{
-		ray->y = xy[1] + (rules->map.block_width - ((int)xy[1] % (int)rules->map.block_width));
+		ray->y = xy[1] + (rules->map.block_width - our_modulo(xy[1], rules->map.block_width));
 		ray->x = (xy[1] - ray->y) * a_tan + xy[0];
 		ray->xyoff[1] = rules->map.block_width;
 		ray->xyoff[0] = -ray->xyoff[1] * a_tan;
@@ -105,7 +105,7 @@ static int	define_ver_ray_and_offset(t_rules *rules, t_ray *ray,
 {
 	if (ray->angle < M_PI / 2 || ray->angle > 3 * M_PI / 2)
 	{
-		ray->x = xy[0] + (rules->map.block_width - ((int)xy[0] % (int)rules->map.block_width));
+		ray->x = xy[0] + (rules->map.block_width - our_modulo(xy[0], rules->map.block_width));
 		ray->y = xy[1] - (xy[0] - ray->x) * n_tan;
 		ray->xyoff[0] = rules->map.block_width;
 		ray->xyoff[1] = ray->xyoff[0] * n_tan;
@@ -113,7 +113,7 @@ static int	define_ver_ray_and_offset(t_rules *rules, t_ray *ray,
 	}
 	else if (ray->angle >= M_PI / 2 && ray->angle <= 3 * M_PI / 2)
 	{
-		ray->x = xy[0] - ((int)xy[0] % (int)rules->map.block_width);
+		ray->x = xy[0] - our_modulo(xy[0], rules->map.block_width);
 		ray->y = xy[1] - (xy[0] - ray->x) * n_tan;
 		ray->xyoff[0] = -rules->map.block_width;
 		ray->xyoff[1] = ray->xyoff[0] * n_tan;
@@ -206,10 +206,10 @@ void	raycast(t_rules *rules, t_image *view, t_image *minimap)
 	int		i;
 	int		x;
 
-	dir1 = increment_angle(rules->player.dir, 200);
+	dir1 = increment_angle(rules->player.dir, 350);
 	i = 0;
 	x = 0;
-	while (i++ < 400)
+	while (i++ < 725)
 	{
 		horizontal_lines_check(dir1, rules, f_pts);
 		vertical_lines_check(dir1, rules, s_pts);
@@ -219,13 +219,13 @@ void	raycast(t_rules *rules, t_image *view, t_image *minimap)
 			|| final_length(rules->player.x, rules->player.y, f_pts)
 			< final_length(rules->player.x, rules->player.y, s_pts))
 		{
-			bresenham(src, f_pts, 0x00FFFFFF, minimap, view, x, rules);//, dir1);
+			bresenham(src, f_pts, 0x00FFFFFF, minimap, view, x, rules, dir1);
 		}
 		else
 		{
-			bresenham(src, s_pts, 0x00FFFFFF, minimap, view, x, rules);//, dir1);
+			bresenham(src, s_pts, 0x00FFFFFF, minimap, view, x, rules, dir1);
 		}
-		x += (rules->mlx.win_width / 400 + 1);
+		x += (rules->mlx.win_width / 725 + 1);
 		dir1 = decrement_angle(dir1, 1);
 	}
 }

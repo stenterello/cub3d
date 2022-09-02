@@ -6,7 +6,7 @@
 /*   By: ddelladi <ddelladi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/26 14:35:18 by gimartin          #+#    #+#             */
-/*   Updated: 2022/09/02 13:42:14 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/09/02 17:05:04 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 # define _USE_MATH_DEFINES
 # include <math.h>
 # include <limits.h>
-# define ANGLE_UNIT 0.0033
+# define ANGLE_UNIT 0.00174
 
 typedef struct s_map
 {
@@ -137,11 +137,14 @@ void	copy_rule(char *str, char **str2);
 void	insert_rule(char *str, t_rules *rules);
 void	die(char *str);
 void	raycast(t_rules *rules, t_image *view, t_image *minimap);
-int		wall_coll(t_rules rules, float x, float y);
-void	bresenham(float xy[2], float xy2[2], unsigned int color, t_image *minimap, t_image *view, int x, t_rules *rules);//), double dir1);
+int		wall_coll(t_rules rules);
+int		colliding(t_rules *rules, float ray_cos, float ray_sin, int plus);
+void	bresenham(float xy[2], float xy2[2], unsigned int color, t_image *minimap, t_image *view, int x, t_rules *rules, double dir1);
 int		get_abs(int n);
 void	my_mlx_pixel_put(t_image *image, int x, int y, int color);
 double	final_length(float start_x, float start_y, float rxy[2]);
-void	draw_view(float xy[2], float xy2[2], t_image *view, int x, t_rules *rules);//), double dir1);
+void	draw_view(float xy[2], float xy2[2], t_image *view, int x, t_rules *rules, double dir1);
+void	move_player(t_rules *rules, char *dir);
+double	our_modulo(double x, double y);
 
 #endif

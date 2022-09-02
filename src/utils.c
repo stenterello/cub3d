@@ -6,7 +6,7 @@
 /*   By: ddelladi <ddelladi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/26 14:38:55 by gimartin          #+#    #+#             */
-/*   Updated: 2022/09/02 12:42:39 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/09/02 16:09:06 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,4 +76,13 @@ void	init_rules(t_rules *rules)
 	rules->keys.l_pressed = 0;
 	rules->keys.r_pressed = 0;
 	rules->n_frames = 0;
+}
+
+double	our_modulo(double x, double y)
+{
+	while (x >= y)
+	{
+		x -= y;
+	}
+	return (x);
 }
