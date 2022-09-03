@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   xpm.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ddelladi <ddelladi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ddelladi <ddelladi@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/02 18:26:00 by ddelladi          #+#    #+#             */
-/*   Updated: 2022/09/02 19:05:12 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/09/02 22:12:01 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,16 +53,29 @@ int	to_color(int i, char *tmp)
 	return (i);
 }
 
-unsigned int	get_hex_color(char *str)
+int	ft_hexlen(char *str)
 {
 	int	i;
-	int	ret;
-	int	n;
-	int	n_len;
 
+	i = 0;
+	while (ft_isdigit(str[i]) || ft_strchr("ABCDEF", str[i]))
+		i++;
+	return (i);
+}
+
+unsigned int	get_hex_color(char *str)
+{
+	int		i;
+	int		ret;
+	int		n;
+	int		n_len;
+	char	base[16];
+
+	ft_strlcpy(base, "0123456789ABCDEF", 16);
+	base[15] = 'F';
 	if (!ft_strncmp("ffffff", str, 6) || !ft_strncmp("FFFFFF", str, 6))
 		return (16777215);
-	n_len = ft_strlen(str) - 1;
+	n_len = ft_hexlen(str) - 1;
 	if (!str)
 		return (0x0);
 	i = 0;
@@ -101,7 +114,7 @@ void	get_couples(int fd, t_xpm *ret)
 		act->value = get_hex_color(&tmp[i]);
 		free(tmp);
 		tmp = get_next_line(fd);
-		if (tmp)
+		if (tmp && ft_strncmp("/* pixels */", tmp, 12))
 		{
 			act->next = malloc(sizeof(t_couples));
 			if (!act->next)

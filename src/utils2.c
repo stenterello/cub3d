@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils2.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ddelladi <ddelladi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ddelladi <ddelladi@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/02 17:08:38 by ddelladi          #+#    #+#             */
-/*   Updated: 2022/09/02 17:09:43 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/09/03 19:01:21 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 double	our_modulo(double x, double y)
 {
-	while (x >= y)
+	while (x >= y && y != 0)
 	{
 		x -= y;
 	}
