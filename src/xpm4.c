@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   xpm4.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gimartin <gimartin@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ddelladi <ddelladi@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/05 10:55:47 by gimartin          #+#    #+#             */
-/*   Updated: 2022/09/05 11:10:02 by gimartin         ###   ########.fr       */
+/*   Updated: 2022/09/05 21:16:49 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,7 +95,7 @@ void	draw_player(t_xpm xpm, t_rules *rules)
 	int		s_e[4];
 	int		b_y;
 
-	pl = mlx_new_image(rules->mlx.mlx, xpm.size[0], xpm.size[1]);
+	pl->img = mlx_new_image(rules->mlx.mlx, xpm.size[0], xpm.size[1]);
 	pl->addr = mlx_get_data_addr(&rules->mlx, &pl->bpp, &pl->line_length,
 			&pl->endian);
 	s_e[0] = rules->mlx.win_width / 2 - (xpm.size[0] / 2);

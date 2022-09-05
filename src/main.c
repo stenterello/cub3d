@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gimartin <gimartin@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ddelladi <ddelladi@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/26 14:35:11 by gimartin          #+#    #+#             */
-/*   Updated: 2022/09/05 12:51:05 by gimartin         ###   ########.fr       */
+/*   Updated: 2022/09/05 22:45:47 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,11 +35,17 @@ int	main(int argc, char **argv)
 	if (argc != 2)
 		die("Usage: ./cub3d [.cub file]");
 	init_rules(&rules);
-	read_file(argv[1], &rules);
 	init_window(&rules);
+	read_file(argv[1], &rules);
 	add_events(&rules);
 	game(&rules);
 	mlx_loop_hook(rules.mlx.mlx, loop_events, &rules);
 	mlx_loop(rules.mlx.mlx);
 	return (0);
 }
+
+/*
+
+CAMBIARE LE FUNZIONI DRAW_CEILING E DRAW_FLOOR PER STAMPARE EFFETTIVAMENTE IL COLORE CONTENUTO NEL FILE DELLA MAPPA
+
+*/

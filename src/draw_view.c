@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_view.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ddelladi <ddelladi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ddelladi <ddelladi@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/01 22:28:36 by ddelladi          #+#    #+#             */
-/*   Updated: 2022/09/05 18:13:03 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/09/05 22:41:00 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ unsigned int	get_color(t_image *tex, int x, int y, t_rules *rules)
 	{
 		return (*(unsigned int *)(tex->addr + (4 * (tex->width * y + x))));
 	}
-	return (0);
+	return (0x0);
 }
 
 t_image	*choose_texture(t_rules *rules, float xy[2])
@@ -58,47 +58,32 @@ t_image	*choose_texture(t_rules *rules, float xy[2])
 		&& rules->player.dir >= M_PI / 2 && rules->player.dir <= 3 * M_PI / 2)
 		return (rules->west);
 	else if (!our_modulo(xy[1], rules->map.block_width)
-		&& rules->player.dir < M_PI && rules->player.dir > 0)
+		&& rules->player.dir < M_PI && rules->player.dir >= 0)
 		return (rules->north);
 	else if (!our_modulo(xy[1], rules->map.block_width)
-		&& rules->player.dir >= M_PI && rules->player.dir <= 3 * M_PI / 2)
+		&& rules->player.dir >= M_PI && rules->player.dir <= 2 * M_PI)
 		return (rules->south);
-	return (rules->north);
+	return (NULL);
 }
 
 void	draw_walls(t_bres_data d, double var[3], t_rules *rules, t_image *view, double l_h, t_image *tex)
 {
 	double			off;
-	int				y2;
-	int				y3;
 
 	off = var[0];
-	y2 = 0;
-	y3 = 0;
 	while (d.x < var[2])
 	{
 		var[0] = rules->mlx.win_height / 2 - l_h / 2;
 		if (var[0] < 0)
-		{
-			y3 = -var[0];
 			var[0] = 0;
-		}
 		while (var[0] < var[1])
 		{
 			if (!our_modulo(d.xy2[0], rules->map.block_width))
-				easy_pxl(view, d.x, var[0], get_color(tex, our_modulo(d.xy2[1], rules->map.block_width), y2 / tex->height, rules));
+				easy_pxl(view, d.x, var[0], get_color(tex, our_modulo(d.xy2[1], rules->map.block_width), (var[0] - off) * tex->width / l_h, rules));
 			else
-				easy_pxl(view, d.x, var[0], get_color(tex, our_modulo(d.xy2[0], rules->map.block_width), y2 / tex->height, rules));
+				easy_pxl(view, d.x, var[0], get_color(tex, our_modulo(d.xy2[0], rules->map.block_width), (var[0] - off) * tex->width / l_h, rules));
 			var[0]++;
-			y3++;
-			if (y3 >= off)
-			{
-				y2++;
-				y3 = 0;
-			}
 		}
-		y2 = 0;
-		y3 = 0;
 		d.x++;
 	}
 	rules->x_counter++;
