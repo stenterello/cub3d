@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gimartin <gimartin@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ddelladi <ddelladi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/26 14:35:18 by gimartin          #+#    #+#             */
-/*   Updated: 2022/09/05 12:54:36 by gimartin         ###   ########.fr       */
+/*   Updated: 2022/09/05 17:49:16 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,16 +114,13 @@ typedef struct s_rules
 	t_image		*east;
 	t_image		*south;
 	t_image		*west;
-	char		*north_path;
-	char		*east_path;
-	char		*south_path;
-	char		*west_path;
 	int			floor_color[3];
 	int			ceiling_color[3];
 	int			floor;
 	int			ceiling;
 	int			line_offset;
 	int			n_frames;
+	int			x_counter;
 }				t_rules;
 
 typedef struct s_bres_data
@@ -161,7 +158,7 @@ void			bresenham(t_bres_data data, t_image *minimap,
 int				get_abs(int n);
 void			easy_pxl(t_image *image, int x, int y, int color);
 double			final_length(float start_x, float start_y, float rxy[2]);
-void			draw_view(t_bres_data d, t_image *view, t_rules *rules);
+void			draw_view(t_bres_data d, t_image *view, t_rules *rules, t_image *tex);
 void			move_player(t_rules *rules, char *dir);
 double			our_modulo(double x, double y);
 void			get_next_plus(t_rules *rules, float r_cos,
@@ -173,7 +170,7 @@ void			get_next_c_plus(t_rules *rules, float r_cos,
 void			get_c_minus(t_rules *rules, float r_cos,
 					float r_sin, int next_c[2]);
 void			draw_mini_player(t_rules *rules, t_image *image);
-void			copy_game(t_rules *rules, t_image *minimap);
+void			minimap_2d(t_rules *rules, t_image *minimap);
 double			increment_angle(double angle, int t);
 double			decrement_angle(double angle, int t);
 int				times(double dir1, double dir2);
@@ -197,4 +194,6 @@ int				next_num(int i, char *s);
 void			get_size_and_colors(int fd, t_xpm *ret);
 unsigned int	get_hex_color(char *str);
 int				to_color(int i, char *tmp);
+t_image			*choose_texture(t_rules *rules, float xy[2]);
+
 #endif

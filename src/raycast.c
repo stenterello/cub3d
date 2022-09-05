@@ -6,7 +6,7 @@
 /*   By: ddelladi <ddelladi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/02 17:56:50 by ddelladi          #+#    #+#             */
-/*   Updated: 2022/09/02 19:06:29 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/09/05 17:48:58 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ int	times(double dir1, double dir2)
 	return (ret);
 }
 
-void	copy_ray(t_bres_data *data, t_rules *rules,
+void	calc_ray(t_bres_data *data, t_rules *rules,
 	t_image *view, t_image *minimap)
 {
 	float		f_pts[3];
@@ -76,6 +76,7 @@ void	copy_ray(t_bres_data *data, t_rules *rules,
 	}
 	data->x += (rules->mlx.win_width / 725 + 1);
 	data->dir1 = decrement_angle(data->dir1, 1);
+	rules->x_counter++;
 }
 
 void	raycast(t_rules *rules, t_image *view, t_image *minimap)
@@ -88,5 +89,6 @@ void	raycast(t_rules *rules, t_image *view, t_image *minimap)
 	data.x = 0;
 	data.color = 0x00FFFFFF;
 	while (i++ < 725)
-		copy_ray(&data, rules, view, minimap);
+		calc_ray(&data, rules, view, minimap);
+	rules->x_counter = 0;
 }

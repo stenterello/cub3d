@@ -6,7 +6,7 @@
 /*   By: ddelladi <ddelladi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/02 17:49:20 by ddelladi          #+#    #+#             */
-/*   Updated: 2022/09/02 17:52:58 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/09/05 17:33:46 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ void	draw_mini_player(t_rules *rules, t_image *image)
 	}
 }
 
-void	copy_game(t_rules *rules, t_image *minimap)
+void	minimap_2d(t_rules *rules, t_image *minimap)
 {
 	int		i;
 	int		j;

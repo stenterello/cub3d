@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rules.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gimartin <gimartin@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ddelladi <ddelladi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/26 14:36:54 by gimartin          #+#    #+#             */
-/*   Updated: 2022/09/05 13:57:13 by gimartin         ###   ########.fr       */
+/*   Updated: 2022/09/05 14:57:01 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 int	rules_completed(t_rules *rules)
 {
-	if (!rules->north_path || !rules->east_path || !rules->south_path
-		|| !rules->west_path || !rules->floor || !rules->ceiling)
+	if (!rules->north || !rules->east || !rules->south
+		|| !rules->west || !rules->floor || !rules->ceiling)
 		return (0);
 	return (1);
 }
@@ -44,7 +44,7 @@ void	copy_rule(char *str, t_image **image, t_rules *rules)
 	path = get_path(str);
 	if (*(image))
 		die("Double rule definition in .cub file");
-	*image = malloc(sizeof(t_image *));
+	*image = malloc(sizeof(t_image));
 	if (!(*image))
 		die("Malloc error");
 	*image = mlx_xpm_file_to_image(rules->mlx.mlx, path,
@@ -54,16 +54,50 @@ void	copy_rule(char *str, t_image **image, t_rules *rules)
 	free(path);
 }
 
+t_image	*get_rule(char *str, t_rules *rules)
+{
+	char	*path;
+	t_image	*ret;
+
+	path = get_path(str);
+	ret = malloc(sizeof(t_image));
+	if (!ret)
+		die("Malloc error");
+	ret->img = mlx_xpm_file_to_image(rules->mlx.mlx, path,
+			&ret->width, &ret->height);
+	ret->addr = mlx_get_data_addr(ret->img, &ret->bpp, &ret->line_length,  &ret->endian);
+	if (!ret)
+		die("Could not load textures. Aborting");
+	free(path);
+	return (ret);
+}
+
 void	insert_rule(char *str, t_rules *rules)
 {
 	if (!ft_strncmp(str, "NO", 2))
-		copy_rule(str, &rules->north, rules);
+	{
+		if (rules->north)
+			die("Double rule definition in .cub file");
+		rules->north = get_rule(str, rules);
+	}
 	else if (!ft_strncmp(str, "EA", 2))
-		copy_rule(str, &rules->east, rules);
+	{
+		if (rules->east)
+			die("Double rule definition in .cub file");
+		rules->east = get_rule(str, rules);
+	}
 	else if (!ft_strncmp(str, "SO", 2))
-		copy_rule(str, &rules->south, rules);
+	{
+		if (rules->south)
+			die("Double rule definition in .cub file");
+		rules->south = get_rule(str, rules);
+	}
 	else if (!ft_strncmp(str, "WE", 2))
-		copy_rule(str, &rules->west, rules);
+	{
+		if (rules->west)
+			die("Double rule definition in .cub file");
+		rules->west = get_rule(str, rules);
+	}
 	else if (!ft_strncmp(str, "F", 1))
 	{
 		if (rules->floor)

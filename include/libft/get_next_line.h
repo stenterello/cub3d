@@ -6,7 +6,7 @@
 /*   By: ddelladi <ddelladi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/19 17:38:01 by ddelladi          #+#    #+#             */
-/*   Updated: 2022/01/21 17:57:10 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/09/05 14:13:36 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 # include "libft.h"
 
 # ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 7
+#  define BUFFER_SIZE 100
 # endif
 
 char	*get_next_line(int fd);
