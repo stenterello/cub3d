@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rules.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gimartin <gimartin@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ddelladi <ddelladi@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/26 14:36:54 by gimartin          #+#    #+#             */
-/*   Updated: 2022/08/26 14:58:01 by gimartin         ###   ########.fr       */
+/*   Updated: 2022/09/04 13:35:20 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,9 +33,7 @@ void	take_rules(int fd, t_rules *rules)
 		tmp = get_next_line(fd);
 	}
 	if (!rules_completed(rules))
-	{
 		die("Missing rules in .cub file. Aborting");
-	}
 	free(tmp);
 }
 

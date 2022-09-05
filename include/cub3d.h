@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ddelladi <ddelladi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ddelladi <ddelladi@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/26 14:35:18 by gimartin          #+#    #+#             */
-/*   Updated: 2022/09/02 19:06:19 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/09/04 13:30:56 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -177,5 +177,6 @@ int		virtual_horizontal_colliding(int ray_x, int ray_y,
 int		virtual_vertical_colliding(int ray_x, int ray_y,
 			t_rules *rules, int dir);
 t_xpm	get_texture(t_rules *rules);
+unsigned int	get_xpm_color(t_rules *rules, float dst[2], int y, double line_height, int off);
 
 #endif

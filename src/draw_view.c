@@ -6,7 +6,7 @@
 /*   By: ddelladi <ddelladi@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/01 22:28:36 by ddelladi          #+#    #+#             */
-/*   Updated: 2022/09/03 19:22:09 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/09/04 13:30:06 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,71 +44,6 @@ t_xpm	*choose_texture(t_rules *rules)
 	t_xpm	*ret;
 	(void)rules;
 	ret = 0;
-	return (ret);
-}
-
-unsigned int	find_color(t_rules *rules, t_xpm *texture, int x, int y)
-{
-	t_couples		*act;
-	int				r_x;
-	int				r_y;
-	char			*code;
-
-	(void)rules;
-	r_x = x % texture->size[0];
-	if (r_x % 2)
-		r_x += 1;
-	if (r_x > texture->size[0] - 1)
-		r_x -= 2;
-	r_y = y % texture->size[0];
-	code = malloc(sizeof(char) * (texture->char_n + 1));
-	if (!code)
-		die("Malloc error");
-	if (r_y > texture->size[0] - 1)
-		return (0x000000FF);
-	if (r_y < 0)
-		r_y = 0;
-	ft_strlcpy(code, &texture->encoded[r_y][r_x], texture->char_n + 1);
-	act = &texture->couples;
-	while (act)
-	{
-		if (!ft_strncmp(act->key, code, texture->char_n))
-			return (act->value);
-		act = act->next;
-	}
-	return (0x0);
-}
-
-unsigned int	get_xpm_color(t_rules *rules, float dst[2], int y, double line_height, int off)
-{
-	// CAMBIARE GLI IF DI MODO CHE SCELGA LA TEXTURE CORRETTA
-	unsigned int	ret;
-	int		color_unit_x;
-
-	if (!our_modulo(dst[0], rules->map.block_width) && (rules->player.dir < M_PI / 2 || rules->player.dir > 3 * M_PI / 2))
-	{
-		color_unit_x = rules->north.size[0] * round(((int)dst[1]
-				% (int)rules->map.block_width)) / (int)rules->map.block_width;
-		ret = find_color(rules, &rules->north, color_unit_x, (y - off) * rules->north.size[0] / line_height);
-	}
-	else if (!our_modulo(dst[0], rules->map.block_width) && rules->player.dir > M_PI / 2 && rules->player.dir < 3 * M_PI / 2)
-	{
-		color_unit_x = rules->north.size[0] * round(((int)dst[1]
-				% (int)rules->map.block_width)) / (int)rules->map.block_width;
-		ret = find_color(rules, &rules->north, color_unit_x, (y - off) * rules->north.size[0] / line_height);
-	}
-	else if (!our_modulo(dst[1], rules->map.block_width) && rules->player.dir > M_PI / 2 && rules->player.dir < 3 * M_PI / 2)
-	{
-		color_unit_x = rules->north.size[0] * round(((int)dst[0]
-				% (int)rules->map.block_width)) / (int)rules->map.block_width;
-		ret = find_color(rules, &rules->north, color_unit_x, (y - off) * rules->north.size[0] / line_height);
-	}
-	else
-	{
-		color_unit_x = rules->north.size[0] * round(((int)dst[0]
-				% (int)rules->map.block_width)) / (int)rules->map.block_width;
-		ret = find_color(rules, &rules->north, color_unit_x, (y - off) * rules->north.size[0] / line_height);
-	}
 	return (ret);
 }
 
