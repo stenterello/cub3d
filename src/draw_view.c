@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_view.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ddelladi <ddelladi@student.42roma.it>      +#+  +:+       +#+        */
+/*   By: gimartin <gimartin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/01 22:28:36 by ddelladi          #+#    #+#             */
-/*   Updated: 2022/09/04 13:30:06 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/09/05 13:58:39 by gimartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,42 +39,69 @@ void	adjust_var(int var[3], t_rules *rules)
 		var[2] = rules->mlx.win_width;
 }
 
-t_xpm	*choose_texture(t_rules *rules)
+unsigned int	get_color(t_image *tex, int x, int y, t_rules *rules)
 {
-	t_xpm	*ret;
-	(void)rules;
-	ret = 0;
-	return (ret);
+	if (!(x < 0 || x > rules->mlx.win_width
+			|| y < 0 || y > rules->mlx.win_height))
+	{
+		return ((unsigned int)(tex->addr + (4 * (tex->width * y + x))));
+	}
+	return (0);
 }
 
-void	draw_view(t_bres_data d, t_image *view, t_rules *rules)
+t_image	*choose_texture(t_rules *rules)
 {
-	double	line_height;
-	double	dist;
-	int		var[3];
-	int		off;
-	unsigned int	color;
+	if (!((int)rules->player.x % (int)rules->map.block_width)
+		&& (rules->player.dir < M_PI / 2 || rules->player.dir > 3 * M_PI / 2))
+		return (rules->east);
+	else if (!((int)rules->player.x % (int)rules->map.block_width)
+		&& rules->player.dir > M_PI / 2 && rules->player.dir < 3 * M_PI / 2)
+		return (rules->west);
+	else if (!((int)rules->player.y % (int)rules->map.block_width)
+		&& rules->player.dir < M_PI && rules->player.dir > 0)
+		return (rules->north);
+	else if (!((int)rules->player.y % (int)rules->map.block_width)
+		&& rules->player.dir > M_PI && rules->player.dir <= 3 * M_PI / 2)
+		return (rules->south);
+	return (NULL);
+}
+
+void	copy_draw_view(t_bres_data d, int var[3], t_rules *rules, t_image *view)
+{
+	int				off;
+	double			l_h;
+	double			dist;
 
 	dist = phi(rules, d);
-	line_height = rules->map.block_width * rules->mlx.win_height / dist;
-	var[0] = rules->mlx.win_height / 2 - line_height / 2;
-	var[1] = line_height + var[0];
-	var[2] = d.x + (rules->mlx.win_width / 725 + 1);
+	l_h = rules->map.block_width * rules->mlx.win_height / dist;
 	off = var[0];
-	adjust_var(var, rules);
 	while (d.x < var[2])
 	{
-		var[0] = rules->mlx.win_height / 2 - line_height / 2;
+		var[0] = rules->mlx.win_height / 2 - l_h / 2;
 		if (var[0] < 0)
 			var[0] = 0;
 		else if (var[0] > rules->mlx.win_height)
 			var[0] = rules->mlx.win_height;
 		while (var[0] < var[1])
 		{
-			color = get_xpm_color(rules, d.xy2, var[0], line_height, off);
-			easy_pxl(view, d.x, var[0], color);
+			easy_pxl(view, d.x, var[0], get_color(choose_texture(rules), d.x, var[0], rules));
 			var[0]++;
 		}
 		d.x++;
 	}
+}
+
+void	draw_view(t_bres_data d, t_image *view, t_rules *rules)
+{
+	double			line_height;
+	int				var[3];
+	double			dist;
+
+	dist = phi(rules, d);
+	line_height = rules->map.block_width * rules->mlx.win_height / dist;
+	var[0] = rules->mlx.win_height / 2 - line_height / 2;
+	var[1] = line_height + var[0];
+	var[2] = d.x + (rules->mlx.win_width / 725 + 1);
+	adjust_var(var, rules);
+	copy_draw_view(d, var, rules, view);
 }

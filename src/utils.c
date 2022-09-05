@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ddelladi <ddelladi@student.42roma.it>      +#+  +:+       +#+        */
+/*   By: gimartin <gimartin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/26 14:38:55 by gimartin          #+#    #+#             */
-/*   Updated: 2022/09/03 19:25:22 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/09/05 12:58:28 by gimartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,10 +60,10 @@ int	take_rgb(char *str, int rgb[3])
 void	init_rules(t_rules *rules)
 {
 	rules->map.map = NULL;
-	rules->north_path = NULL;
-	rules->east_path = NULL;
-	rules->south_path = NULL;
-	rules->west_path = NULL;
+	rules->north = NULL;
+	rules->east = NULL;
+	rules->south = NULL;
+	rules->west = NULL;
 	rules->floor = 0;
 	rules->ceiling = 0;
 	rules->line_offset = 0;

@@ -1,9 +1,9 @@
 WE ./textures/tile.xpm
-NO ./textures/texture.xpm
+NO ./textures/tile.xpm
 
-SO ./textures/texture.xpm
+SO ./textures/tile.xpm
 
-EA ./textures/texture3.xpm
+EA ./textures/tile.xpm
 F 220, 100,0
 C 225,30,0
 11111111111111111111111111
