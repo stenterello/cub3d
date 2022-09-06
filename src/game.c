@@ -6,7 +6,7 @@
 /*   By: ddelladi <ddelladi@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/26 16:57:44 by ddelladi          #+#    #+#             */
-/*   Updated: 2022/09/05 22:45:18 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/09/06 15:53:37 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,11 @@ void	easy_pxl(t_image *image, int x, int y, int color)
 	*(unsigned int *)dst = color;
 }
 
+unsigned int	get_color_arr(unsigned char arr[3])
+{
+	return (*(unsigned int *)(unsigned char[4]){0, arr[0], arr[1], arr[2]});
+}
+
 void	draw_ceiling(t_rules *rules, t_image *view)
 {
 	int	x;
@@ -30,7 +35,7 @@ void	draw_ceiling(t_rules *rules, t_image *view)
 	{
 		y = 0;
 		while (y < rules->mlx.win_height / 2)
-			easy_pxl(view, x, y++, 0x0000FF00);
+			easy_pxl(view, x, y++, get_color_arr(rules->ceiling_color));
 	}
 }
 
@@ -44,7 +49,7 @@ void	draw_floor(t_rules *rules, t_image *view)
 	{
 		y = rules->mlx.win_height / 2 - 1;
 		while (++y < rules->mlx.win_height)
-			easy_pxl(view, x, y, 0x000000FF);
+			easy_pxl(view, x, y, get_color_arr(rules->floor_color));
 	}
 }
 

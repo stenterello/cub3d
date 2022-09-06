@@ -6,7 +6,7 @@
 /*   By: ddelladi <ddelladi@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/26 14:35:18 by gimartin          #+#    #+#             */
-/*   Updated: 2022/09/05 22:17:14 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/09/06 15:50:09 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,21 +107,21 @@ typedef struct s_player
 
 typedef struct s_rules
 {
-	t_map		map;
-	t_player	player;
-	t_mlx		mlx;
-	t_keys		keys;
-	t_image		*north;
-	t_image		*east;
-	t_image		*south;
-	t_image		*west;
-	int			floor_color[3];
-	int			ceiling_color[3];
-	int			floor;
-	int			ceiling;
-	int			line_offset;
-	int			n_frames;
-	int			x_counter;
+	t_map			map;
+	t_player		player;
+	t_mlx			mlx;
+	t_keys			keys;
+	t_image			*north;
+	t_image			*east;
+	t_image			*south;
+	t_image			*west;
+	unsigned char	floor_color[3];
+	unsigned char	ceiling_color[3];
+	int				floor;
+	int				ceiling;
+	int				line_offset;
+	int				n_frames;
+	int				x_counter;
 }				t_rules;
 
 typedef struct s_bres_data
