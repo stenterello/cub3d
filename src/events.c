@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   events.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ddelladi <ddelladi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ddelladi <ddelladi@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/26 16:45:37 by ddelladi          #+#    #+#             */
-/*   Updated: 2022/09/02 17:43:48 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/09/06 17:25:28 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,10 @@ void	update_pov(t_rules *rules)
 		rules->player.d_y = 0;
 	else
 		rules->player.d_y = -sin(rules->player.dir);
+	if (rules->keys.shift_pressed)
+		rules->player.speed = SPEED * 3;
+	else
+		rules->player.speed = SPEED;
 }
 
 int	loop_events(t_rules *rules)

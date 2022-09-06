@@ -6,7 +6,7 @@
 /*   By: ddelladi <ddelladi@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/26 14:35:18 by gimartin          #+#    #+#             */
-/*   Updated: 2022/09/06 15:58:35 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/09/06 17:24:39 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 # include <math.h>
 # include <limits.h>
 # define ANGLE_UNIT 0.00174
+# define SPEED 2
 
 typedef struct s_map
 {
@@ -57,7 +58,7 @@ typedef struct s_keys
 	int	d_pressed;
 	int	l_pressed;
 	int	r_pressed;
-	int	shift_press;
+	int	shift_pressed;
 }				t_keys;
 
 typedef struct s_bres_info
