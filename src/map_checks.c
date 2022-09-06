@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_checks.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ddelladi <ddelladi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ddelladi <ddelladi@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/26 15:22:38 by ddelladi          #+#    #+#             */
-/*   Updated: 2022/09/05 14:09:10 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/09/06 16:42:08 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,8 +118,8 @@ void	map_checks(t_rules *rules)
 		die("Map is not closed. Aborting");
 	c = find_player(rules);
 	if (!c)
-		die("There isn't a valid player in the map. Maybe some wrong \
-			characters in the map? Check it and retry. Aborting");
+		die("There isn't a valid player in the map. \n\
+		\rMaybe some wrong characters in the map? Check it and retry. Aborting");
 	else if (c == 2)
 		die("There must be only one player in the map. Aborting");
 }

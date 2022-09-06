@@ -6,7 +6,7 @@
 /*   By: ddelladi <ddelladi@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/01 22:28:36 by ddelladi          #+#    #+#             */
-/*   Updated: 2022/09/06 16:32:42 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/09/06 17:17:58 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,9 +76,9 @@ void	draw_walls(t_bres_data d, double var[3], t_rules *rules, t_image *view, dou
 		while (var[0] < var[1])
 		{
 			if (!our_modulo(d.xy2[0], rules->map.block_width))
-				easy_pxl(view, d.x, var[0], get_color(tex, our_modulo(d.xy2[1], rules->map.block_width), (var[0] - off) * tex->width / l_h, rules));
+				easy_pxl(view, d.x, var[0], get_color(tex, our_modulo(d.xy2[1], rules->map.block_width) * tex->width / rules->map.block_width, (var[0] - off) * tex->width / l_h, rules));
 			else
-				easy_pxl(view, d.x, var[0], get_color(tex, our_modulo(d.xy2[0], rules->map.block_width), (var[0] - off) * tex->width / l_h, rules));
+				easy_pxl(view, d.x, var[0], get_color(tex, our_modulo(d.xy2[0], rules->map.block_width) * tex->width / rules->map.block_width, (var[0] - off) * tex->width / l_h, rules)); //d.xy2 : rules->map.block_width = x : tex->width
 			var[0]++;
 		}
 		d.x++;
