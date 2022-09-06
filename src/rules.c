@@ -6,7 +6,7 @@
 /*   By: ddelladi <ddelladi@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/26 14:36:54 by gimartin          #+#    #+#             */
-/*   Updated: 2022/09/05 21:24:23 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/09/06 17:43:29 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,23 +35,6 @@ char	*get_path(char *str)
 		die("Malloc error");
 	ft_strlcpy(ret, &str[i], (ft_strlen(&str[i])));
 	return (ret);
-}
-
-void	copy_rule(char *str, t_image **image, t_rules *rules)
-{
-	char	*path;
-
-	path = get_path(str);
-	if (*(image))
-		die("Double rule definition in .cub file");
-	*image = malloc(sizeof(t_image));
-	if (!(*image))
-		die("Malloc error");
-	*image = mlx_xpm_file_to_image(rules->mlx.mlx, path,
-			&(*image)->width, &(*image)->height);
-	if (!(*image))
-		die("Could not load textures. Aborting");
-	free(path);
 }
 
 t_image	*get_rule(char *str, t_rules *rules)

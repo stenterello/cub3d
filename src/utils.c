@@ -6,7 +6,7 @@
 /*   By: ddelladi <ddelladi@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/26 14:38:55 by gimartin          #+#    #+#             */
-/*   Updated: 2022/09/06 16:23:44 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/09/06 17:44:34 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,16 +23,6 @@ int	get_abs(int n)
 	if (n < 0)
 		return (-n);
 	return (n);
-}
-
-int	path_start(char *str)
-{
-	int	i;
-
-	i = 2;
-	while (str[i] == ' ')
-		i++;
-	return (i);
 }
 
 int	take_rgb(char *str, unsigned char rgb[3])
@@ -79,7 +69,7 @@ void	init_rules(t_rules *rules)
 	rules->keys.d_pressed = 0;
 	rules->keys.l_pressed = 0;
 	rules->keys.r_pressed = 0;
-	rules->keys.shift_press = 0;
+	rules->keys.shift_pressed = 0;
 	rules->n_frames = 0;
 	rules->x_counter = 0;
 }

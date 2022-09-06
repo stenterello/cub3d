@@ -20,11 +20,6 @@ SRC		=	main.c \
 			collision.c \
 			collision2.c \
 			move2.c
-#xpm.c \
-#xpm2.c \
-#xpm3.c \
-#xpm4.c \
-#xpm5.c
 SRCS	=	${addprefix src/, $(SRC)}
 MAC_CMD	=	src/move.c
 LIN_CMD	=	src/lin_move.c
@@ -59,7 +54,6 @@ $(MLX)	:
 	$(MAKE) -C ./include/mlx
 
 clean	:
-#$(MAKE) clean -C ./include/mlx_linux
 	$(MAKE) clean -C ./include/libft
 	rm -f $(OBJS) $(M_CMD_O) $(L_CMD_O)
 

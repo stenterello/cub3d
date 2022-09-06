@@ -6,7 +6,7 @@
 /*   By: ddelladi <ddelladi@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/26 14:35:18 by gimartin          #+#    #+#             */
-/*   Updated: 2022/09/06 17:24:39 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/09/06 17:52:04 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,22 +79,6 @@ typedef struct s_ray
 	float		xyoff[2];
 }				t_ray;
 
-typedef struct s_couples
-{
-	char			*key;
-	unsigned int	value;
-	void			*next;
-}				t_couples;
-
-typedef struct s_xpm
-{
-	char		**encoded;
-	t_couples	couples;
-	int			size[2];
-	int			n_colors;
-	int			char_n;
-}				t_xpm;
-
 typedef struct s_player
 {
 	float	x;
@@ -103,7 +87,6 @@ typedef struct s_player
 	double	d_y;
 	double	dir;
 	float	speed;
-	t_xpm	img;
 }				t_player;
 
 typedef struct s_rules
@@ -132,7 +115,6 @@ typedef struct s_bres_data
 	unsigned int	color;
 	int				x;
 	double			dir1;
-	t_xpm			texture;
 }				t_bres_data;
 
 void			map_save(char *file, int fd, t_rules *rules);
@@ -144,7 +126,6 @@ int				loop_events(t_rules *rules);
 int				press(int keycode, t_rules *rules);
 int				release(int keycode, t_rules *rules);
 void			game(t_rules *rules);
-int				path_start(char *str);
 int				take_rgb(char *str, unsigned char rgb[3]);
 void			read_file(char *file, t_rules *rules);
 void			get_measures(int fd, int hl[2]);
@@ -152,7 +133,6 @@ int				rules_completed(t_rules *rules);
 void			take_rules(int fd, t_rules *rules);
 void			die(char *str);
 void			raycast(t_rules *rules, t_image *view, t_image *minimap);
-int				wall_coll(t_rules rules);
 int				colliding(t_rules *rules, float ray_cos,
 					float ray_sin, int plus);
 void			bresenham(t_bres_data data, t_image *minimap,
@@ -175,7 +155,6 @@ void			draw_mini_player(t_rules *rules, t_image *image);
 void			minimap_2d(t_rules *rules, t_image *minimap);
 double			increment_angle(double angle, int t);
 double			decrement_angle(double angle, int t);
-int				times(double dir1, double dir2);
 void			vertical_lines_check(double angle,
 					t_rules *rules, float ret[3]);
 void			horizontal_lines_check(double angle, t_rules *rules,
@@ -184,18 +163,6 @@ int				virtual_horizontal_colliding(int ray_x, int ray_y,
 					t_rules *rules, int dir);
 int				virtual_vertical_colliding(int ray_x, int ray_y,
 					t_rules *rules, int dir);
-t_xpm			get_texture(t_rules *rules);
-unsigned int	get_xpm_color(t_rules *rules, float dst[2], int y,
-					double line_height, int off);
-int				get_xpm_color2(char *encoded, t_xpm xpm);
-t_couples		take_rgb_couples(int fd);
-unsigned int	find_color(t_rules *rules, t_xpm *north, int c, int n);
-int				get_n_colors_and_size(char *s, int size[2]);
-char			**take_encoded_xpm(int fd, int size[2]);
-int				next_num(int i, char *s);
-void			get_size_and_colors(int fd, t_xpm *ret);
-unsigned int	get_hex_color(char *str);
-int				to_color(int i, char *tmp);
 t_image			*choose_texture(t_rules *rules, float xy[2]);
 
 #endif

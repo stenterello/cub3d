@@ -6,7 +6,7 @@
 /*   By: ddelladi <ddelladi@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/26 15:22:38 by ddelladi          #+#    #+#             */
-/*   Updated: 2022/09/06 17:23:43 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/09/06 17:54:54 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,10 +75,6 @@ void	define_player(t_rules *rules, char c, int i, int j)
 	else
 		rules->player.d_y = -sin(rules->player.dir) * 5;
 	rules->player.speed = SPEED;
-	printf("PLAYER.INFO\n");
-	printf("DIR: %f\n", rules->player.dir);
-	printf("X: %f\n", rules->player.x);
-	printf("Y: %f\n", rules->player.y);
 }
 
 int	find_player(t_rules *rules)

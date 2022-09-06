@@ -3,27 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   collision.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ddelladi <ddelladi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ddelladi <ddelladi@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/02 12:44:07 by ddelladi          #+#    #+#             */
-/*   Updated: 2022/09/02 17:28:07 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/09/06 17:43:59 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
-
-int	wall(t_rules rules, float x, float y)
-{
-	if ((int)(x / rules.map.block_width) < 0
-		|| (int)(y / rules.map.block_width) < 0
-		|| (int)(x / rules.map.block_width) > rules.map.map_height_len[0] - 1
-		|| (int)(y / rules.map.block_width) > rules.map.map_height_len[1] - 1)
-		return (1);
-	if (rules.map.map[(int)(y / rules.map.block_width)]
-		[(int)(x / rules.map.block_width)] == '1')
-		return (1);
-	return (0);
-}
 
 int	verify_collide(t_rules *rules, int next[2])
 {

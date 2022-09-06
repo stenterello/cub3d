@@ -6,7 +6,7 @@
 /*   By: ddelladi <ddelladi@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/26 18:46:17 by ddelladi          #+#    #+#             */
-/*   Updated: 2022/09/06 17:24:06 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/09/06 17:54:34 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@ int	press(int keycode, t_rules *rules)
 		mlx_destroy_window(rules->mlx.mlx, rules->mlx.mlx_win);
 		exit(0);
 	}
-	printf("keycode: %d\n", keycode);
 	if (keycode == 13)
 		rules->keys.w_pressed = 1;
 	if (keycode == 0)

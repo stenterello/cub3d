@@ -6,7 +6,7 @@
 /*   By: ddelladi <ddelladi@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/02 17:56:50 by ddelladi          #+#    #+#             */
-/*   Updated: 2022/09/05 22:40:49 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/09/06 17:47:27 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,30 +24,6 @@ double	decrement_angle(double angle, int t)
 			angle = 2 * M_PI;
 	}
 	return (angle);
-}
-
-int	times(double dir1, double dir2)
-{
-	int	ret;
-
-	ret = 0;
-	if (dir1 > dir2)
-	{
-		while (dir1 > dir2)
-		{
-			dir1 = decrement_angle(dir1, 1);
-			ret++;
-		}
-	}
-	else
-	{
-		while (dir1 < dir2)
-		{
-			dir1 = increment_angle(dir1, 1);
-			ret++;
-		}
-	}
-	return (ret);
 }
 
 void	calc_ray(t_bres_data *data, t_rules *rules,
