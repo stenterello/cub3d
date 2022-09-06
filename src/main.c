@@ -6,7 +6,7 @@
 /*   By: ddelladi <ddelladi@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/26 14:35:11 by gimartin          #+#    #+#             */
-/*   Updated: 2022/09/05 22:45:47 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/09/06 17:57:56 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,9 @@ int	main(int argc, char **argv)
 
 /*
 
-CAMBIARE LE FUNZIONI DRAW_CEILING E DRAW_FLOOR PER STAMPARE EFFETTIVAMENTE IL COLORE CONTENUTO NEL FILE DELLA MAPPA
+Quindi ci resta da risolvere:
+- togliere la minimappa
+- verificare il tutto
+- inserire le proporzioni per definire quanti raggi "sparare" e di quanti gradi diminuire il rules->player.dir in base alla larghezza dello schermo
 
 */
