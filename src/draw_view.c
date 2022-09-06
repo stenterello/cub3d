@@ -6,7 +6,7 @@
 /*   By: ddelladi <ddelladi@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/01 22:28:36 by ddelladi          #+#    #+#             */
-/*   Updated: 2022/09/05 22:41:00 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/09/06 16:32:42 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,11 +66,8 @@ t_image	*choose_texture(t_rules *rules, float xy[2])
 	return (NULL);
 }
 
-void	draw_walls(t_bres_data d, double var[3], t_rules *rules, t_image *view, double l_h, t_image *tex)
+void	draw_walls(t_bres_data d, double var[3], t_rules *rules, t_image *view, double l_h, t_image *tex, double off)
 {
-	double			off;
-
-	off = var[0];
 	while (d.x < var[2])
 	{
 		var[0] = rules->mlx.win_height / 2 - l_h / 2;
@@ -94,12 +91,14 @@ void	draw_view(t_bres_data d, t_image *view, t_rules *rules, t_image *tex)
 	double			line_height;
 	double			var[3];
 	double			dist;
+	double			off;
 
 	dist = get_dist(rules, d);
 	line_height = rules->map.block_width * rules->mlx.win_height / dist;
 	var[0] = rules->mlx.win_height / 2 - line_height / 2;
 	var[1] = line_height + var[0];
 	var[2] = d.x + (rules->mlx.win_width / 725 + 1);
+	off = var[0];
 	adjust_var(var, rules);
-	draw_walls(d, var, rules, view, line_height, tex);
+	draw_walls(d, var, rules, view, line_height, tex, off);
 }

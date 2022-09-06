@@ -6,7 +6,7 @@
 /*   By: ddelladi <ddelladi@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/26 14:38:55 by gimartin          #+#    #+#             */
-/*   Updated: 2022/09/06 15:57:37 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/09/06 16:23:44 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ int	take_rgb(char *str, unsigned char rgb[3])
 {
 	int	i;
 	int	i2;
+	int	tmp;
 
 	i = 0;
 	i2 = 0;
@@ -47,7 +48,10 @@ int	take_rgb(char *str, unsigned char rgb[3])
 		i++;
 		if (str[i] && ft_isdigit(str[i]))
 		{
-			rgb[i2++] = (unsigned char)ft_atoi(&str[i]);
+			tmp = ft_atoi(&str[i]);
+			if (tmp > 255 || tmp < 0)
+				die("Invalid color value. Aborting");
+			rgb[i2++] = (unsigned char)tmp;
 			while (str[i] && ft_isdigit(str[i]))
 				i++;
 		}
