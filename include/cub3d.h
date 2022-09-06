@@ -6,7 +6,7 @@
 /*   By: ddelladi <ddelladi@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/26 14:35:18 by gimartin          #+#    #+#             */
-/*   Updated: 2022/09/06 15:50:09 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/09/06 15:58:35 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -144,7 +144,7 @@ int				press(int keycode, t_rules *rules);
 int				release(int keycode, t_rules *rules);
 void			game(t_rules *rules);
 int				path_start(char *str);
-int				take_rgb(char *str, int rgb[3]);
+int				take_rgb(char *str, unsigned char rgb[3]);
 void			read_file(char *file, t_rules *rules);
 void			get_measures(int fd, int hl[2]);
 int				rules_completed(t_rules *rules);

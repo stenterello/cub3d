@@ -6,7 +6,7 @@
 /*   By: ddelladi <ddelladi@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/26 16:57:44 by ddelladi          #+#    #+#             */
-/*   Updated: 2022/09/06 15:53:37 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/09/06 16:01:31 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	easy_pxl(t_image *image, int x, int y, int color)
 
 unsigned int	get_color_arr(unsigned char arr[3])
 {
-	return (*(unsigned int *)(unsigned char[4]){0, arr[0], arr[1], arr[2]});
+	return (*(unsigned int *)(unsigned char[4]){arr[2], arr[1], arr[0], 0});
 }
 
 void	draw_ceiling(t_rules *rules, t_image *view)

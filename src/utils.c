@@ -6,7 +6,7 @@
 /*   By: ddelladi <ddelladi@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/26 14:38:55 by gimartin          #+#    #+#             */
-/*   Updated: 2022/09/05 22:17:29 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/09/06 15:57:37 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int	path_start(char *str)
 	return (i);
 }
 
-int	take_rgb(char *str, int rgb[3])
+int	take_rgb(char *str, unsigned char rgb[3])
 {
 	int	i;
 	int	i2;
@@ -47,7 +47,7 @@ int	take_rgb(char *str, int rgb[3])
 		i++;
 		if (str[i] && ft_isdigit(str[i]))
 		{
-			rgb[i2++] = ft_atoi(&str[i]);
+			rgb[i2++] = (unsigned char)ft_atoi(&str[i]);
 			while (str[i] && ft_isdigit(str[i]))
 				i++;
 		}
