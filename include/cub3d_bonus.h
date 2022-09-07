@@ -6,7 +6,7 @@
 /*   By: ddelladi <ddelladi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/26 14:35:18 by gimartin          #+#    #+#             */
-/*   Updated: 2022/09/07 14:57:04 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/09/07 14:50:53 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ typedef struct s_map
 	char	**map;
 	int		map_height_len[2];
 	float	block_width;
+	float	mini_block_width;
 }				t_map;
 
 typedef struct s_mlx
@@ -139,10 +140,10 @@ void			get_measures(int fd, int hl[2]);
 int				rules_completed(t_rules *rules);
 void			take_rules(int fd, t_rules *rules);
 void			die(char *str);
-void			raycast(t_rules *rules, t_image *view);
+void			raycast(t_rules *rules, t_image *view, t_image *minimap);
 int				colliding(t_rules *rules, float ray_cos,
 					float ray_sin, int plus);
-void			bresenham(t_bres_data data,
+void			bresenham(t_bres_data data, t_image *minimap,
 					t_image *view, t_rules *rules);
 int				get_abs(int n);
 void			easy_pxl(t_image *image, int x, int y, int color);

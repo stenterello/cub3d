@@ -6,11 +6,11 @@
 /*   By: ddelladi <ddelladi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/26 14:35:11 by gimartin          #+#    #+#             */
-/*   Updated: 2022/09/07 14:56:59 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/09/07 14:53:53 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "cub3d_bonus.h"
 
 void	read_file(char *file, t_rules *rules)
 {
@@ -25,6 +25,7 @@ void	read_file(char *file, t_rules *rules)
 	init_window(rules);
 	rules->map.block_width = (rules->mlx.win_width
 			/ (rules->map.map_height_len[0] - 1));
+	rules->map.mini_block_width = rules->map.block_width / 4;
 	map_checks(rules);
 }
 

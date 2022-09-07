@@ -6,11 +6,11 @@
 /*   By: ddelladi <ddelladi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/26 14:38:55 by gimartin          #+#    #+#             */
-/*   Updated: 2022/09/07 14:39:37 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/09/07 14:53:53 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "cub3d_bonus.h"
 
 void	die(char *str)
 {

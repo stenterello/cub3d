@@ -6,11 +6,11 @@
 /*   By: ddelladi <ddelladi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/02 17:56:50 by ddelladi          #+#    #+#             */
-/*   Updated: 2022/09/07 14:52:19 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/09/07 14:53:53 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "cub3d_bonus.h"
 
 double	decrement_angle(double angle, int t)
 {
@@ -27,7 +27,7 @@ double	decrement_angle(double angle, int t)
 }
 
 void	calc_ray(t_bres_data *data, t_rules *rules,
-	t_image *view)
+	t_image *view, t_image *minimap)
 {
 	float		f_pts[3];
 	float		s_pts[3];
@@ -42,19 +42,19 @@ void	calc_ray(t_bres_data *data, t_rules *rules,
 	{
 		data->xy2[0] = f_pts[0];
 		data->xy2[1] = f_pts[1];
-		bresenham(*data, view, rules);
+		bresenham(*data, minimap, view, rules);
 	}
 	else
 	{
 		data->xy2[0] = s_pts[0];
 		data->xy2[1] = s_pts[1];
-		bresenham(*data, view, rules);
+		bresenham(*data, minimap, view, rules);
 	}
 	data->x += (rules->mlx.win_width / 725 + 1);
 	data->dir1 = decrement_angle(data->dir1, 1);
 }
 
-void	raycast(t_rules *rules, t_image *view)
+void	raycast(t_rules *rules, t_image *view, t_image *minimap)
 {
 	int			i;
 	t_bres_data	data;
@@ -65,5 +65,5 @@ void	raycast(t_rules *rules, t_image *view)
 	data.x = 0;
 	data.color = 0x00FFFFFF;
 	while (i++ < rules->mlx.win_width / 1.83)
-		calc_ray(&data, rules, view);
+		calc_ray(&data, rules, view, minimap);
 }
