@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_view.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ddelladi <ddelladi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ddelladi <ddelladi@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/01 22:28:36 by ddelladi          #+#    #+#             */
-/*   Updated: 2022/09/07 19:10:15 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/09/07 21:43:25 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,10 @@ t_image	*choose_texture(t_rules *rules, t_bres_data *d)
 {
 	if (is_door((int)(d->xy2[0] / rules->map.block_width), (int)(d->xy2[1] / rules->map.block_width), rules))
 		return (rules->door);
-	if (d->dir1 > M_PI / 2 && d->dir1 < 3 * M_PI / 2 && is_door((int)(d->xy2[0] / rules->map.block_width) - 1, (int)(d->xy2[1] / rules->map.block_width), rules))
-		return (rules->door);
+	// if (d->dir1 > M_PI / 2 && d->dir1 < 3 * M_PI / 2 && is_door((int)(d->xy2[0] / rules->map.block_width) - 1, (int)(d->xy2[1] / rules->map.block_width), rules))
+	// 	return (rules->door);
+	// if ((d->dir1 < M_PI / 2 || d->dir1 > 3 * M_PI / 2) && is_door((int)(d->xy2[0] / rules->map.block_width), (int)(d->xy2[1] / rules->map.block_width) - 1, rules))
+	// 	return (rules->door);
 	// if ((d->dir1 > M_PI + M_PI / 4 && d->dir1 < 2 * M_PI - M_PI / 4)
 	// 	&& is_door((int)(d->xy2[0] / rules->map.block_width), (int)(d->xy2[1] / rules->map.block_width), rules))
 	// 	return (rules->door);
