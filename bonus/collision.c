@@ -6,7 +6,7 @@
 /*   By: ddelladi <ddelladi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/02 12:44:07 by ddelladi          #+#    #+#             */
-/*   Updated: 2022/09/07 14:53:53 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/09/07 17:51:46 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	verify_collide(t_rules *rules, int next[2])
 		|| next[0] > rules->map.map_height_len[0]
 		|| next[1] > rules->map.map_height_len[1])
 		return (1);
-	if (rules->map.map[next[1]][next[0]] == '1')
+	if (rules->map.map[next[1]][next[0]] == '1' || rules->map.map[next[1]][next[0]] == '2')
 		return (1);
 	return (0);
 }

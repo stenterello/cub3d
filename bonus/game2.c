@@ -6,7 +6,7 @@
 /*   By: ddelladi <ddelladi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/02 17:49:20 by ddelladi          #+#    #+#             */
-/*   Updated: 2022/09/07 14:53:53 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/09/07 16:42:35 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ unsigned int	choose_color(char c)
 {
 	if (c == '0')
 		return (0x0000FF00);
-	else if (c == '1')
+	else if (c == '1' || c == '2')
 		return (0x00FF0000);
 	else if (c == ' ')
 		return (0x00000000);

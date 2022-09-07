@@ -6,11 +6,26 @@
 /*   By: ddelladi <ddelladi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/26 14:39:54 by gimartin          #+#    #+#             */
-/*   Updated: 2022/09/07 14:53:53 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/09/07 17:49:44 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d_bonus.h"
+
+void	check_line(char *line)
+{
+	int	i;
+
+	i = -1;
+	while (line[++i])
+	{
+		if (line[i] != '0' && line[i] != '1'
+			&& line[i] != 'N' && line[i] != 'S' && line[i] != 'W'
+			&& line[i] != 'E' && line[i] != ' ' && line[i] != '\n'
+			&& line[i] != '2')
+			die("Not valid parameters in map. Aborting");
+	}
+}
 
 void	copy_map_save(int i, t_rules *rules, char *tmp, int fd)
 {
@@ -25,6 +40,7 @@ void	copy_map_save(int i, t_rules *rules, char *tmp, int fd)
 	while (tmp)
 	{
 		j = ft_strlen(tmp);
+		check_line(tmp);
 		ft_strlcpy(rules->map.map[i], tmp, j + 1);
 		while (j < rules->map.map_height_len[0])
 			rules->map.map[i][j++] = ' ';

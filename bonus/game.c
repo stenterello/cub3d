@@ -6,7 +6,7 @@
 /*   By: ddelladi <ddelladi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/26 16:57:44 by ddelladi          #+#    #+#             */
-/*   Updated: 2022/09/07 14:53:53 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/09/07 18:12:04 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,14 @@ void	draw_floor(t_rules *rules, t_image *view)
 	}
 }
 
+void	load_gun(t_rules *rules)
+{
+	t_image	gun;
+
+	gun.img = mlx_xpm_file_to_image(rules->mlx.mlx, "img/fps_player.xpm", &gun.width, &gun.height);
+	mlx_put_image_to_window(rules->mlx.mlx, rules->mlx.mlx_win, gun.img, rules->mlx.win_width / 2 - gun.width / 2, rules->mlx.win_height - gun.height + rules->player.gun.off);
+}
+
 void	game(t_rules *rules)
 {
 	t_image	view;
@@ -75,4 +83,5 @@ void	game(t_rules *rules)
 	mlx_put_image_to_window(rules->mlx.mlx, rules->mlx.mlx_win, view.img, 0, 0);
 	mlx_put_image_to_window(rules->mlx.mlx, rules->mlx.mlx_win,
 		minimap.img, 0, 0);
+	load_gun(rules);
 }

@@ -6,7 +6,7 @@
 /*   By: ddelladi <ddelladi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/26 14:35:11 by gimartin          #+#    #+#             */
-/*   Updated: 2022/09/07 14:56:59 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/09/07 17:10:14 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,10 +42,3 @@ int	main(int argc, char **argv)
 	mlx_loop(rules.mlx.mlx);
 	return (0);
 }
-
-/*
-
-Quindi ci resta da risolvere:
-- togliere la minimappa
-
-*/

@@ -6,7 +6,7 @@
 /*   By: ddelladi <ddelladi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/26 15:22:38 by ddelladi          #+#    #+#             */
-/*   Updated: 2022/09/07 14:53:53 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/09/07 16:22:16 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,8 @@ void	define_player(t_rules *rules, char c, int i, int j)
 	else
 		rules->player.d_y = -sin(rules->player.dir) * 5;
 	rules->player.speed = SPEED;
+	rules->player.gun.off = 0;
+	rules->player.gun.counter = 0;
 }
 
 int	find_player(t_rules *rules)

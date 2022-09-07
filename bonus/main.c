@@ -6,7 +6,7 @@
 /*   By: ddelladi <ddelladi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/26 14:35:11 by gimartin          #+#    #+#             */
-/*   Updated: 2022/09/07 14:53:53 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/09/07 18:21:59 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	read_file(char *file, t_rules *rules)
 	take_rules(fd, rules);
 	map_save(file, fd, rules);
 	close(fd);
-	init_window(rules);
+	init_window(&rules->mlx);
 	rules->map.block_width = (rules->mlx.win_width
 			/ (rules->map.map_height_len[0] - 1));
 	rules->map.mini_block_width = rules->map.block_width / 4;
@@ -44,9 +44,9 @@ int	main(int argc, char **argv)
 	return (0);
 }
 
+
 /*
 
-Quindi ci resta da risolvere:
-- togliere la minimappa
+N_FRAMES FA ANDARE A SCATTI. VALUTARE SE TOGLIERLO ANCHE NELLA VERSIONE MANDATORY
 
 */

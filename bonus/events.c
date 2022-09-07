@@ -6,7 +6,7 @@
 /*   By: ddelladi <ddelladi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/26 16:45:37 by ddelladi          #+#    #+#             */
-/*   Updated: 2022/09/07 14:53:53 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/09/07 18:58:47 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,9 +37,9 @@ void	update_pov(t_rules *rules)
 	if (rules->keys.d_pressed)
 		move_player(rules, "right");
 	if (rules->keys.l_pressed)
-		rules->player.dir += ANGLE_UNIT * 15;
+		rules->player.dir += ANGLE_UNIT * 20;
 	if (rules->keys.r_pressed)
-		rules->player.dir -= ANGLE_UNIT * 15;
+		rules->player.dir -= ANGLE_UNIT * 20;
 	if (rules->player.dir < 0)
 		rules->player.dir = 2 * M_PI;
 	if (rules->player.dir > 2 * M_PI)
@@ -53,15 +53,34 @@ void	update_pov(t_rules *rules)
 		rules->player.speed = SPEED * 2;
 	else
 		rules->player.speed = SPEED;
+	if (rules->keys.e_pressed)
+		try_open_door(rules);
+	rules->player.gun.counted = 0;
+}
+
+void	move_gun(t_gun *gun, int i)
+{
+	if (gun->counter >= i)
+	{
+		if (gun->off)
+			gun->off = 0;
+		else
+			gun->off = 10;
+		gun->counter = 0;
+	}
 }
 
 int	loop_events(t_rules *rules)
 {
-	if (!(rules->n_frames % 150))
+	if (!(rules->n_frames % 30))
 	{
 		rules->n_frames = 1;
 		update_pov(rules);
 		game(rules);
+		if (rules->keys.shift_pressed)
+			move_gun(&rules->player.gun, 5);
+		else
+			move_gun(&rules->player.gun, 10);
 	}
 	else
 		rules->n_frames++;

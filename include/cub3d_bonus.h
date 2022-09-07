@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3d.h                                            :+:      :+:    :+:   */
+/*   cub3d_bonus.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ddelladi <ddelladi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/26 14:35:18 by gimartin          #+#    #+#             */
-/*   Updated: 2022/09/07 14:50:53 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/09/07 18:55:43 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,7 @@ typedef struct s_keys
 	int	l_pressed;
 	int	r_pressed;
 	int	shift_pressed;
+	int	e_pressed;
 }				t_keys;
 
 typedef struct s_bres_info
@@ -79,6 +80,13 @@ typedef struct s_ray
 	float		xyoff[2];
 }				t_ray;
 
+typedef struct s_gun
+{
+	int		off;
+	int		counter;
+	int		counted;
+}				t_gun;
+
 typedef struct s_player
 {
 	float	x;
@@ -87,6 +95,7 @@ typedef struct s_player
 	double	d_y;
 	double	dir;
 	float	speed;
+	t_gun	gun;
 }				t_player;
 
 typedef struct s_rules
@@ -99,6 +108,7 @@ typedef struct s_rules
 	t_image			*east;
 	t_image			*south;
 	t_image			*west;
+	t_image			*door;
 	unsigned char	floor_color[3];
 	unsigned char	ceiling_color[3];
 	int				floor;
@@ -128,7 +138,7 @@ typedef struct s_draw_info
 void			map_save(char *file, int fd, t_rules *rules);
 void			map_checks(t_rules *rules);
 void			init_rules(t_rules *rules);
-void			init_window(t_rules *rules);
+void			init_window(t_mlx *mlx);
 void			add_events(t_rules *rules);
 int				loop_events(t_rules *rules);
 int				press(int keycode, t_rules *rules);
@@ -175,5 +185,7 @@ t_image			*choose_texture(t_rules *rules, t_bres_data *d);
 int				choose_x(t_draw_info *info, float ref, t_rules *rules);
 int				choose_y(int var, t_draw_info *info);
 unsigned int	get_color(t_image *tex, int x, int y, t_rules *rules);
+void			try_open_door(t_rules *rules);
+int				is_door(int x, int y, t_rules *rules);
 
 #endif

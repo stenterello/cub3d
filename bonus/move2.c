@@ -6,7 +6,7 @@
 /*   By: ddelladi <ddelladi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/02 14:30:26 by ddelladi          #+#    #+#             */
-/*   Updated: 2022/09/07 14:53:53 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/09/07 16:23:44 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,33 +15,89 @@
 static void	check_up(t_rules *rules, float ray_cos, float ray_sin)
 {
 	if (!colliding(rules, ray_cos, 0, 1))
+	{
+		if (!rules->player.gun.counted)
+		{
+			rules->player.gun.counter++;
+			rules->player.gun.counted++;
+		}
 		rules->player.x += rules->player.d_x * rules->player.speed;
+	}
 	if (!colliding(rules, 0, ray_sin, 1))
+	{
+		if (!rules->player.gun.counted)
+		{
+			rules->player.gun.counter++;
+			rules->player.gun.counted++;
+		}
 		rules->player.y += rules->player.d_y * rules->player.speed;
+	}
 }
 
 static void	check_down(t_rules *rules, float ray_cos, float ray_sin)
 {
 	if (!colliding(rules, ray_cos, 0, 0))
+	{
+		if (!rules->player.gun.counted)
+		{
+			rules->player.gun.counter++;
+			rules->player.gun.counted++;
+		}
 		rules->player.x -= rules->player.d_x * rules->player.speed;
+	}
 	if (!colliding(rules, 0, ray_sin, 0))
+	{
+		if (!rules->player.gun.counted)
+		{
+			rules->player.gun.counter++;
+			rules->player.gun.counted++;
+		}
 		rules->player.y -= rules->player.d_y * rules->player.speed;
+	}
 }
 
 static void	check_left(t_rules *rules, float ray_cos, float ray_sin)
 {
 	if (!colliding(rules, ray_sin, 0, 1))
+	{
+		if (!rules->player.gun.counted)
+		{
+			rules->player.gun.counter++;
+			rules->player.gun.counted++;
+		}
 		rules->player.x += rules->player.d_y * rules->player.speed;
+	}
 	if (!colliding(rules, 0, ray_cos, 0))
+	{
+		if (!rules->player.gun.counted)
+		{
+			rules->player.gun.counter++;
+			rules->player.gun.counted++;
+		}
 		rules->player.y -= rules->player.d_x * rules->player.speed;
+	}
 }
 
 static void	check_right(t_rules *rules, float ray_cos, float ray_sin)
 {
 	if (!colliding(rules, ray_sin, 0, 0))
+	{
+		if (!rules->player.gun.counted)
+		{
+			rules->player.gun.counter++;
+			rules->player.gun.counted++;
+		}
 		rules->player.x -= rules->player.d_y * rules->player.speed;
+	}
 	if (!colliding(rules, 0, ray_cos, 1))
+	{
+		if (!rules->player.gun.counted)
+		{
+			rules->player.gun.counter++;
+			rules->player.gun.counted++;
+		}
 		rules->player.y += rules->player.d_x * rules->player.speed;
+	}
 }
 
 void	move_player(t_rules *rules, char *dir)

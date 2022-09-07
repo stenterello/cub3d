@@ -6,17 +6,18 @@
 /*   By: ddelladi <ddelladi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/26 16:33:17 by ddelladi          #+#    #+#             */
-/*   Updated: 2022/09/07 14:53:53 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/09/07 15:49:07 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d_bonus.h"
 
-void	init_window(t_rules *rules)
+void	init_window(t_mlx *mlx)
 {
-	rules->mlx.mlx = mlx_init();
-	if (!rules->mlx.mlx)
+
+	mlx->mlx = mlx_init();
+	if (!mlx->mlx)
 		die("Error initializing Minilibx. Aborting");
-	rules->mlx.mlx_win = mlx_new_window(rules->mlx.mlx,
-			rules->mlx.win_width, rules->mlx.win_height, "Cub3d");
+	mlx->mlx_win = mlx_new_window(mlx->mlx,
+			mlx->win_width, mlx->win_height, "Cub3d");
 }

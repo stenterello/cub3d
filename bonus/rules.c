@@ -6,7 +6,7 @@
 /*   By: ddelladi <ddelladi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/26 14:36:54 by gimartin          #+#    #+#             */
-/*   Updated: 2022/09/07 14:53:53 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/09/07 18:53:07 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,8 @@
 int	rules_completed(t_rules *rules)
 {
 	if (!rules->north || !rules->east || !rules->south
-		|| !rules->west || !rules->floor || !rules->ceiling)
+		|| !rules->west || !rules->floor || !rules->ceiling
+		|| !rules->door)
 		return (0);
 	return (1);
 }
@@ -70,6 +71,8 @@ void	insert_rule(char *str, t_rules *rules)
 		rules->south = get_rule(str, rules, rules->south);
 	else if (!ft_strncmp(str, "WE", 2))
 		rules->west = get_rule(str, rules, rules->west);
+	else if (!ft_strncmp(str, "D", 1))
+		rules->door = get_rule(str, rules, rules->door);
 	else if (!ft_strncmp(str, "F", 1))
 	{
 		if (rules->floor)

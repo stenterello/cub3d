@@ -37,7 +37,8 @@ BONUS	=	main.c \
 			draw_view.c \
 			collision.c \
 			collision2.c \
-			move2.c
+			move2.c \
+			doors.c
 SRCS	=	${addprefix src/, $(SRC)}
 B_SRCS	=	${addprefix bonus/, $(BONUS)}
 M_B_CMD	=	bonus/move.c
@@ -93,4 +94,4 @@ fclean	:	clean
 
 re	:	fclean all
 
-.PHONY	:	all clean fclean re
+.PHONY	:	all bonus clean fclean re
