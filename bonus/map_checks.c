@@ -6,7 +6,7 @@
 /*   By: ddelladi <ddelladi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/26 15:22:38 by ddelladi          #+#    #+#             */
-/*   Updated: 2022/09/07 16:22:16 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/09/09 17:58:03 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ void	define_player(t_rules *rules, char c, int i, int j)
 	else if (c == 'S')
 		rules->player.dir = M_PI * 3 / 2;
 	else if (c == 'E')
-		rules->player.dir = 2 * M_PI;
+		rules->player.dir = 0;
 	rules->map.map[i][j] = '0';
 	rules->player.x = ++j * rules->map.block_width
 		- (rules->map.block_width / 2);

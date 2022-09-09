@@ -6,7 +6,7 @@
 /*   By: ddelladi <ddelladi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/26 14:35:18 by gimartin          #+#    #+#             */
-/*   Updated: 2022/09/07 18:55:43 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/09/09 14:48:03 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,6 +96,8 @@ typedef struct s_player
 	double	dir;
 	float	speed;
 	t_gun	gun;
+	double	plane_x;
+	double	plane_y;
 }				t_player;
 
 typedef struct s_rules
@@ -111,8 +113,8 @@ typedef struct s_rules
 	t_image			*door;
 	unsigned char	floor_color[3];
 	unsigned char	ceiling_color[3];
-	int				floor;
-	int				ceiling;
+	t_image			*floor;
+	t_image			*ceiling;
 	int				line_offset;
 	int				n_frames;
 }				t_rules;

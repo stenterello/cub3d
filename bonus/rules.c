@@ -6,7 +6,7 @@
 /*   By: ddelladi <ddelladi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/26 14:36:54 by gimartin          #+#    #+#             */
-/*   Updated: 2022/09/09 11:46:43 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/09/09 13:09:54 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,17 +73,9 @@ void	insert_rule(char *str, t_rules *rules)
 	else if (!ft_strncmp(str, "D", 1))
 		rules->door = get_rule(str, rules, rules->door);
 	else if (!ft_strncmp(str, "F", 1))
-	{
-		if (rules->floor)
-			die("Double rule definition in .cub file. Aborting");
-		rules->floor = take_rgb(str, rules->floor_color);
-	}
+		rules->floor = get_rule(str, rules, rules->floor);
 	else if (!ft_strncmp(str, "C", 1))
-	{
-		if (rules->ceiling)
-			die("Double rule definition in .cub file. Aborting");
-		rules->ceiling = take_rgb(str, rules->ceiling_color);
-	}
+		rules->ceiling = get_rule(str, rules, rules->ceiling);
 }
 
 int	is_map(char *line)

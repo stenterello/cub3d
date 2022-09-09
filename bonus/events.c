@@ -6,7 +6,7 @@
 /*   By: ddelladi <ddelladi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/26 16:45:37 by ddelladi          #+#    #+#             */
-/*   Updated: 2022/09/09 11:50:11 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/09/09 17:57:39 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@ void	add_events(t_rules *rules)
 
 void	update_pov(t_rules *rules)
 {
+	double	old_x;
+
 	if (rules->keys.w_pressed)
 		move_player(rules, "up");
 	if (rules->keys.a_pressed)
@@ -37,9 +39,9 @@ void	update_pov(t_rules *rules)
 	if (rules->keys.d_pressed)
 		move_player(rules, "right");
 	if (rules->keys.l_pressed)
-		rules->player.dir += ANGLE_UNIT * 20;
+		rules->player.dir += ANGLE_UNIT * 30;
 	if (rules->keys.r_pressed)
-		rules->player.dir -= ANGLE_UNIT * 20;
+		rules->player.dir -= ANGLE_UNIT * 30;
 	if (rules->player.dir < 0)
 		rules->player.dir = 2 * M_PI;
 	if (rules->player.dir > 2 * M_PI)
@@ -84,5 +86,6 @@ int	loop_events(t_rules *rules)
 	}
 	else
 		rules->n_frames++;
+	printf("rules->player.dir |  rules->player.plane_dir: %f | %f\n", rules->player.dir, sqrt(pow(rules->player.plane_x, 2) + pow(rules->player.plane_y, 2)));
 	return (0);
 }

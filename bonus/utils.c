@@ -6,7 +6,7 @@
 /*   By: ddelladi <ddelladi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/26 14:38:55 by gimartin          #+#    #+#             */
-/*   Updated: 2022/09/07 18:53:22 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/09/09 13:18:55 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,8 +59,8 @@ void	init_rules(t_rules *rules)
 	rules->south = NULL;
 	rules->west = NULL;
 	rules->door = NULL;
-	rules->floor = 0;
-	rules->ceiling = 0;
+	rules->floor = NULL;
+	rules->ceiling = NULL;
 	rules->line_offset = 0;
 	rules->mlx.win_width = 1280;
 	rules->mlx.win_height = 720;
@@ -73,4 +73,5 @@ void	init_rules(t_rules *rules)
 	rules->keys.e_pressed = 0;
 	rules->keys.shift_pressed = 0;
 	rules->n_frames = 1;
+	rules->line_offset = 0;
 }

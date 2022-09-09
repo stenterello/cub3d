@@ -6,7 +6,7 @@
 /*   By: ddelladi <ddelladi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/17 02:45:13 by ddelladi          #+#    #+#             */
-/*   Updated: 2022/09/07 14:53:53 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/09/09 15:39:33 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void	bres_define(int axy[2], float xy2[2], int sq[2])
 		sq[0] = -1;
 }
 
-void	minimap_rays(t_bres_info *info, t_image *image)
+void	minimap_rays(t_bres_info *info, t_image *minimap)
 {
 	int	k;
 
@@ -54,7 +54,7 @@ void	minimap_rays(t_bres_info *info, t_image *image)
 			}
 			info->d += 2 * info->ab[0];
 		}
-		easy_pxl(image, (info->axy[0] / 4), (info->axy[1] / 4), info->color);
+		easy_pxl(minimap, (info->axy[0] / 4), (info->axy[1] / 4), info->color);
 	}
 }
 
