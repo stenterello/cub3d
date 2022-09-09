@@ -6,7 +6,7 @@
 /*   By: ddelladi <ddelladi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/02 17:56:50 by ddelladi          #+#    #+#             */
-/*   Updated: 2022/09/07 14:52:19 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/09/09 12:18:27 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,8 +50,8 @@ void	calc_ray(t_bres_data *data, t_rules *rules,
 		data->xy2[1] = s_pts[1];
 		bresenham(*data, view, rules);
 	}
-	data->x += (rules->mlx.win_width / 725 + 1);
-	data->dir1 = decrement_angle(data->dir1, 1);
+	data->x += (rules->mlx.win_width / (rules->mlx.win_width / 3.66) + 1);
+	data->dir1 = decrement_angle(data->dir1, 2);
 }
 
 void	raycast(t_rules *rules, t_image *view)
@@ -64,6 +64,6 @@ void	raycast(t_rules *rules, t_image *view)
 	i = 0;
 	data.x = 0;
 	data.color = 0x00FFFFFF;
-	while (i++ < rules->mlx.win_width / 1.83)
+	while (i++ < rules->mlx.win_width / 3.66)
 		calc_ray(&data, rules, view);
 }

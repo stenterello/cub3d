@@ -6,7 +6,7 @@
 /*   By: ddelladi <ddelladi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/01 22:28:36 by ddelladi          #+#    #+#             */
-/*   Updated: 2022/09/07 14:39:12 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/09/09 12:17:44 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,7 @@ void	draw_view(t_bres_data d, t_image *view, t_rules *rules, t_image *tex)
 	var[0] = rules->mlx.win_height / 2 - info.l_h / 2;
 	var[1] = info.l_h + var[0];
 	var[2] = d.x + (rules->mlx.win_width
-			/ (rules->mlx.win_width / 1.412413793103) + 1);
+			/ (rules->mlx.win_width / 2.8) + 1);
 	info.off = var[0];
 	info.view = view;
 	info.tex = tex;

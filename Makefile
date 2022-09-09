@@ -1,4 +1,5 @@
 NAME	=	cub3d
+NAME2	=	cub3d_bonus
 CC		=	gcc
 FLAGS	=	-Wall -Werror -Wextra -g
 SRC		=	main.c \
@@ -60,11 +61,13 @@ LIN_OPT	=	-Linclude/mlx_linux -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -l
 
 all	:	$(NAME)
 
+bonus	:	$(NAME2)
+
 $(NAME)	:	$(LIBFT) $(OBJS) $(M_CMD_O)
 	$(CC) $(FLAGS) $(MLX_OPT) $(LIBFT) $(OBJS) $(M_CMD_O) -o $(NAME) $(OPTS)
 
-bonus	:	$(LIBFT) $(B_OBJS) $(M_B_C_O)
-	$(CC) $(FLAGS) $(MLX_OPT) $(LIBFT) $(B_OBJS) $(M_B_C_O) -o $(NAME) $(OPTS)
+$(NAME2)	:	$(LIBFT) $(B_OBJS) $(M_B_C_O)
+	$(CC) $(FLAGS) $(MLX_OPT) $(LIBFT) $(B_OBJS) $(M_B_C_O) -o $(NAME2) $(OPTS)
 
 %.o	:	%.c
 	$(CC) $(FLAGS) -c $< -o $@ $(OPTS)
@@ -90,7 +93,7 @@ clean	:
 
 fclean	:	clean
 	$(MAKE) fclean -C ./include/libft
-	rm -f $(NAME)
+	rm -f $(NAME) $(NAME2)
 
 re	:	fclean all
 

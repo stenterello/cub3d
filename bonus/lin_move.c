@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lin_move.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ddelladi <ddelladi@student.42roma.it>      +#+  +:+       +#+        */
+/*   By: ddelladi <ddelladi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/26 18:46:17 by ddelladi          #+#    #+#             */
-/*   Updated: 2022/09/07 21:39:15 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/09/07 14:53:53 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,9 +33,6 @@ int	press(int keycode, t_rules *rules)
 		rules->keys.r_pressed = 1;
 	if (keycode == 65505 || keycode == 65506)
 		rules->keys.shift_pressed = 1;
-	if (keycode == 101)
-		rules->keys.e_pressed = 1;
-	printf("%d\n", keycode);
 	return (0);
 }
 
@@ -55,7 +52,5 @@ int	release(int keycode, t_rules *rules)
 		rules->keys.r_pressed = 0;
 	if (keycode == 65505 || keycode == 65506)
 		rules->keys.shift_pressed = 0;
-	if (keycode == 101)
-		rules->keys.e_pressed = 0;
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: ddelladi <ddelladi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/26 16:45:37 by ddelladi          #+#    #+#             */
-/*   Updated: 2022/09/07 18:58:47 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/09/09 11:50:11 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ void	move_gun(t_gun *gun, int i)
 
 int	loop_events(t_rules *rules)
 {
-	if (!(rules->n_frames % 30))
+	if (!(rules->n_frames % 170))
 	{
 		rules->n_frames = 1;
 		update_pov(rules);

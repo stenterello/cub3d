@@ -6,7 +6,7 @@
 /*   By: ddelladi <ddelladi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/26 16:45:37 by ddelladi          #+#    #+#             */
-/*   Updated: 2022/09/07 18:10:34 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/09/09 12:17:18 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ void	update_pov(t_rules *rules)
 
 int	loop_events(t_rules *rules)
 {
-	if (!(rules->n_frames % 150))
+	if (!(rules->n_frames % 170))
 	{
 		rules->n_frames = 1;
 		update_pov(rules);
