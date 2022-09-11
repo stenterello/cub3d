@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   events.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ddelladi <ddelladi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ddelladi <ddelladi@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/26 16:45:37 by ddelladi          #+#    #+#             */
-/*   Updated: 2022/09/09 17:57:39 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/09/10 13:57:01 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,6 @@ void	add_events(t_rules *rules)
 
 void	update_pov(t_rules *rules)
 {
-	double	old_x;
-
 	if (rules->keys.w_pressed)
 		move_player(rules, "up");
 	if (rules->keys.a_pressed)
@@ -86,6 +84,5 @@ int	loop_events(t_rules *rules)
 	}
 	else
 		rules->n_frames++;
-	printf("rules->player.dir |  rules->player.plane_dir: %f | %f\n", rules->player.dir, sqrt(pow(rules->player.plane_x, 2) + pow(rules->player.plane_y, 2)));
 	return (0);
 }

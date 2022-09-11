@@ -1,7 +1,7 @@
 NAME	=	cub3d
 NAME2	=	cub3d_bonus
 CC		=	gcc
-FLAGS	=	-Wall -Werror -Wextra -g
+FLAGS	=	-Wall -Werror -Wextra -O3 -g
 #-O3
 SRC		=	main.c \
 			map_checks.c \
@@ -77,7 +77,7 @@ lin	: $(LIBFT) $(MLX_LIN) $(OBJS) $(L_CMD_O)
 	$(CC) $(FLAGS) $(OBJS) $(L_CMD_O) $(LIBFT) $(MLX_LIN) $(LIN_OPT) -o $(NAME)
 
 lin_bon	: $(LIBFT) $(MLX_LIN) $(B_OBJS) $(L_B_C_O)
-	$(CC) $(FLAGS) $(B_OBJS) $(L_B_C_O) $(LIBFT) $(MLX_LIN) $(LIN_OPT) -o $(NAME)
+	$(CC) $(FLAGS) $(B_OBJS) $(L_B_C_O) $(LIBFT) $(MLX_LIN) $(LIN_OPT) -o $(NAME2)
 
 $(MLX_LIN)	:
 	$(MAKE) -C ./include/mlx_linux/

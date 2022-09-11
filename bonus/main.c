@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ddelladi <ddelladi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ddelladi <ddelladi@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/26 14:35:11 by gimartin          #+#    #+#             */
-/*   Updated: 2022/09/09 13:18:55 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/09/10 13:56:32 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ void	read_file(char *file, t_rules *rules)
 	take_rules(fd, rules);
 	map_save(file, fd, rules);
 	close(fd);
-	init_window(&rules->mlx);
 	rules->map.block_width = (rules->mlx.win_width
 			/ (rules->map.map_height_len[0] - 1));
 	rules->map.mini_block_width = rules->map.block_width / 4;
@@ -36,6 +35,7 @@ int	main(int argc, char **argv)
 	if (argc != 2)
 		die("Usage: ./cub3d [.cub file]");
 	init_rules(&rules);
+	init_window(&rules.mlx);
 	read_file(argv[1], &rules);
 	add_events(&rules);
 	game(&rules);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_view.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ddelladi <ddelladi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ddelladi <ddelladi@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/01 22:28:36 by ddelladi          #+#    #+#             */
-/*   Updated: 2022/09/09 12:28:38 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/09/12 00:49:58 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,10 @@ t_image	*choose_texture(t_rules *rules, t_bres_data *d)
 
 void	draw_walls(double var[3], t_rules *rules, t_draw_info *info)
 {
-	while (info->d.x < var[2])
+	int	x;
+
+	x = info->d.x;
+	while (x < var[2])
 	{
 		var[0] = rules->mlx.win_height / 2 - info->l_h / 2;
 		if (var[0] < 0)
@@ -83,14 +86,51 @@ void	draw_walls(double var[3], t_rules *rules, t_draw_info *info)
 		while (var[0] < var[1])
 		{
 			if (!our_modulo(info->d.xy2[0], rules->map.block_width))
-				easy_pxl(info->view, info->d.x, var[0], get_color(info->tex,
+				easy_pxl(info->view, x, var[0], get_color(info->tex,
 						choose_x(info, info->d.xy2[1], rules), choose_y(var[0],
 							info), rules));
 			else
-				easy_pxl(info->view, info->d.x, var[0], get_color(info->tex,
+				easy_pxl(info->view, x, var[0], get_color(info->tex,
 						choose_x(info, info->d.xy2[0], rules), choose_y(var[0],
 							info), rules));
 			var[0]++;
+		}
+		x++;
+	}
+}
+
+double	get_fix(double angle)
+{
+	if (angle > M_PI * 2)
+		angle -= M_PI * 2;
+	if (angle < 0)
+		angle += M_PI * 2;
+	// if (angle == 0)
+	// 	return (1);
+	return (cos(angle));
+}
+
+void	draw_floor(double var[3], t_rules *rules, t_draw_info *info)
+{
+	int		y;
+	float	dy;
+	float	tx;
+	float	ty;
+	unsigned int	color;
+
+	while (info->d.x < var[2])
+	{
+		y = info->off + info->l_h - 1;
+		while (++y < rules->mlx.win_height)
+		{
+			dy = y - (rules->mlx.win_height / 2);
+			tx = rules->player.x * 2 + cos(info->d.dir1) * (rules->mlx.win_height / 2) / dy / get_fix(rules->player.dir - info->d.dir1);
+			ty = rules->player.y * 2 - sin(info->d.dir1) * (rules->mlx.win_height / 2) / dy / get_fix(rules->player.dir - info->d.dir1);
+			color = get_color(rules->floor,	
+					our_modulo(tx * rules->map.block_width, rules->floor->width),
+					our_modulo(ty * rules->map.block_width, rules->floor->width),
+					rules);
+			easy_pxl(info->view, info->d.x, y, color);
 		}
 		info->d.x++;
 	}
@@ -114,4 +154,5 @@ void	draw_view(t_bres_data d, t_image *view, t_rules *rules, t_image *tex)
 	info.d = d;
 	adjust_var(var, rules);
 	draw_walls(var, rules, &info);
+	draw_floor(var, rules, &info);
 }
