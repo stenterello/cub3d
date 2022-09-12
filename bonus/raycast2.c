@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycast2.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ddelladi <ddelladi@student.42roma.it>      +#+  +:+       +#+        */
+/*   By: ddelladi <ddelladi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/02 17:55:01 by ddelladi          #+#    #+#             */
-/*   Updated: 2022/09/12 00:54:11 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/09/07 14:53:53 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,10 +87,6 @@ void	vertical_lines_check(double angle,	t_rules *rules, float ret[3])
 
 	xy[0] = rules->player.x;
 	xy[1] = rules->player.y;
-	ray.xyoff[0] = 0;
-	ray.xyoff[1] = 1;
-	ray.x = 0;
-	ray.y = 0;
 	ray.angle = angle;
 	n_tan = -tan(ray.angle);
 	ret[2] = define_ver_ray_and_offset(rules, &ray, n_tan, xy);

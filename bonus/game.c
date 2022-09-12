@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   game.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ddelladi <ddelladi@student.42roma.it>      +#+  +:+       +#+        */
+/*   By: ddelladi <ddelladi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/26 16:57:44 by ddelladi          #+#    #+#             */
-/*   Updated: 2022/09/10 13:55:32 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/09/12 18:14:56 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,19 +25,19 @@ unsigned int	get_color_arr(unsigned char arr[3])
 	return (*(unsigned int *)(unsigned char [4]){arr[2], arr[1], arr[0], 0});
 }
 
-void	draw_ceiling(t_rules *rules, t_image *view)
-{
-	int	x;
-	int	y;
+// void	draw_ceiling(t_rules *rules, t_image *view)
+// {
+// 	int	x;
+// 	int	y;
 
-	x = -1;
-	while (++x < rules->mlx.win_width)
-	{
-		y = 0;
-		while (y < rules->mlx.win_height / 2)
-			easy_pxl(view, x, y++, get_color_arr(rules->ceiling_color));
-	}
-}
+// 	x = -1;
+// 	while (++x < rules->mlx.win_width)
+// 	{
+// 		y = 0;
+// 		while (y < rules->mlx.win_height / 2)
+// 			easy_pxl(view, x, y++, get_color_arr(rules->ceiling_color));
+// 	}
+// }
 
 // void	draw_floor(t_rules *rules, t_image *view)
 // {

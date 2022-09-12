@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_view.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ddelladi <ddelladi@student.42roma.it>      +#+  +:+       +#+        */
+/*   By: ddelladi <ddelladi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/01 22:28:36 by ddelladi          #+#    #+#             */
-/*   Updated: 2022/09/12 00:49:58 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/09/12 18:33:09 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,9 +105,37 @@ double	get_fix(double angle)
 		angle -= M_PI * 2;
 	if (angle < 0)
 		angle += M_PI * 2;
-	// if (angle == 0)
-	// 	return (1);
-	return (cos(angle));
+	return (angle);
+}
+
+void	draw_ceiling(double var[3], t_rules *rules, t_draw_info *info)
+{
+	int		y;
+	float	dy;
+	float	tx;
+	float	ty;
+	unsigned int	color;
+	float	dist;
+	int		x;
+
+	x = info->d.x;
+	while (x < var[2])
+	{
+		y = -1;
+		while (++y < var[0])
+		{
+			dy = y - (rules->mlx.win_height / 2);
+			dist = rules->mlx.win_height / 2 / dy;
+			tx = rules->player.x / rules->map.block_width - cos(info->d.dir1) * dist / cos(get_fix(rules->player.dir - info->d.dir1));
+			ty = rules->player.y / rules->map.block_width + sin(info->d.dir1) * dist / cos(get_fix(rules->player.dir - info->d.dir1));
+			color = get_color(rules->ceiling,	
+					our_modulo(tx * rules->ceiling->width, rules->ceiling->width),
+					our_modulo(ty * rules->ceiling->width, rules->ceiling->width),
+					rules);
+			easy_pxl(info->view, x, y, color);
+		}
+		x++;
+	}
 }
 
 void	draw_floor(double var[3], t_rules *rules, t_draw_info *info)
@@ -117,22 +145,26 @@ void	draw_floor(double var[3], t_rules *rules, t_draw_info *info)
 	float	tx;
 	float	ty;
 	unsigned int	color;
+	float	dist;
+	int		x;
 
-	while (info->d.x < var[2])
+	x = info->d.x;
+	while (x < var[2])
 	{
-		y = info->off + info->l_h - 1;
+		y = var[1] - 1;
 		while (++y < rules->mlx.win_height)
 		{
 			dy = y - (rules->mlx.win_height / 2);
-			tx = rules->player.x * 2 + cos(info->d.dir1) * (rules->mlx.win_height / 2) / dy / get_fix(rules->player.dir - info->d.dir1);
-			ty = rules->player.y * 2 - sin(info->d.dir1) * (rules->mlx.win_height / 2) / dy / get_fix(rules->player.dir - info->d.dir1);
+			dist = rules->mlx.win_height / 2 / dy;
+			tx = rules->player.x / rules->map.block_width + cos(info->d.dir1) * dist / cos(get_fix(rules->player.dir - info->d.dir1));
+			ty = rules->player.y / rules->map.block_width - sin(info->d.dir1) * dist / cos(get_fix(rules->player.dir - info->d.dir1));
 			color = get_color(rules->floor,	
-					our_modulo(tx * rules->map.block_width, rules->floor->width),
-					our_modulo(ty * rules->map.block_width, rules->floor->width),
+					our_modulo(tx * rules->floor->width, rules->floor->width),
+					our_modulo(ty * rules->floor->width, rules->floor->width),
 					rules);
-			easy_pxl(info->view, info->d.x, y, color);
+			easy_pxl(info->view, x, y, color);
 		}
-		info->d.x++;
+		x++;
 	}
 }
 
@@ -153,6 +185,7 @@ void	draw_view(t_bres_data d, t_image *view, t_rules *rules, t_image *tex)
 	info.tex = tex;
 	info.d = d;
 	adjust_var(var, rules);
+	draw_ceiling(var, rules, &info);
 	draw_walls(var, rules, &info);
 	draw_floor(var, rules, &info);
 }

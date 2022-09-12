@@ -1,8 +1,7 @@
 NAME	=	cub3d
 NAME2	=	cub3d_bonus
 CC		=	gcc
-FLAGS	=	-Wall -Werror -Wextra -O3 -g
-#-O3
+FLAGS	=	-Wall -Werror -Wextra -g
 SRC		=	main.c \
 			map_checks.c \
 			map_save.c \
