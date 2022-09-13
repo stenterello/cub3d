@@ -6,7 +6,7 @@
 /*   By: ddelladi <ddelladi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/01 22:28:36 by ddelladi          #+#    #+#             */
-/*   Updated: 2022/09/12 18:33:09 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/09/13 14:10:06 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,33 +41,34 @@ void	adjust_var(double var[3], t_rules *rules)
 
 t_image	*choose_texture(t_rules *rules, t_bres_data *d)
 {
-	if (is_door((int)(d->xy2[0] / rules->map.block_width), (int)(d->xy2[1] / rules->map.block_width), rules))
-		return (rules->door);
-	// if (d->dir1 > M_PI / 2 && d->dir1 < 3 * M_PI / 2 && is_door((int)(d->xy2[0] / rules->map.block_width) - 1, (int)(d->xy2[1] / rules->map.block_width), rules))
-	// 	return (rules->door);
-	// if ((d->dir1 < M_PI / 2 || d->dir1 > 3 * M_PI / 2) && is_door((int)(d->xy2[0] / rules->map.block_width), (int)(d->xy2[1] / rules->map.block_width) - 1, rules))
-	// 	return (rules->door);
-	// if ((d->dir1 > M_PI + M_PI / 4 && d->dir1 < 2 * M_PI - M_PI / 4)
-	// 	&& is_door((int)(d->xy2[0] / rules->map.block_width), (int)(d->xy2[1] / rules->map.block_width), rules))
-	// 	return (rules->door);
-	// if ((d->dir1 > M_PI / 4 && d->dir1 < M_PI - M_PI / 4)
-	// 	&& is_door((int)(d->xy2[0] / rules->map.block_width), (int)(d->xy2[1] / rules->map.block_width) - 1, rules))
-	// 	return (rules->door);
-	// if ((d->dir1 > M_PI - M_PI / 4 && d->dir1 < M_PI + M_PI / 4)
-	// 	&& is_door((int)(d->xy2[0] / rules->map.block_width), (int)(d->xy2[1] / rules->map.block_width), rules))
-	// 	return (rules->door);
 	if (!our_modulo(d->xy2[0], rules->map.block_width)
 		&& (d->dir1 < M_PI / 2 || d->dir1 > 3 * M_PI / 2))
+	{
+		if (is_door((int)(d->xy2[0] / rules->map.block_width), (int)(d->xy2[1] / rules->map.block_width), rules))
+			return (rules->door);
 		return (rules->east);
+	}
 	else if (!our_modulo(d->xy2[0], rules->map.block_width)
 		&& d->dir1 >= M_PI / 2 && d->dir1 <= 3 * M_PI / 2)
+	{
+		if (is_door((int)(d->xy2[0] / rules->map.block_width) - 1, (int)(d->xy2[1] / rules->map.block_width), rules))
+			return (rules->door);
 		return (rules->west);
+	}
 	else if (!our_modulo(d->xy2[1], rules->map.block_width)
 		&& d->dir1 <= M_PI && d->dir1 >= 0)
+	{
+		if (is_door((int)(d->xy2[0] / rules->map.block_width), (int)(d->xy2[1] / rules->map.block_width) - 1, rules))
+			return (rules->door);
 		return (rules->north);
+	}
 	else if (!our_modulo(d->xy2[1], rules->map.block_width)
 		&& d->dir1 > M_PI && d->dir1 <= 2 * M_PI)
+	{
+		if (is_door((int)(d->xy2[0] / rules->map.block_width), (int)(d->xy2[1] / rules->map.block_width), rules))
+			return (rules->door);
 		return (rules->south);
+	}
 	else
 		die("Error while choosing textures. Developers fault. Aborting");
 	return (NULL);

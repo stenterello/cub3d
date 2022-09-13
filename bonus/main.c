@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ddelladi <ddelladi@student.42roma.it>      +#+  +:+       +#+        */
+/*   By: ddelladi <ddelladi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/26 14:35:11 by gimartin          #+#    #+#             */
-/*   Updated: 2022/09/10 13:56:32 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/09/13 14:12:10 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,12 @@ int	main(int argc, char **argv)
 
 /*
 
-N_FRAMES FA ANDARE A SCATTI. VALUTARE SE TOGLIERLO ANCHE NELLA VERSIONE MANDATORY
+- pistola con immagine più grande
+- animazioni porte
+- pistola che spara
+- nemici
+- livello trama
+- fov con mouse
+- *importante* le textures scelte nella funzione choose_texture sono scambiate? Nel senso di west al posto di east, forse anche nord/sud. In caso è da cambiare anche nella mandatory!!!
 
 */

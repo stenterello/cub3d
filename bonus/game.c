@@ -6,7 +6,7 @@
 /*   By: ddelladi <ddelladi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/26 16:57:44 by ddelladi          #+#    #+#             */
-/*   Updated: 2022/09/12 18:14:56 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/09/13 14:11:35 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,7 @@ void	load_gun(t_rules *rules)
 {
 	t_image	gun;
 
-	gun.img = mlx_xpm_file_to_image(rules->mlx.mlx, "img/fps_player.xpm", &gun.width, &gun.height);
+	gun.img = mlx_xpm_file_to_image(rules->mlx.mlx, "img/pistola.xpm", &gun.width, &gun.height);
 	mlx_put_image_to_window(rules->mlx.mlx, rules->mlx.mlx_win, gun.img, rules->mlx.win_width / 2 - gun.width / 2, rules->mlx.win_height - gun.height + rules->player.gun.off);
 }
 
