@@ -3,14 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   move.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ddelladi <ddelladi@student.42roma.it>      +#+  +:+       +#+        */
+/*   By: ddelladi <ddelladi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/26 18:46:17 by ddelladi          #+#    #+#             */
-/*   Updated: 2022/09/10 13:57:05 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/09/15 16:12:24 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d_bonus.h"
+
+void	shoot(t_rules *rules)
+{
+	ft_strlcpy(rules->player.gun.path, "./img/sparo.xpm", 16);
+	rules->player.gun.last_shoot = rules->n_frames;
+}
 
 int	press(int keycode, t_rules *rules)
 {
@@ -35,6 +41,9 @@ int	press(int keycode, t_rules *rules)
 		rules->keys.shift_pressed = 1;
 	if (keycode == 14)
 		rules->keys.e_pressed = 1;
+	if (keycode == 49)
+		shoot(rules);
+	printf("%d\n", keycode);
 	return (0);
 }
 

@@ -6,7 +6,7 @@
 /*   By: ddelladi <ddelladi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/26 14:35:18 by gimartin          #+#    #+#             */
-/*   Updated: 2022/09/12 17:41:55 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/09/15 16:12:33 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,9 +82,12 @@ typedef struct s_ray
 
 typedef struct s_gun
 {
+	char	*path;
+	t_image	gun_img;
 	int		off;
 	int		counter;
 	int		counted;
+	int		last_shoot;
 }				t_gun;
 
 typedef struct s_player
@@ -100,12 +103,20 @@ typedef struct s_player
 	double	plane_y;
 }				t_player;
 
+typedef struct s_mouse
+{
+	int	last_x;
+	int	last_y;
+	int	moved;
+}				t_mouse;
+
 typedef struct s_rules
 {
 	t_map			map;
 	t_player		player;
 	t_mlx			mlx;
 	t_keys			keys;
+	t_mouse			mouse;
 	t_image			*north;
 	t_image			*east;
 	t_image			*south;
@@ -117,6 +128,7 @@ typedef struct s_rules
 	t_image			*ceiling;
 	int				line_offset;
 	int				n_frames;
+	int				last_door_action;
 }				t_rules;
 
 typedef struct s_bres_data

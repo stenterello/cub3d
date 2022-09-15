@@ -6,7 +6,7 @@
 /*   By: ddelladi <ddelladi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/26 14:38:55 by gimartin          #+#    #+#             */
-/*   Updated: 2022/09/12 17:14:21 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/09/15 16:11:45 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,4 +74,13 @@ void	init_rules(t_rules *rules)
 	rules->keys.shift_pressed = 0;
 	rules->n_frames = 1;
 	rules->line_offset = 0;
+	rules->mouse.last_x = 0;
+	rules->mouse.last_y = 0;
+	rules->mouse.moved = 0;
+	rules->last_door_action = 0;
+	rules->player.gun.last_shoot = 0;
+	rules->player.gun.path = malloc(sizeof(char) * (18));
+	if (!rules->player.gun.path)
+		die("Malloc error");
+	ft_strlcpy(rules->player.gun.path, "./img/pistola.xpm", 18);
 }
