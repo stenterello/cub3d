@@ -6,7 +6,7 @@
 /*   By: ddelladi <ddelladi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/26 14:35:18 by gimartin          #+#    #+#             */
-/*   Updated: 2022/09/15 16:12:33 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/09/15 17:04:09 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,6 +110,14 @@ typedef struct s_mouse
 	int	moved;
 }				t_mouse;
 
+typedef struct s_enemies
+{
+	t_image	enemy_img;
+	int		x;
+	int		y;
+	void	*next;
+}				t_enemies;
+
 typedef struct s_rules
 {
 	t_map			map;
@@ -129,6 +137,7 @@ typedef struct s_rules
 	int				line_offset;
 	int				n_frames;
 	int				last_door_action;
+	t_enemies		*enemies;
 }				t_rules;
 
 typedef struct s_bres_data

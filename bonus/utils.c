@@ -6,7 +6,7 @@
 /*   By: ddelladi <ddelladi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/26 14:38:55 by gimartin          #+#    #+#             */
-/*   Updated: 2022/09/15 16:11:45 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/09/15 17:04:19 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,4 +83,5 @@ void	init_rules(t_rules *rules)
 	if (!rules->player.gun.path)
 		die("Malloc error");
 	ft_strlcpy(rules->player.gun.path, "./img/pistola.xpm", 18);
+	rules->enemies = NULL;
 }
