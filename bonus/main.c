@@ -6,7 +6,7 @@
 /*   By: ddelladi <ddelladi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/26 14:35:11 by gimartin          #+#    #+#             */
-/*   Updated: 2022/09/15 17:25:45 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/09/15 17:31:29 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,10 +127,10 @@ int	main(int argc, char **argv)
 
 - pistola con immagine più grande
 - animazioni porte
-- pistola che spara
+- pistola che spara // CONTRO I NEMICI
 - nemici
 - livello trama
-- fov con mouse
+- fov con mouse [FUNZIONA ANCHE FUORI LA FINESTRA: ERRORE]
 - *importante* le textures scelte nella funzione choose_texture sono scambiate? Nel senso di west al posto di east, forse anche nord/sud. In caso è da cambiare anche nella mandatory!!!
 
 */
