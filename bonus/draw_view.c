@@ -6,7 +6,7 @@
 /*   By: ddelladi <ddelladi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/01 22:28:36 by ddelladi          #+#    #+#             */
-/*   Updated: 2022/09/22 16:32:43 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/09/22 19:07:46 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,22 @@ double	get_dist(t_rules *rules, t_bres_data d)
 	else if (angle_diff > (float)(2 * M_PI))
 		angle_diff -= 2 * M_PI;
 	dist *= cos(angle_diff);
+	return (dist);
+}
+
+double	get_dist2(t_rules *rules, t_bres_data d)
+{
+	float	angle_diff;
+	double	dist;
+
+	dist = final_length(d.xy[0], d.xy[1], d.xy2);
+	if (!dist)
+		dist = 0.01;
+	angle_diff = rules->player.dir - d.dir1;
+	if (angle_diff < 0)
+		angle_diff += (float)(2 * M_PI);
+	else if (angle_diff > (float)(2 * M_PI))
+		angle_diff -= 2 * M_PI;
 	return (dist);
 }
 

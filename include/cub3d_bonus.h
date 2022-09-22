@@ -6,7 +6,7 @@
 /*   By: ddelladi <ddelladi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/26 14:35:18 by gimartin          #+#    #+#             */
-/*   Updated: 2022/09/22 15:24:55 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/09/22 19:08:00 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -227,6 +227,7 @@ int				define_hor_ray_and_offset(t_rules *rules, t_ray *ray,
 int				define_ver_ray_and_offset(t_rules *rules, t_ray *ray,
 					double n_tan, float xy[2]);
 double			get_dist(t_rules *rules, t_bres_data d);
+double			get_dist2(t_rules *rules, t_bres_data d);
 double			get_fix(double angle);
 
 #endif

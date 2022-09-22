@@ -6,7 +6,7 @@
 /*   By: ddelladi <ddelladi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/22 12:53:34 by ddelladi          #+#    #+#             */
-/*   Updated: 2022/09/22 17:27:48 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/09/22 19:15:03 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -142,81 +142,71 @@ void	there_is_enemy(t_bres_data *data, t_rules *rules, float coord[2])
 	}
 }
 
-void	draw_enemy(t_bres_data *data, t_rules *rules, int *i, float coord[2], double dist, t_image *view)
+int	enemy_in_view(double dir, t_rules *rules, float coord[2])
 {
-	double	var[3];
-	int		y;
-	unsigned int	color;
-	t_draw_info	info;
+	float	f_pts[3];
+	float	s_pts[3];
 
-	info.l_h = rules->map.block_width * rules->mlx.win_height / dist;
-	var[0] = rules->mlx.win_height / 2 - info.l_h / 2;
-	var[1] = info.l_h + var[0];
-	var[2] = *i + (rules->mlx.win_width
-			/ (rules->mlx.win_width / 2.8) + 1);
-	info.off = var[0];
-	info.tex = rules->enemies->enemy_img;
-	info.view = view;
-	data->x = *i;
-	info.d = *data;
-	while (data->x < var[2])
+	horizontal_lines_check_enemies(dir, rules, f_pts);
+	vertical_lines_check_enemies(dir, rules, s_pts);
+	if (f_pts[0] || f_pts[1])
 	{
-		y = rules->mlx.win_height / 2 - info.l_h / 2;
-		while (y < var[1])
+		coord[1] = f_pts[1] - rules->map.block_width / 2;
+		coord[0] = f_pts[0] - our_modulo(f_pts[0], rules->map.block_width) + rules->map.block_width * 2;
+		return (1);
+	}
+	if (s_pts[0] || s_pts[1])
+	{
+		coord[0] = s_pts[0] + rules->map.block_width / 2;
+		coord[1] = s_pts[1] - our_modulo(s_pts[1], rules->map.block_width) + rules->map.block_width / 2;
+		return (1);
+	}
+	return (0);
+}
+
+void	draw_enemy(t_rules *rules, t_bres_data *data, t_image *view)
+{
+	double	dist;
+	int		y;
+	int		y2;
+	double	l_h;
+	int		x2;
+
+	dist = get_dist(rules, *data);
+	l_h = rules->map.block_width * rules->mlx.win_height / dist;
+	x2 = data->x + 4;
+	while (data->x < x2)
+	{
+		y = rules->mlx.win_height / 2 - l_h / 2;
+		y2 = rules->mlx.win_height / 2 + l_h / 2;
+		while (y < y2)
 		{
-			color = get_color(rules->enemies->enemy_img,	
-					choose_x(&info, info.d.xy2[0], rules), choose_y(y, &info),
-					rules);
-			// if (color)
-				easy_pxl(view, data->x, y, color);
-			// info.d.xy2[0]++;
+			easy_pxl(view, data->x, y,
+				0x00000000);
 			y++;
 		}
 		data->x++;
-		(*i)++;
 	}
-	(void)coord;
 }
 
-void	skip_enemy(int *i, float limit, t_rules *rules, t_bres_data *data)
+void	check_enemy(t_bres_data *data, t_rules *rules, t_image *view)
 {
-	float	not_coord[2];
-
-	not_coord[0] = 1;
-	not_coord[1] = 1;
-	while (not_coord[0] && not_coord[1] && *i < limit)
-	{
-		there_is_enemy(data, rules, not_coord);
-
-		data->dir1 = decrement_angle(data->dir1, 2);
-		(*i)++;
-	}
+	if (enemy_in_view(data->dir1, rules, data->xy2))
+		draw_enemy(rules, data, view);
+	else
+		data->x += 4;
+	data->dir1 = decrement_angle(data->dir1, 2);
 }
 
 void	raycast_enemies(t_rules *rules, t_image *view)
 {
 	int			i;
 	t_bres_data	data;
-	double		dist;
 
 	data.dir1 = increment_angle(rules->player.dir,
 			rules->mlx.win_width / 3.79259259);
 	i = 0;
 	data.x = 0;
-	data.xy[0] = rules->player.x;
-	data.xy[1] = rules->player.y;
-	data.xy2[0] = 0;
-	data.xy2[1] = 0;
 	while (i++ < rules->mlx.win_width / 3.66)
-	{
-		there_is_enemy(&data, rules, data.xy2);
-		if (data.xy2[0] && data.xy2[1])
-		{
-			dist = get_dist(rules, data);
-			draw_enemy(&data, rules, &i, data.xy2, dist, view);
-			// skip_enemy(&i, rules->mlx.win_width / 3.66, rules, &data);
-		}
-		data.dir1 = decrement_angle(data.dir1, 2);
-	}
-	(void)view;
+		check_enemy(&data, rules, view);
 }
