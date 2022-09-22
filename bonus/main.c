@@ -6,11 +6,11 @@
 /*   By: ddelladi <ddelladi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/26 14:35:11 by gimartin          #+#    #+#             */
-/*   Updated: 2022/09/15 17:31:29 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/09/22 15:36:28 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d_bonus.h"
+#include "../include/cub3d_bonus.h"
 
 void	read_file(char *file, t_rules *rules)
 {
@@ -48,7 +48,7 @@ int	count_enemies(t_map *map)
 	return (ret);
 }
 
-void	find_enemy_pos(t_enemies **ptr, t_map *map, int i)
+void	find_enemy_pos(t_enemies *ptr, t_map *map, int i)
 {
 	int	occ;
 	int	x;
@@ -63,8 +63,8 @@ void	find_enemy_pos(t_enemies **ptr, t_map *map, int i)
 		{
 			if (map->map[y][x] == '4' && occ == i)
 			{
-				(*ptr)->x = x;
-				(*ptr)->y = y;
+				ptr->x = x;
+				ptr->y = y;
 				return ;
 			}
 			else if (map->map[y][x] == '4')
@@ -77,31 +77,38 @@ void	load_enemies(t_rules *rules)
 {
 	int			n;
 	int			i;
-	t_enemies	**ptr;
+	t_enemies	*ptr;
 
 	n = count_enemies(&rules->map);
 	i = 0;
-	ptr = &rules->enemies;
+	rules->enemies = malloc(sizeof(t_enemies));
+	if (!rules->enemies)
+		die("Malloc error");
+	rules->enemies->enemy_img = malloc(sizeof(t_image));
+	if (!rules->enemies->enemy_img)
+		die("Malloc error");
+	rules->enemies->enemy_img->img = mlx_xpm_file_to_image(rules->mlx.mlx, "./img/enemies/ss_front.xpm", &rules->enemies->enemy_img->width, &rules->enemies->enemy_img->height);
+	if (!rules->enemies->enemy_img->img)
+			die("Error loading enemy image. Aborting");
+	rules->enemies->enemy_img->addr = mlx_get_data_addr(rules->enemies->enemy_img->img, &rules->enemies->enemy_img->bpp, &rules->enemies->enemy_img->line_length, &rules->enemies->enemy_img->endian);
+	ptr = rules->enemies;
 	while (i++ < n)
 	{
-		if (*ptr)
+		if (ptr)
 		{
-			(*ptr)->next = malloc(sizeof(t_enemies));
-			if (!(*ptr)->next)
+			ptr->next = malloc(sizeof(t_enemies));
+			if (!ptr->next)
 				die("Malloc error");
-			*ptr = (*ptr)->next;
+			ptr = ptr->next;
 		}
 		else
 		{
-			*ptr = malloc(sizeof(t_enemies));
-			if (!*ptr)
+			ptr = malloc(sizeof(t_enemies));
+			if (!ptr)
 				die("Malloc error");
 		}
 		find_enemy_pos(ptr, &rules->map, i);
-		(*ptr)->enemy_img.img = mlx_xpm_file_to_image(rules->mlx.mlx, "./img/enemies/ss_front.xpm", &(*ptr)->enemy_img.width, &(*ptr)->enemy_img.height);
-		if (!(*ptr)->enemy_img.img)
-			die("Error loading enemy image. Aborting");
-		(*ptr)->next = NULL;
+		ptr->next = NULL;
 	}
 }
 
@@ -125,12 +132,10 @@ int	main(int argc, char **argv)
 
 /*
 
-- pistola con immagine più grande
+- puntino rosso minimappa: nemico
 - animazioni porte
 - pistola che spara // CONTRO I NEMICI
 - nemici
 - livello trama
-- fov con mouse [FUNZIONA ANCHE FUORI LA FINESTRA: ERRORE]
-- *importante* le textures scelte nella funzione choose_texture sono scambiate? Nel senso di west al posto di east, forse anche nord/sud. In caso è da cambiare anche nella mandatory!!!
 
 */

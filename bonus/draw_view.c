@@ -6,11 +6,11 @@
 /*   By: ddelladi <ddelladi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/01 22:28:36 by ddelladi          #+#    #+#             */
-/*   Updated: 2022/09/13 14:10:06 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/09/22 15:11:28 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d_bonus.h"
+#include "../include/cub3d_bonus.h"
 
 double	get_dist(t_rules *rules, t_bres_data d)
 {
@@ -60,14 +60,14 @@ t_image	*choose_texture(t_rules *rules, t_bres_data *d)
 	{
 		if (is_door((int)(d->xy2[0] / rules->map.block_width), (int)(d->xy2[1] / rules->map.block_width) - 1, rules))
 			return (rules->door);
-		return (rules->north);
+		return (rules->south);
 	}
 	else if (!our_modulo(d->xy2[1], rules->map.block_width)
 		&& d->dir1 > M_PI && d->dir1 <= 2 * M_PI)
 	{
 		if (is_door((int)(d->xy2[0] / rules->map.block_width), (int)(d->xy2[1] / rules->map.block_width), rules))
 			return (rules->door);
-		return (rules->south);
+		return (rules->north);
 	}
 	else
 		die("Error while choosing textures. Developers fault. Aborting");

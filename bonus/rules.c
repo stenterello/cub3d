@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   rules.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ddelladi <ddelladi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gimartin <gimartin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/26 14:36:54 by gimartin          #+#    #+#             */
-/*   Updated: 2022/09/09 13:09:54 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/09/21 15:04:51 by gimartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d_bonus.h"
+#include "../include/cub3d_bonus.h"
 
 int	rules_completed(t_rules *rules)
 {
@@ -92,28 +92,4 @@ int	is_map(char *line)
 			return (0);
 	}
 	return (1);
-}
-
-void	take_rules(int fd, t_rules *rules)
-{
-	char	*tmp;
-
-	tmp = get_next_line(fd);
-	while (tmp && !rules_completed(rules))
-	{
-		rules->line_offset++;
-		insert_rule(tmp, rules);
-		free(tmp);
-		tmp = get_next_line(fd);
-	}
-	if (!rules_completed(rules))
-		die("Missing rules in .cub file. Aborting");
-	while (!is_map(tmp))
-	{
-		rules->line_offset++;
-		insert_rule(tmp, rules);
-		free(tmp);
-		tmp = get_next_line(fd);
-	}
-	free(tmp);
 }

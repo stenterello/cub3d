@@ -6,11 +6,11 @@
 /*   By: ddelladi <ddelladi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/26 15:22:38 by ddelladi          #+#    #+#             */
-/*   Updated: 2022/09/09 17:58:03 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/09/22 12:42:30 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d_bonus.h"
+#include "../include/cub3d_bonus.h"
 
 int	horizontal_checks(char **map)
 {
@@ -44,7 +44,7 @@ int	vertical_checks(t_map *map)
 		while (map->map[i] && map->map[i][j])
 		{
 			if ((map->map[i][j] == '0' || ft_isalpha(map->map[i][j])) && (i == 0
-				|| i == map->map_height_len[1] || map->map[i - 1][j] == ' '
+				|| i == map->map_height_len[1] - 1 || map->map[i - 1][j] == ' '
 				|| map->map[i + 1][j] == ' ' || map->map[i - 1][j] == '\n'
 				|| map->map[i + 1][j] == '\n'))
 				return (0);

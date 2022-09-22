@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   map_save.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ddelladi <ddelladi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gimartin <gimartin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/26 14:39:54 by gimartin          #+#    #+#             */
-/*   Updated: 2022/09/15 16:59:40 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/09/20 11:48:36 by gimartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d_bonus.h"
+#include "../include/cub3d_bonus.h"
 
 void	check_line(char *line)
 {

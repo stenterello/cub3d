@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ddelladi <ddelladi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gimartin <gimartin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/26 14:35:18 by gimartin          #+#    #+#             */
-/*   Updated: 2022/09/07 14:57:04 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/09/20 11:46:26 by gimartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -147,7 +147,8 @@ void			bresenham(t_bres_data data,
 int				get_abs(int n);
 void			easy_pxl(t_image *image, int x, int y, int color);
 double			final_length(float start_x, float start_y, float rxy[2]);
-void			draw_view(t_bres_data d, t_image *view, t_rules *rules, t_image *tex);
+void			draw_view(t_bres_data d, t_image *view,
+					t_rules *rules, t_image *tex);
 void			move_player(t_rules *rules, char *dir);
 double			our_modulo(double x, double y);
 void			get_next_plus(t_rules *rules, float r_cos,

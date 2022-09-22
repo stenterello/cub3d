@@ -6,12 +6,12 @@
 /*   By: ddelladi <ddelladi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/26 14:35:18 by gimartin          #+#    #+#             */
-/*   Updated: 2022/09/15 17:04:09 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/09/22 15:24:55 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CUB3D_H
-# define CUB3D_H
+#ifndef CUB3D_BONUS_H
+# define CUB3D_BONUS_H
 
 # include "libft/libft.h"
 # include <mlx.h>
@@ -112,7 +112,7 @@ typedef struct s_mouse
 
 typedef struct s_enemies
 {
-	t_image	enemy_img;
+	t_image	*enemy_img;
 	int		x;
 	int		y;
 	void	*next;
@@ -174,6 +174,7 @@ int				rules_completed(t_rules *rules);
 void			take_rules(int fd, t_rules *rules);
 void			die(char *str);
 void			raycast(t_rules *rules, t_image *view, t_image *minimap);
+void			raycast_enemies(t_rules *rules, t_image *view);
 int				colliding(t_rules *rules, float ray_cos,
 					float ray_sin, int plus);
 void			bresenham(t_bres_data data, t_image *minimap,
@@ -181,7 +182,8 @@ void			bresenham(t_bres_data data, t_image *minimap,
 int				get_abs(int n);
 void			easy_pxl(t_image *image, int x, int y, int color);
 double			final_length(float start_x, float start_y, float rxy[2]);
-void			draw_view(t_bres_data d, t_image *view, t_rules *rules, t_image *tex);
+void			draw_view(t_bres_data d, t_image *view,
+					t_rules *rules, t_image *tex);
 void			move_player(t_rules *rules, char *dir);
 double			our_modulo(double x, double y);
 void			get_next_plus(t_rules *rules, float r_cos,
@@ -210,5 +212,21 @@ int				choose_y(int var, t_draw_info *info);
 unsigned int	get_color(t_image *tex, int x, int y, t_rules *rules);
 void			try_open_door(t_rules *rules);
 int				is_door(int x, int y, t_rules *rules);
+int				is_open_door(int x, int y, t_rules *rules);
+void			try_open_door(t_rules *rules);
+void			close_door(t_rules *rules);
+void			open_door(t_rules *rules);
+int				in_front_of_open_door(t_rules *rules);
+int				in_front_of_door(t_rules *rules);
+void			restore_gun(t_rules *rules);
+void			insert_rule(char *str, t_rules *rules);
+int				is_map(char *line);
+void			insert_rule(char *str, t_rules *rules);
+int				define_hor_ray_and_offset(t_rules *rules, t_ray *ray,
+					double a_tan, float xy[2]);
+int				define_ver_ray_and_offset(t_rules *rules, t_ray *ray,
+					double n_tan, float xy[2]);
+double			get_dist(t_rules *rules, t_bres_data d);
+double			get_fix(double angle);
 
 #endif

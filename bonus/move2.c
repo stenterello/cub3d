@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   move2.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ddelladi <ddelladi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gimartin <gimartin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/02 14:30:26 by ddelladi          #+#    #+#             */
-/*   Updated: 2022/09/12 17:14:07 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/09/20 11:48:36 by gimartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d_bonus.h"
+#include "../include/cub3d_bonus.h"
 
 static void	check_up(t_rules *rules, float ray_cos, float ray_sin)
 {

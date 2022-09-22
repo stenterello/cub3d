@@ -6,7 +6,7 @@
 /*   By: ddelladi <ddelladi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/01 22:28:36 by ddelladi          #+#    #+#             */
-/*   Updated: 2022/09/09 12:17:44 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/09/22 12:50:57 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,10 +49,10 @@ t_image	*choose_texture(t_rules *rules, t_bres_data *d)
 		return (rules->west);
 	else if (!our_modulo(d->xy2[1], rules->map.block_width)
 		&& d->dir1 <= M_PI && d->dir1 >= 0)
-		return (rules->north);
+		return (rules->south);
 	else if (!our_modulo(d->xy2[1], rules->map.block_width)
 		&& d->dir1 > M_PI && d->dir1 <= 2 * M_PI)
-		return (rules->south);
+		return (rules->north);
 	else
 		die("Error while choosing textures. Developers fault. Aborting");
 	return (NULL);

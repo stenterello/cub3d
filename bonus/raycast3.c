@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   raycast3.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ddelladi <ddelladi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gimartin <gimartin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/26 18:28:56 by ddelladi          #+#    #+#             */
-/*   Updated: 2022/09/07 17:53:12 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/09/20 12:01:47 by gimartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d_bonus.h"
+#include "../include/cub3d_bonus.h"
 
 double	final_length(float start_x, float start_y, float rxy[2])
 {
@@ -33,7 +33,8 @@ int	virtual_horizontal_colliding(int ray_x, int ray_y, t_rules *rules, int dir)
 		|| map_x > rules->map.map_height_len[0] - 1
 		|| map_y > rules->map.map_height_len[1] - 1)
 		return (1);
-	if (rules->map.map[map_y][map_x] == '1' || rules->map.map[map_y][map_x] == '2')
+	if (rules->map.map[map_y][map_x] == '1'
+		|| rules->map.map[map_y][map_x] == '2')
 		return (1);
 	return (0);
 }
@@ -52,7 +53,8 @@ int	virtual_vertical_colliding(int ray_x, int ray_y, t_rules *rules, int dir)
 		|| map_x > rules->map.map_height_len[0] - 1
 		|| map_y > rules->map.map_height_len[1] - 1)
 		return (1);
-	if (rules->map.map[map_y][map_x] == '1' || rules->map.map[map_y][map_x] == '2')
+	if (rules->map.map[map_y][map_x] == '1'
+		|| rules->map.map[map_y][map_x] == '2')
 		return (1);
 	return (0);
 }

@@ -6,13 +6,13 @@
 /*   By: ddelladi <ddelladi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/02 17:55:01 by ddelladi          #+#    #+#             */
-/*   Updated: 2022/09/07 14:53:53 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/09/22 13:14:48 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d_bonus.h"
+#include "../include/cub3d_bonus.h"
 
-static int	define_hor_ray_and_offset(t_rules *rules, t_ray *ray,
+int	define_hor_ray_and_offset(t_rules *rules, t_ray *ray,
 	double a_tan, float xy[2])
 {
 	if (ray->angle < M_PI)
@@ -56,7 +56,7 @@ void	horizontal_lines_check(double angle, t_rules *rules, float ret[3])
 	ret[1] = ray.y;
 }
 
-static int	define_ver_ray_and_offset(t_rules *rules, t_ray *ray,
+int	define_ver_ray_and_offset(t_rules *rules, t_ray *ray,
 	double n_tan, float xy[2])
 {
 	if (ray->angle < M_PI / 2 || ray->angle > 3 * M_PI / 2)

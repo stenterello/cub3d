@@ -25,6 +25,7 @@ BONUS	=	main.c \
 			map_save.c \
 			map_utils.c \
 			rules.c \
+			rules2.c \
 			utils.c	\
 			utils2.c	\
 			open_window.c \
@@ -33,13 +34,16 @@ BONUS	=	main.c \
 			raycast.c \
 			raycast2.c \
 			raycast3.c \
+			raycast_enemies.c \
 			events.c \
+			events2.c \
 			bresenham.c \
 			draw_view.c \
 			collision.c \
 			collision2.c \
 			move2.c \
-			doors.c
+			doors.c \
+			doors2.c
 SRCS	=	${addprefix src/, $(SRC)}
 B_SRCS	=	${addprefix bonus/, $(BONUS)}
 M_B_CMD	=	bonus/move.c

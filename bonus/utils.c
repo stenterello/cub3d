@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ddelladi <ddelladi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gimartin <gimartin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/26 14:38:55 by gimartin          #+#    #+#             */
-/*   Updated: 2022/09/15 17:04:19 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/09/20 12:10:02 by gimartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d_bonus.h"
+#include "../include/cub3d_bonus.h"
 
 void	die(char *str)
 {
@@ -51,7 +51,7 @@ int	take_rgb(char *str, unsigned char rgb[3])
 	return (1);
 }
 
-void	init_rules(t_rules *rules)
+void	init_rules_2(t_rules *rules)
 {
 	rules->map.map = NULL;
 	rules->north = NULL;
@@ -64,6 +64,11 @@ void	init_rules(t_rules *rules)
 	rules->line_offset = 0;
 	rules->mlx.win_width = 1280;
 	rules->mlx.win_height = 720;
+}
+
+void	init_rules(t_rules *rules)
+{
+	init_rules_2(rules);
 	rules->keys.w_pressed = 0;
 	rules->keys.a_pressed = 0;
 	rules->keys.s_pressed = 0;

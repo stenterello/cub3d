@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   collision.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ddelladi <ddelladi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gimartin <gimartin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/02 12:44:07 by ddelladi          #+#    #+#             */
-/*   Updated: 2022/09/07 17:51:46 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/09/20 11:48:37 by gimartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d_bonus.h"
+#include "../include/cub3d_bonus.h"
 
 int	verify_collide(t_rules *rules, int next[2])
 {
@@ -18,7 +18,8 @@ int	verify_collide(t_rules *rules, int next[2])
 		|| next[0] > rules->map.map_height_len[0]
 		|| next[1] > rules->map.map_height_len[1])
 		return (1);
-	if (rules->map.map[next[1]][next[0]] == '1' || rules->map.map[next[1]][next[0]] == '2')
+	if (rules->map.map[next[1]][next[0]] == '1'
+			|| rules->map.map[next[1]][next[0]] == '2')
 		return (1);
 	return (0);
 }
