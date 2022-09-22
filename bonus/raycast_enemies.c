@@ -6,7 +6,7 @@
 /*   By: ddelladi <ddelladi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/22 12:53:34 by ddelladi          #+#    #+#             */
-/*   Updated: 2022/09/22 16:26:27 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/09/22 17:27:48 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -144,36 +144,35 @@ void	there_is_enemy(t_bres_data *data, t_rules *rules, float coord[2])
 
 void	draw_enemy(t_bres_data *data, t_rules *rules, int *i, float coord[2], double dist, t_image *view)
 {
-	double	l_h;
 	double	var[3];
-	int		off;
 	int		y;
 	unsigned int	color;
-	float	tx;
-	float	ty;
+	t_draw_info	info;
 
-
-	l_h = rules->map.block_width * rules->mlx.win_height / dist;
-	var[0] = rules->mlx.win_height / 2 - l_h / 2;
-	var[1] = l_h + var[0];
+	info.l_h = rules->map.block_width * rules->mlx.win_height / dist;
+	var[0] = rules->mlx.win_height / 2 - info.l_h / 2;
+	var[1] = info.l_h + var[0];
 	var[2] = *i + (rules->mlx.win_width
 			/ (rules->mlx.win_width / 2.8) + 1);
-	off = var[0];
-	while (*i < var[2])
+	info.off = var[0];
+	info.tex = rules->enemies->enemy_img;
+	info.view = view;
+	data->x = *i;
+	info.d = *data;
+	while (data->x < var[2])
 	{
-		y = var[0];
+		y = rules->mlx.win_height / 2 - info.l_h / 2;
 		while (y < var[1])
 		{
-			dist = rules->mlx.win_height / 2;
-			tx = rules->player.x / rules->map.block_width + cos(data->dir1) * dist / cos(get_fix(rules->player.dir - data->dir1));
-			ty = rules->player.y / rules->map.block_width - sin(data->dir1) * dist / cos(get_fix(rules->player.dir - data->dir1));
 			color = get_color(rules->enemies->enemy_img,	
-					our_modulo(tx * rules->enemies->enemy_img->width, rules->enemies->enemy_img->width),
-					our_modulo(ty * rules->enemies->enemy_img->width, rules->enemies->enemy_img->width),
+					choose_x(&info, info.d.xy2[0], rules), choose_y(y, &info),
 					rules);
-			easy_pxl(view, *i, y, color);
+			// if (color)
+				easy_pxl(view, data->x, y, color);
+			// info.d.xy2[0]++;
 			y++;
 		}
+		data->x++;
 		(*i)++;
 	}
 	(void)coord;
@@ -204,7 +203,6 @@ void	raycast_enemies(t_rules *rules, t_image *view)
 			rules->mlx.win_width / 3.79259259);
 	i = 0;
 	data.x = 0;
-	data.color = 0x00FFFFFF;
 	data.xy[0] = rules->player.x;
 	data.xy[1] = rules->player.y;
 	data.xy2[0] = 0;
