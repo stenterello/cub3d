@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycast_enemies.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ddelladi <ddelladi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ddelladi <ddelladi@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/22 12:53:34 by ddelladi          #+#    #+#             */
-/*   Updated: 2022/09/22 19:15:03 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/09/23 13:13:26 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -172,7 +172,7 @@ void	draw_enemy(t_rules *rules, t_bres_data *data, t_image *view)
 	double	l_h;
 	int		x2;
 
-	dist = get_dist(rules, *data);
+	dist = get_dist(rules, data);
 	l_h = rules->map.block_width * rules->mlx.win_height / dist;
 	x2 = data->x + 4;
 	while (data->x < x2)

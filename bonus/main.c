@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ddelladi <ddelladi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ddelladi <ddelladi@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/26 14:35:11 by gimartin          #+#    #+#             */
-/*   Updated: 2022/09/22 15:36:28 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/09/23 13:23:31 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -137,5 +137,6 @@ int	main(int argc, char **argv)
 - pistola che spara // CONTRO I NEMICI
 - nemici
 - livello trama
+- aggiustare apertura e chiusura porta: troppo veloce tra una e l'altra
 
 */

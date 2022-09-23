@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycast.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ddelladi <ddelladi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ddelladi <ddelladi@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/02 17:56:50 by ddelladi          #+#    #+#             */
-/*   Updated: 2022/09/22 18:55:12 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/09/23 13:34:13 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ double	decrement_angle(double angle, int t)
 	i = 0;
 	while (i++ < t)
 	{
-		angle -= ANGLE_UNIT;
+		angle -= ANGLE_UNIT / 2;
 		if (angle < 0)
 			angle = 2 * M_PI;
 	}
@@ -42,28 +42,25 @@ void	calc_ray(t_bres_data *data, t_rules *rules,
 	{
 		data->xy2[0] = f_pts[0];
 		data->xy2[1] = f_pts[1];
-		bresenham(*data, minimap, view, rules);
+		bresenham(data, minimap, view, rules);
 	}
 	else
 	{
 		data->xy2[0] = s_pts[0];
 		data->xy2[1] = s_pts[1];
-		bresenham(*data, minimap, view, rules);
+		bresenham(data, minimap, view, rules);
 	}
-	data->x += (rules->mlx.win_width / (rules->mlx.win_width / 3.66) + 1);
-	data->dir1 = decrement_angle(data->dir1, 2);
+	data->dir1 = decrement_angle(data->dir1, 1);
 }
 
 void	raycast(t_rules *rules, t_image *view, t_image *minimap)
 {
-	int			i;
 	t_bres_data	data;
 
 	data.dir1 = increment_angle(rules->player.dir,
-			rules->mlx.win_width / 3.79259259);
-	i = 0;
+			rules->mlx.win_width / 4);
 	data.x = 0;
 	data.color = 0x00FFFFFF;
-	while (i++ < rules->mlx.win_width / 3.66)
+	while (data.x++ < rules->mlx.win_width)
 		calc_ray(&data, rules, view, minimap);
 }

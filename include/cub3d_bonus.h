@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d_bonus.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ddelladi <ddelladi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ddelladi <ddelladi@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/26 14:35:18 by gimartin          #+#    #+#             */
-/*   Updated: 2022/09/22 19:08:00 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/09/23 13:30:30 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -177,12 +177,12 @@ void			raycast(t_rules *rules, t_image *view, t_image *minimap);
 void			raycast_enemies(t_rules *rules, t_image *view);
 int				colliding(t_rules *rules, float ray_cos,
 					float ray_sin, int plus);
-void			bresenham(t_bres_data data, t_image *minimap,
+void			bresenham(t_bres_data *data, t_image *minimap,
 					t_image *view, t_rules *rules);
 int				get_abs(int n);
 void			easy_pxl(t_image *image, int x, int y, int color);
 double			final_length(float start_x, float start_y, float rxy[2]);
-void			draw_view(t_bres_data d, t_image *view,
+void			draw_view(t_bres_data *d, t_image *view,
 					t_rules *rules, t_image *tex);
 void			move_player(t_rules *rules, char *dir);
 double			our_modulo(double x, double y);
@@ -226,7 +226,7 @@ int				define_hor_ray_and_offset(t_rules *rules, t_ray *ray,
 					double a_tan, float xy[2]);
 int				define_ver_ray_and_offset(t_rules *rules, t_ray *ray,
 					double n_tan, float xy[2]);
-double			get_dist(t_rules *rules, t_bres_data d);
+double			get_dist(t_rules *rules, t_bres_data *d);
 double			get_dist2(t_rules *rules, t_bres_data d);
 double			get_fix(double angle);
 

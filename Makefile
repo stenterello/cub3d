@@ -101,4 +101,6 @@ fclean	:	clean
 
 re	:	fclean all
 
+re_lin	: fclean lin_bon
+
 .PHONY	:	all bonus clean fclean re
