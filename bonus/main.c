@@ -6,7 +6,7 @@
 /*   By: ddelladi <ddelladi@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/26 14:35:11 by gimartin          #+#    #+#             */
-/*   Updated: 2022/09/23 13:23:31 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/09/27 16:01:39 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,13 +84,10 @@ void	load_enemies(t_rules *rules)
 	rules->enemies = malloc(sizeof(t_enemies));
 	if (!rules->enemies)
 		die("Malloc error");
-	rules->enemies->enemy_img = malloc(sizeof(t_image));
-	if (!rules->enemies->enemy_img)
-		die("Malloc error");
-	rules->enemies->enemy_img->img = mlx_xpm_file_to_image(rules->mlx.mlx, "./img/enemies/ss_front.xpm", &rules->enemies->enemy_img->width, &rules->enemies->enemy_img->height);
-	if (!rules->enemies->enemy_img->img)
+	rules->enemy.img = mlx_xpm_file_to_image(rules->mlx.mlx, "./img/enemies/ss_front.xpm", &rules->enemy.width, &rules->enemy.height);
+	if (!rules->enemy.img)
 			die("Error loading enemy image. Aborting");
-	rules->enemies->enemy_img->addr = mlx_get_data_addr(rules->enemies->enemy_img->img, &rules->enemies->enemy_img->bpp, &rules->enemies->enemy_img->line_length, &rules->enemies->enemy_img->endian);
+	rules->enemy.addr = mlx_get_data_addr(rules->enemy.img, &rules->enemy.bpp, &rules->enemy.line_length, &rules->enemy.endian);
 	ptr = rules->enemies;
 	while (i++ < n)
 	{
@@ -137,6 +134,11 @@ int	main(int argc, char **argv)
 - pistola che spara // CONTRO I NEMICI
 - nemici
 - livello trama
-- aggiustare apertura e chiusura porta: troppo veloce tra una e l'altra
+- sulla linea dell'orizzonte ci sono piccoli punti neri per via della correzione
+	della distanza, che nel ceiling e floor risulta infinita
+- cambiare data->dir1 in data->ray_angle per chiarezza
+- togliere il raycast multiplo dalla versione mandatory!
+- bloccare il cammino del player se incontra un nemico (dies)
+- eliminare il terzo elemento di var[3] sia in mandatory che in bonus
 
 */

@@ -6,7 +6,7 @@
 /*   By: ddelladi <ddelladi@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/26 14:35:18 by gimartin          #+#    #+#             */
-/*   Updated: 2022/09/23 13:30:30 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/09/27 15:08:19 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -130,6 +130,7 @@ typedef struct s_rules
 	t_image			*south;
 	t_image			*west;
 	t_image			*door;
+	t_image			enemy;
 	unsigned char	floor_color[3];
 	unsigned char	ceiling_color[3];
 	t_image			*floor;
@@ -174,7 +175,7 @@ int				rules_completed(t_rules *rules);
 void			take_rules(int fd, t_rules *rules);
 void			die(char *str);
 void			raycast(t_rules *rules, t_image *view, t_image *minimap);
-void			raycast_enemies(t_rules *rules, t_image *view);
+void			raycast_enemies(t_rules *rules);
 int				colliding(t_rules *rules, float ray_cos,
 					float ray_sin, int plus);
 void			bresenham(t_bres_data *data, t_image *minimap,
@@ -227,7 +228,12 @@ int				define_hor_ray_and_offset(t_rules *rules, t_ray *ray,
 int				define_ver_ray_and_offset(t_rules *rules, t_ray *ray,
 					double n_tan, float xy[2]);
 double			get_dist(t_rules *rules, t_bres_data *d);
-double			get_dist2(t_rules *rules, t_bres_data d);
 double			get_fix(double angle);
+void			shoot(t_rules *rules);
+int				enemy_in_view(double dir, t_rules *rules, float coord[2]);
+double			get_end_angle(t_rules *rules, double start_angle, int *range);
+double			get_enemy_dist(t_rules *rules, int coord[2]);
+void			get_enemy_mini_coord(t_rules *rules, t_bres_data *data, int mini_coord[2]);
+double			get_end_angle(t_rules *rules, double start_angle, int *range);
 
 #endif

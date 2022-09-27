@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   doors2.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gimartin <gimartin@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ddelladi <ddelladi@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/20 11:51:17 by gimartin          #+#    #+#             */
-/*   Updated: 2022/09/20 11:52:23 by gimartin         ###   ########.fr       */
+/*   Updated: 2022/09/23 13:50:28 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,10 @@
 void	try_open_door(t_rules *rules)
 {
 	if (in_front_of_door(rules)
-		&& rules->n_frames - rules->last_door_action > 5)
+		&& rules->n_frames - rules->last_door_action > 350)
 		open_door(rules);
 	else if (in_front_of_open_door(rules)
-		&& rules->n_frames - rules->last_door_action > 5)
+		&& rules->n_frames - rules->last_door_action > 350)
 		close_door(rules);
 }
 

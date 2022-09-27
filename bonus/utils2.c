@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils2.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gimartin <gimartin@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ddelladi <ddelladi@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/02 17:08:38 by ddelladi          #+#    #+#             */
-/*   Updated: 2022/09/20 11:48:36 by gimartin         ###   ########.fr       */
+/*   Updated: 2022/09/23 13:51:47 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,4 +40,10 @@ unsigned int	get_color(t_image *tex, int x, int y, t_rules *rules)
 		return (*(unsigned int *)(tex->addr + (4 * (tex->width * y + x))));
 	}
 	return (0x0);
+}
+
+void	shoot(t_rules *rules)
+{
+	ft_strlcpy(rules->player.gun.path, "./img/sparo.xpm", 16);
+	rules->player.gun.last_shoot = rules->n_frames;
 }

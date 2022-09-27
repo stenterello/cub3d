@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lin_move.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gimartin <gimartin@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ddelladi <ddelladi@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/26 18:46:17 by ddelladi          #+#    #+#             */
-/*   Updated: 2022/09/20 11:48:36 by gimartin         ###   ########.fr       */
+/*   Updated: 2022/09/27 01:37:23 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,8 @@ int	press(int keycode, t_rules *rules)
 		rules->keys.shift_pressed = 1;
 	if (keycode == 101)
 		rules->keys.e_pressed = 1;
+	if (keycode == 32)
+		shoot(rules);
 	return (0);
 }
 
