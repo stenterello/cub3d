@@ -6,7 +6,7 @@
 /*   By: ddelladi <ddelladi@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/27 12:03:55 by ddelladi          #+#    #+#             */
-/*   Updated: 2022/09/27 16:00:48 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/09/27 23:58:15 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,19 +60,31 @@ double	get_enemy_dist(t_rules *rules, int coord[2])
 	return (final_length_double(rules->player.x, rules->player.y, en_xy));
 }
 
-double	get_end_angle(t_rules *rules, double start_angle, int *range)
+double	get_end_angle(t_rules *rules, double start_angle, int *range, int *counter2, double real_start)
 {
 	float	end_pts[2];
 	int		counter;
+	double	bench;
 
 	counter = 0;
 	ft_bzero(&end_pts, 8);
+	bench = start_angle;
 	enemy_in_view(start_angle, rules, end_pts);
 	while (enemy_in_view(start_angle, rules, end_pts))
 	{
 		start_angle = decrement_angle(start_angle, 1);
 		counter++;
 	}
-	*range = counter;
+	if (!real_start)
+		*range = counter;
+	else
+	{
+		*range = counter;
+		while (real_start != bench)
+		{
+			(*counter2)++;
+			real_start = decrement_angle(real_start, 1);
+		}
+	} 
 	return (increment_angle(start_angle, 1));
 }

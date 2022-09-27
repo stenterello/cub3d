@@ -6,7 +6,7 @@
 /*   By: ddelladi <ddelladi@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/26 14:35:18 by gimartin          #+#    #+#             */
-/*   Updated: 2022/09/27 15:08:19 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/09/27 23:56:17 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -231,9 +231,8 @@ double			get_dist(t_rules *rules, t_bres_data *d);
 double			get_fix(double angle);
 void			shoot(t_rules *rules);
 int				enemy_in_view(double dir, t_rules *rules, float coord[2]);
-double			get_end_angle(t_rules *rules, double start_angle, int *range);
 double			get_enemy_dist(t_rules *rules, int coord[2]);
 void			get_enemy_mini_coord(t_rules *rules, t_bres_data *data, int mini_coord[2]);
-double			get_end_angle(t_rules *rules, double start_angle, int *range);
+double			get_end_angle(t_rules *rules, double start_angle, int *range, int *counter2, double real_start);
 
 #endif
