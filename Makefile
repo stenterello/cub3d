@@ -34,9 +34,6 @@ BONUS	=	main.c \
 			raycast.c \
 			raycast2.c \
 			raycast3.c \
-			raycast_enemies.c \
-			raycast_enemies_utils.c \
-			raycast_enemies_utils2.c \
 			events.c \
 			events2.c \
 			bresenham.c \

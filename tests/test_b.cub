@@ -1,12 +1,12 @@
-WE ./textures/64/sud.xpm
-NO ./textures/64/nord.xpm
+WE ./textures/sci-fi/panel1.xpm
+NO ./textures/tileable/green_stone.xpm
 
 SO ./textures/64/sud.xpm
 
 EA ./textures/64/EW.xpm
-F ./textures/floor.xpm
+F ./textures/midgard_textures/10-1.xpm
 C ./textures/tetto.xpm
-D  ./textures/Porta_chiusa.xpm
+D  ./textures/sci-fi/door.xpm
 11111111111111111111111111
 140W0000000110000000000001
 10210004011100000000000001
