@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gimartin <gimartin@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ddelladi <ddelladi@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/26 14:38:55 by gimartin          #+#    #+#             */
-/*   Updated: 2022/09/20 12:10:02 by gimartin         ###   ########.fr       */
+/*   Updated: 2022/09/28 21:26:51 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,5 +88,4 @@ void	init_rules(t_rules *rules)
 	if (!rules->player.gun.path)
 		die("Malloc error");
 	ft_strlcpy(rules->player.gun.path, "./img/pistola.xpm", 18);
-	rules->enemies = NULL;
 }

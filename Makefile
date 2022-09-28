@@ -38,6 +38,7 @@ BONUS	=	main.c \
 			events2.c \
 			bresenham.c \
 			draw_view.c \
+			draw_sprites.c \
 			collision.c \
 			collision2.c \
 			move2.c \
