@@ -6,7 +6,7 @@
 /*   By: ddelladi <ddelladi@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/27 12:02:44 by ddelladi          #+#    #+#             */
-/*   Updated: 2022/09/27 12:03:38 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/09/28 14:48:40 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,9 @@ int	virtual_vertical_colliding_enemies(int ray_x, int ray_y, t_rules *rules, int
 	map_y = ray_y / (int)rules->map.block_width;
 	if (map_x < 0 || map_y < 0
 		|| map_x > rules->map.map_height_len[0] - 1
-		|| map_y > rules->map.map_height_len[1] - 1)
-		return (1);
+		|| map_y > rules->map.map_height_len[1] - 1
+		|| rules->map.map[map_y][map_x] == '1')
+		return (2);
 	if (rules->map.map[map_y][map_x] == '4')
 		return (1);
 	return (0);
@@ -43,8 +44,9 @@ int	virtual_horizontal_colliding_enemies(int ray_x, int ray_y, t_rules *rules, i
 		map_y = ray_y / rules->map.block_width;
 	if (map_x < 0 || map_y < 0
 		|| map_x > rules->map.map_height_len[0] - 1
-		|| map_y > rules->map.map_height_len[1] - 1)
-		return (1);
+		|| map_y > rules->map.map_height_len[1] - 1
+		|| rules->map.map[map_y][map_x] == '1')
+		return (2);
 	if (rules->map.map[map_y][map_x] == '4')
 		return (1);
 	return (0);
@@ -69,16 +71,16 @@ void	horizontal_lines_check_enemies(double angle, t_rules *rules, float ret[3])
 		ray.x += ray.xyoff[0];
 		ray.y += ray.xyoff[1];
 	}
-	if (ray.x != INT_MAX && ray.x > 0 && ray.x / rules->map.block_width < rules->map.map_height_len[0]
+	if (virtual_horizontal_colliding_enemies(ray.x, ray.y, rules, ret[2]) == 2)
+	{
+		ret[0] = 0;
+		ret[1] = 0;
+	}
+	else if (ray.x != INT_MAX && ray.x > 0 && ray.x / rules->map.block_width < rules->map.map_height_len[0]
 		&& ray.y > 0 && ray.y / rules->map.block_width < rules->map.map_height_len[1])
 	{
 		ret[0] = ray.x;
 		ret[1] = ray.y;
-	}
-	else
-	{
-		ret[0] = 0;
-		ret[1] = 0;
 	}
 }
 
@@ -102,16 +104,16 @@ void	vertical_lines_check_enemies(double angle, t_rules *rules, float ret[3])
 		ray.x += ray.xyoff[0];
 		ray.y += ray.xyoff[1];
 	}
-	if (ray.x != INT_MAX && ray.x > 0 && ray.x / rules->map.block_width < rules->map.map_height_len[0]
+	if (virtual_vertical_colliding_enemies(ray.x, ray.y, rules, ret[2]) == 2)
+	{
+		ret[0] = 0;
+		ret[1] = 0;
+	}
+	else if (ray.x != INT_MAX && ray.x > 0 && ray.x / rules->map.block_width < rules->map.map_height_len[0]
 		&& ray.y > 0 && ray.y / rules->map.block_width < rules->map.map_height_len[1])
 	{
 		ret[0] = ray.x;
 		ret[1] = ray.y;
-	}
-	else
-	{
-		ret[0] = 0;
-		ret[1] = 0;
 	}
 }
 

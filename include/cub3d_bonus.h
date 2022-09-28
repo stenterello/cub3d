@@ -6,7 +6,7 @@
 /*   By: ddelladi <ddelladi@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/26 14:35:18 by gimartin          #+#    #+#             */
-/*   Updated: 2022/09/27 23:56:17 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/09/28 14:47:35 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -159,6 +159,21 @@ typedef struct s_draw_info
 	double		off;
 }				t_draw_info;
 
+typedef struct s_enemy_info
+{
+	int		mini_coord[2];
+	double	dist;
+	int		l_h;
+	int		start_y;
+	int		end;
+	double	end_angle;
+	t_image	enemy;
+	int		enemy_width;
+	int		start_x;
+	int		x_off;
+	int		x;
+}				t_enemy_info;
+
 void			map_save(char *file, int fd, t_rules *rules);
 void			map_checks(t_rules *rules);
 void			init_rules(t_rules *rules);
@@ -234,5 +249,6 @@ int				enemy_in_view(double dir, t_rules *rules, float coord[2]);
 double			get_enemy_dist(t_rules *rules, int coord[2]);
 void			get_enemy_mini_coord(t_rules *rules, t_bres_data *data, int mini_coord[2]);
 double			get_end_angle(t_rules *rules, double start_angle, int *range, int *counter2, double real_start);
+double			get_real_start_angle(double angle, t_bres_data *data, t_rules *rules);
 
 #endif

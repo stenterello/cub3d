@@ -6,7 +6,7 @@
 /*   By: ddelladi <ddelladi@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/27 12:03:55 by ddelladi          #+#    #+#             */
-/*   Updated: 2022/09/27 23:58:15 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/09/28 14:49:10 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,7 @@ double	get_enemy_dist(t_rules *rules, int coord[2])
 	en_xy[0] = coord[0] * rules->map.block_width + rules->map.block_width / 2;
 	en_xy[1] = coord[1] * rules->map.block_width + rules->map.block_width / 2;
 	return (final_length_double(rules->player.x, rules->player.y, en_xy));
+	// il calcolo cambia in base alla direzione del player
 }
 
 double	get_end_angle(t_rules *rules, double start_angle, int *range, int *counter2, double real_start)
@@ -69,17 +70,16 @@ double	get_end_angle(t_rules *rules, double start_angle, int *range, int *counte
 	counter = 0;
 	ft_bzero(&end_pts, 8);
 	bench = start_angle;
-	enemy_in_view(start_angle, rules, end_pts);
 	while (enemy_in_view(start_angle, rules, end_pts))
 	{
 		start_angle = decrement_angle(start_angle, 1);
 		counter++;
 	}
-	if (!real_start)
-		*range = counter;
-	else
+	if (counter < 10)
+		enemy_in_view(decrement_angle(start_angle, counter), rules, end_pts);
+	*range = counter;
+	if (real_start)
 	{
-		*range = counter;
 		while (real_start != bench)
 		{
 			(*counter2)++;
@@ -87,4 +87,21 @@ double	get_end_angle(t_rules *rules, double start_angle, int *range, int *counte
 		}
 	} 
 	return (increment_angle(start_angle, 1));
+}
+
+double	get_real_start_angle(double angle, t_bres_data *data, t_rules *rules)
+{
+	int	coord[2];
+	int	coord2[2];
+
+	ft_bzero(&coord, 8);
+	ft_bzero(&coord2, 8);
+	get_enemy_mini_coord(rules, data, coord);
+	get_enemy_mini_coord(rules, data, coord2);
+	while (coord[0] == coord2[0] && coord[1] == coord2[1] && enemy_in_view(angle, rules, data->xy2))
+	{
+		angle = increment_angle(angle, 1);
+		get_enemy_mini_coord(rules, data, coord2);
+	}
+	return (angle);
 }
