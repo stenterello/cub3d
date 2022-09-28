@@ -6,7 +6,7 @@
 /*   By: ddelladi <ddelladi@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/26 16:57:44 by ddelladi          #+#    #+#             */
-/*   Updated: 2022/09/28 12:24:09 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/09/28 19:42:36 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,6 @@ void	game(t_rules *rules)
 	mlx_put_image_to_window(rules->mlx.mlx, rules->mlx.mlx_win, view.img, 0, 0);
 	mlx_put_image_to_window(rules->mlx.mlx, rules->mlx.mlx_win,
 		minimap.img, 0, 0);
-	raycast_enemies(rules);
+	//raycast_enemies(rules);
 	load_gun(rules, rules->player.gun.path);
 }

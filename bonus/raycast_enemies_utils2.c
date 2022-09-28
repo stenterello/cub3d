@@ -6,7 +6,7 @@
 /*   By: ddelladi <ddelladi@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/27 12:03:55 by ddelladi          #+#    #+#             */
-/*   Updated: 2022/09/28 14:49:10 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/09/28 19:40:26 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,10 @@ double	get_enemy_dist(t_rules *rules, int coord[2])
 {
 	double	en_xy[2];
 
-	en_xy[0] = coord[0] * rules->map.block_width + rules->map.block_width / 2;
+	if (rules->player.dir > M_PI / 2 && rules->player.dir < 3 * M_PI / 2)
+		en_xy[0] = coord[0] * rules->map.block_width - rules->map.block_width / 2;
+	else
+		en_xy[0] = coord[0] * rules->map.block_width + rules->map.block_width / 2;
 	en_xy[1] = coord[1] * rules->map.block_width + rules->map.block_width / 2;
 	return (final_length_double(rules->player.x, rules->player.y, en_xy));
 	// il calcolo cambia in base alla direzione del player
