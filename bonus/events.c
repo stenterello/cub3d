@@ -6,7 +6,7 @@
 /*   By: ddelladi <ddelladi@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/26 16:45:37 by ddelladi          #+#    #+#             */
-/*   Updated: 2022/09/29 11:52:32 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/09/30 00:57:29 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,9 +32,15 @@ int	mouse_move(int x, int y, t_rules *rules)
 	else
 	{
 		if (x < rules->mouse.last_x)
-			rules->player.dir += ANGLE_UNIT * 45;
+		{
+			rules->player.dir = increment_angle(rules->player.dir, 40);
+			rules->player.plane = increment_angle(rules->player.dir, 40);
+		}
 		else if (x > rules->mouse.last_x)
-			rules->player.dir -= ANGLE_UNIT * 45;
+		{
+			rules->player.dir = decrement_angle(rules->player.dir, 40);
+			rules->player.plane = decrement_angle(rules->player.dir, 40);
+		}
 		else
 			return (0);
 		rules->mouse.last_x = x;
