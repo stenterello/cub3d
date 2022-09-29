@@ -6,7 +6,7 @@
 /*   By: ddelladi <ddelladi@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/29 12:20:58 by ddelladi          #+#    #+#             */
-/*   Updated: 2022/09/29 22:42:43 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/09/30 00:18:53 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,13 +32,13 @@ void	move_one_forward(int *arr, int i, int limit)
 	}
 }
 
-void	clear_array(int *arr, int size)
+void	clear_array(int *arr, int size, int n)
 {
 	int	i;
 
 	i = 0;
 	while (i < size)
-		arr[i++] = 0;
+		arr[i++] = n;
 }
 
 int	*find_indexes(t_rules *rules)
@@ -50,16 +50,17 @@ int	*find_indexes(t_rules *rules)
 	ret = malloc(sizeof(int) * (rules->n_sprites));
 	if (!ret)
 		die("Malloc error");
-	clear_array(ret, rules->n_sprites);
+	clear_array(ret, rules->n_sprites, 0);
 	i = 0;
 	while (i < rules->n_sprites)
 	{
 		rules->spr[i].dist = get_sprite_dist(rules, &rules->spr[i]);
 		i2 = 0;
-		while (rules->spr[i].dist < rules->spr[ret[i2]].dist && i2 < rules->n_sprites)
+		while (rules->spr[i].dist < rules->spr[ret[i2]].dist && i2 < rules->n_sprites && rules->spr[ret[i2]].dist)
 			i2++;
 		move_one_forward(ret, rules->n_sprites, i2);
-		ret[i2] = i++;
+		ret[i2] = i + 1;
+		i++;
 	}
 	return (ret);
 }
@@ -71,11 +72,11 @@ void	fill_sort_spr(t_rules *rules, int *arr)
 	i = -1;
 	while (++i < rules->n_sprites)
 	{
-		rules->sort_spr[i].x = rules->spr[arr[i]].x;
-		rules->sort_spr[i].y = rules->spr[arr[i]].y;
-		rules->sort_spr[i].mini_x = rules->spr[arr[i]].mini_x;
-		rules->sort_spr[i].mini_y = rules->spr[arr[i]].mini_y;
-		rules->sort_spr[i].dist = rules->spr[arr[i]].dist;
+		rules->sort_spr[i].x = rules->spr[arr[i - 1]].x;
+		rules->sort_spr[i].y = rules->spr[arr[i - 1]].y;
+		rules->sort_spr[i].mini_x = rules->spr[arr[i - 1]].mini_x;
+		rules->sort_spr[i].mini_y = rules->spr[arr[i - 1]].mini_y;
+		rules->sort_spr[i].dist = rules->spr[arr[i - 1]].dist;
 	}
 }
 
@@ -108,24 +109,25 @@ void	check(t_rules *rules)
 		printf("x: %f\ny: %f\nmini_x: %d\nmini_y: %d\ndist: %f\n\n", rules->sort_spr[i].x, rules->sort_spr[i].y, rules->sort_spr[i].mini_x, rules->sort_spr[i].mini_y, rules->sort_spr[i].dist);
 }
 
-void	clear_sprites(t_rules *rules)
+void	clear_sprites(t_rules *rules, t_sprite *spr)
 {
 	int	i;
 
 	i = -1;
 	while (++i < rules->n_sprites)
 	{
-		rules->spr[i].x = 0;
-		rules->spr[i].y = 0;
-		rules->spr[i].mini_x = 0;
-		rules->spr[i].mini_y = 0;
-		rules->spr[i].dist = 0;
+		spr[i].x = 0;
+		spr[i].y = 0;
+		spr[i].mini_x = 0;
+		spr[i].mini_y = 0;
+		spr[i].dist = 0;
 	}
 }
 
 void	reload_sprites(t_rules *rules)
 {
-	clear_sprites(rules);
+	clear_sprites(rules, rules->spr);
+	clear_sprites(rules, rules->sort_spr);
 	save_sprites(rules);
 	free(rules->sort_spr);
 	sort_sprites(rules);
@@ -140,7 +142,7 @@ void	load_sprites(t_rules *rules)
 	rules->spr = malloc(sizeof(t_sprite) * (rules->n_sprites));
 	if (!rules->spr)
 		die("Malloc error");
-	clear_sprites(rules);
+	clear_sprites(rules, rules->spr);
 	save_sprites(rules);
 	sort_sprites(rules);
 	//check(rules);
