@@ -6,7 +6,7 @@
 /*   By: ddelladi <ddelladi@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/01 22:28:36 by ddelladi          #+#    #+#             */
-/*   Updated: 2022/09/23 13:24:45 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/09/29 11:56:12 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -154,10 +154,9 @@ void	draw_view(t_bres_data *d, t_image *view, t_rules *rules, t_image *tex)
 {
 	double			var[3];
 	t_draw_info		info;
-	double			dist;
 
-	dist = get_dist(rules, d);
-	info.l_h = rules->map.block_width * rules->mlx.win_height / dist;
+	rules->dist_array[d->x] = get_dist(rules, d);
+	info.l_h = rules->map.block_width * rules->mlx.win_height / rules->dist_array[d->x];
 	var[0] = rules->mlx.win_height / 2 - info.l_h / 2;
 	var[1] = info.l_h + var[0];
 	var[2] = 2;

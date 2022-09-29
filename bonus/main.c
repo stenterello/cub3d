@@ -6,7 +6,7 @@
 /*   By: ddelladi <ddelladi@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/26 14:35:11 by gimartin          #+#    #+#             */
-/*   Updated: 2022/09/29 11:46:35 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/09/29 17:05:55 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,7 @@ int	main(int argc, char **argv)
 	init_window(&rules.mlx);
 	load_gun(&rules);
 	read_file(argv[1], &rules);
+	load_sprites(&rules);
 	add_events(&rules);
 	game(&rules);
 	mlx_loop_hook(rules.mlx.mlx, loop_events, &rules);
@@ -81,11 +82,12 @@ int	main(int argc, char **argv)
 - pistola che spara // CONTRO I NEMICI
 - nemici
 - livello trama
-- sulla linea dell'orizzonte ci sono piccoli punti neri per via della correzione
-	della distanza, che nel ceiling e floor risulta infinita
 - cambiare data->dir1 in data->ray_angle per chiarezza
 - togliere il raycast multiplo dalla versione mandatory!
 - bloccare il cammino del player se incontra un nemico (dies)
 - eliminare il terzo elemento di var[3] sia in mandatory che in bonus
+- la grandezza della pistola non è proporzionale alla grandezza dello schermo
+- mettere la velocità della rotazione del player proporzionale alla grandezza
+	dello schermo
 
 */

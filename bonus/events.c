@@ -6,7 +6,7 @@
 /*   By: ddelladi <ddelladi@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/26 16:45:37 by ddelladi          #+#    #+#             */
-/*   Updated: 2022/09/29 11:49:36 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/09/29 11:52:32 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,7 @@ void	restore_gun(t_rules *rules)
 		&& rules->n_frames - rules->player.gun.last_shoot > 350)
 	{
 		ft_strlcpy(rules->player.gun.path, "./img/pistola.xpm", 18);
+		mlx_destroy_image(rules->mlx.mlx, rules->player.gun.gun_img.img);
 		load_gun(rules);
 	}
 }

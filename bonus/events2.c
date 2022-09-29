@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   events2.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gimartin <gimartin@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ddelladi <ddelladi@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/20 11:59:10 by gimartin          #+#    #+#             */
-/*   Updated: 2022/09/20 11:59:27 by gimartin         ###   ########.fr       */
+/*   Updated: 2022/09/29 16:59:59 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ void	update_pov_supp(t_rules *rules)
 		rules->player.speed = SPEED;
 	if (rules->keys.e_pressed)
 		try_open_door(rules);
+	reload_sprites(rules);
 	restore_gun(rules);
 	rules->player.gun.counted = 0;
 }

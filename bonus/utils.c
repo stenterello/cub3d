@@ -6,7 +6,7 @@
 /*   By: ddelladi <ddelladi@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/26 14:38:55 by gimartin          #+#    #+#             */
-/*   Updated: 2022/09/29 11:46:32 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/09/29 17:01:11 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,13 +62,16 @@ void	init_rules_2(t_rules *rules)
 	rules->floor = NULL;
 	rules->ceiling = NULL;
 	rules->line_offset = 0;
-	rules->mlx.win_width = 1280;
-	rules->mlx.win_height = 720;
+	rules->mlx.win_width = 854;
+	rules->mlx.win_height = 480;
 }
 
 void	init_rules(t_rules *rules)
 {
 	init_rules_2(rules);
+	rules->dist_array = malloc(sizeof(double) * (rules->mlx.win_width + 1));
+	if (!rules->dist_array)
+		die("Malloc error");
 	rules->keys.w_pressed = 0;
 	rules->keys.a_pressed = 0;
 	rules->keys.s_pressed = 0;

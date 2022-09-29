@@ -6,7 +6,7 @@
 /*   By: ddelladi <ddelladi@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/26 14:35:18 by gimartin          #+#    #+#             */
-/*   Updated: 2022/09/29 11:48:18 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/09/29 16:58:02 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,6 +110,16 @@ typedef struct s_mouse
 	int	moved;
 }				t_mouse;
 
+typedef struct s_sprite
+{
+	double	x;
+	double	y;
+	int		mini_x;
+	int		mini_y;
+	t_image	tex;
+	double	dist;
+}				t_sprite;
+
 typedef struct s_rules
 {
 	t_map			map;
@@ -122,13 +132,15 @@ typedef struct s_rules
 	t_image			*south;
 	t_image			*west;
 	t_image			*door;
-	unsigned char	floor_color[3];
-	unsigned char	ceiling_color[3];
 	t_image			*floor;
 	t_image			*ceiling;
 	int				line_offset;
 	int				n_frames;
 	int				last_door_action;
+	double			*dist_array;
+	int				n_sprites;
+	t_sprite		*spr;
+	t_sprite		*sort_spr;
 }				t_rules;
 
 typedef struct s_bres_data
@@ -148,16 +160,6 @@ typedef struct s_draw_info
 	double		l_h;
 	double		off;
 }				t_draw_info;
-
-typedef struct s_sprite
-{
-	int	type;
-	int	state;
-	int	map;
-	int	x;
-	int	y;
-	int	z;
-}				t_sprite;
 
 void			map_save(char *file, int fd, t_rules *rules);
 void			map_checks(t_rules *rules);
@@ -183,6 +185,7 @@ void			bresenham(t_bres_data *data, t_image *minimap,
 int				get_abs(int n);
 void			easy_pxl(t_image *image, int x, int y, int color);
 double			final_length(float start_x, float start_y, float rxy[2]);
+double			final_length_double(double start_x, double start_y, double rxy[2]);
 void			draw_view(t_bres_data *d, t_image *view,
 					t_rules *rules, t_image *tex);
 void			move_player(t_rules *rules, char *dir);
@@ -232,5 +235,10 @@ double			get_fix(double angle);
 void			shoot(t_rules *rules);
 void			load_gun(t_rules *rules);
 void			draw_sprites(t_rules *rules, t_image *view);
+void			load_sprites(t_rules *rules);
+int				count_sprites(t_map map);
+void			save_sprites(t_rules *rules);
+void			define_sprite(t_rules *rules, t_sprite *spr, int i, int j);
+void			reload_sprites(t_rules *rules);
 
 #endif
