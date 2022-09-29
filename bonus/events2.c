@@ -41,13 +41,13 @@ void	update_pov(t_rules *rules)
 		move_player(rules, "right");
 	if (rules->keys.l_pressed)
 	{
-		rules->player.dir = increment_angle(rules->player.dir, 30);
-		rules->player.plane = increment_angle(rules->player.plane, 30);
+		rules->player.dir = increment_angle(rules->player.dir, 40);
+		rules->player.plane = increment_angle(rules->player.plane, 40);
 	}
 	if (rules->keys.r_pressed)
 	{
-		rules->player.dir = decrement_angle(rules->player.dir, 30);
-		rules->player.plane = decrement_angle(rules->player.plane, 30);
+		rules->player.dir = decrement_angle(rules->player.dir, 40);
+		rules->player.plane = decrement_angle(rules->player.plane, 40);
 	}
 	rules->player.d_x = cos(rules->player.dir);
 	update_pov_supp(rules);
@@ -69,7 +69,7 @@ void	move_gun(t_gun *gun, int i)
 
 int	loop_events(t_rules *rules)
 {
-	if (!(rules->n_frames % 170))
+	if (!(rules->n_frames % 650))
 	{
 		update_pov(rules);
 		game(rules);
