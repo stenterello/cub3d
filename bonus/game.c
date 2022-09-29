@@ -6,7 +6,7 @@
 /*   By: ddelladi <ddelladi@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/26 16:57:44 by ddelladi          #+#    #+#             */
-/*   Updated: 2022/09/29 17:02:51 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/09/29 18:30:53 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,9 @@ void	game(t_rules *rules)
 	minimap_2d(rules, &minimap);
 	draw_mini_player(rules, &minimap);
 	raycast(rules, &view, &minimap);
+	draw_sprites(rules, &view);
 	mlx_put_image_to_window(rules->mlx.mlx, rules->mlx.mlx_win, view.img, 0, 0);
 	mlx_put_image_to_window(rules->mlx.mlx, rules->mlx.mlx_win,
 		minimap.img, 0, 0);
-	draw_gun(rules);
+	//draw_gun(rules);
 }

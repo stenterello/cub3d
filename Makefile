@@ -43,8 +43,9 @@ BONUS	=	main.c \
 			move2.c \
 			doors.c \
 			doors2.c \
-			sprites.c \
-			sprites_utils.c
+			load_sprites.c \
+			load_sprites_utils.c \
+			draw_sprites.c
 SRCS	=	${addprefix src/, $(SRC)}
 B_SRCS	=	${addprefix bonus/, $(BONUS)}
 M_B_CMD	=	bonus/move.c

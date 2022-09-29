@@ -6,7 +6,7 @@
 /*   By: ddelladi <ddelladi@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/28 20:41:24 by ddelladi          #+#    #+#             */
-/*   Updated: 2022/09/28 21:38:56 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/09/29 23:07:01 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,41 +14,55 @@
 
 void	draw_sprites(t_rules *rules, t_image *view)
 {
-	t_sprite	dot;
-	float		x;
-	float		y;
-	float		z;
-	float		a;
-	float		b;
+	double	x;
+	double	y;
+	int		i;
+	double	inv_det;
+	double	trans_x;
+	double	trans_y;
+	int		s_x;
+	int		height;
+	int		start_y;
+	int		end_y;
+	int		width;
+	int		start_x;
+	int		end_x;
 
-	dot.x = 1.5 * 64;
-	dot.y = 5 * 64;
-	dot.z = 0;
-	x = dot.x - rules->player.x;
-	y = dot.y - rules->player.y;
-	z = dot.z;
-	a = y * cos(rules->player.dir) + x * sin(rules->player.dir);
-	b = x * cos(rules->player.dir) - y * sin(rules->player.dir);
-	x = a;
-	y = b;
-
-	x = (x * 108.0 / y) + (rules->mlx.win_width / 2);
-	y = (dot.z * 108.0 / y) + (rules->map.block_width / 2);
-
-	int	i;
-	int	i2;
-
-	i = -1;
-	while (++i < 6)
+	i = 0;
+	while (i < rules->n_sprites)
 	{
-		i2 = -1;
-		int y2 = y;
-		while (i2++ < 6)
-			easy_pxl(view, x, y2++, 0x00FFFF00);
-		x++;
+		x = rules->sort_spr[i].x - rules->player.x;
+		y = rules->sort_spr[i].y - rules->player.y;
+		inv_det = 1.0 / (rules->player.plane_x * rules->player.d_y - rules->player.d_x * rules->player.plane_y);
+		trans_x = inv_det * (rules->player.d_y * x - rules->player.d_x * y) * 2.6;
+		trans_y = inv_det * (-rules->player.plane_y * x + rules->player.plane_x * y);
+		s_x = (int)((rules->mlx.win_width / 2) * (1 + trans_x / trans_y));
+		height = (int)(rules->mlx.win_height / trans_y);
+		start_y = rules->mlx.win_height / 2 - height / 2;
+		if (start_y < 0)
+			start_y = 0;
+		end_y = rules->mlx.win_height / 2 + height / 2;
+		if (end_y > rules->mlx.win_height)
+			end_y = rules->mlx.win_height;
+		width = get_abs((int)(rules->mlx.win_height / trans_y));
+		start_x = -width / 2 + s_x;
+		if (start_x < 0)
+			start_x = 0;
+		end_x = width / 2 + s_x;
+		if (end_x > rules->mlx.win_width)
+			end_x = rules->mlx.win_width;
+		while (start_x < end_x)
+		{
+			if (trans_y > 0 && start_x > 0 && start_x < rules->mlx.win_width && trans_y < rules->dist_array[start_x])
+			{
+				while (start_y < end_y)
+				{
+					easy_pxl(view, start_x, start_y, 0x00FFFF00);
+					start_y++;
+				}
+			}
+			start_x++;
+		}
+		i++;
 	}
-	(void)x;
-(void)y;
-(void)z;
-	(void)view;
 }

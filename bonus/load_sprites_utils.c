@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sprites_utils.c                                    :+:      :+:    :+:   */
+/*   load_sprites_utils.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ddelladi <ddelladi@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/29 12:21:53 by ddelladi          #+#    #+#             */
-/*   Updated: 2022/09/29 15:56:27 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/09/29 22:43:27 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,13 +40,10 @@ int	count_sprites(t_map map)
 	return (ret);
 }
 
-void	define_sprite(t_rules *rules, t_sprite *spr, int i, int j)
+void	define_sprite(t_sprite *spr, int i, int j)
 {
 	spr->mini_x = j;
 	spr->mini_y = i;
-	spr->tex.img = mlx_xpm_file_to_image(rules->mlx.mlx, "./img/enemies/ss_front2.xpm", &spr->tex.width, &spr->tex.height);
-	if (!spr->tex.img)
-		die("Error loading texture. Aborting");
 }
 
 void	save_sprites(t_rules *rules)
@@ -63,7 +60,7 @@ void	save_sprites(t_rules *rules)
 		while (rules->map.map[i] && rules->map.map[i][j])
 		{
 			if (rules->map.map[i][j] == '4')
-				define_sprite(rules, &rules->spr[ind++], i, j);	
+				define_sprite(&rules->spr[ind++], i, j);	
 			i++;
 		}
 	}

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_checks.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ddelladi <ddelladi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ddelladi <ddelladi@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/26 15:22:38 by ddelladi          #+#    #+#             */
-/*   Updated: 2022/09/22 12:42:30 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/09/29 22:28:32 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,26 +57,40 @@ int	vertical_checks(t_map *map)
 void	define_player(t_rules *rules, char c, int i, int j)
 {
 	if (c == 'N')
+	{
 		rules->player.dir = M_PI / 2;
+		rules->player.plane = M_PI;
+	}
 	else if (c == 'W')
+	{
 		rules->player.dir = M_PI;
+		rules->player.plane = M_PI * 3 / 2;
+	}
 	else if (c == 'S')
+	{
 		rules->player.dir = M_PI * 3 / 2;
+		rules->player.plane = 0;
+	}
 	else if (c == 'E')
+	{
 		rules->player.dir = 0;
+		rules->player.plane = M_PI / 2;
+	}
 	rules->map.map[i][j] = '0';
 	rules->player.x = ++j * rules->map.block_width
 		- (rules->map.block_width / 2);
 	rules->player.y = ++i * rules->map.block_width
 		- (rules->map.block_width / 2);
-	rules->player.d_x = cos(rules->player.dir) * 5;
+	rules->player.d_x = cos(rules->player.dir);
 	if (rules->player.dir == (double)M_PI)
 		rules->player.d_y = 0;
 	else
-		rules->player.d_y = -sin(rules->player.dir) * 5;
+		rules->player.d_y = -sin(rules->player.dir);
 	rules->player.speed = SPEED;
 	rules->player.gun.off = 0;
 	rules->player.gun.counter = 0;
+	rules->player.plane_x = -cos(rules->player.plane);
+	rules->player.plane_y = sin(rules->player.plane);
 }
 
 int	find_player(t_rules *rules)

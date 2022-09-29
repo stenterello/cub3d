@@ -6,7 +6,7 @@
 /*   By: ddelladi <ddelladi@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/26 14:35:18 by gimartin          #+#    #+#             */
-/*   Updated: 2022/09/29 16:58:02 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/09/29 22:43:06 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,6 +99,7 @@ typedef struct s_player
 	double	dir;
 	float	speed;
 	t_gun	gun;
+	double	plane;
 	double	plane_x;
 	double	plane_y;
 }				t_player;
@@ -116,7 +117,6 @@ typedef struct s_sprite
 	double	y;
 	int		mini_x;
 	int		mini_y;
-	t_image	tex;
 	double	dist;
 }				t_sprite;
 
@@ -134,6 +134,7 @@ typedef struct s_rules
 	t_image			*door;
 	t_image			*floor;
 	t_image			*ceiling;
+	t_image			enemy;
 	int				line_offset;
 	int				n_frames;
 	int				last_door_action;
@@ -238,7 +239,7 @@ void			draw_sprites(t_rules *rules, t_image *view);
 void			load_sprites(t_rules *rules);
 int				count_sprites(t_map map);
 void			save_sprites(t_rules *rules);
-void			define_sprite(t_rules *rules, t_sprite *spr, int i, int j);
+void			define_sprite(t_sprite *spr, int i, int j);
 void			reload_sprites(t_rules *rules);
 
 #endif

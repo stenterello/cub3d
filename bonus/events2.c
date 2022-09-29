@@ -6,7 +6,7 @@
 /*   By: ddelladi <ddelladi@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/20 11:59:10 by gimartin          #+#    #+#             */
-/*   Updated: 2022/09/29 16:59:59 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/09/29 23:01:26 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,15 +40,19 @@ void	update_pov(t_rules *rules)
 	if (rules->keys.d_pressed)
 		move_player(rules, "right");
 	if (rules->keys.l_pressed)
-		rules->player.dir += ANGLE_UNIT * 30;
+	{
+		rules->player.dir = increment_angle(rules->player.dir, 30);
+		rules->player.plane = increment_angle(rules->player.plane, 30);
+	}
 	if (rules->keys.r_pressed)
-		rules->player.dir -= ANGLE_UNIT * 30;
-	if (rules->player.dir < 0)
-		rules->player.dir = 2 * M_PI;
-	if (rules->player.dir > 2 * M_PI)
-		rules->player.dir = 0;
+	{
+		rules->player.dir = decrement_angle(rules->player.dir, 30);
+		rules->player.plane = decrement_angle(rules->player.plane, 30);
+	}
 	rules->player.d_x = cos(rules->player.dir);
 	update_pov_supp(rules);
+	rules->player.plane_x = -cos(rules->player.plane);
+	rules->player.plane_y = sin(rules->player.plane);
 }
 
 void	move_gun(t_gun *gun, int i)

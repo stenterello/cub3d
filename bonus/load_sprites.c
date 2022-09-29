@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sprites.c                                          :+:      :+:    :+:   */
+/*   load_sprites.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ddelladi <ddelladi@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/29 12:20:58 by ddelladi          #+#    #+#             */
-/*   Updated: 2022/09/29 17:04:39 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/09/29 22:42:43 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -133,6 +133,9 @@ void	reload_sprites(t_rules *rules)
 
 void	load_sprites(t_rules *rules)
 {
+	rules->enemy.img = mlx_xpm_file_to_image(rules->mlx.mlx, "./img/enemies/ss_front2.xpm", &rules->enemy.width, &rules->enemy.height);
+	if (!rules->enemy.img)
+		die("Error loading texture. Aborting");
 	rules->n_sprites = count_sprites(rules->map);
 	rules->spr = malloc(sizeof(t_sprite) * (rules->n_sprites));
 	if (!rules->spr)
@@ -140,5 +143,5 @@ void	load_sprites(t_rules *rules)
 	clear_sprites(rules);
 	save_sprites(rules);
 	sort_sprites(rules);
-	check(rules);
+	//check(rules);
 }

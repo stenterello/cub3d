@@ -6,7 +6,7 @@
 /*   By: ddelladi <ddelladi@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/26 14:35:11 by gimartin          #+#    #+#             */
-/*   Updated: 2022/09/29 17:05:55 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/09/29 18:23:05 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,5 +89,6 @@ int	main(int argc, char **argv)
 - la grandezza della pistola non è proporzionale alla grandezza dello schermo
 - mettere la velocità della rotazione del player proporzionale alla grandezza
 	dello schermo
+- le sprites ricaricano ogni volta la texture! a ogni reload
 
 */
