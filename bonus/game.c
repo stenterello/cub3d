@@ -6,7 +6,7 @@
 /*   By: ddelladi <ddelladi@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/26 16:57:44 by ddelladi          #+#    #+#             */
-/*   Updated: 2022/09/28 21:27:18 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/09/29 11:45:05 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,13 +25,9 @@ unsigned int	get_color_arr(unsigned char arr[3])
 	return (*(unsigned int *)(unsigned char [4]){arr[2], arr[1], arr[0], 0});
 }
 
-void	load_gun(t_rules *rules, const char *path)
+void	draw_gun(t_rules *rules)
 {
-	t_image	*gun;
-
-	gun = &rules->player.gun.gun_img;
-	gun->img = mlx_xpm_file_to_image(rules->mlx.mlx, (char *)path, &gun->width, &gun->height);
-	mlx_put_image_to_window(rules->mlx.mlx, rules->mlx.mlx_win, gun->img, rules->mlx.win_width / 2 - gun->width / 2, rules->mlx.win_height - gun->height + rules->player.gun.off);
+	mlx_put_image_to_window(rules->mlx.mlx, rules->mlx.mlx_win, rules->player.gun.gun_img.img, rules->mlx.win_width / 2 - rules->player.gun.gun_img.width / 2, rules->mlx.win_height - rules->player.gun.gun_img.height + rules->player.gun.off);
 }
 
 void	game(t_rules *rules)
@@ -51,9 +47,9 @@ void	game(t_rules *rules)
 	minimap_2d(rules, &minimap);
 	draw_mini_player(rules, &minimap);
 	raycast(rules, &view, &minimap);
-	draw_sprites(rules, &view);
+	//draw_sprites(rules, &view);
 	mlx_put_image_to_window(rules->mlx.mlx, rules->mlx.mlx_win, view.img, 0, 0);
 	mlx_put_image_to_window(rules->mlx.mlx, rules->mlx.mlx_win,
 		minimap.img, 0, 0);
-	load_gun(rules, rules->player.gun.path);
+	draw_gun(rules);
 }

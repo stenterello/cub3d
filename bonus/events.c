@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   events.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ddelladi <ddelladi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ddelladi <ddelladi@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/26 16:45:37 by ddelladi          #+#    #+#             */
-/*   Updated: 2022/09/22 12:46:13 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/09/29 11:49:36 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,5 +60,8 @@ void	restore_gun(t_rules *rules)
 {
 	if (!ft_strncmp(rules->player.gun.path, "./img/sparo.xpm", 16)
 		&& rules->n_frames - rules->player.gun.last_shoot > 350)
+	{
 		ft_strlcpy(rules->player.gun.path, "./img/pistola.xpm", 18);
+		load_gun(rules);
+	}
 }

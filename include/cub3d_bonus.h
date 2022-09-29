@@ -6,7 +6,7 @@
 /*   By: ddelladi <ddelladi@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/26 14:35:18 by gimartin          #+#    #+#             */
-/*   Updated: 2022/09/28 21:27:33 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/09/29 11:48:18 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -230,6 +230,7 @@ int				define_ver_ray_and_offset(t_rules *rules, t_ray *ray,
 double			get_dist(t_rules *rules, t_bres_data *d);
 double			get_fix(double angle);
 void			shoot(t_rules *rules);
+void			load_gun(t_rules *rules);
 void			draw_sprites(t_rules *rules, t_image *view);
 
 #endif

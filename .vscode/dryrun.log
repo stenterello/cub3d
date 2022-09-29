@@ -1,13 +1,14 @@
-make --dry-run --keep-going --print-directory
+make --dry-run --always-make --keep-going --print-directory
 make: Entering directory '/home/davide/Documenti/Codici/42/cub3d'
+make -C ./include/libft
+make[1]: Entering directory '/home/davide/Documenti/Codici/42/cub3d/include/libft'
+gcc -Wall -Werror -Wextra -c -g ft_isalpha.c ft_isdigit.c ft_isalnum.c ft_isascii.c ft_isprint.c ft_strlen.c ft_memset.c ft_bzero.c ft_memcpy.c ft_memmove.c ft_strlcpy.c ft_strlcat.c ft_toupper.c ft_tolower.c ft_strchr.c ft_strrchr.c ft_strncmp.c ft_memchr.c ft_memcmp.c ft_strnstr.c ft_atoi.c ft_calloc.c ft_strdup.c ft_substr.c ft_strjoin.c ft_strtrim.c ft_split.c ft_itoa.c ft_strmapi.c ft_striteri.c ft_putchar_fd.c ft_putstr_fd.c ft_putnbr_fd.c ft_putendl_fd.c get_next_line.c get_next_line_utils.c
+ar rcs libft.a ft_isalpha.o ft_isdigit.o ft_isalnum.o ft_isascii.o ft_isprint.o ft_strlen.o ft_memset.o ft_bzero.o ft_memcpy.o ft_memmove.o ft_strlcpy.o ft_strlcat.o ft_toupper.o ft_tolower.o ft_strchr.o ft_strrchr.o ft_strncmp.o ft_memchr.o ft_memcmp.o ft_strnstr.o ft_atoi.o ft_calloc.o ft_strdup.o ft_substr.o ft_strjoin.o ft_strtrim.o ft_split.o ft_itoa.o ft_strmapi.o ft_striteri.o ft_putchar_fd.o ft_putstr_fd.o ft_putnbr_fd.o ft_putendl_fd.o get_next_line.o get_next_line_utils.o
+make[1]: Leaving directory '/home/davide/Documenti/Codici/42/cub3d/include/libft'
 gcc -Wall -Werror -Wextra -g -c src/main.c -o src/main.o -Iinclude
- 
 gcc -Wall -Werror -Wextra -g -c src/map_checks.c -o src/map_checks.o -Iinclude
- 
 gcc -Wall -Werror -Wextra -g -c src/map_save.c -o src/map_save.o -Iinclude
- 
 gcc -Wall -Werror -Wextra -g -c src/map_utils.c -o src/map_utils.o -Iinclude
- 
 gcc -Wall -Werror -Wextra -g -c src/rules.c -o src/rules.o -Iinclude
 gcc -Wall -Werror -Wextra -g -c src/utils.c -o src/utils.o -Iinclude
 gcc -Wall -Werror -Wextra -g -c src/utils2.c -o src/utils2.o -Iinclude
@@ -17,13 +18,11 @@ gcc -Wall -Werror -Wextra -g -c src/raycast.c -o src/raycast.o -Iinclude
 gcc -Wall -Werror -Wextra -g -c src/raycast2.c -o src/raycast2.o -Iinclude
 gcc -Wall -Werror -Wextra -g -c src/raycast3.c -o src/raycast3.o -Iinclude
 gcc -Wall -Werror -Wextra -g -c src/events.c -o src/events.o -Iinclude
- 
 gcc -Wall -Werror -Wextra -g -c src/bresenham.c -o src/bresenham.o -Iinclude
 gcc -Wall -Werror -Wextra -g -c src/draw_view.c -o src/draw_view.o -Iinclude
 gcc -Wall -Werror -Wextra -g -c src/collision.c -o src/collision.o -Iinclude
 gcc -Wall -Werror -Wextra -g -c src/collision2.c -o src/collision2.o -Iinclude
 gcc -Wall -Werror -Wextra -g -c src/move2.c -o src/move2.o -Iinclude
- 
 gcc -Wall -Werror -Wextra -g -c src/move.c -o src/move.o -Iinclude
 gcc -Wall -Werror -Wextra -g -lmlx -framework OpenGL -framework AppKit ./include/libft/libft.a src/main.o src/map_checks.o src/map_save.o src/map_utils.o src/rules.o src/utils.o src/utils2.o src/open_window.o src/game.o src/raycast.o src/raycast2.o src/raycast3.o src/events.o src/bresenham.o src/draw_view.o src/collision.o src/collision2.o src/move2.o src/move.o -o cub3d -Iinclude
 make: Leaving directory '/home/davide/Documenti/Codici/42/cub3d'

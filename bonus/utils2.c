@@ -6,7 +6,7 @@
 /*   By: ddelladi <ddelladi@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/02 17:08:38 by ddelladi          #+#    #+#             */
-/*   Updated: 2022/09/28 13:05:43 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/09/29 11:48:51 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,4 +46,6 @@ void	shoot(t_rules *rules)
 {
 	ft_strlcpy(rules->player.gun.path, "./img/sparo.xpm", 16);
 	rules->player.gun.last_shoot = rules->n_frames;
+	mlx_destroy_image(rules->mlx.mlx, rules->player.gun.gun_img.img);
+	load_gun(rules);
 }

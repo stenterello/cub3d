@@ -6,7 +6,7 @@
 /*   By: ddelladi <ddelladi@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/26 14:35:11 by gimartin          #+#    #+#             */
-/*   Updated: 2022/09/28 21:26:37 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/09/29 11:46:35 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,14 @@ int	count_enemies(t_map *map)
 	return (ret);
 }
 
+void	load_gun(t_rules *rules)
+{
+	t_image	*gun;
+
+	gun = &rules->player.gun.gun_img;
+	gun->img = mlx_xpm_file_to_image(rules->mlx.mlx, rules->player.gun.path, &gun->width, &gun->height);
+}
+
 int	main(int argc, char **argv)
 {
 	t_rules	rules;
@@ -56,6 +64,7 @@ int	main(int argc, char **argv)
 		die("Usage: ./cub3d [.cub file]");
 	init_rules(&rules);
 	init_window(&rules.mlx);
+	load_gun(&rules);
 	read_file(argv[1], &rules);
 	add_events(&rules);
 	game(&rules);
