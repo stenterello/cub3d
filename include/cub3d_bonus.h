@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d_bonus.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ddelladi <ddelladi@student.42roma.it>      +#+  +:+       +#+        */
+/*   By: ddelladi <ddelladi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/26 14:35:18 by gimartin          #+#    #+#             */
-/*   Updated: 2022/09/29 22:43:06 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/09/30 18:14:42 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -144,13 +144,28 @@ typedef struct s_rules
 	t_sprite		*sort_spr;
 }				t_rules;
 
+typedef struct s_draw_coord
+{
+	double			start_x;
+	double			end_x;
+	double			start_y;
+	double			end_y;
+	double			width;
+	double			height;
+	double			bench_x;
+	double			bench_y;
+	unsigned int	color;
+	int				t_x;
+	int				t_y;
+}				t_draw_coord;
+
 typedef struct s_bres_data
 {
 	float			xy[2];
 	float			xy2[2];
 	unsigned int	color;
 	int				x;
-	double			dir1;
+	double			ray_angle;
 }				t_bres_data;
 
 typedef struct s_draw_info
@@ -241,5 +256,7 @@ int				count_sprites(t_map map);
 void			save_sprites(t_rules *rules);
 void			define_sprite(t_sprite *spr, int i, int j);
 void			reload_sprites(t_rules *rules);
+unsigned int	get_sprite_color(t_image *tex, int x, int y, t_rules *rules);
+void			update_pov_supp(t_rules *rules);
 
 #endif

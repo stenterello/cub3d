@@ -6,7 +6,7 @@
 /*   By: ddelladi <ddelladi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/01 22:28:36 by ddelladi          #+#    #+#             */
-/*   Updated: 2022/09/22 12:50:57 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/09/30 16:13:04 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ double	get_dist(t_rules *rules, t_bres_data d)
 	dist = final_length(d.xy[0], d.xy[1], d.xy2);
 	if (!dist)
 		dist = 0.01;
-	angle_diff = rules->player.dir - d.dir1;
+	angle_diff = rules->player.dir - d.ray_angle;
 	if (angle_diff < 0)
 		angle_diff += (float)(2 * M_PI);
 	else if (angle_diff > (float)(2 * M_PI))
@@ -42,16 +42,16 @@ void	adjust_var(double var[3], t_rules *rules)
 t_image	*choose_texture(t_rules *rules, t_bres_data *d)
 {
 	if (!our_modulo(d->xy2[0], rules->map.block_width)
-		&& (d->dir1 < M_PI / 2 || d->dir1 > 3 * M_PI / 2))
+		&& (d->ray_angle < M_PI / 2 || d->ray_angle > 3 * M_PI / 2))
 		return (rules->east);
 	else if (!our_modulo(d->xy2[0], rules->map.block_width)
-		&& d->dir1 >= M_PI / 2 && d->dir1 <= 3 * M_PI / 2)
+		&& d->ray_angle >= M_PI / 2 && d->ray_angle <= 3 * M_PI / 2)
 		return (rules->west);
 	else if (!our_modulo(d->xy2[1], rules->map.block_width)
-		&& d->dir1 <= M_PI && d->dir1 >= 0)
+		&& d->ray_angle <= M_PI && d->ray_angle >= 0)
 		return (rules->south);
 	else if (!our_modulo(d->xy2[1], rules->map.block_width)
-		&& d->dir1 > M_PI && d->dir1 <= 2 * M_PI)
+		&& d->ray_angle > M_PI && d->ray_angle <= 2 * M_PI)
 		return (rules->north);
 	else
 		die("Error while choosing textures. Developers fault. Aborting");

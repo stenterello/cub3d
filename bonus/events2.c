@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   events2.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ddelladi <ddelladi@student.42roma.it>      +#+  +:+       +#+        */
+/*   By: ddelladi <ddelladi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/20 11:59:10 by gimartin          #+#    #+#             */
-/*   Updated: 2022/09/29 23:01:26 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/09/30 16:00:41 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ void	move_gun(t_gun *gun, int i)
 
 int	loop_events(t_rules *rules)
 {
-	if (!(rules->n_frames % 650))
+	if (!(rules->n_frames % 170))
 	{
 		update_pov(rules);
 		game(rules);

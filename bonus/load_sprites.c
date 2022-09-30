@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   load_sprites.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ddelladi <ddelladi@student.42roma.it>      +#+  +:+       +#+        */
+/*   By: ddelladi <ddelladi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/29 12:20:58 by ddelladi          #+#    #+#             */
-/*   Updated: 2022/09/30 00:18:53 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/09/30 18:01:51 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ int	*find_indexes(t_rules *rules)
 	int		i;
 	int		i2;
 
-	ret = malloc(sizeof(int) * (rules->n_sprites));
+	ret = malloc(sizeof(int) * (rules->n_sprites + 1));
 	if (!ret)
 		die("Malloc error");
 	clear_array(ret, rules->n_sprites, 0);
@@ -56,7 +56,7 @@ int	*find_indexes(t_rules *rules)
 	{
 		rules->spr[i].dist = get_sprite_dist(rules, &rules->spr[i]);
 		i2 = 0;
-		while (rules->spr[i].dist < rules->spr[ret[i2]].dist && i2 < rules->n_sprites && rules->spr[ret[i2]].dist)
+		while (ret[i2] && rules->spr[i].dist < rules->spr[ret[i2] - 1].dist && i2 < rules->n_sprites)
 			i2++;
 		move_one_forward(ret, rules->n_sprites, i2);
 		ret[i2] = i + 1;
@@ -72,11 +72,11 @@ void	fill_sort_spr(t_rules *rules, int *arr)
 	i = -1;
 	while (++i < rules->n_sprites)
 	{
-		rules->sort_spr[i].x = rules->spr[arr[i - 1]].x;
-		rules->sort_spr[i].y = rules->spr[arr[i - 1]].y;
-		rules->sort_spr[i].mini_x = rules->spr[arr[i - 1]].mini_x;
-		rules->sort_spr[i].mini_y = rules->spr[arr[i - 1]].mini_y;
-		rules->sort_spr[i].dist = rules->spr[arr[i - 1]].dist;
+		rules->sort_spr[i].x = rules->spr[arr[i] - 1].x;
+		rules->sort_spr[i].y = rules->spr[arr[i] - 1].y;
+		rules->sort_spr[i].mini_x = rules->spr[arr[i] - 1].mini_x;
+		rules->sort_spr[i].mini_y = rules->spr[arr[i] - 1].mini_y;
+		rules->sort_spr[i].dist = rules->spr[arr[i] - 1].dist;
 	}
 }
 
@@ -138,8 +138,9 @@ void	load_sprites(t_rules *rules)
 	rules->enemy.img = mlx_xpm_file_to_image(rules->mlx.mlx, "./img/enemies/ss_front2.xpm", &rules->enemy.width, &rules->enemy.height);
 	if (!rules->enemy.img)
 		die("Error loading texture. Aborting");
+	rules->enemy.addr = mlx_get_data_addr(rules->enemy.img, &rules->enemy.bpp, &rules->enemy.line_length, &rules->enemy.endian);
 	rules->n_sprites = count_sprites(rules->map);
-	rules->spr = malloc(sizeof(t_sprite) * (rules->n_sprites));
+	rules->spr = malloc(sizeof(t_sprite) * (rules->n_sprites + 1));
 	if (!rules->spr)
 		die("Malloc error");
 	clear_sprites(rules, rules->spr);

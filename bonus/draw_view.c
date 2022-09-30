@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_view.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ddelladi <ddelladi@student.42roma.it>      +#+  +:+       +#+        */
+/*   By: ddelladi <ddelladi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/01 22:28:36 by ddelladi          #+#    #+#             */
-/*   Updated: 2022/09/29 11:56:12 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/09/30 16:13:04 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ double	get_dist(t_rules *rules, t_bres_data *d)
 	dist = final_length(d->xy[0], d->xy[1], d->xy2);
 	if (!dist)
 		dist = 0.01;
-	angle_diff = rules->player.dir - d->dir1;
+	angle_diff = rules->player.dir - d->ray_angle;
 	if (angle_diff < 0)
 		angle_diff += (float)(2 * M_PI);
 	else if (angle_diff > (float)(2 * M_PI))
@@ -51,28 +51,28 @@ void	adjust_var(double var[3], t_rules *rules)
 t_image	*choose_texture(t_rules *rules, t_bres_data *d)
 {
 	if (!our_modulo(d->xy2[0], rules->map.block_width)
-		&& (d->dir1 < M_PI / 2 || d->dir1 > 3 * M_PI / 2))
+		&& (d->ray_angle < M_PI / 2 || d->ray_angle > 3 * M_PI / 2))
 	{
 		if (is_door((int)(d->xy2[0] / rules->map.block_width), (int)(d->xy2[1] / rules->map.block_width), rules))
 			return (rules->door);
 		return (rules->east);
 	}
 	else if (!our_modulo(d->xy2[0], rules->map.block_width)
-		&& d->dir1 >= M_PI / 2 && d->dir1 <= 3 * M_PI / 2)
+		&& d->ray_angle >= M_PI / 2 && d->ray_angle <= 3 * M_PI / 2)
 	{
 		if (is_door((int)(d->xy2[0] / rules->map.block_width) - 1, (int)(d->xy2[1] / rules->map.block_width), rules))
 			return (rules->door);
 		return (rules->west);
 	}
 	else if (!our_modulo(d->xy2[1], rules->map.block_width)
-		&& d->dir1 <= M_PI && d->dir1 >= 0)
+		&& d->ray_angle <= M_PI && d->ray_angle >= 0)
 	{
 		if (is_door((int)(d->xy2[0] / rules->map.block_width), (int)(d->xy2[1] / rules->map.block_width) - 1, rules))
 			return (rules->door);
 		return (rules->south);
 	}
 	else if (!our_modulo(d->xy2[1], rules->map.block_width)
-		&& d->dir1 > M_PI && d->dir1 <= 2 * M_PI)
+		&& d->ray_angle > M_PI && d->ray_angle <= 2 * M_PI)
 	{
 		if (is_door((int)(d->xy2[0] / rules->map.block_width), (int)(d->xy2[1] / rules->map.block_width), rules))
 			return (rules->door);
@@ -116,8 +116,8 @@ void	draw_ceiling(double var[3], t_rules *rules, t_draw_info *info)
 	{
 		dy = y - (rules->mlx.win_height / 2);
 		dist = rules->mlx.win_height / 2 / dy;
-		tx = rules->player.x / rules->map.block_width - cos(info->d.dir1) * dist / cos(get_fix(rules->player.dir - info->d.dir1));
-		ty = rules->player.y / rules->map.block_width + sin(info->d.dir1) * dist / cos(get_fix(rules->player.dir - info->d.dir1));
+		tx = rules->player.x / rules->map.block_width - cos(info->d.ray_angle) * dist / cos(get_fix(rules->player.dir - info->d.ray_angle));
+		ty = rules->player.y / rules->map.block_width + sin(info->d.ray_angle) * dist / cos(get_fix(rules->player.dir - info->d.ray_angle));
 		color = get_color(rules->ceiling,	
 				our_modulo(tx * rules->ceiling->width, rules->ceiling->width),
 				our_modulo(ty * rules->ceiling->width, rules->ceiling->width),
@@ -140,8 +140,8 @@ void	draw_floor(double var[3], t_rules *rules, t_draw_info *info)
 	{
 		dy = y - (rules->mlx.win_height / 2) + 1;
 		dist = rules->mlx.win_height / 2 / dy;
-		tx = rules->player.x / rules->map.block_width + cos(info->d.dir1) * dist / cos(get_fix(rules->player.dir - info->d.dir1));
-		ty = rules->player.y / rules->map.block_width - sin(info->d.dir1) * dist / cos(get_fix(rules->player.dir - info->d.dir1));
+		tx = rules->player.x / rules->map.block_width + cos(info->d.ray_angle) * dist / cos(get_fix(rules->player.dir - info->d.ray_angle));
+		ty = rules->player.y / rules->map.block_width - sin(info->d.ray_angle) * dist / cos(get_fix(rules->player.dir - info->d.ray_angle));
 		color = get_color(rules->floor,	
 				our_modulo(tx * rules->floor->width, rules->floor->width),
 				our_modulo(ty * rules->floor->width, rules->floor->width),

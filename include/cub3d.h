@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gimartin <gimartin@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ddelladi <ddelladi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/26 14:35:18 by gimartin          #+#    #+#             */
-/*   Updated: 2022/09/20 11:46:26 by gimartin         ###   ########.fr       */
+/*   Updated: 2022/09/30 16:13:04 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,7 +112,7 @@ typedef struct s_bres_data
 	float			xy2[2];
 	unsigned int	color;
 	int				x;
-	double			dir1;
+	double			ray_angle;
 }				t_bres_data;
 
 typedef struct s_draw_info

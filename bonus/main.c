@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ddelladi <ddelladi@student.42roma.it>      +#+  +:+       +#+        */
+/*   By: ddelladi <ddelladi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/26 14:35:11 by gimartin          #+#    #+#             */
-/*   Updated: 2022/09/30 00:23:13 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/09/30 18:30:56 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@ void	load_gun(t_rules *rules)
 
 	gun = &rules->player.gun.gun_img;
 	gun->img = mlx_xpm_file_to_image(rules->mlx.mlx, rules->player.gun.path, &gun->width, &gun->height);
+	gun->addr = mlx_get_data_addr(gun->img, &gun->bpp, &gun->line_length, &gun->endian);
 }
 
 int	main(int argc, char **argv)
@@ -67,6 +68,7 @@ int	main(int argc, char **argv)
 	load_gun(&rules);
 	read_file(argv[1], &rules);
 	load_sprites(&rules);
+	load_gun(&rules);
 	add_events(&rules);
 	game(&rules);
 	mlx_loop_hook(rules.mlx.mlx, loop_events, &rules);
@@ -80,15 +82,15 @@ int	main(int argc, char **argv)
 - puntino rosso minimappa: nemico
 - animazioni porte
 - pistola che spara // CONTRO I NEMICI
-- nemici
 - livello trama
-- cambiare data->dir1 in data->ray_angle per chiarezza
+- cambiare data->ray_angle in data->ray_angle per chiarezza
 - togliere il raycast multiplo dalla versione mandatory!
 - bloccare il cammino del player se incontra un nemico (dies)
 - eliminare il terzo elemento di var[3] sia in mandatory che in bonus
-- la grandezza della pistola non è proporzionale alla grandezza dello schermo
 - mettere la velocità della rotazione del player proporzionale alla grandezza
 	dello schermo
-- il sorting delle sprite deve essere aggiustato: controlla sprite in basso (1, 16)
+- è possibile che nella funzione draw_sprite, il 2.6 non sia utilizzabile in tutte le risoluzioni
+	(funzionante in 854x480)
+- muovendo il pov con il mouse le sprite scompaiono!
 
 */
