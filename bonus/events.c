@@ -6,7 +6,7 @@
 /*   By: ddelladi <ddelladi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/26 16:45:37 by ddelladi          #+#    #+#             */
-/*   Updated: 2022/09/30 18:15:46 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/09/30 18:46:34 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,16 +45,12 @@ int	mouse_move(int x, int y, t_rules *rules)
 			return (0);
 		rules->mouse.last_x = x;
 		rules->mouse.last_y = y;
-		update_pov_supp(rules);
-		rules->player.plane_x = -cos(rules->player.plane);
-		rules->player.plane_y = sin(rules->player.plane);
 	}
 	rules->player.d_x = cos(rules->player.dir);
 	if (rules->player.dir == (double)M_PI)
 		rules->player.d_y = 0;
 	else
 		rules->player.d_y = -sin(rules->player.dir);
-	
 	return (0);
 }
 

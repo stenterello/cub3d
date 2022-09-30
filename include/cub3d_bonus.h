@@ -6,7 +6,7 @@
 /*   By: ddelladi <ddelladi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/26 14:35:18 by gimartin          #+#    #+#             */
-/*   Updated: 2022/09/30 18:14:42 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/09/30 18:45:47 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -257,6 +257,6 @@ void			save_sprites(t_rules *rules);
 void			define_sprite(t_sprite *spr, int i, int j);
 void			reload_sprites(t_rules *rules);
 unsigned int	get_sprite_color(t_image *tex, int x, int y, t_rules *rules);
-void			update_pov_supp(t_rules *rules);
+void			update_pov(t_rules *rules);
 
 #endif
