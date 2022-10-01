@@ -6,39 +6,13 @@
 /*   By: ddelladi <ddelladi@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/01 22:28:36 by ddelladi          #+#    #+#             */
-/*   Updated: 2022/10/01 12:53:36 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/10/01 15:09:31 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d_bonus.h"
 
-double	get_dist(t_rules *rules, t_bres_data *d)
-{
-	float	angle_diff;
-	double	dist;
-
-	dist = final_length(d->xy[0], d->xy[1], d->xy2);
-	if (!dist)
-		dist = 0.01;
-	angle_diff = rules->player.dir - d->ray_angle;
-	if (angle_diff < 0)
-		angle_diff += (float)(2 * M_PI);
-	else if (angle_diff > (float)(2 * M_PI))
-		angle_diff -= 2 * M_PI;
-	dist *= cos(angle_diff);
-	return (dist);
-}
-
-double	get_fix(double angle)
-{
-	if (angle > M_PI * 2)
-		angle -= M_PI * 2;
-	if (angle < 0)
-		angle += M_PI * 2;
-	return (angle);
-}
-
-void	adjust_var(double var[3], t_rules *rules)
+static void	adjust_var(double var[3], t_rules *rules)
 {
 	if (var[0] < 0)
 		var[0] = 0;
@@ -48,42 +22,7 @@ void	adjust_var(double var[3], t_rules *rules)
 		var[2] = rules->mlx.win_width;
 }
 
-t_image	*choose_texture(t_rules *rules, t_bres_data *d)
-{
-	if (!our_modulo(d->xy2[0], rules->map.block_width)
-		&& (d->ray_angle < M_PI / 2 || d->ray_angle > 3 * M_PI / 2))
-	{
-		if (is_door((int)(d->xy2[0] / rules->map.block_width), (int)(d->xy2[1] / rules->map.block_width), rules))
-			return (rules->door);
-		return (rules->east);
-	}
-	else if (!our_modulo(d->xy2[0], rules->map.block_width)
-		&& d->ray_angle >= M_PI / 2 && d->ray_angle <= 3 * M_PI / 2)
-	{
-		if (is_door((int)(d->xy2[0] / rules->map.block_width) - 1, (int)(d->xy2[1] / rules->map.block_width), rules))
-			return (rules->door);
-		return (rules->west);
-	}
-	else if (!our_modulo(d->xy2[1], rules->map.block_width)
-		&& d->ray_angle <= M_PI && d->ray_angle >= 0)
-	{
-		if (is_door((int)(d->xy2[0] / rules->map.block_width), (int)(d->xy2[1] / rules->map.block_width) - 1, rules))
-			return (rules->door);
-		return (rules->south);
-	}
-	else if (!our_modulo(d->xy2[1], rules->map.block_width)
-		&& d->ray_angle > M_PI && d->ray_angle <= 2 * M_PI)
-	{
-		if (is_door((int)(d->xy2[0] / rules->map.block_width), (int)(d->xy2[1] / rules->map.block_width), rules))
-			return (rules->door);
-		return (rules->north);
-	}
-	else
-		die("Error while choosing textures. Developers fault. Aborting");
-	return (NULL);
-}
-
-void	draw_walls(double var[3], t_rules *rules, t_draw_info *info)
+static void	draw_walls(double var[3], t_rules *rules, t_draw_info *info)
 {
 	var[0] = rules->mlx.win_height / 2 - info->l_h / 2;
 	if (var[0] < 0)
@@ -102,7 +41,7 @@ void	draw_walls(double var[3], t_rules *rules, t_draw_info *info)
 	}
 }
 
-void	draw_ceiling(double var[3], t_rules *rules, t_draw_info *info)
+static void	draw_ceiling(double var[3], t_rules *rules, t_draw_info *info)
 {
 	int		y;
 	float	dy;
@@ -126,7 +65,7 @@ void	draw_ceiling(double var[3], t_rules *rules, t_draw_info *info)
 	}
 }
 
-void	draw_floor(double var[3], t_rules *rules, t_draw_info *info)
+static void	draw_floor(double var[3], t_rules *rules, t_draw_info *info)
 {
 	int		y;
 	float	dy;

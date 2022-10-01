@@ -1,63 +1,118 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   move.c                                             :+:      :+:    :+:   */
+/*   move2.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ddelladi <ddelladi@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/26 18:46:17 by ddelladi          #+#    #+#             */
+/*   Created: 2022/09/02 14:30:26 by ddelladi          #+#    #+#             */
 /*   Updated: 2022/10/01 12:53:36 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d_bonus.h"
 
-int	press(int keycode, t_rules *rules)
+static void	check_up(t_rules *rules, float ray_cos, float ray_sin)
 {
-	if (keycode == 53)
+	if (!colliding(rules, ray_cos, 0, 1))
 	{
-		mlx_destroy_window(rules->mlx.mlx, rules->mlx.mlx_win);
-		exit(0);
+		if (!rules->player.gun.counted)
+		{
+			rules->player.gun.counter++;
+			rules->player.gun.counted++;
+		}
+		rules->player.x += rules->player.d_x * rules->player.speed;
 	}
-	if (keycode == 13)
-		rules->keys.w_pressed = 1;
-	if (keycode == 0)
-		rules->keys.a_pressed = 1;
-	if (keycode == 1)
-		rules->keys.s_pressed = 1;
-	if (keycode == 2)
-		rules->keys.d_pressed = 1;
-	if (keycode == 123)
-		rules->keys.l_pressed = 1;
-	if (keycode == 124)
-		rules->keys.r_pressed = 1;
-	if (keycode == 257 || keycode == 258)
-		rules->keys.shift_pressed = 1;
-	if (keycode == 14)
-		rules->keys.e_pressed = 1;
-	if (keycode == 49)
-		shoot(rules);
-	printf("%d\n", keycode);
-	return (0);
+	if (!colliding(rules, 0, ray_sin, 1))
+	{
+		if (!rules->player.gun.counted)
+		{
+			rules->player.gun.counter++;
+			rules->player.gun.counted++;
+		}
+		rules->player.y += rules->player.d_y * rules->player.speed;
+	}
 }
 
-int	release(int keycode, t_rules *rules)
+static void	check_down(t_rules *rules, float ray_cos, float ray_sin)
 {
-	if (keycode == 13)
-		rules->keys.w_pressed = 0;
-	if (keycode == 0)
-		rules->keys.a_pressed = 0;
-	if (keycode == 1)
-		rules->keys.s_pressed = 0;
-	if (keycode == 2)
-		rules->keys.d_pressed = 0;
-	if (keycode == 123)
-		rules->keys.l_pressed = 0;
-	if (keycode == 124)
-		rules->keys.r_pressed = 0;
-	if (keycode == 257 || keycode == 258)
-		rules->keys.shift_pressed = 0;
-	if (keycode == 14)
-		rules->keys.e_pressed = 0;
-	return (0);
+	if (!colliding(rules, ray_cos, 0, 0))
+	{
+		if (!rules->player.gun.counted)
+		{
+			rules->player.gun.counter++;
+			rules->player.gun.counted++;
+		}
+		rules->player.x -= rules->player.d_x * rules->player.speed;
+	}
+	if (!colliding(rules, 0, ray_sin, 0))
+	{
+		if (!rules->player.gun.counted)
+		{
+			rules->player.gun.counter++;
+			rules->player.gun.counted++;
+		}
+		rules->player.y -= rules->player.d_y * rules->player.speed;
+	}
+}
+
+static void	check_left(t_rules *rules, float ray_cos, float ray_sin)
+{
+	if (!colliding(rules, ray_sin, 0, 1))
+	{
+		if (!rules->player.gun.counted)
+		{
+			rules->player.gun.counter++;
+			rules->player.gun.counted++;
+		}
+		rules->player.x += rules->player.d_y * rules->player.speed;
+	}
+	if (!colliding(rules, 0, ray_cos, 0))
+	{
+		if (!rules->player.gun.counted)
+		{
+			rules->player.gun.counter++;
+			rules->player.gun.counted++;
+		}
+		rules->player.y -= rules->player.d_x * rules->player.speed;
+	}
+}
+
+static void	check_right(t_rules *rules, float ray_cos, float ray_sin)
+{
+	if (!colliding(rules, ray_sin, 0, 0))
+	{
+		if (!rules->player.gun.counted)
+		{
+			rules->player.gun.counter++;
+			rules->player.gun.counted++;
+		}
+		rules->player.x -= rules->player.d_y * rules->player.speed;
+	}
+	if (!colliding(rules, 0, ray_cos, 1))
+	{
+		if (!rules->player.gun.counted)
+		{
+			rules->player.gun.counter++;
+			rules->player.gun.counted++;
+		}
+		rules->player.y += rules->player.d_x * rules->player.speed;
+	}
+}
+
+void	move_player(t_rules *rules, char *dir)
+{
+	float	ray_cos;
+	float	ray_sin;
+
+	ray_cos = rules->player.d_x * rules->player.speed;
+	ray_sin = rules->player.d_y * rules->player.speed;
+	if (!ft_strncmp("up", dir, 2))
+		check_up(rules, ray_cos, ray_sin);
+	else if (!ft_strncmp("down", dir, 4))
+		check_down(rules, ray_cos, ray_sin);
+	else if (!ft_strncmp("left", dir, 4))
+		check_left(rules, ray_cos, ray_sin);
+	else if (!ft_strncmp("right", dir, 5))
+		check_right(rules, ray_cos, ray_sin);
 }

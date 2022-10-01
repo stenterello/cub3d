@@ -1,54 +1,52 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   init.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ddelladi <ddelladi@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/26 14:38:55 by gimartin          #+#    #+#             */
-/*   Updated: 2022/10/01 13:08:09 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/10/01 14:07:48 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d_bonus.h"
 
-void	die(char *str)
+static void	init_player_position(t_rules *rules, char c, int i, int j)
 {
-	ft_putendl_fd(str, 2);
-	exit(1);
+	if (c == 'N')
+		rules->player.dir = M_PI / 2;
+	else if (c == 'W')
+		rules->player.dir = M_PI;
+	else if (c == 'S')
+		rules->player.dir = M_PI * 3 / 2;
+	else if (c == 'E')
+		rules->player.dir = 0;
+	rules->player.plane = rules->player.dir + M_PI / 2;
+	if (rules->player.dir == M_PI * 3 / 2)
+		rules->player.plane = 0;
+	rules->map.map[i][j] = '0';
+	rules->player.x = ++j * rules->map.block_width
+		- (rules->map.block_width / 2);
+	rules->player.y = ++i * rules->map.block_width
+		- (rules->map.block_width / 2);
+	rules->player.d_x = cos(rules->player.dir);
+	if (rules->player.dir == (double)M_PI)
+		rules->player.d_y = 0;
+	else
+		rules->player.d_y = -sin(rules->player.dir);
 }
 
-int	get_abs(int n)
+void	init_player(t_rules *rules, char c, int i, int j)
 {
-	if (n < 0)
-		return (-n);
-	return (n);
-}
-
-int	take_rgb(char *str, unsigned char rgb[3])
-{
-	int	i;
-	int	i2;
-	int	tmp;
-
-	i = 0;
-	i2 = 0;
-	while (str[i] && !ft_isdigit(str[i]))
-	{
-		i++;
-		if (str[i] && ft_isdigit(str[i]))
-		{
-			tmp = ft_atoi(&str[i]);
-			if (tmp > 255 || tmp < 0)
-				die("Invalid color value. Aborting");
-			rgb[i2++] = (unsigned char)tmp;
-			while (str[i] && ft_isdigit(str[i]))
-				i++;
-		}
-	}
-	if (i2 != 3)
-		die("RGB wrong format in .cub file");
-	return (1);
+	init_player_position(rules, c, i, j);
+	rules->player.speed = SPEED;
+	rules->player.gun.off = 0;
+	rules->player.gun.counter = 0;
+	rules->player.plane_x = -cos(rules->player.plane);
+	rules->player.plane_y = sin(rules->player.plane);
+	rules->player.health = 10;
+	rules->player.ammo = 10;
 }
 
 void	init_keys(t_rules *rules)
@@ -87,8 +85,8 @@ void	init_rules(t_rules *rules)
 	rules->line_offset = 0;
 	rules->last_door_action = 0;
 	rules->player.gun.last_shoot = 0;
-	rules->player.gun.path = malloc(sizeof(char) * (18));
+	rules->player.gun.path = malloc(sizeof(char) * (22));
 	if (!rules->player.gun.path)
 		die("Malloc error");
-	ft_strlcpy(rules->player.gun.path, "./img/pistola.xpm", 18);
+	ft_strlcpy(rules->player.gun.path, "./img/gun/pistola.xpm", 22);
 }

@@ -6,51 +6,50 @@
 /*   By: ddelladi <ddelladi@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/02 17:56:50 by ddelladi          #+#    #+#             */
-/*   Updated: 2022/10/01 12:53:36 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/10/01 15:04:55 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d_bonus.h"
 
-double	decrement_angle(double angle, int t)
+int	virtual_horizontal_colliding(int ray_x, int ray_y, t_rules *rules, int dir)
 {
-	int	i;
+	int	map_x;
+	int	map_y;
 
-	i = 0;
-	while (i++ < t)
-	{
-		angle -= ANGLE_UNIT / 2;
-		if (angle < 0)
-			angle = 2 * M_PI;
-	}
-	return (angle);
+	map_x = ray_x / rules->map.block_width;
+	if (!dir)
+		map_y = ray_y / rules->map.block_width - 1;
+	else
+		map_y = ray_y / rules->map.block_width;
+	if (map_x < 0 || map_y < 0
+		|| map_x > rules->map.map_height_len[0] - 1
+		|| map_y > rules->map.map_height_len[1] - 1)
+		return (1);
+	if (rules->map.map[map_y][map_x] == '1'
+		|| rules->map.map[map_y][map_x] == '2')
+		return (1);
+	return (0);
 }
 
-void	calc_ray(t_bres_data *data, t_rules *rules,
-	t_image *view, t_image *minimap)
+int	virtual_vertical_colliding(int ray_x, int ray_y, t_rules *rules, int dir)
 {
-	float		f_pts[3];
-	float		s_pts[3];
+	int	map_x;
+	int	map_y;
 
-	horizontal_lines_check(data->ray_angle, rules, f_pts);
-	vertical_lines_check(data->ray_angle, rules, s_pts);
-	data->xy[0] = rules->player.x;
-	data->xy[1] = rules->player.y;
-	if (final_length(rules->player.x, rules->player.y, s_pts) == INT_MAX
-		|| final_length(rules->player.x, rules->player.y, f_pts)
-		< final_length(rules->player.x, rules->player.y, s_pts))
-	{
-		data->xy2[0] = f_pts[0];
-		data->xy2[1] = f_pts[1];
-		bresenham(data, minimap, view, rules);
-	}
+	if (!dir)
+		map_x = ray_x / (int)rules->map.block_width;
 	else
-	{
-		data->xy2[0] = s_pts[0];
-		data->xy2[1] = s_pts[1];
-		bresenham(data, minimap, view, rules);
-	}
-	data->ray_angle = decrement_angle(data->ray_angle, 1);
+		map_x = ray_x / (int)rules->map.block_width - 1;
+	map_y = ray_y / (int)rules->map.block_width;
+	if (map_x < 0 || map_y < 0
+		|| map_x > rules->map.map_height_len[0] - 1
+		|| map_y > rules->map.map_height_len[1] - 1)
+		return (1);
+	if (rules->map.map[map_y][map_x] == '1'
+		|| rules->map.map[map_y][map_x] == '2')
+		return (1);
+	return (0);
 }
 
 void	raycast(t_rules *rules, t_image *view, t_image *minimap)

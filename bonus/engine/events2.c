@@ -6,7 +6,7 @@
 /*   By: ddelladi <ddelladi@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/20 11:59:10 by gimartin          #+#    #+#             */
-/*   Updated: 2022/10/01 13:01:07 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/10/01 15:27:23 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,18 +53,6 @@ void	update_pov(t_rules *rules)
 	update_pov_supp(rules);
 	rules->player.plane_x = -cos(rules->player.plane);
 	rules->player.plane_y = sin(rules->player.plane);
-}
-
-void	move_gun(t_gun *gun, int i)
-{
-	if (gun->counter >= i)
-	{
-		if (gun->off)
-			gun->off = 0;
-		else
-			gun->off = 10;
-		gun->counter = 0;
-	}
 }
 
 int	loop_events(t_rules *rules)

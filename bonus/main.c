@@ -6,7 +6,7 @@
 /*   By: ddelladi <ddelladi@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/26 14:35:11 by gimartin          #+#    #+#             */
-/*   Updated: 2022/10/01 13:11:55 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/10/01 15:54:33 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,26 +26,6 @@ void	read_file(char *file, t_rules *rules)
 			/ (rules->map.map_height_len[0] - 1));
 	rules->map.mini_block_width = rules->map.block_width / 4;
 	map_checks(rules);
-}
-
-int	count_enemies(t_map *map)
-{
-	int	ret;
-	int	i;
-	int	j;
-
-	ret = 0;
-	i = -1;
-	while (++i < map->map_height_len[1])
-	{
-		j = -1;
-		while (++j < map->map_height_len[0])
-		{
-			if (map->map[i][j] == '4')
-				ret++;
-		}
-	}
-	return (ret);
 }
 
 int	main(int argc, char **argv)
@@ -70,11 +50,9 @@ int	main(int argc, char **argv)
 
 /*
 
-- puntino rosso minimappa: nemico
 - animazioni porte
 - pistola che spara // CONTRO I NEMICI
 - livello trama
-- cambiare data->ray_angle in data->ray_angle per chiarezza
 - togliere il raycast multiplo dalla versione mandatory!
 - bloccare il cammino del player se incontra un nemico (dies)
 - eliminare il terzo elemento di var[3] sia in mandatory che in bonus
@@ -83,5 +61,8 @@ int	main(int argc, char **argv)
 - è possibile che nella funzione draw_sprite, il 2.6 non sia utilizzabile in tutte le risoluzioni
 	(funzionante in 854x480)
 - muovendo il pov con il mouse le sprite scompaiono!
+- ordinare il codice mandatory in directories
+- aggiustare il makefile che adesso compila i file oggetto soltanto col path del bonus project
+- togliere la flag -g
 
 */

@@ -6,7 +6,7 @@
 /*   By: ddelladi <ddelladi@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/01 11:35:18 by ddelladi          #+#    #+#             */
-/*   Updated: 2022/10/01 13:28:09 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/10/01 15:12:09 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -142,31 +142,22 @@ void			interact_with_door(t_rules *rules);
 void			reload_sprites(t_rules *rules);
 void			restore_gun(t_rules *rules);
 void			move_player(t_rules *rules, char *dir);
-double			decrement_angle(double angle, int t);
-double			increment_angle(double angle, int t);
 void			game(t_rules *rules);
 void			load_sprites(t_rules *rules);
 void			add_events(t_rules *rules);
 int				loop_events(t_rules *rules);
 void			minimap2d(t_rules *rules, t_image *minimap);
-void			draw_mini_player(t_rules *rules, t_image *image);
 void			raycast(t_rules *rules, t_image *view, t_image *minimap);
 void			draw_sprites(t_rules *rules, t_image *view);
-void			easy_pxl(t_image *image, int x, int y, int color);
-void			horizontal_lines_check(double angle, t_rules *rules, float ret[3]);
-void			vertical_lines_check(double angle,	t_rules *rules, float ret[3]);
-double			final_length(float start_x, float start_y, float rxy[2]);
+void			draw_gun(t_rules *rules, t_image *view);
 int				virtual_horizontal_colliding(int ray_x, int ray_y, t_rules *rules, int dir);
 int				virtual_vertical_colliding(int ray_x, int ray_y, t_rules *rules, int dir);
 int				press(int keycode, t_rules *rules);
 int				release(int keycode, t_rules *rules);
-t_image			*choose_texture(t_rules *rules, t_bres_data *d);
 void			draw_view(t_bres_data *d, t_image *view, t_rules *rules, t_image *tex);
 int				is_door(int x, int y, t_rules *rules);
 int				colliding(t_rules *rules, float ray_cos, float ray_sin, int plus);
-double			final_length_double(double start_x, double start_y, double rxy[2]);
-int				count_sprites(t_map map);
-void			save_sprites(t_rules *rules);
-unsigned int	get_sprite_color(t_image *tex, int x, int y, t_rules *rules);
+void			calc_ray(t_bres_data *data, t_rules *rules,
+					t_image *view, t_image *minimap);
 
 #endif

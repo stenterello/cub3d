@@ -1,26 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   rules.c                                            :+:      :+:    :+:   */
+/*   general.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ddelladi <ddelladi@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/26 14:36:54 by gimartin          #+#    #+#             */
-/*   Updated: 2022/10/01 12:53:36 by ddelladi         ###   ########.fr       */
+/*   Created: 2022/10/01 14:57:51 by ddelladi          #+#    #+#             */
+/*   Updated: 2022/10/01 16:19:47 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d_bonus.h"
 
-int	rules_completed(t_rules *rules)
+void	die(char *str)
 {
-	if (!rules->north || !rules->east || !rules->south
-		|| !rules->west || !rules->floor || !rules->ceiling)
-		return (0);
-	return (1);
+	ft_putendl_fd(str, 2);
+	exit(1);
 }
 
-char	*get_path(char *str)
+static char	*get_path(char *str)
 {
 	char	*ret;
 	int		i;
@@ -54,42 +52,7 @@ t_image	*get_rule(char *str, t_rules *rules, t_image *chosen)
 		die("Could not load textures. Aborting");
 	ret->addr = mlx_get_data_addr(ret->img, &ret->bpp,
 			&ret->line_length, &ret->endian);
-	if (!ret)
-		die("Could not load textures. Aborting");
 	free(path);
 	return (ret);
 }
 
-void	insert_rule(char *str, t_rules *rules)
-{
-	if (!ft_strncmp(str, "NO", 2))
-		rules->north = get_rule(str, rules, rules->north);
-	else if (!ft_strncmp(str, "EA", 2))
-		rules->east = get_rule(str, rules, rules->east);
-	else if (!ft_strncmp(str, "SO", 2))
-		rules->south = get_rule(str, rules, rules->south);
-	else if (!ft_strncmp(str, "WE", 2))
-		rules->west = get_rule(str, rules, rules->west);
-	else if (!ft_strncmp(str, "D", 1))
-		rules->door = get_rule(str, rules, rules->door);
-	else if (!ft_strncmp(str, "F", 1))
-		rules->floor = get_rule(str, rules, rules->floor);
-	else if (!ft_strncmp(str, "C", 1))
-		rules->ceiling = get_rule(str, rules, rules->ceiling);
-}
-
-int	is_map(char *line)
-{
-	int	i;
-
-	i = -1;
-	while (line[++i])
-	{
-		if (line[i] != '0' && line[i] != '1'
-			&& line[i] != 'N' && line[i] != 'S' && line[i] != 'W'
-			&& line[i] != 'E' && line[i] != ' ' && line[i] != '\n'
-			&& line[i] != '2')
-			return (0);
-	}
-	return (1);
-}

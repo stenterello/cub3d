@@ -1,5 +1,5 @@
 NAME	=	cub3d
-NAME2	=	cub3d_bonus
+NAME_B	=	cub3d_bonus
 CC		=	gcc
 FLAGS	=	-Wall -Werror -Wextra -g
 SRC		=	main.c \
@@ -21,38 +21,41 @@ SRC		=	main.c \
 			collision2.c \
 			move2.c
 BONUS	=	main.c \
-			map_parser/map_checks.c \
+			map_parser/map_read.c \
 			map_parser/map_save.c \
-			map_parser/map_utils.c \
-			utils/rules.c \
-			utils/rules2.c \
-			utils/utils.c	\
-			utils/utils2.c	\
+			map_parser/map_checks.c \
+			utils/init.c \
+			utils/colors.c \
+			utils/calculus.c \
+			utils/calculus2.c \
+			utils/gun_utils.c \
+			utils/mlx_utils.c \
+			utils/choose.c \
+			utils/general.c \
+			utils/load_sprites.c \
+			utils/load_sprites_utils.c \
 			engine/game.c \
-			engine/game2.c \
+			engine/minimap.c \
 			engine/raycast.c \
 			engine/raycast2.c \
-			engine/raycast3.c \
 			engine/events.c \
 			engine/events2.c \
 			engine/bresenham.c \
 			engine/draw_view.c \
 			engine/collision.c \
-			engine/move2.c \
+			engine/move.c \
 			engine/doors.c \
-			engine/load_sprites.c \
-			engine/load_sprites_utils.c \
 			engine/draw_sprites.c
 SRCS	=	${addprefix src/, $(SRC)}
 B_SRCS	=	${addprefix bonus/, $(BONUS)}
-M_B_CMD	=	bonus/engine/move.c
-L_B_CMD	=	bonus/engine/lin_move.c
-MAC_CMD	=	src/move.c
-LIN_CMD	=	src/lin_move.c
-M_CMD_O	=	src/move.o
-M_B_C_O	=	bonus/engine/move.o
-L_CMD_O	=	src/lin_move.o
-L_B_C_O =	bonus/engine/lin_move.o
+M_B_CMD	=	bonus/engine/keys.c
+L_B_CMD	=	bonus/engine/lin_keys.c
+MAC_CMD	=	src/keys.c
+LIN_CMD	=	src/lin_keys.c
+M_CMD_O	=	src/keys.o
+M_B_C_O	=	bonus/engine/keys.o
+L_CMD_O	=	src/lin_keys.o
+L_B_C_O =	bonus/engine/lin_keys.o
 OBJS	=	${SRCS:.c=.o}
 B_OBJS	=	${B_SRCS:.c=.o}
 LIBFT	=	./include/libft/libft.a
@@ -66,13 +69,13 @@ LIN_OPT	=	-Linclude/mlx_linux -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -l
 
 all	:	$(NAME)
 
-bonus	:	$(NAME2)
+bonus	:	$(NAME_B)
 
 $(NAME)	:	$(LIBFT) $(OBJS) $(M_CMD_O)
 	$(CC) $(FLAGS) $(MLX_OPT) $(LIBFT) $(OBJS) $(M_CMD_O) -o $(NAME) $(OPTS)
 
-$(NAME2)	:	$(LIBFT) $(B_OBJS) $(M_B_C_O)
-	$(CC) $(FLAGS) $(MLX_OPT) $(LIBFT) $(B_OBJS) $(M_B_C_O) -o $(NAME2) $(B_PATH) $(OPTS)
+$(NAME_B)	:	$(LIBFT) $(B_OBJS) $(M_B_C_O)
+	$(CC) $(FLAGS) $(MLX_OPT) $(LIBFT) $(B_OBJS) $(M_B_C_O) -o $(NAME_B) $(B_PATH) $(OPTS)
 
 %.o	:	%.c
 	$(CC) $(FLAGS) -c $< -o $@ $(B_PATH) $(OPTS)
@@ -81,7 +84,7 @@ lin	: $(LIBFT) $(MLX_LIN) $(OBJS) $(L_CMD_O)
 	$(CC) $(FLAGS) $(OBJS) $(L_CMD_O) $(LIBFT) $(MLX_LIN) $(LIN_OPT) -o $(NAME)
 
 lin_bon	: $(LIBFT) $(MLX_LIN) $(B_OBJS) $(L_B_C_O)
-	$(CC) $(FLAGS) $(B_OBJS) $(L_B_C_O) $(LIBFT) $(MLX_LIN) $(LIN_OPT) -o $(NAME2)
+	$(CC) $(FLAGS) $(B_OBJS) $(L_B_C_O) $(LIBFT) $(MLX_LIN) $(LIN_OPT) -o $(NAME_B)
 
 $(MLX_LIN)	:
 	$(MAKE) -C ./include/mlx_linux/
@@ -98,7 +101,7 @@ clean	:
 
 fclean	:	clean
 	$(MAKE) fclean -C ./include/libft
-	rm -f $(NAME) $(NAME2)
+	rm -f $(NAME) $(NAME_B)
 
 re	:	fclean all
 

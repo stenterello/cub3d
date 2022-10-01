@@ -6,7 +6,7 @@
 /*   By: ddelladi <ddelladi@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/26 14:39:54 by gimartin          #+#    #+#             */
-/*   Updated: 2022/10/01 12:53:36 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/10/01 15:33:49 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ static void	write_to_matrix(int i, t_rules *rules, char *tmp, int fd)
 	{
 		j = ft_strlen(tmp);
 		check_line(tmp);
-		ft_strlcpy(rules->map.map[i], tmp, j + 1);
+		ft_strlcpy(rules->map.map[i], tmp, j-- + 1);
 		while (j < rules->map.map_height_len[0])
 			rules->map.map[i][j++] = ' ';
 		rules->map.map[i][j++] = '\0';
@@ -49,6 +49,25 @@ static void	write_to_matrix(int i, t_rules *rules, char *tmp, int fd)
 		free(tmp);
 		tmp = get_next_line(fd);
 	}
+}
+
+static void	get_measures(int fd, int hl[2])
+{
+	char	*tmp;
+
+	hl[0] = 0;
+	hl[1] = 1;
+	tmp = get_next_line(fd);
+	while (tmp)
+	{
+		if ((int)ft_strlen(tmp) > hl[0])
+			hl[0] = ft_strlen(tmp);
+		hl[1]++;
+		free(tmp);
+		tmp = get_next_line(fd);
+	}
+	free(tmp);
+	close(fd);
 }
 
 void	map_save(char *file, int fd, t_rules *rules)
