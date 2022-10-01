@@ -6,7 +6,7 @@
 /*   By: ddelladi <ddelladi@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/01 14:10:18 by ddelladi          #+#    #+#             */
-/*   Updated: 2022/10/01 16:38:37 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/10/01 22:28:27 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,12 +23,25 @@ void	load_gun(t_rules *rules)
 	gun->addr = mlx_get_data_addr(gun->img, &gun->bpp, &gun->line_length, &gun->endian);
 }
 
+void	bullet(t_rules *rules)
+{
+	int	res1;
+	int	res2;
+
+	res1 = colliding(rules, rules->player.d_x * rules->player.speed, 0, 1);
+	res2 = colliding(rules, 0, rules->player.d_y * rules->player.speed, 1);
+	if (res1 == 2 || res2 == 2)
+		printf("ciao");
+}
+
 void	shoot(t_rules *rules)
 {
 	ft_strlcpy(rules->player.gun.path, "./img/gun/sparo.xpm", 20);
 	rules->player.gun.last_shoot = rules->n_frames;
 	mlx_destroy_image(rules->mlx.mlx, rules->player.gun.gun_img.img);
 	load_gun(rules);
+	bullet(rules);
+	rules->player.ammo -= 1;
 }
 
 void	restore_gun(t_rules *rules)

@@ -6,7 +6,7 @@
 /*   By: ddelladi <ddelladi@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/01 11:35:18 by ddelladi          #+#    #+#             */
-/*   Updated: 2022/10/01 15:12:09 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/10/01 22:14:40 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,10 @@ typedef struct s_player
 	double	plane_y;
 	int		health;
 	int		ammo;
+	t_image	heart_tex;
+	t_image	ammo_tex;
+	t_image	viewfinder;
+	int		earning_dmg;
 }				t_player;
 
 typedef struct s_keys
@@ -92,10 +96,12 @@ typedef struct s_sprite
 	int		mini_x;
 	int		mini_y;
 	double	dist;
+	int		state;
 }				t_sprite;
 
 typedef struct s_rules
 {
+	int				game_status;
 	t_map			map;
 	t_mlx			mlx;
 	t_player		player;
@@ -137,12 +143,19 @@ typedef struct s_bres_info
 	unsigned int	color;
 }				t_bres_info;
 
+enum	game_state
+{
+	START,
+	PLAY,
+	LOST
+};
+
 void			bresenham(t_bres_data *d, t_image *min, t_image *view, t_rules *rules);
 void			interact_with_door(t_rules *rules);
 void			reload_sprites(t_rules *rules);
 void			restore_gun(t_rules *rules);
 void			move_player(t_rules *rules, char *dir);
-void			game(t_rules *rules);
+void			decide_game(t_rules *rules);
 void			load_sprites(t_rules *rules);
 void			add_events(t_rules *rules);
 int				loop_events(t_rules *rules);
@@ -159,5 +172,9 @@ int				is_door(int x, int y, t_rules *rules);
 int				colliding(t_rules *rules, float ray_cos, float ray_sin, int plus);
 void			calc_ray(t_bres_data *data, t_rules *rules,
 					t_image *view, t_image *minimap);
+void			hud(t_rules *rules, t_image *view);
+void			health_level(t_rules *rules, t_image *view);
+void			ammo_level(t_rules *rules, t_image *view);
+void			draw_ammo_amount(t_rules *rules);
 
 #endif

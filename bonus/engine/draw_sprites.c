@@ -6,7 +6,7 @@
 /*   By: ddelladi <ddelladi@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/28 20:41:24 by ddelladi          #+#    #+#             */
-/*   Updated: 2022/10/01 15:18:18 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/10/01 22:15:45 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,19 +90,22 @@ void	draw_sprites(t_rules *rules, t_image *view)
 	i = 0;
 	while (i < rules->n_sprites)
 	{
-		x = rules->sort_spr[i].x - rules->player.x;
-		y = rules->sort_spr[i].y - rules->player.y;
-		inv_det = 1.0 / (rules->player.plane_x * rules->player.d_y - rules->player.d_x * rules->player.plane_y);
-		trans_x = inv_det * (rules->player.d_y * x - rules->player.d_x * y) * 2.6;
-		trans_y = inv_det * (-rules->player.plane_y * x + rules->player.plane_x * y);
-		s_x = (int)((rules->mlx.win_width / 2) * (1 + trans_x / trans_y));
-		define_sprite_info(rules, &info, trans_y, s_x);
-		while (info.start_x < info.end_x)
+		if (rules->sort_spr[i].state)
 		{
-			info.t_x = (int)((info.start_x - info.bench_x) * rules->enemy.width / info.width);
-			draw_sprite_col(rules, &info, view, trans_y);
-			info.start_x++;
+			x = rules->sort_spr[i].x - rules->player.x;
+			y = rules->sort_spr[i].y - rules->player.y;
+			inv_det = 1.0 / (rules->player.plane_x * rules->player.d_y - rules->player.d_x * rules->player.plane_y);
+			trans_x = inv_det * (rules->player.d_y * x - rules->player.d_x * y) * 2.6;
+			trans_y = inv_det * (-rules->player.plane_y * x + rules->player.plane_x * y);
+			s_x = (int)((rules->mlx.win_width / 2) * (1 + trans_x / trans_y));
+			define_sprite_info(rules, &info, trans_y, s_x);
+			while (info.start_x < info.end_x)
+			{
+				info.t_x = (int)((info.start_x - info.bench_x) * rules->enemy.width / info.width);
+				draw_sprite_col(rules, &info, view, trans_y);
+				info.start_x++;
+			}
+			i++;
 		}
-		i++;
 	}
 }

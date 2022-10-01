@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   move.c                                             :+:      :+:    :+:   */
+/*   keys.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ddelladi <ddelladi@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/26 18:46:17 by ddelladi          #+#    #+#             */
-/*   Updated: 2022/10/01 12:53:36 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/10/01 19:10:05 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int	press(int keycode, t_rules *rules)
 		rules->keys.shift_pressed = 1;
 	if (keycode == 14)
 		rules->keys.e_pressed = 1;
-	if (keycode == 49)
+	if (keycode == 49 && rules->player.ammo)
 		shoot(rules);
 	printf("%d\n", keycode);
 	return (0);

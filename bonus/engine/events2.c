@@ -6,7 +6,7 @@
 /*   By: ddelladi <ddelladi@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/20 11:59:10 by gimartin          #+#    #+#             */
-/*   Updated: 2022/10/01 15:27:23 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/10/01 19:38:31 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,12 +59,16 @@ int	loop_events(t_rules *rules)
 {
 	if (!(rules->n_frames % 170))
 	{
-		update_pov(rules);
-		game(rules);
-		if (rules->keys.shift_pressed)
-			move_gun(&rules->player.gun, 5);
-		else
-			move_gun(&rules->player.gun, 10);
+		if (rules->game_status == PLAY)
+			update_pov(rules);
+		decide_game(rules);
+		if (rules->game_status == PLAY)
+		{
+			if (rules->keys.shift_pressed)
+				move_gun(&rules->player.gun, 5);
+			else
+				move_gun(&rules->player.gun, 10);
+		}
 		rules->n_frames++;
 	}
 	else

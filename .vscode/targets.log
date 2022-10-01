@@ -5,9 +5,8 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
- 
 
-# Make data base, printed on Sat Oct  1 15:32:49 2022
+# Make data base, printed on Sat Oct  1 18:43:02 2022
 
 # Variables
 
@@ -15,15 +14,15 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 <D = $(patsubst %/,%,$(dir $<))
 # automatic
 ?F = $(notdir $?)
-# makefile (from 'Makefile', line 54)
+# makefile (from 'Makefile', line 57)
 LIN_CMD = src/lin_keys.c
 # environment
 DESKTOP_SESSION = cinnamon
-# makefile (from 'Makefile', line 57)
+# makefile (from 'Makefile', line 60)
 L_CMD_O = src/lin_keys.o
 # default
 .SHELLFLAGS := -c
-# makefile (from 'Makefile', line 55)
+# makefile (from 'Makefile', line 58)
 M_CMD_O = src/keys.o
 # environment
 XDG_SESSION_CLASS = user
@@ -35,7 +34,7 @@ XDG_SESSION_TYPE = x11
 GTK3_MODULES = xapp-gtk3-module
 # automatic
 ?D = $(patsubst %/,%,$(dir $?))
-# makefile (from 'Makefile', line 64)
+# makefile (from 'Makefile', line 67)
 OPTS = -iquote./include/libft
 # automatic
 @D = $(patsubst %/,%,$(dir $@))
@@ -49,13 +48,13 @@ MAKE_VERSION := 4.2.1
 CURDIR := /home/davide/Documenti/Codici/42/cub3d
 # makefile
 SHELL = /bin/sh
-# makefile (from 'Makefile', line 67)
+# makefile (from 'Makefile', line 70)
 MLX_LIN = ./include/mlx_linux/libmlx.a
 # environment
 GDM_LANG = it
 # environment
 VSCODE_NLS_CONFIG = {"locale":"it","availableLanguages":{"*":"it"},"_languagePackId":"7a9ccbb39d855d2d5642a9a76174bf85.it","_translationsConfigFile":"/home/davide/.config/Code/clp/7a9ccbb39d855d2d5642a9a76174bf85.it/tcf.json","_cacheRoot":"/home/davide/.config/Code/clp/7a9ccbb39d855d2d5642a9a76174bf85.it","_resolvedLanguagePackCoreLocation":"/home/davide/.config/Code/clp/7a9ccbb39d855d2d5642a9a76174bf85.it/74b1f979648cc44d385a2286793c226e611f59e7","_corruptedFile":"/home/davide/.config/Code/clp/7a9ccbb39d855d2d5642a9a76174bf85.it/corrupted.info","_languagePackSupport":true}
-# makefile (from 'Makefile', line 65)
+# makefile (from 'Makefile', line 68)
 MLX = ./include/mlx/libmlx.a
 # environment
 _ = /usr/share/code/code
@@ -63,7 +62,7 @@ _ = /usr/share/code/code
 XDG_CONFIG_DIRS = /etc/xdg/xdg-cinnamon:/etc/xdg
 # environment
 GTK_OVERLAY_SCROLLING = 1
-# makefile (from 'Makefile', line 63)
+# makefile (from 'Makefile', line 66)
 S_PATH = -iquote./src
 # makefile (from 'Makefile', line 1)
 MAKEFILE_LIST :=  Makefile
@@ -73,7 +72,7 @@ MAKEFILE_LIST :=  Makefile
 GIO_LAUNCHED_DESKTOP_FILE = /usr/share/applications/code.desktop
 # 'override' directive
 GNUMAKEFLAGS := 
-# makefile (from 'Makefile', line 68)
+# makefile (from 'Makefile', line 71)
 LIN_OPT = -Linclude/mlx_linux -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz
 # environment
 MANDATORY_PATH = /usr/share/gconf/cinnamon.mandatory.path
@@ -82,10 +81,10 @@ XDG_DATA_DIRS = /usr/share/cinnamon:/usr/share/gnome:/home/davide/.local/share/f
 # environment
 DBUS_SESSION_BUS_ADDRESS = unix:path=/run/user/1000/bus
 # makefile (from 'Makefile', line 23)
-BONUS = main.c map_parser/map_read.c map_parser/map_save.c map_parser/map_checks.c utils/init.c utils/colors.c utils/calculus.c utils/calculus2.c utils/gun_utils.c utils/mlx_utils.c utils/choose.c utils/general.c utils/load_sprites.c utils/load_sprites_utils.c engine/game.c engine/minimap.c engine/raycast.c engine/raycast2.c engine/events.c engine/events2.c engine/bresenham.c engine/draw_view.c engine/collision.c engine/move.c engine/doors.c engine/draw_sprites.c
-# makefile (from 'Makefile', line 56)
-M_B_C_O = bonus/engine/keys.o
+BONUS = main.c map_parser/map_read.c map_parser/map_save.c map_parser/map_checks.c utils/init.c utils/colors.c utils/calculus.c utils/calculus2.c utils/gun_utils.c utils/mlx_utils.c utils/choose.c utils/general.c utils/load_sprites.c utils/load_sprites_utils.c engine/game.c engine/minimap.c engine/raycast.c engine/raycast2.c engine/events.c engine/events2.c engine/bresenham.c engine/draw_view.c engine/collision.c engine/move.c engine/doors.c engine/draw_sprites.c engine/hud/hud.c engine/hud/hearth.c engine/hud/ammo.c
 # makefile (from 'Makefile', line 59)
+M_B_C_O = bonus/engine/keys.o
+# makefile (from 'Makefile', line 62)
 OBJS = ${SRCS:.c=.o}
 # environment
 LESSOPEN = | /usr/bin/lesspipe %s
@@ -105,11 +104,11 @@ PG_OF_PATH = /home/davide/Programmi/OpenFrameworks/of_v0.11.2_linux64gcc6_releas
 SESSION_MANAGER = local/ThinkPad-E550:@/tmp/.ICE-unix/2152,unix/ThinkPad-E550:/tmp/.ICE-unix/2152
 # environment
 XDG_RUNTIME_DIR = /run/user/1000
-# makefile (from 'Makefile', line 50)
+# makefile (from 'Makefile', line 53)
 B_SRCS = ${addprefix bonus/, $(BONUS)}
-# makefile (from 'Makefile', line 60)
+# makefile (from 'Makefile', line 63)
 B_OBJS = ${B_SRCS:.c=.o}
-# makefile (from 'Makefile', line 62)
+# makefile (from 'Makefile', line 65)
 B_PATH = -iquote./bonus
 # environment
 ELECTRON_RUN_AS_NODE = 1
@@ -129,11 +128,11 @@ SSH_AUTH_SOCK = /tmp/ssh-RFQjMS3Y2YBX/agent.2152
 GIO_LAUNCHED_DESKTOP_FILE_PID = 3368
 # automatic
 %F = $(notdir $%)
-# makefile (from 'Makefile', line 51)
+# makefile (from 'Makefile', line 54)
 M_B_CMD = bonus/engine/keys.c
 # environment
 DISPLAY = :0
-# makefile (from 'Makefile', line 66)
+# makefile (from 'Makefile', line 69)
 MLX_OPT = -lmlx -framework OpenGL -framework AppKit
 # environment
 PWD = /home/davide/Documenti/Codici/42/cub3d
@@ -175,13 +174,13 @@ MAKELEVEL := 0
 MAKE = $(MAKE_COMMAND)
 # default
 MAKECMDGOALS := all
-# makefile (from 'Makefile', line 49)
+# makefile (from 'Makefile', line 52)
 SRCS = ${addprefix src/, $(SRC)}
-# makefile (from 'Makefile', line 58)
+# makefile (from 'Makefile', line 61)
 L_B_C_O = bonus/engine/lin_keys.o
 # environment
 SHLVL = 0
-# makefile (from 'Makefile', line 61)
+# makefile (from 'Makefile', line 64)
 LIBFT = ./include/libft/libft.a
 # makefile (from 'Makefile', line 3)
 CC = gcc
@@ -189,7 +188,7 @@ CC = gcc
 XDG_SESSION_ID = c2
 # environment
 USER = davide
-# makefile (from 'Makefile', line 52)
+# makefile (from 'Makefile', line 55)
 L_B_CMD = bonus/engine/lin_keys.c
 # makefile
 .DEFAULT_GOAL := all
@@ -199,7 +198,7 @@ XDG_CURRENT_DESKTOP = X-Cinnamon
 LIBVIRT_DEFAULT_URI = qemu:///system
 # automatic
 %D = $(patsubst %/,%,$(dir $%))
-# makefile (from 'Makefile', line 53)
+# makefile (from 'Makefile', line 56)
 MAC_CMD = src/keys.c
 # default
 MAKE_COMMAND := make
@@ -270,15 +269,15 @@ NAME_B = cub3d_bonus
 
 # Directories
 
-# . (device 2049, inode 17400326): 12 files, no impossibilities.
+# . (device 2049, inode 17400326): 13 files, no impossibilities.
 # src (device 2049, inode 17547576): 21 files, no impossibilities so far.
 
-# 33 files, no impossibilities in 2 directories.
+# 34 files, no impossibilities in 2 directories.
 
 # Implicit Rules
 
 %.o: %.c
-#  recipe to execute (from 'Makefile', line 81):
+#  recipe to execute (from 'Makefile', line 84):
 	$(CC) $(FLAGS) -c $< -o $@ $(B_PATH) $(OPTS)
 
 # 1 implicit rules, 0 (0.0%) terminal.
@@ -287,8 +286,8 @@ NAME_B = cub3d_bonus
 
 # Not a target:
 bonus/map_parser/map_checks.o:
- 
 #  Implicit rule search has not been done.
+ 
 #  Modification time never checked.
 #  File has not been updated.
 
@@ -330,7 +329,7 @@ lin: include/libft/libft.a include/mlx_linux/libmlx.a src/main.o src/map_checks.
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
-#  recipe to execute (from 'Makefile', line 84):
+#  recipe to execute (from 'Makefile', line 87):
 	$(CC) $(FLAGS) $(OBJS) $(L_CMD_O) $(LIBFT) $(MLX_LIN) $(LIN_OPT) -o $(NAME)
 
 # Not a target:
@@ -380,7 +379,7 @@ src/main.o: src/main.c
 # ? := src/main.c
 # variable set hash-table stats:
 # Load=8/32=25%, Rehash=0, Collisions=1/17=6%
-#  recipe to execute (from 'Makefile', line 81):
+#  recipe to execute (from 'Makefile', line 84):
 	$(CC) $(FLAGS) -c $< -o $@ $(B_PATH) $(OPTS)
 
 # Not a target:
@@ -408,7 +407,7 @@ cub3d: include/libft/libft.a src/main.o src/map_checks.o src/map_save.o src/map_
 #  Needs to be updated (-q is set).
 # variable set hash-table stats:
 # Load=0/32=0%, Rehash=0, Collisions=0/7=0%
-#  recipe to execute (from 'Makefile', line 75):
+#  recipe to execute (from 'Makefile', line 78):
 	$(CC) $(FLAGS) $(MLX_OPT) $(LIBFT) $(OBJS) $(M_CMD_O) -o $(NAME) $(OPTS)
 
 # Not a target:
@@ -430,10 +429,15 @@ bonus/utils/mlx_utils.o:
 #  File has not been updated.
 
 # Not a target:
+bonus/engine/hud/hud.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
 Makefile:
 #  Implicit rule search has been done.
- 
-#  Last modified 2022-10-01 15:32:35.157613281
+#  Last modified 2022-10-01 18:40:50.678224879
 #  File has been updated.
 #  Successfully updated.
 
@@ -513,6 +517,7 @@ bonus/engine/minimap.o:
 bonus/engine/draw_sprites.o:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
+ 
 #  File has not been updated.
 
 bonus: cub3d_bonus
@@ -531,13 +536,12 @@ include/mlx_linux/libmlx.a:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
-#  recipe to execute (from 'Makefile', line 90):
+#  recipe to execute (from 'Makefile', line 93):
 	$(MAKE) -C ./include/mlx_linux/
 
 # Not a target:
 src/map_save.o:
 #  Implicit rule search has not been done.
- 
 #  Modification time never checked.
 #  File has not been updated.
 
@@ -546,15 +550,15 @@ fclean: clean
 #  Implicit rule search has not been done.
 #  File does not exist.
 #  File has not been updated.
-#  recipe to execute (from 'Makefile', line 103):
+#  recipe to execute (from 'Makefile', line 106):
 	$(MAKE) fclean -C ./include/libft
 	rm -f $(NAME) $(NAME_B)
 
-lin_bon: include/libft/libft.a include/mlx_linux/libmlx.a bonus/main.o bonus/map_parser/map_read.o bonus/map_parser/map_save.o bonus/map_parser/map_checks.o bonus/utils/init.o bonus/utils/colors.o bonus/utils/calculus.o bonus/utils/calculus2.o bonus/utils/gun_utils.o bonus/utils/mlx_utils.o bonus/utils/choose.o bonus/utils/general.o bonus/utils/load_sprites.o bonus/utils/load_sprites_utils.o bonus/engine/game.o bonus/engine/minimap.o bonus/engine/raycast.o bonus/engine/raycast2.o bonus/engine/events.o bonus/engine/events2.o bonus/engine/bresenham.o bonus/engine/draw_view.o bonus/engine/collision.o bonus/engine/move.o bonus/engine/doors.o bonus/engine/draw_sprites.o bonus/engine/lin_keys.o
+lin_bon: include/libft/libft.a include/mlx_linux/libmlx.a bonus/main.o bonus/map_parser/map_read.o bonus/map_parser/map_save.o bonus/map_parser/map_checks.o bonus/utils/init.o bonus/utils/colors.o bonus/utils/calculus.o bonus/utils/calculus2.o bonus/utils/gun_utils.o bonus/utils/mlx_utils.o bonus/utils/choose.o bonus/utils/general.o bonus/utils/load_sprites.o bonus/utils/load_sprites_utils.o bonus/engine/game.o bonus/engine/minimap.o bonus/engine/raycast.o bonus/engine/raycast2.o bonus/engine/events.o bonus/engine/events2.o bonus/engine/bresenham.o bonus/engine/draw_view.o bonus/engine/collision.o bonus/engine/move.o bonus/engine/doors.o bonus/engine/draw_sprites.o bonus/engine/hud/hud.o bonus/engine/hud/hearth.o bonus/engine/hud/ammo.o bonus/engine/lin_keys.o
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
-#  recipe to execute (from 'Makefile', line 87):
+#  recipe to execute (from 'Makefile', line 90):
 	$(CC) $(FLAGS) $(B_OBJS) $(L_B_C_O) $(LIBFT) $(MLX_LIN) $(LIN_OPT) -o $(NAME_B)
 
 # Not a target:
@@ -577,6 +581,12 @@ src/main.c:
 #  Successfully updated.
 
 # Not a target:
+bonus/engine/hud/ammo.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
 src/events.o:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
@@ -597,16 +607,15 @@ src/utils.o:
 # Not a target:
 .DEFAULT:
 #  Implicit rule search has not been done.
- 
 #  Modification time never checked.
 #  File has not been updated.
 
 include/libft/libft.a:
 #  Implicit rule search has not been done.
-#  Last modified 2022-10-01 15:32:38.745620621
+#  Last modified 2022-10-01 18:22:29.068680742
 #  File has been updated.
 #  Successfully updated.
-#  recipe to execute (from 'Makefile', line 93):
+#  recipe to execute (from 'Makefile', line 96):
 	$(MAKE) -C ./include/libft
 
 re: fclean all
@@ -652,7 +661,6 @@ bonus/engine/events.o:
 
 # Not a target:
 bonus/utils/init.o:
- 
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
@@ -673,8 +681,14 @@ include/mlx/libmlx.a:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
-#  recipe to execute (from 'Makefile', line 96):
+#  recipe to execute (from 'Makefile', line 99):
 	$(MAKE) -C ./include/mlx
+
+# Not a target:
+bonus/engine/hud/hearth.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
 
 # Not a target:
 bonus/engine/bresenham.o:
@@ -700,16 +714,15 @@ bonus/engine/draw_view.o:
 #  Modification time never checked.
 #  File has not been updated.
 
-cub3d_bonus: include/libft/libft.a bonus/main.o bonus/map_parser/map_read.o bonus/map_parser/map_save.o bonus/map_parser/map_checks.o bonus/utils/init.o bonus/utils/colors.o bonus/utils/calculus.o bonus/utils/calculus2.o bonus/utils/gun_utils.o bonus/utils/mlx_utils.o bonus/utils/choose.o bonus/utils/general.o bonus/utils/load_sprites.o bonus/utils/load_sprites_utils.o bonus/engine/game.o bonus/engine/minimap.o bonus/engine/raycast.o bonus/engine/raycast2.o bonus/engine/events.o bonus/engine/events2.o bonus/engine/bresenham.o bonus/engine/draw_view.o bonus/engine/collision.o bonus/engine/move.o bonus/engine/doors.o bonus/engine/draw_sprites.o bonus/engine/keys.o
+cub3d_bonus: include/libft/libft.a bonus/main.o bonus/map_parser/map_read.o bonus/map_parser/map_save.o bonus/map_parser/map_checks.o bonus/utils/init.o bonus/utils/colors.o bonus/utils/calculus.o bonus/utils/calculus2.o bonus/utils/gun_utils.o bonus/utils/mlx_utils.o bonus/utils/choose.o bonus/utils/general.o bonus/utils/load_sprites.o bonus/utils/load_sprites_utils.o bonus/engine/game.o bonus/engine/minimap.o bonus/engine/raycast.o bonus/engine/raycast2.o bonus/engine/events.o bonus/engine/events2.o bonus/engine/bresenham.o bonus/engine/draw_view.o bonus/engine/collision.o bonus/engine/move.o bonus/engine/doors.o bonus/engine/draw_sprites.o bonus/engine/hud/hud.o bonus/engine/hud/hearth.o bonus/engine/hud/ammo.o bonus/engine/keys.o
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
-#  recipe to execute (from 'Makefile', line 78):
+#  recipe to execute (from 'Makefile', line 81):
 	$(CC) $(FLAGS) $(MLX_OPT) $(LIBFT) $(B_OBJS) $(M_B_C_O) -o $(NAME_B) $(B_PATH) $(OPTS)
 
 # Not a target:
 src/raycast3.o:
- 
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
@@ -719,24 +732,24 @@ clean:
 #  Implicit rule search has not been done.
 #  File does not exist.
 #  File has not been updated.
-#  recipe to execute (from 'Makefile', line 99):
+#  recipe to execute (from 'Makefile', line 102):
 	$(MAKE) clean -C ./include/libft
 	rm -f $(OBJS) $(M_CMD_O) $(L_CMD_O) $(B_OBJS) $(L_CMD_O) $(M_B_C_O) $(L_B_C_O)
 
 # files hash-table stats:
-# Load=66/1024=6%, Rehash=0, Collisions=11/194=6%
+# Load=69/1024=7%, Rehash=0, Collisions=11/203=5%
 # VPATH Search Paths
 
 # No 'vpath' search paths.
 
 # No general ('VPATH' variable) search path.
 
-# strcache buffers: 1 (0) / strings = 99 / storage = 1413 B / avg = 14 B
-# current buf: size = 8162 B / used = 1413 B / count = 99 / avg = 14 B
+# strcache buffers: 1 (0) / strings = 102 / storage = 1486 B / avg = 14 B
+# current buf: size = 8162 B / used = 1486 B / count = 102 / avg = 14 B
 
-# strcache performance: lookups = 186 / hit rate = 46%
+# strcache performance: lookups = 193 / hit rate = 47%
 # hash-table stats:
-# Load=99/8192=1%, Rehash=0, Collisions=2/186=1%
-# Finished Make data base on Sat Oct  1 15:32:49 2022
+# Load=102/8192=1%, Rehash=0, Collisions=2/193=1%
+# Finished Make data base on Sat Oct  1 18:43:02 2022
 
  

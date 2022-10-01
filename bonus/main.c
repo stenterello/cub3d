@@ -6,7 +6,7 @@
 /*   By: ddelladi <ddelladi@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/26 14:35:11 by gimartin          #+#    #+#             */
-/*   Updated: 2022/10/01 15:54:33 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/10/01 20:36:36 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,6 @@ int	main(int argc, char **argv)
 	load_sprites(&rules);
 	load_gun(&rules);
 	add_events(&rules);
-	game(&rules);
 	mlx_loop_hook(rules.mlx.mlx, loop_events, &rules);
 	mlx_loop(rules.mlx.mlx);
 	return (0);
@@ -54,7 +53,6 @@ int	main(int argc, char **argv)
 - pistola che spara // CONTRO I NEMICI
 - livello trama
 - togliere il raycast multiplo dalla versione mandatory!
-- bloccare il cammino del player se incontra un nemico (dies)
 - eliminare il terzo elemento di var[3] sia in mandatory che in bonus
 - mettere la velocità della rotazione del player proporzionale alla grandezza
 	dello schermo
@@ -64,5 +62,8 @@ int	main(int argc, char **argv)
 - ordinare il codice mandatory in directories
 - aggiustare il makefile che adesso compila i file oggetto soltanto col path del bonus project
 - togliere la flag -g
+- menu iniziale
+- schermata di lost game
+- aggiungere l'ammo storage
 
 */

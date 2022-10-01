@@ -1,9 +1,12 @@
 make --dry-run --keep-going --print-directory
 make: Entering directory '/home/davide/Documenti/Codici/42/cub3d'
+ 
 gcc -Wall -Werror -Wextra -g -c src/main.c -o src/main.o -iquote./bonus -iquote./include/libft
  
 gcc -Wall -Werror -Wextra -g -c src/map_checks.c -o src/map_checks.o -iquote./bonus -iquote./include/libft
+ 
 gcc -Wall -Werror -Wextra -g -c src/map_save.c -o src/map_save.o -iquote./bonus -iquote./include/libft
+ 
 gcc -Wall -Werror -Wextra -g -c src/map_utils.c -o src/map_utils.o -iquote./bonus -iquote./include/libft
 gcc -Wall -Werror -Wextra -g -c src/rules.c -o src/rules.o -iquote./bonus -iquote./include/libft
 gcc -Wall -Werror -Wextra -g -c src/utils.c -o src/utils.o -iquote./bonus -iquote./include/libft
@@ -12,19 +15,19 @@ gcc -Wall -Werror -Wextra -g -c src/utils2.c -o src/utils2.o -iquote./bonus -iqu
 gcc -Wall -Werror -Wextra -g -c src/open_window.c -o src/open_window.o -iquote./bonus -iquote./include/libft
 gcc -Wall -Werror -Wextra -g -c src/game.c -o src/game.o -iquote./bonus -iquote./include/libft
 gcc -Wall -Werror -Wextra -g -c src/raycast.c -o src/raycast.o -iquote./bonus -iquote./include/libft
- 
 gcc -Wall -Werror -Wextra -g -c src/raycast2.c -o src/raycast2.o -iquote./bonus -iquote./include/libft
+ 
 gcc -Wall -Werror -Wextra -g -c src/raycast3.c -o src/raycast3.o -iquote./bonus -iquote./include/libft
 gcc -Wall -Werror -Wextra -g -c src/events.c -o src/events.o -iquote./bonus -iquote./include/libft
- 
 gcc -Wall -Werror -Wextra -g -c src/bresenham.c -o src/bresenham.o -iquote./bonus -iquote./include/libft
-gcc -Wall -Werror -Wextra -g -c src/draw_view.c -o src/draw_view.o -iquote./bonus -iquote./include/libft
  
+gcc -Wall -Werror -Wextra -g -c src/draw_view.c -o src/draw_view.o -iquote./bonus -iquote./include/libft
 gcc -Wall -Werror -Wextra -g -c src/collision.c -o src/collision.o -iquote./bonus -iquote./include/libft
 gcc -Wall -Werror -Wextra -g -c src/collision2.c -o src/collision2.o -iquote./bonus -iquote./include/libft
+ 
 gcc -Wall -Werror -Wextra -g -c src/move2.c -o src/move2.o -iquote./bonus -iquote./include/libft
+ 
+make: Leaving directory '/home/davide/Documenti/Codici/42/cub3d'
  
 make: *** No rule to make target 'src/keys.o', needed by 'cub3d'.
 
-make: Leaving directory '/home/davide/Documenti/Codici/42/cub3d'
- 

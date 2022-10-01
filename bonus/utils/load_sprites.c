@@ -6,7 +6,7 @@
 /*   By: ddelladi <ddelladi@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/29 12:20:58 by ddelladi          #+#    #+#             */
-/*   Updated: 2022/10/01 13:52:49 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/10/01 22:14:57 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ static void	clear_sprites(t_rules *rules, t_sprite *spr)
 		spr[i].mini_x = 0;
 		spr[i].mini_y = 0;
 		spr[i].dist = 0;
+		spr[i].state = 1;
 	}
 }
 

@@ -45,8 +45,24 @@ void	init_player(t_rules *rules, char c, int i, int j)
 	rules->player.gun.counter = 0;
 	rules->player.plane_x = -cos(rules->player.plane);
 	rules->player.plane_y = sin(rules->player.plane);
-	rules->player.health = 10;
+	rules->player.health = 100;
 	rules->player.ammo = 10;
+	rules->player.heart_tex.img = mlx_xpm_file_to_image(rules->mlx.mlx, "./img/hud/hearth.xpm", &rules->player.heart_tex.width, &rules->player.heart_tex.height);
+	if (!rules->player.heart_tex.img)
+		die("Could not load textures. Aborting");
+	rules->player.heart_tex.addr = mlx_get_data_addr(rules->player.heart_tex.img, &rules->player.heart_tex.bpp,
+			&rules->player.heart_tex.line_length, &rules->player.heart_tex.endian);
+	rules->player.ammo_tex.img = mlx_xpm_file_to_image(rules->mlx.mlx, "./img/hud/ammo.xpm", &rules->player.ammo_tex.width, &rules->player.ammo_tex.height);
+	if (!rules->player.ammo_tex.img)
+		die("Could not load textures. Aborting");
+	rules->player.ammo_tex.addr = mlx_get_data_addr(rules->player.ammo_tex.img, &rules->player.ammo_tex.bpp,
+			&rules->player.ammo_tex.line_length, &rules->player.ammo_tex.endian);
+	rules->player.viewfinder.img = mlx_xpm_file_to_image(rules->mlx.mlx, "./img/hud/viewfinder.xpm", &rules->player.viewfinder.width, &rules->player.viewfinder.height);
+	if (!rules->player.viewfinder.img)
+		die("Could not load textures. Aborting");
+	rules->player.viewfinder.addr = mlx_get_data_addr(rules->player.viewfinder.img, &rules->player.viewfinder.bpp,
+			&rules->player.viewfinder.line_length, &rules->player.viewfinder.endian);
+	rules->player.earning_dmg = 0;
 }
 
 void	init_keys(t_rules *rules)
@@ -66,6 +82,7 @@ void	init_keys(t_rules *rules)
 
 void	init_rules(t_rules *rules)
 {
+	rules->game_status = PLAY;
 	rules->map.map = NULL;
 	rules->north = NULL;
 	rules->east = NULL;

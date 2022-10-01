@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   move2.c                                            :+:      :+:    :+:   */
+/*   move.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ddelladi <ddelladi@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/02 14:30:26 by ddelladi          #+#    #+#             */
-/*   Updated: 2022/10/01 12:53:36 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/10/01 19:56:25 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,89 +14,165 @@
 
 static void	check_up(t_rules *rules, float ray_cos, float ray_sin)
 {
-	if (!colliding(rules, ray_cos, 0, 1))
+	int	res1;
+	int	res2;
+
+	res1 = colliding(rules, ray_cos, 0, 1);
+	res2 = colliding(rules, 0, ray_sin, 1);
+	if (res1 != 1)
 	{
 		if (!rules->player.gun.counted)
 		{
 			rules->player.gun.counter++;
 			rules->player.gun.counted++;
 		}
-		rules->player.x += rules->player.d_x * rules->player.speed;
+		if (!res1)
+			rules->player.x += rules->player.d_x * rules->player.speed;
+		else if (res1 == 2 && !rules->player.earning_dmg)
+		{
+			rules->player.x -= rules->player.d_x * rules->player.speed * 2;
+			rules->player.health -= 5;
+			rules->player.earning_dmg = 1;
+		}
 	}
-	if (!colliding(rules, 0, ray_sin, 1))
+	if (res2 != 1)
 	{
 		if (!rules->player.gun.counted)
 		{
 			rules->player.gun.counter++;
 			rules->player.gun.counted++;
 		}
-		rules->player.y += rules->player.d_y * rules->player.speed;
+		if (!res2)
+			rules->player.y += rules->player.d_y * rules->player.speed;
+		else if (res2 == 2 && !rules->player.earning_dmg)
+		{
+			rules->player.y -= rules->player.d_y * rules->player.speed * 2;
+			rules->player.health -= 5;
+			rules->player.earning_dmg = 1;
+		}
 	}
 }
 
 static void	check_down(t_rules *rules, float ray_cos, float ray_sin)
 {
-	if (!colliding(rules, ray_cos, 0, 0))
+	int	res1;
+	int	res2;
+
+	res1 = colliding(rules, ray_cos, 0, 0);
+	res2 = colliding(rules, 0, ray_sin, 0);
+	if (res1 != 1)
 	{
 		if (!rules->player.gun.counted)
 		{
 			rules->player.gun.counter++;
 			rules->player.gun.counted++;
 		}
-		rules->player.x -= rules->player.d_x * rules->player.speed;
+		if (!res1)
+			rules->player.x -= rules->player.d_x * rules->player.speed;
+		else if (res1 == 2 && !rules->player.earning_dmg)
+		{
+			rules->player.x += rules->player.d_x * rules->player.speed * 2;
+			rules->player.health -= 5;
+			rules->player.earning_dmg = 1;
+		}
 	}
-	if (!colliding(rules, 0, ray_sin, 0))
+	if (res2 != 1)
 	{
 		if (!rules->player.gun.counted)
 		{
 			rules->player.gun.counter++;
 			rules->player.gun.counted++;
 		}
-		rules->player.y -= rules->player.d_y * rules->player.speed;
+		if (!res2)
+			rules->player.y -= rules->player.d_y * rules->player.speed;
+		else if (res2 == 2 && !rules->player.earning_dmg)
+		{
+			rules->player.y += rules->player.d_y * rules->player.speed * 2;
+			rules->player.health -= 5;
+			rules->player.earning_dmg = 1;
+		}
 	}
 }
 
 static void	check_left(t_rules *rules, float ray_cos, float ray_sin)
 {
-	if (!colliding(rules, ray_sin, 0, 1))
+	int	res1;
+	int	res2;
+
+	res1 = colliding(rules, ray_sin, 0, 1);
+	res2 = colliding(rules, 0, ray_cos, 0);
+	if (res1 != 1)
 	{
 		if (!rules->player.gun.counted)
 		{
 			rules->player.gun.counter++;
 			rules->player.gun.counted++;
 		}
-		rules->player.x += rules->player.d_y * rules->player.speed;
+		if (!res1)
+			rules->player.x += rules->player.d_y * rules->player.speed;
+		else if (res1 == 2 && !rules->player.earning_dmg)
+		{
+			rules->player.x -= rules->player.d_y * rules->player.speed * 2;
+			rules->player.health -= 5;
+			rules->player.earning_dmg = 1;
+		}
 	}
-	if (!colliding(rules, 0, ray_cos, 0))
+	if (res2 != 2)
 	{
 		if (!rules->player.gun.counted)
 		{
 			rules->player.gun.counter++;
 			rules->player.gun.counted++;
 		}
-		rules->player.y -= rules->player.d_x * rules->player.speed;
+		if (!res2)
+			rules->player.y -= rules->player.d_x * rules->player.speed;
+		else if (res2 == 2 && !rules->player.earning_dmg)
+		{
+			rules->player.y += rules->player.d_x * rules->player.speed * 2;
+			rules->player.health -= 5;
+			rules->player.earning_dmg = 1;
+		}
 	}
 }
 
 static void	check_right(t_rules *rules, float ray_cos, float ray_sin)
 {
-	if (!colliding(rules, ray_sin, 0, 0))
+	int	res1;
+	int	res2;
+
+	res1 = colliding(rules, ray_sin, 0, 0);
+	res2 = colliding(rules, 0, ray_cos, 1);
+	if (res1 != 1)
 	{
 		if (!rules->player.gun.counted)
 		{
 			rules->player.gun.counter++;
 			rules->player.gun.counted++;
 		}
-		rules->player.x -= rules->player.d_y * rules->player.speed;
+		if (!res1)
+			rules->player.x -= rules->player.d_y * rules->player.speed;
+		else if (res1 == 2 && !rules->player.earning_dmg)
+		{
+			rules->player.x += rules->player.d_y * rules->player.speed * 2;
+			rules->player.health -= 5;
+			rules->player.earning_dmg = 1;
+		}	
 	}
-	if (!colliding(rules, 0, ray_cos, 1))
+	if (res2 != 1)
 	{
 		if (!rules->player.gun.counted)
 		{
 			rules->player.gun.counter++;
 			rules->player.gun.counted++;
 		}
-		rules->player.y += rules->player.d_x * rules->player.speed;
+		if (!res2)
+			rules->player.y += rules->player.d_x * rules->player.speed;
+		else if (res2 == 2 && !rules->player.earning_dmg)
+		{
+			rules->player.y -= rules->player.d_x * rules->player.speed * 2;
+			rules->player.health -= 5;
+			rules->player.earning_dmg = 1;
+		}
 	}
 }
 
@@ -115,4 +191,5 @@ void	move_player(t_rules *rules, char *dir)
 		check_left(rules, ray_cos, ray_sin);
 	else if (!ft_strncmp("right", dir, 5))
 		check_right(rules, ray_cos, ray_sin);
+	rules->player.earning_dmg = 0;
 }

@@ -45,7 +45,10 @@ BONUS	=	main.c \
 			engine/collision.c \
 			engine/move.c \
 			engine/doors.c \
-			engine/draw_sprites.c
+			engine/draw_sprites.c \
+			engine/hud/hud.c \
+			engine/hud/hearth.c \
+			engine/hud/ammo.c
 SRCS	=	${addprefix src/, $(SRC)}
 B_SRCS	=	${addprefix bonus/, $(BONUS)}
 M_B_CMD	=	bonus/engine/keys.c
