@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ddelladi <ddelladi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ddelladi <ddelladi@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/26 14:35:11 by gimartin          #+#    #+#             */
-/*   Updated: 2022/09/30 18:30:56 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/10/01 13:11:55 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/cub3d_bonus.h"
+#include "cub3d_bonus.h"
 
 void	read_file(char *file, t_rules *rules)
 {
@@ -46,15 +46,6 @@ int	count_enemies(t_map *map)
 		}
 	}
 	return (ret);
-}
-
-void	load_gun(t_rules *rules)
-{
-	t_image	*gun;
-
-	gun = &rules->player.gun.gun_img;
-	gun->img = mlx_xpm_file_to_image(rules->mlx.mlx, rules->player.gun.path, &gun->width, &gun->height);
-	gun->addr = mlx_get_data_addr(gun->img, &gun->bpp, &gun->line_length, &gun->endian);
 }
 
 int	main(int argc, char **argv)
