@@ -6,7 +6,7 @@
 /*   By: ddelladi <ddelladi@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/26 14:35:11 by gimartin          #+#    #+#             */
-/*   Updated: 2022/10/01 20:36:36 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/10/02 02:30:26 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ int	main(int argc, char **argv)
 
 - animazioni porte
 - pistola che spara // CONTRO I NEMICI
+- animazioni nemici
 - livello trama
 - togliere il raycast multiplo dalla versione mandatory!
 - eliminare il terzo elemento di var[3] sia in mandatory che in bonus
@@ -64,6 +65,6 @@ int	main(int argc, char **argv)
 - togliere la flag -g
 - menu iniziale
 - schermata di lost game
-- aggiungere l'ammo storage
+- aggiungere sprite dell'ammo storage
 
 */
