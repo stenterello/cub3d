@@ -6,7 +6,7 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Mon Oct  3 12:30:20 2022
+# Make data base, printed on Mon Oct  3 22:58:50 2022
 
 # Variables
 
@@ -101,7 +101,7 @@ GPG_AGENT_INFO = /run/user/1000/gnupg/S.gpg-agent:0:1
 # environment
 PG_OF_PATH = /home/davide/Programmi/OpenFrameworks/of_v0.11.2_linux64gcc6_release
 # environment
-SESSION_MANAGER = local/ThinkPad-E550:@/tmp/.ICE-unix/2281,unix/ThinkPad-E550:/tmp/.ICE-unix/2281
+SESSION_MANAGER = local/ThinkPad-E550:@/tmp/.ICE-unix/2061,unix/ThinkPad-E550:/tmp/.ICE-unix/2061
 # environment
 XDG_RUNTIME_DIR = /run/user/1000
 # makefile (from 'Makefile', line 53)
@@ -121,7 +121,7 @@ LS_COLORS = rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:
 # environment
 XDG_SESSION_DESKTOP = cinnamon
 # environment
-SSH_AUTH_SOCK = /tmp/ssh-JdoOdtlexZnn/agent.2281
+SSH_AUTH_SOCK = /tmp/ssh-PM9q8P5j2fiA/agent.2061
 # automatic
 %F = $(notdir $%)
 # makefile (from 'Makefile', line 54)
@@ -139,7 +139,7 @@ QT_QPA_PLATFORMTHEME = qt5ct
 # environment
 XDG_SEAT = seat0
 # environment
-SSH_AGENT_PID = 2351
+SSH_AGENT_PID = 2131
 # environment
 ORIGINAL_XDG_CURRENT_DESKTOP = X-Cinnamon
 # environment
@@ -231,7 +231,7 @@ GDK_BACKEND = x11
 # environment
 QT_ACCESSIBILITY = 1
 # environment
-DESKTOP_AUTOSTART_ID = 1095e0c34f547d106166478802918542900000022810046
+DESKTOP_AUTOSTART_ID = 1039003d3f6aaf6f9c166483070516999900000020610046
 # environment
 DEFAULTS_PATH = /usr/share/gconf/cinnamon.default.path
 # default
@@ -241,11 +241,11 @@ MAKEFILES :=
 # environment
 LC_ALL = C
 # environment
-GNOME_TERMINAL_SCREEN = /org/gnome/Terminal/screen/2abcc14d_157c_4f60_933b_d6b1a013cb34
+GNOME_TERMINAL_SCREEN = /org/gnome/Terminal/screen/89496333_392b_4452_be3c_0622e28c9e65
 # automatic
 ^F = $(notdir $^)
 # environment
-GNOME_TERMINAL_SERVICE = :1.1112
+GNOME_TERMINAL_SERVICE = :1.73
 # default
 SUFFIXES := 
 # makefile (from 'Makefile', line 4)
@@ -263,7 +263,7 @@ LANG = C
 # environment
 TERM = xterm-256color
 # environment
-VSCODE_PID = 23964
+VSCODE_PID = 2608
 # makefile (from 'Makefile', line 2)
 NAME_B = cub3d_bonus
 # variable set hash-table stats:
@@ -275,14 +275,14 @@ NAME_B = cub3d_bonus
 
 # Directories
 
- 
-# . (device 2049, inode 17400326): 13 files, no impossibilities.
+# . (device 2049, inode 17400326): 12 files, no impossibilities.
 # src (device 2049, inode 17547576): 21 files, no impossibilities so far.
 
-# 34 files, no impossibilities in 2 directories.
+# 33 files, no impossibilities in 2 directories.
 
 # Implicit Rules
 
+ 
 %.o: %.c
 #  recipe to execute (from 'Makefile', line 84):
 	$(CC) $(FLAGS) -c $< -o $@ $(B_PATH) $(OPTS)
@@ -552,7 +552,6 @@ src/map_save.o:
 
 fclean: clean
 #  Phony target (prerequisite of .PHONY).
- 
 #  Implicit rule search has not been done.
 #  File does not exist.
 #  File has not been updated.
@@ -566,6 +565,7 @@ lin_bon: include/libft/libft.a include/mlx_linux/libmlx.a bonus/main.o bonus/map
 #  File has not been updated.
 #  recipe to execute (from 'Makefile', line 90):
 	$(CC) $(FLAGS) $(B_OBJS) $(L_B_C_O) $(LIBFT) $(MLX_LIN) $(LIN_OPT) -o $(NAME_B)
+ 
 
 # Not a target:
 src/lin_keys.o:
@@ -618,7 +618,7 @@ src/utils.o:
 
 include/libft/libft.a:
 #  Implicit rule search has not been done.
-#  Last modified 2022-10-02 16:22:07.399777814
+#  Last modified 2022-10-03 22:51:47.054014806
 #  File has been updated.
 #  Successfully updated.
 #  recipe to execute (from 'Makefile', line 96):
@@ -753,9 +753,9 @@ clean:
 # strcache buffers: 1 (0) / strings = 102 / storage = 1486 B / avg = 14 B
 # current buf: size = 8162 B / used = 1486 B / count = 102 / avg = 14 B
 
-# strcache performance: lookups = 193 / hit rate = 47%
+# strcache performance: lookups = 192 / hit rate = 46%
 # hash-table stats:
-# Load=102/8192=1%, Rehash=0, Collisions=2/193=1%
-# Finished Make data base on Mon Oct  3 12:30:20 2022
+# Load=102/8192=1%, Rehash=0, Collisions=2/192=1%
+# Finished Make data base on Mon Oct  3 22:58:50 2022
 
  

@@ -6,7 +6,7 @@
 /*   By: ddelladi <ddelladi@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/26 14:39:54 by gimartin          #+#    #+#             */
-/*   Updated: 2022/10/01 15:33:49 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/10/03 23:49:49 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ static void	check_line(char *line)
 		if (line[i] != '0' && line[i] != '1'
 			&& line[i] != 'N' && line[i] != 'S' && line[i] != 'W'
 			&& line[i] != 'E' && line[i] != ' ' && line[i] != '\n'
-			&& line[i] != '2' && line[i] != '4')
+			&& line[i] != '2' && line[i] != '4' && line[i] != '5')
 			die("Not valid parameters in map. Aborting");
 	}
 }

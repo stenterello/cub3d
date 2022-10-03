@@ -6,7 +6,7 @@
 /*   By: ddelladi <ddelladi@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/01 11:35:18 by ddelladi          #+#    #+#             */
-/*   Updated: 2022/10/03 12:30:37 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/10/03 23:22:02 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,7 +115,6 @@ typedef struct s_rules
 	t_image			*door;
 	t_image			*floor;
 	t_image			*ceiling;
-	t_image			enemy;
 	int				line_offset;
 	int				n_frames;
 	int				last_door_action;
@@ -123,6 +122,7 @@ typedef struct s_rules
 	int				n_sprites;
 	t_sprite		*spr;
 	t_sprite		*sort_spr;
+	t_image			**animations;
 }				t_rules;
 
 typedef struct s_bres_data

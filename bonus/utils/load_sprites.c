@@ -6,7 +6,7 @@
 /*   By: ddelladi <ddelladi@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/29 12:20:58 by ddelladi          #+#    #+#             */
-/*   Updated: 2022/10/03 12:32:14 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/10/03 23:49:10 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@ static void	save_sprites(t_rules *rules)
 		{
 			if (rules->map.map[i][j] == '4' || rules->map.map[i][j] == '5')
 			{
+				rules->spr[ind].state = 1;
 				rules->spr[ind].mini_x = j;
 				rules->spr[ind].mini_y = i;
 				if (rules->map.map[i][j] == '4')
@@ -79,10 +80,6 @@ void	reload_sprites(t_rules *rules)
 
 void	load_sprites(t_rules *rules)
 {
-	rules->enemy.img = mlx_xpm_file_to_image(rules->mlx.mlx, "./img/enemies/ss_front2.xpm", &rules->enemy.width, &rules->enemy.height);
-	if (!rules->enemy.img)
-		die("Error loading texture. Aborting");
-	rules->enemy.addr = mlx_get_data_addr(rules->enemy.img, &rules->enemy.bpp, &rules->enemy.line_length, &rules->enemy.endian);
 	rules->n_sprites = count_sprites(rules->map);
 	rules->spr = malloc(sizeof(t_sprite) * (rules->n_sprites + 1));
 	if (!rules->spr)

@@ -6,7 +6,7 @@
 /*   By: ddelladi <ddelladi@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/26 14:35:18 by gimartin          #+#    #+#             */
-/*   Updated: 2022/10/01 14:59:30 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/10/03 23:07:29 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ typedef struct s_draw_coord
 	unsigned int	color;
 	int				t_x;
 	int				t_y;
+	t_image			*sprite;
 }				t_draw_coord;
 
 #endif

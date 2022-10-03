@@ -6,7 +6,7 @@
 /*   By: ddelladi <ddelladi@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/28 20:41:24 by ddelladi          #+#    #+#             */
-/*   Updated: 2022/10/01 22:15:45 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/10/03 23:48:52 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,8 @@ static void	draw_sprite_col(t_rules *rules, t_draw_coord *info, t_image *view, d
 		info->start_y = info->bench_y;
 		while (info->start_y < info->end_y)
 		{
-			info->t_y = (int)((info->start_y - info->bench_y) * rules->enemy.height / info->height);
-			info->color = get_sprite_color(&rules->enemy, info->t_x, info->t_y, rules);
+			info->t_y = (int)((info->start_y - info->bench_y) * info->sprite->height / info->height);
+			info->color = get_sprite_color(info->sprite, info->t_x, info->t_y, rules);
 			if (info->color)
 				easy_pxl(view, info->start_x, info->start_y, info->color);
 			info->start_y++;
@@ -99,13 +99,14 @@ void	draw_sprites(t_rules *rules, t_image *view)
 			trans_y = inv_det * (-rules->player.plane_y * x + rules->player.plane_x * y);
 			s_x = (int)((rules->mlx.win_width / 2) * (1 + trans_x / trans_y));
 			define_sprite_info(rules, &info, trans_y, s_x);
+			info.sprite = rules->animations[rules->sort_spr[i].type];
 			while (info.start_x < info.end_x)
 			{
-				info.t_x = (int)((info.start_x - info.bench_x) * rules->enemy.width / info.width);
+				info.t_x = (int)((info.start_x - info.bench_x) * info.sprite->width / info.width);
 				draw_sprite_col(rules, &info, view, trans_y);
 				info.start_x++;
 			}
-			i++;
 		}
+		i++;
 	}
 }

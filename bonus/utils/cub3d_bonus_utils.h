@@ -6,12 +6,14 @@
 /*   By: ddelladi <ddelladi@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/01 13:05:11 by ddelladi          #+#    #+#             */
-/*   Updated: 2022/10/01 15:27:42 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/10/03 23:25:49 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CUB3D_BONUS_UTILS_H
 # define CUB3D_BONUS_UTILS_H
+# define ENEMY_TEX	"./img/sprites/ss_front2.xpm"
+# define AMMO_TEX	"./img/sprites/ammo_storage.xpm"
 
 typedef struct s_draw_info
 {
