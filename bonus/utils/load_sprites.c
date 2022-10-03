@@ -6,7 +6,7 @@
 /*   By: ddelladi <ddelladi@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/29 12:20:58 by ddelladi          #+#    #+#             */
-/*   Updated: 2022/10/01 22:14:57 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/10/03 12:32:14 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,8 @@ static void	clear_sprites(t_rules *rules, t_sprite *spr)
 		spr[i].mini_x = 0;
 		spr[i].mini_y = 0;
 		spr[i].dist = 0;
-		spr[i].state = 1;
+		spr[i].state = 0;
+		spr[i].type = -1;
 	}
 }
 
@@ -53,10 +54,14 @@ static void	save_sprites(t_rules *rules)
 		i = 0;
 		while (rules->map.map[i] && rules->map.map[i][j])
 		{
-			if (rules->map.map[i][j] == '4')
+			if (rules->map.map[i][j] == '4' || rules->map.map[i][j] == '5')
 			{
 				rules->spr[ind].mini_x = j;
-				rules->spr[ind++].mini_y = i;
+				rules->spr[ind].mini_y = i;
+				if (rules->map.map[i][j] == '4')
+					rules->spr[ind++].type = 0;
+				else
+					rules->spr[ind++].type = 1;
 			}
 			i++;
 		}

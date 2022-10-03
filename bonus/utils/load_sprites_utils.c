@@ -6,7 +6,7 @@
 /*   By: ddelladi <ddelladi@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/29 12:21:53 by ddelladi          #+#    #+#             */
-/*   Updated: 2022/10/01 14:04:42 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/10/03 12:32:59 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,5 +91,7 @@ void	fill_sort_spr(t_rules *rules, int *arr)
 		rules->sort_spr[i].mini_x = rules->spr[arr[i] - 1].mini_x;
 		rules->sort_spr[i].mini_y = rules->spr[arr[i] - 1].mini_y;
 		rules->sort_spr[i].dist = rules->spr[arr[i] - 1].dist;
+		rules->sort_spr[i].state = rules->spr[arr[i] - 1].state;
+		rules->sort_spr[i].type = rules->spr[arr[i] - 1].type;
 	}
 }

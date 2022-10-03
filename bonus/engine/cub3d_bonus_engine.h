@@ -6,7 +6,7 @@
 /*   By: ddelladi <ddelladi@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/01 11:35:18 by ddelladi          #+#    #+#             */
-/*   Updated: 2022/10/01 22:14:40 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/10/03 12:30:37 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,6 +97,7 @@ typedef struct s_sprite
 	int		mini_y;
 	double	dist;
 	int		state;
+	int		type;
 }				t_sprite;
 
 typedef struct s_rules
