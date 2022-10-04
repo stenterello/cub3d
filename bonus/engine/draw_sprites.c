@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_sprites.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ddelladi <ddelladi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ddelladi <ddelladi@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/28 20:41:24 by ddelladi          #+#    #+#             */
-/*   Updated: 2022/10/04 14:49:08 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/10/04 19:49:47 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,22 +62,25 @@ static t_draw_coord	*define_sprite_info(t_rules *rules, double trans_y, int s_x,
 	int				add;
 
 	add = 0;
-	if (rules->sort_spr[i]->type == 1)
-		add = 20 / trans_y;
-	if (add < 0)
-		add *= -1;
 	info = malloc(sizeof(t_draw_coord));
 	if (!info)
 		die("Malloc error");
-	info->height = (rules->mlx.win_height / trans_y) * 25;
-	info->start_y = rules->mlx.win_height / 2 - info->height / 2 + add;
+	info->sprite = rules->animations[rules->sort_spr[i]->type];
+	info->height = (rules->mlx.win_height / trans_y) * (info->sprite->height / 10);
+	if (rules->sort_spr[i]->type == 1)
+		add = info->height / 3;
+	info->start_y = rules->mlx.win_height / 2 - info->height / 2;
+	if (add)
+		info->start_y += add;
 	info->bench_y = info->start_y;
 	if (info->start_y < 0)
 		info->start_y = 0;
-	info->end_y = rules->mlx.win_height / 2 + info->height / 2 + add;
+	info->end_y = rules->mlx.win_height / 2 + info->height / 2;
+	if (add)
+		info->end_y += add;
 	if (info->end_y > rules->mlx.win_height)
 		info->end_y = rules->mlx.win_height;
-	info->width = get_abs_double((rules->mlx.win_height / trans_y)) * 15;
+	info->width = get_abs_double((rules->mlx.win_height / trans_y)) * (info->sprite->width / 10);
 	info->start_x = -info->width / 2 + s_x;
 	info->bench_x = info->start_x;
 	if (info->start_x < 0)
@@ -85,7 +88,6 @@ static t_draw_coord	*define_sprite_info(t_rules *rules, double trans_y, int s_x,
 	info->end_x = info->width / 2 + s_x;
 	if (info->end_x > rules->mlx.win_width)
 		info->end_x = rules->mlx.win_width;
-	info->sprite = rules->animations[rules->sort_spr[i]->type];
 	return (info);
 }
 
