@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ddelladi <ddelladi@student.42roma.it>      +#+  +:+       +#+        */
+/*   By: ddelladi <ddelladi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/26 14:35:11 by gimartin          #+#    #+#             */
-/*   Updated: 2022/10/03 23:24:48 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/10/04 14:34:43 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,11 +37,15 @@ void	load_animations(t_rules *rules)
 	if (!rules->animations[0])
 		die("Malloc error");
 	rules->animations[0]->img = mlx_xpm_file_to_image(rules->mlx.mlx, ENEMY_TEX, &rules->animations[0]->width, &rules->animations[0]->height);
+	if (!rules->animations[0]->img)
+		die("Error initializing image");
 	rules->animations[0]->addr = mlx_get_data_addr(rules->animations[0]->img, &rules->animations[0]->bpp, &rules->animations[0]->line_length, &rules->animations[0]->endian);
 	rules->animations[1] = malloc(sizeof(t_image));
 	if (!rules->animations[1])
 		die("Malloc error");
 	rules->animations[1]->img = mlx_xpm_file_to_image(rules->mlx.mlx, AMMO_TEX, &rules->animations[1]->width, &rules->animations[1]->height);
+	if (!rules->animations[1]->img)
+		die("Error initializing image");
 	rules->animations[1]->addr = mlx_get_data_addr(rules->animations[1]->img, &rules->animations[1]->bpp, &rules->animations[1]->line_length, &rules->animations[1]->endian);
 }
 
@@ -68,8 +72,9 @@ int	main(int argc, char **argv)
 /*
 
 - animazioni porte
-- pistola che spara // CONTRO I NEMICI
 - animazioni nemici
+- aggiustare la grandezza delle sprite disegnate (ammo_storage)
+- aggiustare le scritte relative alle info delle ammo
 - livello trama
 - togliere il raycast multiplo dalla versione mandatory!
 - eliminare il terzo elemento di var[3] sia in mandatory che in bonus
@@ -77,14 +82,11 @@ int	main(int argc, char **argv)
 	dello schermo
 - è possibile che nella funzione draw_sprite, il 2.6 non sia utilizzabile in tutte le risoluzioni
 	(funzionante in 854x480)
-- muovendo il pov con il mouse le sprite scompaiono!
 - ordinare il codice mandatory in directories
 - aggiustare il makefile che adesso compila i file oggetto soltanto col path del bonus project
 - togliere la flag -g
 - menu iniziale
 - schermata di lost game
-- aggiungere sprite dell'ammo storage
-- cambiare il sort_spr in un t_sprite ** per fare tutti i puntatori e non copiare mai tutta la t_sprite
-- aggiungere tutti i controlli di corretto caricamento dell'immagine da parte di minilibX
+- texture sulla minimappa (?)
 
 */

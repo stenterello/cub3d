@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   load_sprites_utils.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ddelladi <ddelladi@student.42roma.it>      +#+  +:+       +#+        */
+/*   By: ddelladi <ddelladi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/29 12:21:53 by ddelladi          #+#    #+#             */
-/*   Updated: 2022/10/03 23:26:32 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/10/04 13:47:24 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int	count_sprites(t_map map)
 		i = 0;
 		while (map.map[i] && map.map[i][j])
 		{
-			if (map.map[i][j] == '4')
+			if (map.map[i][j] == '4' || map.map[i][j] == '5')
 				ret++;
 			i++;
 		}
@@ -33,7 +33,7 @@ int	count_sprites(t_map map)
 	return (ret);
 }
 
-static double	get_sprite_dist(t_rules *rules, t_sprite *spr)
+double	get_sprite_dist(t_rules *rules, t_sprite *spr)
 {
 	double	spr_xy[2];
 
@@ -85,13 +85,5 @@ void	fill_sort_spr(t_rules *rules, int *arr)
 
 	i = -1;
 	while (++i < rules->n_sprites)
-	{
-		rules->sort_spr[i].x = rules->spr[arr[i] - 1].x;
-		rules->sort_spr[i].y = rules->spr[arr[i] - 1].y;
-		rules->sort_spr[i].mini_x = rules->spr[arr[i] - 1].mini_x;
-		rules->sort_spr[i].mini_y = rules->spr[arr[i] - 1].mini_y;
-		rules->sort_spr[i].dist = rules->spr[arr[i] - 1].dist;
-		rules->sort_spr[i].state = rules->spr[arr[i] - 1].state;
-		rules->sort_spr[i].type = rules->spr[arr[i] - 1].type;
-	}
+		rules->sort_spr[i] = &rules->spr[arr[i] - 1];
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mlx_utils.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ddelladi <ddelladi@student.42roma.it>      +#+  +:+       +#+        */
+/*   By: ddelladi <ddelladi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/01 15:30:19 by ddelladi          #+#    #+#             */
-/*   Updated: 2022/10/01 15:32:53 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/10/04 13:53:20 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,5 +35,7 @@ void	easy_pxl(t_image *image, int x, int y, int color)
 void	init_img(t_rules *rules, t_image *img, int w, int h)
 {
 	img->img = mlx_new_image(rules->mlx.mlx, w, h);
+	if (!img->img)
+		die("Error initializing image");
 	img->addr = mlx_get_data_addr(img->img, &img->bpp, &img->line_length, &img->endian);
 }

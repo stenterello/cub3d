@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   load_sprites.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ddelladi <ddelladi@student.42roma.it>      +#+  +:+       +#+        */
+/*   By: ddelladi <ddelladi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/29 12:20:58 by ddelladi          #+#    #+#             */
-/*   Updated: 2022/10/03 23:49:10 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/10/04 13:47:11 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ static void	sort_sprites(t_rules *rules)
 	int	*sorted_index;
 
 	sorted_index = find_indexes(rules);
-	rules->sort_spr = malloc(sizeof(t_sprite) * (rules->n_sprites));
+	rules->sort_spr = malloc(sizeof(t_sprite *) * (rules->n_sprites));
 	if (!rules->sort_spr)
 		die("Malloc error");
 	fill_sort_spr(rules, sorted_index);
@@ -69,11 +69,32 @@ static void	save_sprites(t_rules *rules)
 	}
 }
 
+void	clear_sorted_sprites(t_rules *rules, t_sprite **sort_spr)
+{
+	int	i;
+
+	i = -1;
+	while (++i < rules->n_sprites)
+		sort_spr[i] = NULL;
+}
+
+void	update_sprites(t_rules *rules)
+{
+	int	i;
+
+	i = 0;
+	while (++i < rules->n_sprites)
+	{
+		rules->spr[i].dist = get_sprite_dist(rules, &rules->spr[i]);
+	}
+}
+
 void	reload_sprites(t_rules *rules)
 {
-	clear_sprites(rules, rules->spr);
-	clear_sprites(rules, rules->sort_spr);
-	save_sprites(rules);
+	update_sprites(rules);
+	// clear_sprites(rules, rules->spr);
+	clear_sorted_sprites(rules, rules->sort_spr);
+	// save_sprites(rules);
 	free(rules->sort_spr);
 	sort_sprites(rules);
 }

@@ -3,15 +3,23 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d_bonus_engine.h                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ddelladi <ddelladi@student.42roma.it>      +#+  +:+       +#+        */
+/*   By: ddelladi <ddelladi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/01 11:35:18 by ddelladi          #+#    #+#             */
-/*   Updated: 2022/10/03 23:22:02 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/10/04 13:47:34 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CUB3D_BONUS_ENGINE_H
 # define CUB3D_BONUS_ENGINE_H
+
+typedef struct s_ray
+{
+	double		angle;
+	float		x;
+	float		y;
+	float		xyoff[2];
+}				t_ray;
 
 typedef struct s_map
 {
@@ -121,7 +129,7 @@ typedef struct s_rules
 	double			*dist_array;
 	int				n_sprites;
 	t_sprite		*spr;
-	t_sprite		*sort_spr;
+	t_sprite		**sort_spr;
 	t_image			**animations;
 }				t_rules;
 
@@ -177,5 +185,10 @@ void			hud(t_rules *rules, t_image *view);
 void			health_level(t_rules *rules, t_image *view);
 void			ammo_level(t_rules *rules, t_image *view);
 void			draw_ammo_amount(t_rules *rules);
+int				define_hor_ray_and_offset(t_rules *rules, t_ray *ray,
+					double a_tan, float xy[2]);
+int				define_ver_ray_and_offset(t_rules *rules, t_ray *ray,
+					double n_tan, float xy[2]);
+double			get_sprite_dist(t_rules *rules, t_sprite *spr);
 
 #endif

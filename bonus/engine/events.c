@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   events.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ddelladi <ddelladi@student.42roma.it>      +#+  +:+       +#+        */
+/*   By: ddelladi <ddelladi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/26 16:45:37 by ddelladi          #+#    #+#             */
-/*   Updated: 2022/10/01 14:16:43 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/10/04 12:29:33 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,23 +19,20 @@ static int	mouse_exit(t_rules *rules)
 	return (0);
 }
 
-static int	move_mouse_dir(int x, int y, t_rules *rules)
+static void	move_mouse_dir(int x, int y, t_rules *rules)
 {
 	if (x < rules->mouse.last_x)
 	{
 		rules->player.dir = increment_angle(rules->player.dir, 40);
-		rules->player.plane = increment_angle(rules->player.dir, 40);
+		rules->player.plane = increment_angle(rules->player.plane, 40);
 	}
 	else if (x > rules->mouse.last_x)
 	{
 		rules->player.dir = decrement_angle(rules->player.dir, 40);
-		rules->player.plane = decrement_angle(rules->player.dir, 40);
+		rules->player.plane = decrement_angle(rules->player.plane, 40);
 	}
-	else
-		return (0);
 	rules->mouse.last_x = x;
 	rules->mouse.last_y = y;
-	return (1);
 }
 
 static int	mouse_move(int x, int y, t_rules *rules)
@@ -48,13 +45,14 @@ static int	mouse_move(int x, int y, t_rules *rules)
 		rules->mouse.last_x = x;
 		rules->mouse.last_y = y;
 	}
-	else if	(!move_mouse_dir(x, y, rules))
-		return (0);
+	move_mouse_dir(x, y, rules);
 	rules->player.d_x = cos(rules->player.dir);
 	if (rules->player.dir == (double)M_PI)
 		rules->player.d_y = 0;
 	else
 		rules->player.d_y = -sin(rules->player.dir);
+	rules->player.plane_x = -cos(rules->player.plane);
+	rules->player.plane_y = sin(rules->player.plane);
 	return (0);
 }
 

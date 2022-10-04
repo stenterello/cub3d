@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d_bonus.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ddelladi <ddelladi@student.42roma.it>      +#+  +:+       +#+        */
+/*   By: ddelladi <ddelladi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/26 14:35:18 by gimartin          #+#    #+#             */
-/*   Updated: 2022/10/03 23:07:29 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/10/04 12:49:55 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,14 +25,6 @@
 # include <limits.h>
 # define ANGLE_UNIT 0.00174
 # define SPEED 3
-
-typedef struct s_ray
-{
-	double		angle;
-	float		x;
-	float		y;
-	float		xyoff[2];
-}				t_ray;
 
 typedef struct s_draw_coord
 {
