@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ddelladi <ddelladi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ddelladi <ddelladi@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/26 14:35:11 by gimartin          #+#    #+#             */
-/*   Updated: 2022/10/04 14:34:43 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/10/04 20:02:33 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,13 +73,10 @@ int	main(int argc, char **argv)
 
 - animazioni porte
 - animazioni nemici
-- aggiustare la grandezza delle sprite disegnate (ammo_storage)
 - aggiustare le scritte relative alle info delle ammo
 - livello trama
 - togliere il raycast multiplo dalla versione mandatory!
 - eliminare il terzo elemento di var[3] sia in mandatory che in bonus
-- mettere la velocità della rotazione del player proporzionale alla grandezza
-	dello schermo
 - è possibile che nella funzione draw_sprite, il 2.6 non sia utilizzabile in tutte le risoluzioni
 	(funzionante in 854x480)
 - ordinare il codice mandatory in directories
@@ -88,5 +85,6 @@ int	main(int argc, char **argv)
 - menu iniziale
 - schermata di lost game
 - texture sulla minimappa (?)
+- se si spara da sud il nemico non muore!
 
 */

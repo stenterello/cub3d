@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d_bonus_engine.h                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ddelladi <ddelladi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ddelladi <ddelladi@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/01 11:35:18 by ddelladi          #+#    #+#             */
-/*   Updated: 2022/10/04 13:47:34 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/10/04 20:56:05 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -157,6 +157,13 @@ enum	game_state
 	START,
 	PLAY,
 	LOST
+};
+
+enum	enemy_state
+{
+	DEAD,
+	DIYING,
+	ALIVE
 };
 
 void			bresenham(t_bres_data *d, t_image *min, t_image *view, t_rules *rules);
