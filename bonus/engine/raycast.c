@@ -6,7 +6,7 @@
 /*   By: ddelladi <ddelladi@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/02 17:56:50 by ddelladi          #+#    #+#             */
-/*   Updated: 2022/10/01 15:04:55 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/10/06 16:17:59 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ void	raycast(t_rules *rules, t_image *view, t_image *minimap)
 	t_bres_data	data;
 
 	data.ray_angle = increment_angle(rules->player.dir,
-			rules->mlx.win_width / 4);
+			rules->mlx.win_width / 2);
 	data.x = 0;
 	data.color = 0x00FFFFFF;
 	while (data.x++ < rules->mlx.win_width - 1)

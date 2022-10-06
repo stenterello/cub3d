@@ -6,14 +6,22 @@
 /*   By: ddelladi <ddelladi@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/01 13:05:11 by ddelladi          #+#    #+#             */
-/*   Updated: 2022/10/04 20:03:27 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/10/06 15:03:26 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CUB3D_BONUS_UTILS_H
 # define CUB3D_BONUS_UTILS_H
-# define ENEMY_TEX	"./img/sprites/ss_front2.xpm"
-# define AMMO_TEX	"./img/sprites/ammo_storage.xpm"
+# define ENEMY_TEX_1	"./img/sprites/enemy1.xpm"
+# define ENEMY_TEX_2	"./img/sprites/enemy2.xpm"
+# define ENEMY_TEX_3	"./img/sprites/enemy3.xpm"
+# define ENEMY_ATTK_1	"./img/sprites/enemy4.xpm"
+# define ENEMY_ATTK_2	"./img/sprites/enemy5.xpm"
+# define ENEMY_ATTK_3	"./img/sprites/enemy6.xpm"
+# define ENEMY_DIE_1	"./img/sprites/enemy7.xpm"
+# define ENEMY_DIE_2	"./img/sprites/enemy8.xpm"
+# define ENEMY_DIE_3	"./img/sprites/enemy9.xpm"
+# define AMMO_TEX		"./img/sprites/ammo_storage.xpm"
 
 typedef struct s_draw_info
 {
@@ -44,6 +52,7 @@ int				*find_indexes(t_rules *rules);
 void			fill_sort_spr(t_rules *rules, int *arr);
 t_image			*get_rule(char *str, t_rules *rules, t_image *chosen);
 void			init_img(t_rules *rules, t_image *img, int w, int h);
+void			init_xpm_img(t_rules *rules, t_image **img, char *path);
 double			increment_angle(double angle, int t);
 double			decrement_angle(double angle, int t);
 double			final_length(float start_x, float start_y, float rxy[2]);

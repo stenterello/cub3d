@@ -6,7 +6,7 @@
 /*   By: ddelladi <ddelladi@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/26 14:35:11 by gimartin          #+#    #+#             */
-/*   Updated: 2022/10/04 20:02:33 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/10/06 17:25:27 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,23 +30,20 @@ void	read_file(char *file, t_rules *rules)
 
 void	load_animations(t_rules *rules)
 {
-	rules->animations = malloc(sizeof(t_image *) * 4);
+	rules->animations = malloc(sizeof(t_image *) * 10);
 	if (!rules->animations)
 		die("Malloc error");
-	rules->animations[0] = malloc(sizeof(t_image));
-	if (!rules->animations[0])
-		die("Malloc error");
-	rules->animations[0]->img = mlx_xpm_file_to_image(rules->mlx.mlx, ENEMY_TEX, &rules->animations[0]->width, &rules->animations[0]->height);
-	if (!rules->animations[0]->img)
-		die("Error initializing image");
-	rules->animations[0]->addr = mlx_get_data_addr(rules->animations[0]->img, &rules->animations[0]->bpp, &rules->animations[0]->line_length, &rules->animations[0]->endian);
-	rules->animations[1] = malloc(sizeof(t_image));
-	if (!rules->animations[1])
-		die("Malloc error");
-	rules->animations[1]->img = mlx_xpm_file_to_image(rules->mlx.mlx, AMMO_TEX, &rules->animations[1]->width, &rules->animations[1]->height);
-	if (!rules->animations[1]->img)
-		die("Error initializing image");
-	rules->animations[1]->addr = mlx_get_data_addr(rules->animations[1]->img, &rules->animations[1]->bpp, &rules->animations[1]->line_length, &rules->animations[1]->endian);
+	init_xpm_img(rules, &rules->animations[0], AMMO_TEX);
+	init_xpm_img(rules, &rules->animations[1], ENEMY_TEX_1);
+	init_xpm_img(rules, &rules->animations[2], ENEMY_TEX_2);
+	init_xpm_img(rules, &rules->animations[3], ENEMY_TEX_3);
+	init_xpm_img(rules, &rules->animations[4], ENEMY_ATTK_1);
+	init_xpm_img(rules, &rules->animations[5], ENEMY_ATTK_2);
+	init_xpm_img(rules, &rules->animations[6], ENEMY_ATTK_3);
+	init_xpm_img(rules, &rules->animations[7], ENEMY_DIE_1);
+	init_xpm_img(rules, &rules->animations[8], ENEMY_DIE_2);
+	init_xpm_img(rules, &rules->animations[9], ENEMY_DIE_3);
+	rules->animations[10] = NULL;
 }
 
 int	main(int argc, char **argv)
@@ -72,7 +69,6 @@ int	main(int argc, char **argv)
 /*
 
 - animazioni porte
-- animazioni nemici
 - aggiustare le scritte relative alle info delle ammo
 - livello trama
 - togliere il raycast multiplo dalla versione mandatory!
@@ -84,7 +80,6 @@ int	main(int argc, char **argv)
 - togliere la flag -g
 - menu iniziale
 - schermata di lost game
-- texture sulla minimappa (?)
-- se si spara da sud il nemico non muore!
+- se si spara al nemico in obliquo spesso non muore --> per aggiustare (parzialmente) questo, adesso il proiettile è meno preciso: prende uno spettro di spazio più ampio
 
 */

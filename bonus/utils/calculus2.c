@@ -6,7 +6,7 @@
 /*   By: ddelladi <ddelladi@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/01 15:25:26 by ddelladi          #+#    #+#             */
-/*   Updated: 2022/10/01 15:25:51 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/10/06 16:16:32 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ double	increment_angle(double angle, int t)
 	i = 0;
 	while (i++ < t)
 	{
-		angle += ANGLE_UNIT;
+		angle += ANGLE_UNIT / 2;
 		if (angle > 2 * M_PI)
 			angle = 0;
 	}

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   load_sprites.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ddelladi <ddelladi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ddelladi <ddelladi@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/29 12:20:58 by ddelladi          #+#    #+#             */
-/*   Updated: 2022/10/04 13:47:11 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/10/06 15:30:03 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ static void	clear_sprites(t_rules *rules, t_sprite *spr)
 		spr[i].mini_y = 0;
 		spr[i].dist = 0;
 		spr[i].state = 0;
+		spr[i].counter = 1;
 		spr[i].type = -1;
 	}
 }
@@ -59,10 +60,14 @@ static void	save_sprites(t_rules *rules)
 				rules->spr[ind].state = 1;
 				rules->spr[ind].mini_x = j;
 				rules->spr[ind].mini_y = i;
+				rules->spr[ind].counter = 1;
+				rules->spr[ind].attacking = 0;
+				rules->spr[ind].alive = 1;
+				rules->spr[ind].dying = 0;
 				if (rules->map.map[i][j] == '4')
-					rules->spr[ind++].type = 0;
-				else
 					rules->spr[ind++].type = 1;
+				else
+					rules->spr[ind++].type = 0;
 			}
 			i++;
 		}
@@ -82,19 +87,37 @@ void	update_sprites(t_rules *rules)
 {
 	int	i;
 
-	i = 0;
+	i = -1;
 	while (++i < rules->n_sprites)
 	{
 		rules->spr[i].dist = get_sprite_dist(rules, &rules->spr[i]);
+		if (rules->spr[i].type && rules->spr[i].alive)
+		{
+			rules->spr[i].counter++;
+			if (!(rules->spr[i].counter % 10) && rules->spr[i].type)
+			{
+				rules->spr[i].counter = 1;
+				rules->spr[i].type++;
+				if (rules->spr[i].type > 3)
+				{
+					rules->spr[i].type = 1;
+					if (rules->spr[i].attacking)
+						rules->spr[i].attacking = 0;
+					if (rules->spr[i].dying)
+					{
+						rules->spr[i].alive = 0;
+						rules->spr[i].type = 3;
+					}
+				}
+			}
+		}
 	}
 }
 
 void	reload_sprites(t_rules *rules)
 {
 	update_sprites(rules);
-	// clear_sprites(rules, rules->spr);
 	clear_sorted_sprites(rules, rules->sort_spr);
-	// save_sprites(rules);
 	free(rules->sort_spr);
 	sort_sprites(rules);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   gun_utils.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ddelladi <ddelladi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ddelladi <ddelladi@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/01 14:10:18 by ddelladi          #+#    #+#             */
-/*   Updated: 2022/10/04 14:33:56 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/10/06 17:11:33 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,10 @@ int	goes_to_center(t_ray ray, t_rules *rules)
 		k[0] = -ray.xyoff[0] / 10;
 	else
 		k[0] = ray.xyoff[0] / 10;
-	k[1] = ray.xyoff[1] / 10;
+	if (ray.xyoff[1] < 0)
+		k[1] = -ray.xyoff[1] / 10;
+	else
+		k[1] = ray.xyoff[1] / 10;
 	while (inside_coord[0] < rules->map.block_width && inside_coord[0] >= 0 && inside_coord[1] >= 0 && inside_coord[1] < rules->map.block_width)
 	{
 		if (final_length(inside_coord[0], inside_coord[1], en_coord) < 3.5)
@@ -168,10 +171,12 @@ void	kill_enemy(t_rules *rules, float pts[3])
 	i = -1;
 	while (++i < rules->n_sprites)
 	{
-		if (rules->spr[i].mini_x == map_x && rules->spr[i].mini_y == map_y && rules->spr[i].state && !rules->spr[i].type)
+		if (rules->spr[i].mini_x == map_x && rules->spr[i].mini_y == map_y && rules->spr[i].state && rules->spr[i].type)
 		{
-			rules->spr[i].state = 0;
-			rules->map.map[map_y][map_x] = '0';
+			rules->spr[i].dying = 6;
+			rules->spr[i].attacking = 0;
+			rules->spr[i].type = 1;
+			rules->map.map[map_y][map_x] = '6';
 		}
 	}
 }
@@ -197,12 +202,12 @@ void	shoot(t_rules *rules)
 	int		i;
 
 	i = 0;
-	angle = increment_angle(rules->player.dir, 2);
+	angle = increment_angle(rules->player.dir, 36);
 	ft_strlcpy(rules->player.gun.path, "./img/gun/sparo.xpm", 20);
 	rules->player.gun.last_shoot = rules->n_frames;
 	mlx_destroy_image(rules->mlx.mlx, rules->player.gun.gun_img.img);
 	load_gun(rules);
-	while (i++ < 4)
+	while (i++ < 72)
 	{
 		bullet(rules, angle);
 		angle = decrement_angle(angle, 1);

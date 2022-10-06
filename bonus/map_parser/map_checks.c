@@ -6,24 +6,30 @@
 /*   By: ddelladi <ddelladi@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/26 15:22:38 by ddelladi          #+#    #+#             */
-/*   Updated: 2022/10/01 13:54:56 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/10/06 11:27:24 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d_bonus.h"
 
-static int	horizontal_checks(char **map)
+int isnt_a_wall(char map)
 {
-	int	i;
-	int	j;
+	if (map == '0'|| map == '2' || map == '4' || map == '5')
+		return (1);
+	return (0);
+}
 
+static int  horizontal_checks(char **map)
+{
+	int i;
+	int j;
 	i = -1;
 	while (map[++i])
 	{
 		j = -1;
 		while (map[i][++j])
 		{
-			if ((map[i][j] == '0' || ft_isalpha(map[i][j])) && (j == 0
+			if ((isnt_a_wall(map[i][j]) || ft_isalpha(map[i][j])) && (j == 0
 				|| map[i][j + 1] == ' ' || map[i][j + 1] == '\n'
 				|| map[i][j - 1] == ' '))
 				return (0);
@@ -32,18 +38,17 @@ static int	horizontal_checks(char **map)
 	return (1);
 }
 
-static int	vertical_checks(t_map *map)
+static int  vertical_checks(t_map *map)
 {
-	int	i;
-	int	j;
-
+	int i;
+	int j;
 	j = -1;
 	while (++j < map->map_height_len[0])
 	{
 		i = 0;
 		while (map->map[i] && map->map[i][j])
 		{
-			if ((map->map[i][j] == '0' || ft_isalpha(map->map[i][j])) && (i == 0
+			if ((isnt_a_wall(map->map[i][j]) || ft_isalpha(map->map[i][j])) && (i == 0
 				|| i == map->map_height_len[1] - 1 || map->map[i - 1][j] == ' '
 				|| map->map[i + 1][j] == ' ' || map->map[i - 1][j] == '\n'
 				|| map->map[i + 1][j] == '\n'))

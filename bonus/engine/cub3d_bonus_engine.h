@@ -6,7 +6,7 @@
 /*   By: ddelladi <ddelladi@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/01 11:35:18 by ddelladi          #+#    #+#             */
-/*   Updated: 2022/10/04 20:56:05 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/10/06 15:05:52 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,6 +106,10 @@ typedef struct s_sprite
 	double	dist;
 	int		state;
 	int		type;
+	int		counter;
+	int		attacking;
+	int		alive;
+	int		dying;
 }				t_sprite;
 
 typedef struct s_rules
@@ -157,13 +161,6 @@ enum	game_state
 	START,
 	PLAY,
 	LOST
-};
-
-enum	enemy_state
-{
-	DEAD,
-	DIYING,
-	ALIVE
 };
 
 void			bresenham(t_bres_data *d, t_image *min, t_image *view, t_rules *rules);

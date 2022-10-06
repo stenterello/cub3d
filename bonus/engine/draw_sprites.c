@@ -6,7 +6,7 @@
 /*   By: ddelladi <ddelladi@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/28 20:41:24 by ddelladi          #+#    #+#             */
-/*   Updated: 2022/10/04 19:49:47 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/10/06 15:55:41 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,9 +65,9 @@ static t_draw_coord	*define_sprite_info(t_rules *rules, double trans_y, int s_x,
 	info = malloc(sizeof(t_draw_coord));
 	if (!info)
 		die("Malloc error");
-	info->sprite = rules->animations[rules->sort_spr[i]->type];
+	info->sprite = rules->animations[rules->sort_spr[i]->type + rules->sort_spr[i]->attacking + rules->sort_spr[i]->dying];
 	info->height = (rules->mlx.win_height / trans_y) * (info->sprite->height / 10);
-	if (rules->sort_spr[i]->type == 1)
+	if (rules->sort_spr[i]->type == 0)
 		add = info->height / 3;
 	info->start_y = rules->mlx.win_height / 2 - info->height / 2;
 	if (add)
@@ -76,6 +76,8 @@ static t_draw_coord	*define_sprite_info(t_rules *rules, double trans_y, int s_x,
 	if (info->start_y < 0)
 		info->start_y = 0;
 	info->end_y = rules->mlx.win_height / 2 + info->height / 2;
+	if (info->start_y == -9.4067938674405299e+17)
+		printf("Ecco");
 	if (add)
 		info->end_y += add;
 	if (info->end_y > rules->mlx.win_height)
@@ -105,9 +107,11 @@ void	draw_sprites(t_rules *rules, t_image *view)
 	i = 0;
 	while (i < rules->n_sprites)
 	{
-		if (rules->sort_spr[i]->state)
+		if (rules->sort_spr[i]->state && rules->sort_spr[i]->dist > rules->map.block_width / 2)
 		{
 			x = rules->sort_spr[i]->x - rules->player.x;
+			if (!x)
+				x = 1;
 			y = rules->sort_spr[i]->y - rules->player.y;
 			inv_det = 1.0 / (rules->player.plane_x * rules->player.d_y - rules->player.d_x * rules->player.plane_y);
 			trans_x = inv_det * (rules->player.d_y * x - rules->player.d_x * y) * 2.6;

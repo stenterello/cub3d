@@ -6,11 +6,26 @@
 /*   By: ddelladi <ddelladi@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/02 12:44:07 by ddelladi          #+#    #+#             */
-/*   Updated: 2022/10/01 22:26:34 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/10/06 17:24:59 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d_bonus.h"
+
+void	turn_off_sprite(t_rules *rules, int next[2])
+{
+	int	i;
+
+	i = -1;
+	while (++i < rules->n_sprites)
+	{
+		if (rules->spr[i].mini_x == next[0] && rules->spr[i].mini_y == next[1])
+		{
+			rules->spr[i].state = 0;
+			return ;
+		}
+	}
+}
 
 static int	verify_collide(t_rules *rules, int next[2])
 {
@@ -23,6 +38,12 @@ static int	verify_collide(t_rules *rules, int next[2])
 		return (1);
 	if (rules->map.map[next[1]][next[0]] == '4')
 		return (2);
+	if (rules->map.map[next[1]][next[0]] == '5')
+	{
+		rules->map.map[next[1]][next[0]] = '7';
+		turn_off_sprite(rules, next);
+		return (3);
+	}
 	return (0);
 }
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mlx_utils.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ddelladi <ddelladi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ddelladi <ddelladi@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/01 15:30:19 by ddelladi          #+#    #+#             */
-/*   Updated: 2022/10/04 13:53:20 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/10/06 14:05:38 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,17 @@ void	easy_pxl(t_image *image, int x, int y, int color)
 	dst = image->addr + (y * image->line_length + x * (image->bpp / 8));
 	*(unsigned int *)dst = color;
 	return ;
+}
+
+void	init_xpm_img(t_rules *rules, t_image **img, char *path)
+{
+	(*img) = malloc(sizeof(t_image));
+	if (!(*img))
+		die("Malloc error");
+	(*img)->img = mlx_xpm_file_to_image(rules->mlx.mlx, path, &(*img)->width, &(*img)->height);
+	if (!(*img)->img)
+		die("Error initializing image");
+	(*img)->addr = mlx_get_data_addr((*img)->img, &(*img)->bpp, &(*img)->line_length, &(*img)->endian);
 }
 
 void	init_img(t_rules *rules, t_image *img, int w, int h)

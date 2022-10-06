@@ -6,11 +6,26 @@
 /*   By: ddelladi <ddelladi@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/02 14:30:26 by ddelladi          #+#    #+#             */
-/*   Updated: 2022/10/01 19:56:25 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/10/06 17:19:27 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d_bonus.h"
+
+void	change_enemy_state(t_rules *rules)
+{
+	int			i;
+
+	i = -1;
+	while (++i < rules->n_sprites)
+	{
+		if (get_sprite_dist(rules, &rules->spr[i]) < rules->map.block_width && rules->spr[i].type)
+		{
+			rules->spr[i].attacking = 3;
+			rules->spr[i].type = 1;
+		}
+	}
+}
 
 static void	check_up(t_rules *rules, float ray_cos, float ray_sin)
 {
@@ -26,14 +41,17 @@ static void	check_up(t_rules *rules, float ray_cos, float ray_sin)
 			rules->player.gun.counter++;
 			rules->player.gun.counted++;
 		}
-		if (!res1)
+		if (!res1 || res1 == 3)
 			rules->player.x += rules->player.d_x * rules->player.speed;
 		else if (res1 == 2 && !rules->player.earning_dmg)
 		{
 			rules->player.x -= rules->player.d_x * rules->player.speed * 2;
 			rules->player.health -= 5;
 			rules->player.earning_dmg = 1;
+			change_enemy_state(rules);
 		}
+		if (res1 == 3)
+			rules->player.ammo += 10;
 	}
 	if (res2 != 1)
 	{
@@ -42,14 +60,17 @@ static void	check_up(t_rules *rules, float ray_cos, float ray_sin)
 			rules->player.gun.counter++;
 			rules->player.gun.counted++;
 		}
-		if (!res2)
+		if (!res2 || res2 == 3)
 			rules->player.y += rules->player.d_y * rules->player.speed;
 		else if (res2 == 2 && !rules->player.earning_dmg)
 		{
 			rules->player.y -= rules->player.d_y * rules->player.speed * 2;
 			rules->player.health -= 5;
 			rules->player.earning_dmg = 1;
+			change_enemy_state(rules);
 		}
+		if (res2 == 3)
+			rules->player.ammo += 10;
 	}
 }
 
@@ -67,14 +88,17 @@ static void	check_down(t_rules *rules, float ray_cos, float ray_sin)
 			rules->player.gun.counter++;
 			rules->player.gun.counted++;
 		}
-		if (!res1)
+		if (!res1 || res1 == 3)
 			rules->player.x -= rules->player.d_x * rules->player.speed;
 		else if (res1 == 2 && !rules->player.earning_dmg)
 		{
 			rules->player.x += rules->player.d_x * rules->player.speed * 2;
 			rules->player.health -= 5;
 			rules->player.earning_dmg = 1;
+			change_enemy_state(rules);
 		}
+		if (res1 == 3)
+			rules->player.ammo += 10;
 	}
 	if (res2 != 1)
 	{
@@ -83,14 +107,17 @@ static void	check_down(t_rules *rules, float ray_cos, float ray_sin)
 			rules->player.gun.counter++;
 			rules->player.gun.counted++;
 		}
-		if (!res2)
+		if (!res2 || res2 == 3)
 			rules->player.y -= rules->player.d_y * rules->player.speed;
 		else if (res2 == 2 && !rules->player.earning_dmg)
 		{
 			rules->player.y += rules->player.d_y * rules->player.speed * 2;
 			rules->player.health -= 5;
 			rules->player.earning_dmg = 1;
+			change_enemy_state(rules);
 		}
+		if (res2 == 3)
+			rules->player.ammo += 10;
 	}
 }
 
@@ -108,14 +135,17 @@ static void	check_left(t_rules *rules, float ray_cos, float ray_sin)
 			rules->player.gun.counter++;
 			rules->player.gun.counted++;
 		}
-		if (!res1)
+		if (!res1 || res1 == 3)
 			rules->player.x += rules->player.d_y * rules->player.speed;
 		else if (res1 == 2 && !rules->player.earning_dmg)
 		{
 			rules->player.x -= rules->player.d_y * rules->player.speed * 2;
 			rules->player.health -= 5;
 			rules->player.earning_dmg = 1;
+			change_enemy_state(rules);
 		}
+		if (res1 == 3)
+			rules->player.ammo += 10;
 	}
 	if (res2 != 2)
 	{
@@ -124,14 +154,17 @@ static void	check_left(t_rules *rules, float ray_cos, float ray_sin)
 			rules->player.gun.counter++;
 			rules->player.gun.counted++;
 		}
-		if (!res2)
+		if (!res2 || res2 == 3)
 			rules->player.y -= rules->player.d_x * rules->player.speed;
 		else if (res2 == 2 && !rules->player.earning_dmg)
 		{
 			rules->player.y += rules->player.d_x * rules->player.speed * 2;
 			rules->player.health -= 5;
 			rules->player.earning_dmg = 1;
+			change_enemy_state(rules);
 		}
+		if (res2 == 3)
+			rules->player.ammo += 10;
 	}
 }
 
@@ -149,14 +182,17 @@ static void	check_right(t_rules *rules, float ray_cos, float ray_sin)
 			rules->player.gun.counter++;
 			rules->player.gun.counted++;
 		}
-		if (!res1)
+		if (!res1 || res1 == 3)
 			rules->player.x -= rules->player.d_y * rules->player.speed;
 		else if (res1 == 2 && !rules->player.earning_dmg)
 		{
 			rules->player.x += rules->player.d_y * rules->player.speed * 2;
 			rules->player.health -= 5;
 			rules->player.earning_dmg = 1;
+			change_enemy_state(rules);
 		}	
+		if (res1 == 3)
+			rules->player.ammo += 10;
 	}
 	if (res2 != 1)
 	{
@@ -165,14 +201,17 @@ static void	check_right(t_rules *rules, float ray_cos, float ray_sin)
 			rules->player.gun.counter++;
 			rules->player.gun.counted++;
 		}
-		if (!res2)
+		if (!res2 || res2 == 3)
 			rules->player.y += rules->player.d_x * rules->player.speed;
 		else if (res2 == 2 && !rules->player.earning_dmg)
 		{
 			rules->player.y -= rules->player.d_x * rules->player.speed * 2;
 			rules->player.health -= 5;
 			rules->player.earning_dmg = 1;
+			change_enemy_state(rules);
 		}
+		if (res2 == 3)
+			rules->player.ammo += 10;
 	}
 }
 
