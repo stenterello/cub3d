@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   game.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gimartin <gimartin@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ddelladi <ddelladi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/26 16:57:44 by ddelladi          #+#    #+#             */
-/*   Updated: 2022/10/07 12:21:28 by gimartin         ###   ########.fr       */
+/*   Updated: 2022/10/07 13:38:57 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ static void	check_state(t_rules *rules)
 		rules->game_status = LOST;
 	if (!rules->player.ammo)
 		mlx_string_put(rules->mlx.mlx, rules->mlx.mlx_win,
-			rules->mlx.win_width - 105, 60, 0x00FF0000, "NO AMMO");
+			rules->mlx.win_width - 115, 70, 0x00FF0000, "NO AMMO");
 }
 
 static void	game(t_rules *rules)
@@ -53,7 +53,6 @@ static void	game(t_rules *rules)
 	mlx_put_image_to_window(rules->mlx.mlx, rules->mlx.mlx_win, view.img, 0, 0);
 	mlx_put_image_to_window(rules->mlx.mlx, rules->mlx.mlx_win,
 		minimap.img, 0, 0);
-	draw_ammo_amount(rules);
 	check_state(rules);
 }
 

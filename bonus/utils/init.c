@@ -39,14 +39,14 @@ static void	init_player_position(t_rules *rules, char c, int i, int j)
 
 void	init_player_2(t_rules *r)
 {
-	r->player.healt.img = mlx_xpm_file_to_image(r->mlx.mlx,
-			"./img/hud/hearth.xpm", &r->player.healt.width,
-			&r->player.healt.height);
-	if (!r->player.healt.img)
+	r->player.life_tex.img = mlx_xpm_file_to_image(r->mlx.mlx,
+			"./img/hud/hearth.xpm", &r->player.life_tex.width,
+			&r->player.life_tex.height);
+	if (!r->player.life_tex.img)
 		die("Could not load textures. Aborting");
-	r->player.healt.addr = mlx_get_data_addr(r->player.healt.img,
-			&r->player.healt.bpp, &r->player.healt.line_length,
-			&r->player.healt.endian);
+	r->player.life_tex.addr = mlx_get_data_addr(r->player.life_tex.img,
+			&r->player.life_tex.bpp, &r->player.life_tex.line_length,
+			&r->player.life_tex.endian);
 	r->player.ammo_tex.img = mlx_xpm_file_to_image(r->mlx.mlx,
 			"./img/hud/ammo.xpm", &r->player.ammo_tex.width,
 			&r->player.ammo_tex.height);
@@ -106,8 +106,8 @@ void	init_rules(t_rules *rules)
 	rules->floor = NULL;
 	rules->ceiling = NULL;
 	rules->line_offset = 0;
-	rules->mlx.win_width = 854;
-	rules->mlx.win_height = 480;
+	rules->mlx.win_width = 1024;
+	rules->mlx.win_height = 720;
 	rules->dist_array = malloc(sizeof(double) * (rules->mlx.win_width + 1));
 	if (!rules->dist_array)
 		die("Malloc error");

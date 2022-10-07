@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d_bonus_utils.h                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gimartin <gimartin@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ddelladi <ddelladi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/01 13:05:11 by ddelladi          #+#    #+#             */
-/*   Updated: 2022/10/07 11:55:09 by gimartin         ###   ########.fr       */
+/*   Updated: 2022/10/07 14:25:04 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,10 @@
 # define ENEMY_DIE_2	"./img/sprites/enemy8.xpm"
 # define ENEMY_DIE_3	"./img/sprites/enemy9.xpm"
 # define AMMO_TEX		"./img/sprites/ammo_storage.xpm"
+# define TUNNEL_TEX		"./textures/texture.xpm"
+# define VORTEX_TEX_1	"./textures/Vortice/vortice0.xpm"
+# define VORTEX_TEX_2	"./textures/Vortice/vortice1.xpm"
+# define VORTEX_TEX_3	"./textures/Vortice/vortice2.xpm"
 
 typedef struct s_draw_info
 {

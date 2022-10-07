@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ddelladi <ddelladi@student.42roma.it>      +#+  +:+       +#+        */
+/*   By: ddelladi <ddelladi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/26 14:35:11 by gimartin          #+#    #+#             */
-/*   Updated: 2022/10/06 17:25:27 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/10/07 13:46:53 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,11 +68,7 @@ int	main(int argc, char **argv)
 
 /*
 
-- animazioni porte
-- aggiustare le scritte relative alle info delle ammo
 - livello trama
-- togliere il raycast multiplo dalla versione mandatory!
-- eliminare il terzo elemento di var[3] sia in mandatory che in bonus
 - è possibile che nella funzione draw_sprite, il 2.6 non sia utilizzabile in tutte le risoluzioni
 	(funzionante in 854x480)
 - ordinare il codice mandatory in directories
@@ -80,6 +76,5 @@ int	main(int argc, char **argv)
 - togliere la flag -g
 - menu iniziale
 - schermata di lost game
-- se si spara al nemico in obliquo spesso non muore --> per aggiustare (parzialmente) questo, adesso il proiettile è meno preciso: prende uno spettro di spazio più ampio
 
 */

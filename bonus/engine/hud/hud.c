@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hud.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gimartin <gimartin@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ddelladi <ddelladi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/01 18:37:44 by ddelladi          #+#    #+#             */
-/*   Updated: 2022/10/07 11:35:30 by gimartin         ###   ########.fr       */
+/*   Updated: 2022/10/07 13:43:12 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,9 @@ static void	viewfinder(t_rules *rules, t_image *view)
 
 void	hud(t_rules *rules, t_image *view)
 {
+	if (rules->player.ammo > 20)
+		rules->player.ammo = 20;
 	health_level(rules, view);
-	ammo_level(rules, view);
+	draw_ammo_amount(rules, view);
 	viewfinder(rules, view);
 }

@@ -5,16 +5,16 @@
 	"version": "0.2.0",
 	"configurations": [
 		{
-			"name": "(gdb) Launch",
+			"name": "(lldb) Launch",
 			"type": "cppdbg",
 			"request": "launch",
 			"program": "${workspaceFolder}/cub3d_bonus",
-			"args": ["tests/test_b.cub"],
+			"args": ["maps/bon_2.cub"],
 			"stopAtEntry": false,
 			"cwd": "${workspaceFolder}",
 			"environment": [],
 			"externalConsole": false,
-			"MIMode": "gdb",
+			"MIMode": "lldb",
 			// "justMyCode": true,
 			// "setupCommands": [
 			// 	{

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minimap.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ddelladi <ddelladi@student.42roma.it>      +#+  +:+       +#+        */
+/*   By: ddelladi <ddelladi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/02 17:49:20 by ddelladi          #+#    #+#             */
-/*   Updated: 2022/10/06 17:21:43 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/10/07 13:09:49 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,11 @@ static unsigned int	choose_color(char c)
 {
 	if (c == '0' || c == '3' || c == '4' || c == '5' || c == '6' || c == '7')
 		return (0x0000FF00);
-	else if (c == '1' || c == '2' || c == ' ')
+	else if (c == '1' || c == ' ')
 		return (0x00FF0000);
-	return (0x00000000);
+	else if (c == '2')
+		return (0x00EDB415);
+	return (0x0);
 }
 
 static void	draw_mini_player(t_rules *rules, t_image *image)

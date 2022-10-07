@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_sprites.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gimartin <gimartin@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ddelladi <ddelladi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/28 20:41:24 by ddelladi          #+#    #+#             */
-/*   Updated: 2022/10/07 12:20:19 by gimartin         ###   ########.fr       */
+/*   Updated: 2022/10/07 14:11:00 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,8 +94,6 @@ static t_draw_coord	*define_sprite_info(t_rules *rules, double trans_y,
 	if (info->start_y < 0)
 		info->start_y = 0;
 	info->end_y = rules->mlx.win_height / 2 + info->height / 2;
-	if (info->start_y == -9.4067938674405299e+17)
-		printf("Ecco");
 	if (add)
 		info->end_y += add;
 	if (info->end_y > rules->mlx.win_height)
@@ -136,7 +134,7 @@ void	draw_sprites(t_rules *rules, t_image *view)
 			inv_det = 1.0 / (rules->player.plane_x * rules->player.d_y
 					- rules->player.d_x * rules->player.plane_y);
 			trans_x = inv_det * (rules->player.d_y * x
-					- rules->player.d_x * y) * 2.6;
+					- rules->player.d_x * y) * (854 * 2.6 / (float)rules->mlx.win_width);
 			trans_y = inv_det * (-rules->player.plane_y
 					* x + rules->player.plane_x * y);
 			s_x = (int)((rules->mlx.win_width / 2) * (1 + trans_x / trans_y));

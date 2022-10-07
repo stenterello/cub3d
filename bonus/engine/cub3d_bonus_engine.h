@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d_bonus_engine.h                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gimartin <gimartin@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ddelladi <ddelladi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/01 11:35:18 by ddelladi          #+#    #+#             */
-/*   Updated: 2022/10/07 11:40:36 by gimartin         ###   ########.fr       */
+/*   Updated: 2022/10/07 14:44:51 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ typedef struct s_player
 	double	plane_y;
 	int		health;
 	int		ammo;
-	t_image	healt;
+	t_image	life_tex;
 	t_image	ammo_tex;
 	t_image	viewfinder;
 	int		earning_dmg;
@@ -193,7 +193,7 @@ void			calc_ray(t_bres_data *data, t_rules *rules,
 void			hud(t_rules *rules, t_image *view);
 void			health_level(t_rules *rules, t_image *view);
 void			ammo_level(t_rules *rules, t_image *view);
-void			draw_ammo_amount(t_rules *rules);
+void			draw_ammo_amount(t_rules *rules, t_image *view);
 int				define_hor_ray_and_offset(t_rules *rules, t_ray *ray,
 					double a_tan, float xy[2]);
 int				define_ver_ray_and_offset(t_rules *rules, t_ray *ray,

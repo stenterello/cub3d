@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hearth.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gimartin <gimartin@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ddelladi <ddelladi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/01 18:37:46 by ddelladi          #+#    #+#             */
-/*   Updated: 2022/10/07 11:30:46 by gimartin         ###   ########.fr       */
+/*   Updated: 2022/10/07 13:17:49 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,12 +76,12 @@ void	draw_hearth_sup(t_rules *rules, t_image *view, t_draw_coord *info)
 	{
 		info->start_y = info->bench_y;
 		info->t_x = (info->start_x - info->bench_x)
-			* rules->player.healt.width / info->width;
+			* rules->player.life_tex.width / info->width;
 		while (info->start_y < info->end_y)
 		{
 			info->t_y = (info->start_y - info->bench_y)
-				* rules->player.healt.height / info->height;
-			info->color = get_sprite_color(&rules->player.healt,
+				* rules->player.life_tex.height / info->height;
+			info->color = get_sprite_color(&rules->player.life_tex,
 					info->t_x, info->t_y, rules);
 			if (info->color)
 				easy_pxl(view, info->start_x, info->start_y, info->color);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   collision.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gimartin <gimartin@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ddelladi <ddelladi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/02 12:44:07 by ddelladi          #+#    #+#             */
-/*   Updated: 2022/10/07 11:39:33 by gimartin         ###   ########.fr       */
+/*   Updated: 2022/10/07 13:45:43 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ static int	verify_collide(t_rules *rules, int next[2])
 		return (1);
 	if (rules->map.map[next[1]][next[0]] == '4')
 		return (2);
-	if (rules->map.map[next[1]][next[0]] == '5')
+	if (rules->map.map[next[1]][next[0]] == '5' && rules->player.ammo < 20)
 	{
 		rules->map.map[next[1]][next[0]] = '7';
 		turn_off_sprite(rules, next);

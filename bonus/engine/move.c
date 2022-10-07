@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   move.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gimartin <gimartin@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ddelladi <ddelladi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/02 14:30:26 by ddelladi          #+#    #+#             */
-/*   Updated: 2022/10/07 12:21:01 by gimartin         ###   ########.fr       */
+/*   Updated: 2022/10/07 13:43:56 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ static void	check_up(t_rules *rules, float ray_cos, float ray_sin)
 			change_enemy_state(rules);
 		}
 		if (res1 == 3)
-			rules->player.ammo += 10;
+			rules->player.ammo += 5;
 	}
 	if (res2 != 1)
 	{
@@ -71,7 +71,7 @@ static void	check_up(t_rules *rules, float ray_cos, float ray_sin)
 			change_enemy_state(rules);
 		}
 		if (res2 == 3)
-			rules->player.ammo += 10;
+			rules->player.ammo += 5;
 	}
 }
 
@@ -99,7 +99,7 @@ static void	check_down(t_rules *rules, float ray_cos, float ray_sin)
 			change_enemy_state(rules);
 		}
 		if (res1 == 3)
-			rules->player.ammo += 10;
+			rules->player.ammo += 5;
 	}
 	if (res2 != 1)
 	{
@@ -118,7 +118,7 @@ static void	check_down(t_rules *rules, float ray_cos, float ray_sin)
 			change_enemy_state(rules);
 		}
 		if (res2 == 3)
-			rules->player.ammo += 10;
+			rules->player.ammo += 5;
 	}
 }
 
@@ -146,7 +146,7 @@ static void	check_left(t_rules *rules, float ray_cos, float ray_sin)
 			change_enemy_state(rules);
 		}
 		if (res1 == 3)
-			rules->player.ammo += 10;
+			rules->player.ammo += 5;
 	}
 	if (res2 != 2)
 	{
@@ -165,7 +165,7 @@ static void	check_left(t_rules *rules, float ray_cos, float ray_sin)
 			change_enemy_state(rules);
 		}
 		if (res2 == 3)
-			rules->player.ammo += 10;
+			rules->player.ammo += 5;
 	}
 }
 
@@ -193,7 +193,7 @@ static void	check_right(t_rules *rules, float ray_cos, float ray_sin)
 			change_enemy_state(rules);
 		}	
 		if (res1 == 3)
-			rules->player.ammo += 10;
+			rules->player.ammo += 5;
 	}
 	if (res2 != 1)
 	{
@@ -212,7 +212,7 @@ static void	check_right(t_rules *rules, float ray_cos, float ray_sin)
 			change_enemy_state(rules);
 		}
 		if (res2 == 3)
-			rules->player.ammo += 10;
+			rules->player.ammo += 5;
 	}
 }
 
