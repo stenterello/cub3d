@@ -84,10 +84,14 @@ $(NAME)	:	$(LIBFT) $(OBJS) $(M_CMD_O)
 	$(CC) $(FLAGS) $(MLX_OPT) $(LIBFT) $(OBJS) $(M_CMD_O) -o $(NAME) $(OPTS)
 
 $(NAME_B)	:	$(LIBFT) $(B_OBJS) $(M_B_C_O)
-	$(CC) $(FLAGS) $(MLX_OPT) $(LIBFT) $(B_OBJS) $(M_B_C_O) -o $(NAME_B) $(B_PATH) $(OPTS)
+	$(CC) $(FLAGS) -O3 $(MLX_OPT) $(LIBFT) $(B_OBJS) $(M_B_C_O) -o $(NAME_B) $(B_PATH) $(OPTS)
 
 %.o	:	%.c
-	$(CC) $(FLAGS) -c $< -o $@ $(S_PATH) $(OPTS)
+	@if [ -z $(firstword $(MAKECMDGOALS)) ] || [ $(firstword $(MAKECMDGOALS)) == "re" ]; then\
+		$(CC) $(FLAGS) -c $< -o $@ $(S_PATH) $(OPTS);\
+	else\
+		$(CC) $(FLAGS) -c $< -o $@ $(B_PATH) $(OPTS);\
+	fi
 
 lin	: $(LIBFT) $(MLX_LIN) $(OBJS) $(L_CMD_O)
 	$(CC) $(FLAGS) $(OBJS) $(L_CMD_O) $(LIBFT) $(MLX_LIN) $(LIN_OPT) -o $(NAME)
