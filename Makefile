@@ -29,11 +29,14 @@ BONUS	=	main.c \
 			utils/calculus.c \
 			utils/calculus2.c \
 			utils/gun_utils.c \
+			utils/gun_utils2.c \
+			utils/gun_utils3.c \
 			utils/mlx_utils.c \
 			utils/choose.c \
 			utils/general.c \
 			utils/load_sprites.c \
 			utils/load_sprites_utils.c \
+			utils/load_sprites_utils2.c \
 			engine/game.c \
 			engine/minimap.c \
 			engine/raycast.c \

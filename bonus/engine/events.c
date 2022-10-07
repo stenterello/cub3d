@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   events.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ddelladi <ddelladi@student.42roma.it>      +#+  +:+       +#+        */
+/*   By: gimartin <gimartin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/26 16:45:37 by ddelladi          #+#    #+#             */
-/*   Updated: 2022/10/04 19:38:52 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/10/07 12:21:50 by gimartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,13 +23,17 @@ static void	move_mouse_dir(int x, int y, t_rules *rules)
 {
 	if (x < rules->mouse.last_x)
 	{
-		rules->player.dir = increment_angle(rules->player.dir, rules->mlx.win_width / 40);
-		rules->player.plane = increment_angle(rules->player.plane, rules->mlx.win_width / 40);
+		rules->player.dir = increment_angle(rules->player.dir,
+				rules->mlx.win_width / 40);
+		rules->player.plane = increment_angle(rules->player.plane,
+				rules->mlx.win_width / 40);
 	}
 	else if (x > rules->mouse.last_x)
 	{
-		rules->player.dir = decrement_angle(rules->player.dir, rules->mlx.win_width / 40);
-		rules->player.plane = decrement_angle(rules->player.plane, rules->mlx.win_width / 40);
+		rules->player.dir = decrement_angle(rules->player.dir,
+				rules->mlx.win_width / 40);
+		rules->player.plane = decrement_angle(rules->player.plane,
+				rules->mlx.win_width / 40);
 	}
 	rules->mouse.last_x = x;
 	rules->mouse.last_y = y;

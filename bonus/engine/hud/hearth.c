@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hearth.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ddelladi <ddelladi@student.42roma.it>      +#+  +:+       +#+        */
+/*   By: gimartin <gimartin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/01 18:37:46 by ddelladi          #+#    #+#             */
-/*   Updated: 2022/10/01 18:39:09 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/10/07 11:30:46 by gimartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,21 +18,21 @@ static void	draw_container(t_rules *rules, t_image *view)
 	int	y;
 	int	w;
 	int	h;
-	int	bench_x;
-	int	bench_y;
+	int	bench[2];
 
 	w = rules->mlx.win_width / 3;
 	x = rules->mlx.win_width - w - 40;
 	h = 30;
-	bench_x = x;
+	bench[0] = x;
 	y = 15;
-	bench_y = y;
-	while (x < bench_x + w)
+	bench[1] = y;
+	while (x < bench[0] + w)
 	{
-		y = bench_y;
+		y = bench[1];
 		while (y < h)
 		{
-			if (y > bench_y + 1 && y < h - 2 && x > bench_x + 1 && x < bench_x + w - 2)
+			if (y > bench[1] + 1 && y < h - 2 && x > bench[0]
+				+ 1 && x < bench[0] + w - 2)
 				easy_pxl(view, x, y++, 0x00FFFFFF);
 			else
 				easy_pxl(view, x, y++, 0x00B5B1A7);
@@ -46,29 +46,48 @@ static void	draw_health_level(t_rules *rules, t_image *view)
 	float	tot;
 	float	w;
 	float	h;
-	int		x;
-	int		y;
-	int		bench_y;
-	int		bench_x;
+	int		xy[2];
+	int		bench[2];
 
 	tot = rules->mlx.win_width / 3;
 	w = tot / 100 * rules->player.health;
 	h = 28;
-	x = rules->mlx.win_width - w - 38;
-	bench_x = x;
-	y = 17;
-	bench_y = y;
-	while (x < bench_x + w - 4)
+	xy[0] = rules->mlx.win_width - w - 38;
+	bench[1] = xy[0];
+	xy[1] = 17;
+	bench[0] = xy[1];
+	while (xy[0] < bench[1] + w - 4)
 	{
-		y = bench_y;
-		while (y < h)
+		xy[1] = bench[0];
+		while (xy[1] < h)
 		{
-			if (y < h - bench_y / 2 + 2)
-				easy_pxl(view, x, y++, 0x00ED1F1F);
+			if (xy[1] < h - bench[0] / 2 + 2)
+				easy_pxl(view, xy[0], xy[1]++, 0x00ED1F1F);
 			else
-				easy_pxl(view, x, y++, 0x00C40000);
+				easy_pxl(view, xy[0], xy[1]++, 0x00C40000);
 		}
-		x++;
+		xy[0]++;
+	}
+}
+
+void	draw_hearth_sup(t_rules *rules, t_image *view, t_draw_coord *info)
+{
+	while (info->start_x < info->end_x)
+	{
+		info->start_y = info->bench_y;
+		info->t_x = (info->start_x - info->bench_x)
+			* rules->player.healt.width / info->width;
+		while (info->start_y < info->end_y)
+		{
+			info->t_y = (info->start_y - info->bench_y)
+				* rules->player.healt.height / info->height;
+			info->color = get_sprite_color(&rules->player.healt,
+					info->t_x, info->t_y, rules);
+			if (info->color)
+				easy_pxl(view, info->start_x, info->start_y, info->color);
+			info->start_y++;
+		}
+		info->start_x++;
 	}
 }
 
@@ -84,20 +103,7 @@ static void	draw_hearth(t_rules *rules, t_image *view)
 	info.end_y = 35;
 	info.bench_y = info.start_y;
 	info.height = info.end_y - info.start_y;
-	while (info.start_x < info.end_x)
-	{
-		info.start_y = info.bench_y;
-		info.t_x = (info.start_x - info.bench_x) * rules->player.heart_tex.width / info.width;
-		while (info.start_y < info.end_y)
-		{
-			info.t_y = (info.start_y - info.bench_y) * rules->player.heart_tex.height / info.height;
-			info.color = get_sprite_color(&rules->player.heart_tex, info.t_x, info.t_y, rules);
-			if (info.color)
-				easy_pxl(view, info.start_x, info.start_y, info.color);
-			info.start_y++;
-		}
-		info.start_x++;
-	}
+	draw_hearth_sup(rules, view, &info);
 }
 
 void	health_level(t_rules *rules, t_image *view)

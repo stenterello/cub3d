@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   colors.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ddelladi <ddelladi@student.42roma.it>      +#+  +:+       +#+        */
+/*   By: gimartin <gimartin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/01 14:08:54 by ddelladi          #+#    #+#             */
-/*   Updated: 2022/10/01 15:23:52 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/10/07 12:01:50 by gimartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,8 @@ unsigned int	get_color_arr(unsigned char arr[3])
 unsigned int	get_sprite_color(t_image *tex, int x, int y, t_rules *rules)
 {
 	if ((x > 0 || x < rules->mlx.win_width
-			|| y > 0 || y < rules->mlx.win_height) 
-			&& *(unsigned int *)(tex->addr + (4 * (tex->width * y + x))))
+			|| y > 0 || y < rules->mlx.win_height)
+		&& *(unsigned int *)(tex->addr + (4 * (tex->width * y + x))))
 	{
 		return (*(unsigned int *)(tex->addr + (4 * (tex->width * y + x))));
 	}

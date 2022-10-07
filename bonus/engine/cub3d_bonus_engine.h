@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d_bonus_engine.h                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ddelladi <ddelladi@student.42roma.it>      +#+  +:+       +#+        */
+/*   By: gimartin <gimartin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/01 11:35:18 by ddelladi          #+#    #+#             */
-/*   Updated: 2022/10/06 15:05:52 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/10/07 11:40:36 by gimartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ typedef struct s_player
 	double	plane_y;
 	int		health;
 	int		ammo;
-	t_image	heart_tex;
+	t_image	healt;
 	t_image	ammo_tex;
 	t_image	viewfinder;
 	int		earning_dmg;
@@ -156,14 +156,15 @@ typedef struct s_bres_info
 	unsigned int	color;
 }				t_bres_info;
 
-enum	game_state
+enum	e_game_state
 {
 	START,
 	PLAY,
 	LOST
 };
 
-void			bresenham(t_bres_data *d, t_image *min, t_image *view, t_rules *rules);
+void			bresenham(t_bres_data *d, t_image *min, t_image *view,
+					t_rules *rules);
 void			interact_with_door(t_rules *rules);
 void			reload_sprites(t_rules *rules);
 void			restore_gun(t_rules *rules);
@@ -176,13 +177,17 @@ void			minimap2d(t_rules *rules, t_image *minimap);
 void			raycast(t_rules *rules, t_image *view, t_image *minimap);
 void			draw_sprites(t_rules *rules, t_image *view);
 void			draw_gun(t_rules *rules, t_image *view);
-int				virtual_horizontal_colliding(int ray_x, int ray_y, t_rules *rules, int dir);
-int				virtual_vertical_colliding(int ray_x, int ray_y, t_rules *rules, int dir);
+int				virtual_horizontal_colliding(int ray_x, int ray_y,
+					t_rules *rules, int dir);
+int				virtual_vertical_colliding(int ray_x, int ray_y,
+					t_rules *rules, int dir);
 int				press(int keycode, t_rules *rules);
 int				release(int keycode, t_rules *rules);
-void			draw_view(t_bres_data *d, t_image *view, t_rules *rules, t_image *tex);
+void			draw_view(t_bres_data *d, t_image *view,
+					t_rules *rules, t_image *tex);
 int				is_door(int x, int y, t_rules *rules);
-int				colliding(t_rules *rules, float ray_cos, float ray_sin, int plus);
+int				colliding(t_rules *rules, float ray_cos,
+					float ray_sin, int plus);
 void			calc_ray(t_bres_data *data, t_rules *rules,
 					t_image *view, t_image *minimap);
 void			hud(t_rules *rules, t_image *view);

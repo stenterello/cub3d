@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   collision.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ddelladi <ddelladi@student.42roma.it>      +#+  +:+       +#+        */
+/*   By: gimartin <gimartin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/02 12:44:07 by ddelladi          #+#    #+#             */
-/*   Updated: 2022/10/06 17:24:59 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/10/07 11:39:33 by gimartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,8 @@ static void	get_next(t_rules *rules, float sin_cos[2], int next[2], int flag)
 	}
 }
 
-static void	get_next_c(t_rules *rules, float sin_cos[2], int next_c[2], int flag)
+static void	get_next_c(t_rules *rules, float sin_cos[2],
+	int next_c[2], int flag)
 {
 	if (flag)
 	{

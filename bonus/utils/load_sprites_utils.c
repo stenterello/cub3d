@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   load_sprites_utils.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ddelladi <ddelladi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gimartin <gimartin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/29 12:21:53 by ddelladi          #+#    #+#             */
-/*   Updated: 2022/10/04 13:47:24 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/10/07 10:52:31 by gimartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,10 @@ double	get_sprite_dist(t_rules *rules, t_sprite *spr)
 {
 	double	spr_xy[2];
 
-	spr_xy[0] = spr->mini_x * rules->map.block_width + rules->map.block_width / 2;
-	spr_xy[1] = spr->mini_y * rules->map.block_width + rules->map.block_width / 2;
+	spr_xy[0] = spr->mini_x * rules->map.block_width
+		+ rules->map.block_width / 2;
+	spr_xy[1] = spr->mini_y * rules->map.block_width
+		+ rules->map.block_width / 2;
 	spr->x = spr_xy[0];
 	spr->y = spr_xy[1];
 	return (final_length_double(rules->player.x, rules->player.y, spr_xy));
@@ -70,7 +72,8 @@ int	*find_indexes(t_rules *rules)
 	{
 		rules->spr[i].dist = get_sprite_dist(rules, &rules->spr[i]);
 		i2 = 0;
-		while (ret[i2] && rules->spr[i].dist < rules->spr[ret[i2] - 1].dist && i2 < rules->n_sprites)
+		while (ret[i2] && rules->spr[i].dist < rules->spr[ret[i2] - 1].dist
+			&& i2 < rules->n_sprites)
 			i2++;
 		move_one_forward(ret, rules->n_sprites, i2);
 		ret[i2] = i + 1;

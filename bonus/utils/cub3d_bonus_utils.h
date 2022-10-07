@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d_bonus_utils.h                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ddelladi <ddelladi@student.42roma.it>      +#+  +:+       +#+        */
+/*   By: gimartin <gimartin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/01 13:05:11 by ddelladi          #+#    #+#             */
-/*   Updated: 2022/10/06 15:03:26 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/10/07 11:55:09 by gimartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,8 @@ void			init_xpm_img(t_rules *rules, t_image **img, char *path);
 double			increment_angle(double angle, int t);
 double			decrement_angle(double angle, int t);
 double			final_length(float start_x, float start_y, float rxy[2]);
-double			final_length_double(double start_x, double start_y, double rxy[2]);
+double			final_length_double(double start_x, double start_y,
+					double rxy[2]);
 t_image			*choose_texture(t_rules *rules, t_bres_data *d);
 double			get_dist(t_rules *rules, t_bres_data *d);
 double			get_fix(double angle);
@@ -64,5 +65,17 @@ void			easy_pxl(t_image *image, int x, int y, int color);
 unsigned int	get_color(t_image *tex, int x, int y, t_rules *rules);
 unsigned int	get_color_arr(unsigned char arr[3]);
 unsigned int	get_sprite_color(t_image *tex, int x, int y, t_rules *rules);
+void			update_sprites(t_rules *rules);
+void			clear_sprites(t_rules *rules, t_sprite *spr);
+void			sort_sprites(t_rules *rules);
+void			clear_sorted_sprites(t_rules *rules, t_sprite **sort_spr);
+void			save_sprites(t_rules *rules);
+void			horizontal_lines_check_enemy(double angle, t_rules *rules,
+					float ret[3]);
+void			vertical_lines_check_enemy(double angle, t_rules *rules,
+					float ret[3]);
+void			kill_enemy(t_rules *rules, float pts[3]);
+int				virtual_vertical_colliding_enemy(t_ray ray, t_rules *rules,
+					int dir);
 
 #endif

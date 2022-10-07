@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mlx_utils.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ddelladi <ddelladi@student.42roma.it>      +#+  +:+       +#+        */
+/*   By: gimartin <gimartin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/01 15:30:19 by ddelladi          #+#    #+#             */
-/*   Updated: 2022/10/06 14:05:38 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/10/07 10:52:03 by gimartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,10 +37,12 @@ void	init_xpm_img(t_rules *rules, t_image **img, char *path)
 	(*img) = malloc(sizeof(t_image));
 	if (!(*img))
 		die("Malloc error");
-	(*img)->img = mlx_xpm_file_to_image(rules->mlx.mlx, path, &(*img)->width, &(*img)->height);
+	(*img)->img = mlx_xpm_file_to_image(rules->mlx.mlx, path,
+			&(*img)->width, &(*img)->height);
 	if (!(*img)->img)
 		die("Error initializing image");
-	(*img)->addr = mlx_get_data_addr((*img)->img, &(*img)->bpp, &(*img)->line_length, &(*img)->endian);
+	(*img)->addr = mlx_get_data_addr((*img)->img, &(*img)->bpp,
+			&(*img)->line_length, &(*img)->endian);
 }
 
 void	init_img(t_rules *rules, t_image *img, int w, int h)
@@ -48,5 +50,6 @@ void	init_img(t_rules *rules, t_image *img, int w, int h)
 	img->img = mlx_new_image(rules->mlx.mlx, w, h);
 	if (!img->img)
 		die("Error initializing image");
-	img->addr = mlx_get_data_addr(img->img, &img->bpp, &img->line_length, &img->endian);
+	img->addr = mlx_get_data_addr(img->img, &img->bpp,
+			&img->line_length, &img->endian);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   general.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ddelladi <ddelladi@student.42roma.it>      +#+  +:+       +#+        */
+/*   By: gimartin <gimartin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/01 14:57:51 by ddelladi          #+#    #+#             */
-/*   Updated: 2022/10/01 16:19:47 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/10/07 11:41:23 by gimartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,4 +55,3 @@ t_image	*get_rule(char *str, t_rules *rules, t_image *chosen)
 	free(path);
 	return (ret);
 }
-

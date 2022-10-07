@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   doors.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ddelladi <ddelladi@student.42roma.it>      +#+  +:+       +#+        */
+/*   By: gimartin <gimartin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 16:34:35 by ddelladi          #+#    #+#             */
-/*   Updated: 2022/10/01 12:59:35 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/10/07 12:11:18 by gimartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,4 +71,3 @@ int	is_door(int x, int y, t_rules *rules)
 		return (1);
 	return (0);
 }
-

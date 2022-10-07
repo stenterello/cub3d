@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   move.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ddelladi <ddelladi@student.42roma.it>      +#+  +:+       +#+        */
+/*   By: gimartin <gimartin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/02 14:30:26 by ddelladi          #+#    #+#             */
-/*   Updated: 2022/10/06 17:19:27 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/10/07 12:21:01 by gimartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,8 @@ void	change_enemy_state(t_rules *rules)
 	i = -1;
 	while (++i < rules->n_sprites)
 	{
-		if (get_sprite_dist(rules, &rules->spr[i]) < rules->map.block_width && rules->spr[i].type)
+		if (get_sprite_dist(rules, &rules->spr[i]) < rules->map.block_width
+			&& rules->spr[i].type)
 		{
 			rules->spr[i].attacking = 3;
 			rules->spr[i].type = 1;
