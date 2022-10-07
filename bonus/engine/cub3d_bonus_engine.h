@@ -6,12 +6,13 @@
 /*   By: ddelladi <ddelladi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/01 11:35:18 by ddelladi          #+#    #+#             */
-/*   Updated: 2022/10/07 17:09:07 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/10/07 17:38:56 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CUB3D_BONUS_ENGINE_H
 # define CUB3D_BONUS_ENGINE_H
+# include "cub3d_bonus.h"
 
 typedef struct s_ray
 {

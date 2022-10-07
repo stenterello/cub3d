@@ -6,7 +6,7 @@
 /*   By: ddelladi <ddelladi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/01 22:28:36 by ddelladi          #+#    #+#             */
-/*   Updated: 2022/10/07 14:45:06 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/10/07 17:20:15 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,21 +41,23 @@ static void	draw_walls(double var[2], t_rules *rules, t_draw_info *info)
 
 static void	draw_ceiling(double var[2], t_rules *rules, t_draw_info *info)
 {
-	int		y;
-	float	dy;
-	float	tx;
-	float	ty;
+	int				y;
+	float			dy;
+	float			tx;
+	float			ty;
 	unsigned int	color;
-	float	dist;
 
 	y = -1;
 	while (++y < var[0])
 	{
 		dy = y - (rules->mlx.win_height / 2);
-		dist = rules->mlx.win_height / 2 / dy;
-		tx = rules->player.x / rules->map.block_width - cos(info->d.ray_angle) * dist / cos(get_fix(rules->player.dir - info->d.ray_angle));
-		ty = rules->player.y / rules->map.block_width + sin(info->d.ray_angle) * dist / cos(get_fix(rules->player.dir - info->d.ray_angle));
-		color = get_color(rules->ceiling,	
+		tx = rules->player.x / rules->map.block_width - cos(info->d.ray_angle)
+			* (rules->mlx.win_height / 2 / dy) / cos(get_fix(rules->player.dir
+					- info->d.ray_angle));
+		ty = rules->player.y / rules->map.block_width + sin(info->d.ray_angle)
+			* (rules->mlx.win_height / 2 / dy) / cos(get_fix(rules->player.dir
+					- info->d.ray_angle));
+		color = get_color(rules->ceiling,
 				our_modulo(tx * rules->ceiling->width, rules->ceiling->width),
 				our_modulo(ty * rules->ceiling->width, rules->ceiling->width),
 				rules);
@@ -65,21 +67,23 @@ static void	draw_ceiling(double var[2], t_rules *rules, t_draw_info *info)
 
 static void	draw_floor(double var[2], t_rules *rules, t_draw_info *info)
 {
-	int		y;
-	float	dy;
-	float	tx;
-	float	ty;
+	int				y;
+	float			dy;
+	float			tx;
+	float			ty;
 	unsigned int	color;
-	float	dist;
 
 	y = var[1] - 1;
 	while (++y < rules->mlx.win_height)
 	{
 		dy = y - (rules->mlx.win_height / 2) + 1;
-		dist = rules->mlx.win_height / 2 / dy;
-		tx = rules->player.x / rules->map.block_width + cos(info->d.ray_angle) * dist / cos(get_fix(rules->player.dir - info->d.ray_angle));
-		ty = rules->player.y / rules->map.block_width - sin(info->d.ray_angle) * dist / cos(get_fix(rules->player.dir - info->d.ray_angle));
-		color = get_color(rules->floor,	
+		tx = rules->player.x / rules->map.block_width + cos(info->d.ray_angle)
+			* (rules->mlx.win_height / 2 / dy) / cos(get_fix(rules->player.dir
+					- info->d.ray_angle));
+		ty = rules->player.y / rules->map.block_width - sin(info->d.ray_angle)
+			* (rules->mlx.win_height / 2 / dy) / cos(get_fix(rules->player.dir
+					- info->d.ray_angle));
+		color = get_color(rules->floor,
 				our_modulo(tx * rules->floor->width, rules->floor->width),
 				our_modulo(ty * rules->floor->width, rules->floor->width),
 				rules);
@@ -93,7 +97,8 @@ void	draw_view(t_bres_data *d, t_image *view, t_rules *rules, t_image *tex)
 	t_draw_info		info;
 
 	rules->dist_array[d->x] = get_dist(rules, d);
-	info.l_h = rules->map.block_width * rules->mlx.win_height / rules->dist_array[d->x];
+	info.l_h = rules->map.block_width * rules->mlx.win_height
+		/ rules->dist_array[d->x];
 	var[0] = rules->mlx.win_height / 2 - info.l_h / 2;
 	var[1] = info.l_h + var[0];
 	info.off = var[0];

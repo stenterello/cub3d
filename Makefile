@@ -53,6 +53,7 @@ BONUS	=	main.c \
 			engine/move2.c \
 			engine/doors.c \
 			engine/draw_sprites.c \
+			engine/draw_sprites2.c \
 			engine/hud/hud.c \
 			engine/hud/hearth.c \
 			engine/hud/ammo.c

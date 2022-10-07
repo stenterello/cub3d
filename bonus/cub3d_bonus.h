@@ -6,7 +6,7 @@
 /*   By: ddelladi <ddelladi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/26 14:35:18 by gimartin          #+#    #+#             */
-/*   Updated: 2022/10/04 12:49:55 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/10/07 17:38:54 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,4 +42,8 @@ typedef struct s_draw_coord
 	t_image			*sprite;
 }				t_draw_coord;
 
+t_draw_coord	*define_sprite_info(t_rules *rules, double trans_y,
+					int s_x, int i);
+void			draw_sprite_col(t_rules *rules, t_draw_coord *info,
+					t_image *view, double trans_y);
 #endif

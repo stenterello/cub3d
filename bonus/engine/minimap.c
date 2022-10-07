@@ -6,7 +6,7 @@
 /*   By: ddelladi <ddelladi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/02 17:49:20 by ddelladi          #+#    #+#             */
-/*   Updated: 2022/10/07 16:47:43 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/10/07 17:17:37 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,9 +49,9 @@ void	draw_mini_supp(t_rules *rules, int var[7], unsigned int color,
 	if (rules->map.map[var[4]][var[5]] == '4')
 	{
 		color = 0x000000FF;
-		var[0] = var[4] * rules->map.mini_block_width
+		var[2] = var[4] * rules->map.mini_block_width
 			+ rules->map.mini_block_width / 5;
-		var[2] = var[2] + rules->map.mini_block_width / 8 * 5;
+		var[3] = var[2] + rules->map.mini_block_width / 8 * 5;
 		while (var[2] <= var[3])
 		{
 			var[6] += rules->map.mini_block_width / 8;
