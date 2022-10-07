@@ -3,23 +3,26 @@ NAME_B	=	cub3d_bonus
 CC		=	gcc
 FLAGS	=	-Wall -Werror -Wextra -g
 SRC		=	main.c \
-			map_checks.c \
-			map_save.c \
-			map_utils.c \
-			rules.c \
-			utils.c	\
-			utils2.c	\
-			open_window.c \
-			game.c \
-			raycast.c \
-			raycast2.c \
-			raycast3.c \
-			events.c \
-			bresenham.c \
-			draw_view.c \
-			collision.c \
-			collision2.c \
-			move2.c
+			map_parser/map_read.c \
+			map_parser/map_save.c \
+			map_parser/map_checks.c \
+			utils/init.c \
+			utils/colors.c \
+			utils/calculus.c \
+			utils/calculus2.c \
+			utils/mlx_utils.c \
+			utils/choose.c \
+			utils/general.c \
+			engine/game.c \
+			engine/minimap.c \
+			engine/raycast.c \
+			engine/raycast2.c \
+			engine/events.c \
+			engine/events2.c \
+			engine/bresenham.c \
+			engine/draw_view.c \
+			engine/collision.c \
+			engine/move.c
 BONUS	=	main.c \
 			map_parser/map_read.c \
 			map_parser/map_save.c \
@@ -56,11 +59,11 @@ SRCS	=	${addprefix src/, $(SRC)}
 B_SRCS	=	${addprefix bonus/, $(BONUS)}
 M_B_CMD	=	bonus/engine/keys.c
 L_B_CMD	=	bonus/engine/lin_keys.c
-MAC_CMD	=	src/keys.c
-LIN_CMD	=	src/lin_keys.c
-M_CMD_O	=	src/keys.o
+MAC_CMD	=	src/engine/keys.c
+LIN_CMD	=	src/engine/lin_keys.c
+M_CMD_O	=	src/engine/keys.o
 M_B_C_O	=	bonus/engine/keys.o
-L_CMD_O	=	src/lin_keys.o
+L_CMD_O	=	src/engine/lin_keys.o
 L_B_C_O =	bonus/engine/lin_keys.o
 OBJS	=	${SRCS:.c=.o}
 B_OBJS	=	${B_SRCS:.c=.o}
@@ -84,7 +87,7 @@ $(NAME_B)	:	$(LIBFT) $(B_OBJS) $(M_B_C_O)
 	$(CC) $(FLAGS) $(MLX_OPT) $(LIBFT) $(B_OBJS) $(M_B_C_O) -o $(NAME_B) $(B_PATH) $(OPTS)
 
 %.o	:	%.c
-	$(CC) $(FLAGS) -c $< -o $@ $(B_PATH) $(OPTS)
+	$(CC) $(FLAGS) -c $< -o $@ $(S_PATH) $(OPTS)
 
 lin	: $(LIBFT) $(MLX_LIN) $(OBJS) $(L_CMD_O)
 	$(CC) $(FLAGS) $(OBJS) $(L_CMD_O) $(LIBFT) $(MLX_LIN) $(LIN_OPT) -o $(NAME)

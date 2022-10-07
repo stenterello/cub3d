@@ -6,13 +6,13 @@
 /*   By: ddelladi <ddelladi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/26 15:22:38 by ddelladi          #+#    #+#             */
-/*   Updated: 2022/09/22 12:41:53 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/10/07 15:01:36 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int	horizontal_checks(char **map)
+static int	horizontal_checks(char **map)
 {
 	int	i;
 	int	j;
@@ -32,7 +32,7 @@ int	horizontal_checks(char **map)
 	return (1);
 }
 
-int	vertical_checks(t_map *map)
+static int	vertical_checks(t_map *map)
 {
 	int	i;
 	int	j;
@@ -43,10 +43,10 @@ int	vertical_checks(t_map *map)
 		i = 0;
 		while (map->map[i] && map->map[i][j])
 		{
-			if ((map->map[i][j] == '0' || ft_isalpha(map->map[i][j])) && (i == 0
-				|| i == map->map_height_len[1] - 1 || map->map[i - 1][j] == ' '
-				|| map->map[i + 1][j] == ' ' || map->map[i - 1][j] == '\n'
-				|| map->map[i + 1][j] == '\n'))
+			if ((map->map[i][j] == '0' || ft_isalpha(map->map[i][j]))
+				&& (i == 0 || i == map->map_height_len[1] - 1
+				|| map->map[i - 1][j] == ' ' || map->map[i + 1][j] == ' '
+				|| map->map[i - 1][j] == '\n' || map->map[i + 1][j] == '\n'))
 				return (0);
 			i++;
 		}
@@ -54,30 +54,7 @@ int	vertical_checks(t_map *map)
 	return (1);
 }
 
-void	define_player(t_rules *rules, char c, int i, int j)
-{
-	if (c == 'N')
-		rules->player.dir = M_PI / 2;
-	else if (c == 'W')
-		rules->player.dir = M_PI;
-	else if (c == 'S')
-		rules->player.dir = M_PI * 3 / 2;
-	else if (c == 'E')
-		rules->player.dir = 2 * M_PI;
-	rules->map.map[i][j] = '0';
-	rules->player.x = ++j * rules->map.block_width
-		- (rules->map.block_width / 2);
-	rules->player.y = ++i * rules->map.block_width
-		- (rules->map.block_width / 2);
-	rules->player.d_x = cos(rules->player.dir) * 5;
-	if (rules->player.dir == (double)M_PI)
-		rules->player.d_y = 0;
-	else
-		rules->player.d_y = -sin(rules->player.dir) * 5;
-	rules->player.speed = SPEED;
-}
-
-int	find_player(t_rules *rules)
+static int	find_player(t_rules *rules)
 {
 	int	i;
 	int	j;
@@ -94,7 +71,7 @@ int	find_player(t_rules *rules)
 				|| rules->map.map[i][j] == 'W' || rules->map.map[i][j] == 'E')
 			{
 				ret++;
-				define_player(rules, rules->map.map[i][j], i, j);
+				init_player(rules, rules->map.map[i][j], i, j);
 			}
 			else if (!ft_isdigit(rules->map.map[i][j]) && rules->map.map[i][j]
 					!= '\n' && rules->map.map[i][j] != ' ')
@@ -116,6 +93,6 @@ void	map_checks(t_rules *rules)
 	if (!c)
 		die("There isn't a valid player in the map. \n\
 		\rMaybe some wrong characters in the map? Check it and retry. Aborting");
-	else if (c == 2)
+	else if (c > 1)
 		die("There must be only one player in the map. Aborting");
 }

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   move2.c                                            :+:      :+:    :+:   */
+/*   move.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ddelladi <ddelladi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/02 14:30:26 by ddelladi          #+#    #+#             */
-/*   Updated: 2022/09/02 17:53:37 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/10/07 15:16:28 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,33 +14,53 @@
 
 static void	check_up(t_rules *rules, float ray_cos, float ray_sin)
 {
-	if (!colliding(rules, ray_cos, 0, 1))
+	int	res1;
+	int	res2;
+
+	res1 = colliding(rules, ray_cos, 0, 1);
+	res2 = colliding(rules, 0, ray_sin, 1);
+	if (!res1)
 		rules->player.x += rules->player.d_x * rules->player.speed;
-	if (!colliding(rules, 0, ray_sin, 1))
+	if (!res2)
 		rules->player.y += rules->player.d_y * rules->player.speed;
 }
 
 static void	check_down(t_rules *rules, float ray_cos, float ray_sin)
 {
-	if (!colliding(rules, ray_cos, 0, 0))
+	int	res1;
+	int	res2;
+
+	res1 = colliding(rules, ray_cos, 0, 0);
+	res2 = colliding(rules, 0, ray_sin, 0);
+	if (!res1)
 		rules->player.x -= rules->player.d_x * rules->player.speed;
-	if (!colliding(rules, 0, ray_sin, 0))
+	if (!res2)
 		rules->player.y -= rules->player.d_y * rules->player.speed;
 }
 
 static void	check_left(t_rules *rules, float ray_cos, float ray_sin)
 {
-	if (!colliding(rules, ray_sin, 0, 1))
+	int	res1;
+	int	res2;
+
+	res1 = colliding(rules, ray_sin, 0, 1);
+	res2 = colliding(rules, 0, ray_cos, 0);
+	if (!res1)
 		rules->player.x += rules->player.d_y * rules->player.speed;
-	if (!colliding(rules, 0, ray_cos, 0))
+	if (!res2)
 		rules->player.y -= rules->player.d_x * rules->player.speed;
 }
 
 static void	check_right(t_rules *rules, float ray_cos, float ray_sin)
 {
-	if (!colliding(rules, ray_sin, 0, 0))
+	int	res1;
+	int	res2;
+
+	res1 = colliding(rules, ray_sin, 0, 0);
+	res2 = colliding(rules, 0, ray_cos, 1);
+	if (!res1)
 		rules->player.x -= rules->player.d_y * rules->player.speed;
-	if (!colliding(rules, 0, ray_cos, 1))
+	if (!res2)
 		rules->player.y += rules->player.d_x * rules->player.speed;
 }
 

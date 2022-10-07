@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   raycast2.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ddelladi <ddelladi@student.42roma.it>      +#+  +:+       +#+        */
+/*   By: ddelladi <ddelladi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/02 17:55:01 by ddelladi          #+#    #+#             */
-/*   Updated: 2022/09/12 11:06:20 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/10/07 15:01:36 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-static int	define_hor_ray_and_offset(t_rules *rules, t_ray *ray,
+int	define_hor_ray_and_offset(t_rules *rules, t_ray *ray,
 	double a_tan, float xy[2])
 {
 	if (ray->angle < M_PI)
@@ -35,7 +35,7 @@ static int	define_hor_ray_and_offset(t_rules *rules, t_ray *ray,
 	}
 }
 
-void	horizontal_lines_check(double angle, t_rules *rules, float ret[3])
+static void	horizontal_lines_check(double angle, t_rules *rules, float ret[3])
 {
 	t_ray	ray;
 	double	a_tan;
@@ -56,7 +56,7 @@ void	horizontal_lines_check(double angle, t_rules *rules, float ret[3])
 	ret[1] = ray.y;
 }
 
-static int	define_ver_ray_and_offset(t_rules *rules, t_ray *ray,
+int	define_ver_ray_and_offset(t_rules *rules, t_ray *ray,
 	double n_tan, float xy[2])
 {
 	if (ray->angle < M_PI / 2 || ray->angle > 3 * M_PI / 2)
@@ -79,7 +79,7 @@ static int	define_ver_ray_and_offset(t_rules *rules, t_ray *ray,
 	return (0);
 }
 
-void	vertical_lines_check(double angle,	t_rules *rules, float ret[3])
+static void	vertical_lines_check(double angle,	t_rules *rules, float ret[3])
 {
 	t_ray	ray;
 	double	n_tan;
@@ -87,10 +87,6 @@ void	vertical_lines_check(double angle,	t_rules *rules, float ret[3])
 
 	xy[0] = rules->player.x;
 	xy[1] = rules->player.y;
-	ray.xyoff[0] = 0;
-	ray.xyoff[1] = 0;
-	ray.x = 0;
-	ray.y = 0;
 	ray.angle = angle;
 	n_tan = -tan(ray.angle);
 	ret[2] = define_ver_ray_and_offset(rules, &ray, n_tan, xy);
@@ -105,16 +101,29 @@ void	vertical_lines_check(double angle,	t_rules *rules, float ret[3])
 	ret[1] = ray.y;
 }
 
-double	increment_angle(double angle, int t)
+void	calc_ray(t_bres_data *data, t_rules *rules,
+	t_image *view, t_image *minimap)
 {
-	int	i;
+	float		f_pts[3];
+	float		s_pts[3];
 
-	i = 0;
-	while (i++ < t)
+	horizontal_lines_check(data->ray_angle, rules, f_pts);
+	vertical_lines_check(data->ray_angle, rules, s_pts);
+	data->xy[0] = rules->player.x;
+	data->xy[1] = rules->player.y;
+	if (final_length(rules->player.x, rules->player.y, s_pts) == INT_MAX
+		|| final_length(rules->player.x, rules->player.y, f_pts)
+		< final_length(rules->player.x, rules->player.y, s_pts))
 	{
-		angle += ANGLE_UNIT;
-		if (angle > 2 * M_PI)
-			angle = 0;
+		data->xy2[0] = f_pts[0];
+		data->xy2[1] = f_pts[1];
+		bresenham(data, minimap, view, rules);
 	}
-	return (angle);
+	else
+	{
+		data->xy2[0] = s_pts[0];
+		data->xy2[1] = s_pts[1];
+		bresenham(data, minimap, view, rules);
+	}
+	data->ray_angle = decrement_angle(data->ray_angle, 1);
 }

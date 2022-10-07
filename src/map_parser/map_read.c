@@ -1,18 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   rules.c                                            :+:      :+:    :+:   */
+/*   map_read.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ddelladi <ddelladi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ddelladi <ddelladi@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/26 14:36:54 by gimartin          #+#    #+#             */
-/*   Updated: 2022/09/07 14:20:00 by ddelladi         ###   ########.fr       */
+/*   Created: 2022/08/26 14:41:34 by gimartin          #+#    #+#             */
+/*   Updated: 2022/10/01 13:35:51 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int	rules_completed(t_rules *rules)
+static int	is_map(char *line)
+{
+	int	i;
+
+	i = -1;
+	while (line[++i])
+	{
+		if (line[i] != '0' && line[i] != '1'
+			&& line[i] != 'N' && line[i] != 'S' && line[i] != 'W'
+			&& line[i] != 'E' && line[i] != ' ' && line[i] != '\n')
+			return (0);
+	}
+	return (1);
+}
+
+static int	rules_completed(t_rules *rules)
 {
 	if (!rules->north || !rules->east || !rules->south
 		|| !rules->west || !rules->floor || !rules->ceiling)
@@ -20,47 +35,33 @@ int	rules_completed(t_rules *rules)
 	return (1);
 }
 
-char	*get_path(char *str)
+static int	take_rgb(char *str, unsigned char rgb[3])
 {
-	char	*ret;
-	int		i;
+	int	i;
+	int	i2;
+	int	tmp;
 
 	i = 0;
-	while (str[i] != ' ')
+	i2 = 0;
+	while (str[i] && !ft_isdigit(str[i]))
+	{
 		i++;
-	while (str[i] == ' ')
-		i++;
-	ret = malloc(sizeof(char) * (ft_strlen(&str[i])));
-	if (!ret)
-		die("Malloc error");
-	ft_strlcpy(ret, &str[i], (ft_strlen(&str[i])));
-	return (ret);
+		if (str[i] && ft_isdigit(str[i]))
+		{
+			tmp = ft_atoi(&str[i]);
+			if (tmp > 255 || tmp < 0)
+				die("Invalid color value. Aborting");
+			rgb[i2++] = (unsigned char)tmp;
+			while (str[i] && ft_isdigit(str[i]))
+				i++;
+		}
+	}
+	if (i2 != 3)
+		die("RGB wrong format in .cub file");
+	return (1);
 }
 
-t_image	*get_rule(char *str, t_rules *rules, t_image *chosen)
-{
-	char	*path;
-	t_image	*ret;
-
-	if (chosen)
-		die("Double rule definition in .cub file. Aborting");
-	path = get_path(str);
-	ret = malloc(sizeof(t_image));
-	if (!ret)
-		die("Malloc error");
-	ret->img = mlx_xpm_file_to_image(rules->mlx.mlx, path,
-			&ret->width, &ret->height);
-	if (!ret->img)
-		die("Could not load textures. Aborting");
-	ret->addr = mlx_get_data_addr(ret->img, &ret->bpp,
-			&ret->line_length, &ret->endian);
-	if (!ret)
-		die("Could not load textures. Aborting");
-	free(path);
-	return (ret);
-}
-
-void	insert_rule(char *str, t_rules *rules)
+static void	insert_rule(char *str, t_rules *rules)
 {
 	if (!ft_strncmp(str, "NO", 2))
 		rules->north = get_rule(str, rules, rules->north);
@@ -98,5 +99,12 @@ void	take_rules(int fd, t_rules *rules)
 	}
 	if (!rules_completed(rules))
 		die("Missing rules in .cub file. Aborting");
+	while (!is_map(tmp))
+	{
+		rules->line_offset++;
+		insert_rule(tmp, rules);
+		free(tmp);
+		tmp = get_next_line(fd);
+	}
 	free(tmp);
 }

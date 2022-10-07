@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   lin_move.c                                         :+:      :+:    :+:   */
+/*   lin_keys.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ddelladi <ddelladi@student.42roma.it>      +#+  +:+       +#+        */
+/*   By: ddelladi <ddelladi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/26 18:46:17 by ddelladi          #+#    #+#             */
-/*   Updated: 2022/09/06 17:54:52 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/10/07 15:01:36 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,10 @@ int	press(int keycode, t_rules *rules)
 		rules->keys.r_pressed = 1;
 	if (keycode == 65505 || keycode == 65506)
 		rules->keys.shift_pressed = 1;
+	if (keycode == 101)
+		rules->keys.e_pressed = 1;
+	if (keycode == 32 && rules->player.ammo)
+		shoot(rules);
 	return (0);
 }
 
@@ -52,5 +56,7 @@ int	release(int keycode, t_rules *rules)
 		rules->keys.r_pressed = 0;
 	if (keycode == 65505 || keycode == 65506)
 		rules->keys.shift_pressed = 0;
+	if (keycode == 101)
+		rules->keys.e_pressed = 0;
 	return (0);
 }

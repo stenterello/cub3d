@@ -1,23 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   raycast3.c                                         :+:      :+:    :+:   */
+/*   raycast.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ddelladi <ddelladi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/26 18:28:56 by ddelladi          #+#    #+#             */
-/*   Updated: 2022/09/07 17:52:03 by ddelladi         ###   ########.fr       */
+/*   Created: 2022/09/02 17:56:50 by ddelladi          #+#    #+#             */
+/*   Updated: 2022/10/07 15:31:57 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
-
-double	final_length(float start_x, float start_y, float rxy[2])
-{
-	if (rxy[0] == INT_MAX)
-		return (INT_MAX);
-	return (sqrt(pow(get_abs(start_x - rxy[0]), 2) + pow(start_y - rxy[1], 2)));
-}
 
 int	virtual_horizontal_colliding(int ray_x, int ray_y, t_rules *rules, int dir)
 {
@@ -55,4 +48,46 @@ int	virtual_vertical_colliding(int ray_x, int ray_y, t_rules *rules, int dir)
 	if (rules->map.map[map_y][map_x] == '1')
 		return (1);
 	return (0);
+}
+
+void	draw_ceiling(t_rules *rules, t_image *view)
+{
+	int	x;
+	int	y;
+
+	x = -1;
+	while (++x < rules->mlx.win_width - 1)
+	{
+		y = 0;
+		while (y < rules->mlx.win_height / 2)
+			easy_pxl(view, x, y++, get_color_arr(rules->ceiling_color));
+	}
+}
+
+void	draw_floor(t_rules *rules, t_image *view)
+{
+	int	x;
+	int	y;
+
+	x = -1;
+	while (++x < rules->mlx.win_width)
+	{
+		y = rules->mlx.win_height / 2 - 1;
+		while (++y < rules->mlx.win_height)
+			easy_pxl(view, x, y, get_color_arr(rules->floor_color));
+	}
+}
+
+void	raycast(t_rules *rules, t_image *view, t_image *minimap)
+{
+	t_bres_data	data;
+
+	data.ray_angle = increment_angle(rules->player.dir,
+			rules->mlx.win_width / 2);
+	data.x = 0;
+	data.color = 0x00FFFFFF;
+	draw_ceiling(rules, view);
+	draw_floor(rules, view);
+	while (data.x++ < rules->mlx.win_width - 1)
+		calc_ray(&data, rules, view, minimap);
 }

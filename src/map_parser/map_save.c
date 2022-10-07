@@ -6,13 +6,13 @@
 /*   By: ddelladi <ddelladi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/26 14:39:54 by gimartin          #+#    #+#             */
-/*   Updated: 2022/09/15 16:59:38 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/10/07 15:01:36 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void	check_line(char *line)
+static void	check_line(char *line)
 {
 	int	i;
 
@@ -26,7 +26,7 @@ void	check_line(char *line)
 	}
 }
 
-void	copy_map_save(int i, t_rules *rules, char *tmp, int fd)
+static void	write_to_matrix(int i, t_rules *rules, char *tmp, int fd)
 {
 	int	j;
 
@@ -40,7 +40,7 @@ void	copy_map_save(int i, t_rules *rules, char *tmp, int fd)
 	{
 		j = ft_strlen(tmp);
 		check_line(tmp);
-		ft_strlcpy(rules->map.map[i], tmp, j + 1);
+		ft_strlcpy(rules->map.map[i], tmp, j-- + 1);
 		while (j < rules->map.map_height_len[0])
 			rules->map.map[i][j++] = ' ';
 		rules->map.map[i][j++] = '\0';
@@ -48,6 +48,25 @@ void	copy_map_save(int i, t_rules *rules, char *tmp, int fd)
 		free(tmp);
 		tmp = get_next_line(fd);
 	}
+}
+
+static void	get_measures(int fd, int hl[2])
+{
+	char	*tmp;
+
+	hl[0] = 0;
+	hl[1] = 1;
+	tmp = get_next_line(fd);
+	while (tmp)
+	{
+		if ((int)ft_strlen(tmp) > hl[0])
+			hl[0] = ft_strlen(tmp);
+		hl[1]++;
+		free(tmp);
+		tmp = get_next_line(fd);
+	}
+	free(tmp);
+	close(fd);
 }
 
 void	map_save(char *file, int fd, t_rules *rules)
@@ -75,5 +94,5 @@ void	map_save(char *file, int fd, t_rules *rules)
 		die("Error opening file");
 	i = 0;
 	tmp = get_next_line(fd);
-	copy_map_save(i, rules, tmp, fd);
+	write_to_matrix(i, rules, tmp, fd);
 }

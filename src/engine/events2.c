@@ -1,29 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   events.c                                           :+:      :+:    :+:   */
+/*   events2.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ddelladi <ddelladi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/26 16:45:37 by ddelladi          #+#    #+#             */
-/*   Updated: 2022/09/09 12:17:18 by ddelladi         ###   ########.fr       */
+/*   Created: 2022/09/20 11:59:10 by gimartin          #+#    #+#             */
+/*   Updated: 2022/10/07 15:06:14 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int	mouse_exit(t_rules *rules)
+void	update_pov_supp(t_rules *rules)
 {
-	mlx_destroy_window(rules->mlx.mlx, rules->mlx.mlx_win);
-	exit(0);
-	return (0);
-}
-
-void	add_events(t_rules *rules)
-{
-	mlx_hook(rules->mlx.mlx_win, 2, 1L << 0, press, rules);
-	mlx_hook(rules->mlx.mlx_win, 3, 1L << 1, release, rules);
-	mlx_hook(rules->mlx.mlx_win, 17, 0, mouse_exit, rules);
+	if (rules->player.dir == (double)M_PI)
+		rules->player.d_y = 0;
+	else
+		rules->player.d_y = -sin(rules->player.dir);
+	if (rules->keys.shift_pressed)
+		rules->player.speed = SPEED * 2;
+	else
+		rules->player.speed = SPEED;
 }
 
 void	update_pov(t_rules *rules)
@@ -37,31 +35,20 @@ void	update_pov(t_rules *rules)
 	if (rules->keys.d_pressed)
 		move_player(rules, "right");
 	if (rules->keys.l_pressed)
-		rules->player.dir += ANGLE_UNIT * 20;
+		rules->player.dir = increment_angle(rules->player.dir, 40);
 	if (rules->keys.r_pressed)
-		rules->player.dir -= ANGLE_UNIT * 20;
-	if (rules->player.dir < 0)
-		rules->player.dir = 2 * M_PI;
-	if (rules->player.dir > 2 * M_PI)
-		rules->player.dir = 0;
+		rules->player.dir = decrement_angle(rules->player.dir, 40);
 	rules->player.d_x = cos(rules->player.dir);
-	if (rules->player.dir == (double)M_PI)
-		rules->player.d_y = 0;
-	else
-		rules->player.d_y = -sin(rules->player.dir);
-	if (rules->keys.shift_pressed)
-		rules->player.speed = SPEED * 2;
-	else
-		rules->player.speed = SPEED;
+	update_pov_supp(rules);
 }
 
 int	loop_events(t_rules *rules)
 {
 	if (!(rules->n_frames % 170))
 	{
-		rules->n_frames = 1;
 		update_pov(rules);
 		game(rules);
+		rules->n_frames++;
 	}
 	else
 		rules->n_frames++;
