@@ -6,7 +6,7 @@
 /*   By: ddelladi <ddelladi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/02 17:49:20 by ddelladi          #+#    #+#             */
-/*   Updated: 2022/10/07 13:09:49 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/10/07 16:47:43 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,42 +43,48 @@ static void	draw_mini_player(t_rules *rules, t_image *image)
 	}
 }
 
+void	draw_mini_supp(t_rules *rules, int var[7], unsigned int color,
+	t_image *image)
+{
+	if (rules->map.map[var[4]][var[5]] == '4')
+	{
+		color = 0x000000FF;
+		var[0] = var[4] * rules->map.mini_block_width
+			+ rules->map.mini_block_width / 5;
+		var[2] = var[2] + rules->map.mini_block_width / 8 * 5;
+		while (var[2] <= var[3])
+		{
+			var[6] += rules->map.mini_block_width / 8;
+			var[0] = var[6] + 1;
+			var[1] = var[0] + rules->map.mini_block_width / 2;
+			while (var[0] <= var[1])
+				easy_pxl(image, var[0]++, var[2], color);
+			var[2]++;
+		}
+	}
+}
+
 static void	draw_mini_block(t_rules *rules, int i, int j, t_image *image)
 {
 	unsigned int	color;
-	int				start_end_x[2];
-	int				start_end_y[2];
-	int				back;
+	int				var_start_end_xy[7];
 
+	var_start_end_xy[4] = i;
+	var_start_end_xy[5] = j;
 	color = choose_color(rules->map.map[i][j]);
-	start_end_x[0] = j * rules->map.mini_block_width;
-	start_end_x[1] = start_end_x[0] + rules->map.mini_block_width;
-	start_end_y[0] = i * rules->map.mini_block_width;
-	start_end_y[1] = start_end_y[0] + rules->map.mini_block_width;
-	back = start_end_x[0];
-	while (start_end_y[0] <= start_end_y[1])
+	var_start_end_xy[0] = j * rules->map.mini_block_width;
+	var_start_end_xy[1] = var_start_end_xy[0] + rules->map.mini_block_width;
+	var_start_end_xy[2] = i * rules->map.mini_block_width;
+	var_start_end_xy[3] = var_start_end_xy[2] + rules->map.mini_block_width;
+	var_start_end_xy[6] = var_start_end_xy[0];
+	while (var_start_end_xy[2] <= var_start_end_xy[3])
 	{
-		start_end_x[0] = back;
-		while (start_end_x[0] <= start_end_x[1])
-			easy_pxl(image, start_end_x[0]++, start_end_y[0], color);
-		start_end_y[0]++;
+		var_start_end_xy[0] = var_start_end_xy[6];
+		while (var_start_end_xy[0] <= var_start_end_xy[1])
+			easy_pxl(image, var_start_end_xy[0]++, var_start_end_xy[2], color);
+		var_start_end_xy[2]++;
 	}
-	if (rules->map.map[i][j] == '4')
-	{
-		color = 0x000000FF;
-		start_end_y[0] = i * rules->map.mini_block_width + rules->map.mini_block_width / 5;
-		start_end_y[1] = start_end_y[0] + rules->map.mini_block_width / 8 * 5;
-		while (start_end_y[0] <= start_end_y[1])
-		{
-			back += rules->map.mini_block_width / 8;
-			start_end_x[0] = back + 1;
-			start_end_x[1] = start_end_x[0] + rules->map.mini_block_width / 2;
-			while (start_end_x[0] <= start_end_x[1])
-				easy_pxl(image, start_end_x[0]++, start_end_y[0], color);
-			start_end_y[0]++;
-		}
-	}
-
+	draw_mini_supp(rules, var_start_end_xy, color, image);
 }
 
 void	minimap2d(t_rules *rules, t_image *minimap)

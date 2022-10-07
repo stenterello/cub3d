@@ -6,7 +6,7 @@
 /*   By: ddelladi <ddelladi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/26 14:35:11 by gimartin          #+#    #+#             */
-/*   Updated: 2022/10/07 13:46:53 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/10/07 16:25:40 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,17 +64,3 @@ int	main(int argc, char **argv)
 	mlx_loop(rules.mlx.mlx);
 	return (0);
 }
-
-
-/*
-
-- livello trama
-- è possibile che nella funzione draw_sprite, il 2.6 non sia utilizzabile in tutte le risoluzioni
-	(funzionante in 854x480)
-- ordinare il codice mandatory in directories
-- aggiustare il makefile che adesso compila i file oggetto soltanto col path del bonus project
-- togliere la flag -g
-- menu iniziale
-- schermata di lost game
-
-*/

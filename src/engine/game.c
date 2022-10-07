@@ -6,7 +6,7 @@
 /*   By: ddelladi <ddelladi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/26 16:57:44 by ddelladi          #+#    #+#             */
-/*   Updated: 2022/10/07 15:01:36 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/10/07 16:23:49 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ void	game(t_rules *rules)
 	init_img(rules, &minimap,
 		rules->map.map_height_len[0] * rules->map.mini_block_width,
 		rules->map.map_height_len[1] * rules->map.mini_block_width);
-	minimap2d(rules, &minimap);
 	raycast(rules, &view, &minimap);
 	mlx_put_image_to_window(rules->mlx.mlx, rules->mlx.mlx_win, view.img, 0, 0);
 }

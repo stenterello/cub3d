@@ -6,7 +6,7 @@
 /*   By: ddelladi <ddelladi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/01 11:35:18 by ddelladi          #+#    #+#             */
-/*   Updated: 2022/10/07 14:44:51 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/10/07 17:09:07 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -199,5 +199,9 @@ int				define_hor_ray_and_offset(t_rules *rules, t_ray *ray,
 int				define_ver_ray_and_offset(t_rules *rules, t_ray *ray,
 					double n_tan, float xy[2]);
 double			get_sprite_dist(t_rules *rules, t_sprite *spr);
+void			move_straight_x(t_rules *rules, int res, int flag);
+void			move_straight_y(t_rules *rules, int res, int flag);
+void			move_lateral_x(t_rules *rules, int res, int flag);
+void			move_lateral_y(t_rules *rules, int res, int flag);
 
 #endif

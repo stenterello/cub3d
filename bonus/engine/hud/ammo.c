@@ -6,12 +6,11 @@
 /*   By: ddelladi <ddelladi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/01 18:39:28 by ddelladi          #+#    #+#             */
-/*   Updated: 2022/10/07 13:37:46 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/10/07 16:52:06 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d_bonus.h"
-
 
 static void	draw_container(t_rules *rules, t_image *view)
 {
@@ -113,19 +112,3 @@ void	draw_ammo_amount(t_rules *rules, t_image *view)
 	draw_ammo_level(rules, view);
 	draw_ammo(rules, view);
 }
-
-
-// void	ammo_level(t_rules *rules, t_image *view)
-// {
-// 	t_draw_coord	info;
-
-// 	info.start_x = rules->mlx.win_width - 35;
-// 	info.width = rules->mlx.win_width - info.start_x - 5;
-// 	info.end_x = info.start_x + info.width;
-// 	info.bench_x = info.start_x;
-// 	info.start_y = 40;
-// 	info.end_y = 70;
-// 	info.bench_y = info.start_y;
-// 	info.height = info.end_y - info.start_y;
-// 	ammo_leve_sup(rules, view, &info);
-// }

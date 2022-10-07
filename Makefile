@@ -50,6 +50,7 @@ BONUS	=	main.c \
 			engine/draw_view.c \
 			engine/collision.c \
 			engine/move.c \
+			engine/move2.c \
 			engine/doors.c \
 			engine/draw_sprites.c \
 			engine/hud/hud.c \
