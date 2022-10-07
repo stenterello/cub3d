@@ -6,7 +6,7 @@
 /*   By: ddelladi <ddelladi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/26 14:35:11 by gimartin          #+#    #+#             */
-/*   Updated: 2022/10/07 16:21:43 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/10/07 18:25:00 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ void	read_file(char *file, t_rules *rules)
 {
 	int	fd;
 
+	if (ft_strncmp(&file[ft_strlen(file) - 4], ".cub", 4))
+		die("Configuration file must have .cub extension");
 	fd = open(file, O_RDONLY);
 	if (fd < 0)
 		die("Error opening file");

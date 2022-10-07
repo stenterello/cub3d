@@ -1,7 +1,7 @@
 NAME	=	cub3d
 NAME_B	=	cub3d_bonus
 CC		=	gcc
-FLAGS	=	-Wall -Werror -Wextra -g
+FLAGS	=	-Wall -Werror -Wextra
 SRC		=	main.c \
 			map_parser/map_read.c \
 			map_parser/map_save.c \
@@ -14,7 +14,6 @@ SRC		=	main.c \
 			utils/choose.c \
 			utils/general.c \
 			engine/game.c \
-			engine/minimap.c \
 			engine/raycast.c \
 			engine/raycast2.c \
 			engine/events.c \
@@ -86,7 +85,7 @@ $(NAME)	:	$(LIBFT) $(OBJS) $(M_CMD_O)
 	$(CC) $(FLAGS) $(MLX_OPT) $(LIBFT) $(OBJS) $(M_CMD_O) -o $(NAME) $(OPTS)
 
 $(NAME_B)	:	$(LIBFT) $(B_OBJS) $(M_B_C_O)
-	$(CC) $(FLAGS) -O3 $(MLX_OPT) $(LIBFT) $(B_OBJS) $(M_B_C_O) -o $(NAME_B) $(B_PATH) $(OPTS)
+	$(CC) $(FLAGS) $(MLX_OPT) $(LIBFT) $(B_OBJS) $(M_B_C_O) -o $(NAME_B) $(B_PATH) $(OPTS)
 
 %.o	:	%.c
 	@if [ -z $(firstword $(MAKECMDGOALS)) ] || [ $(firstword $(MAKECMDGOALS)) == "re" ]; then\

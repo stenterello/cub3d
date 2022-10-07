@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   gun_utils3.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gimartin <gimartin@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ddelladi <ddelladi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/07 11:43:50 by gimartin          #+#    #+#             */
-/*   Updated: 2022/10/07 12:01:12 by gimartin         ###   ########.fr       */
+/*   Updated: 2022/10/07 18:08:41 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void	vertical_lines_check_enemy(double angle, t_rules *rules, float ret[3])
 	}
 }
 
-void	kill_enemy_supp(t_rules *rules, int i, int map_x, int map_y)
+static int	kill_enemy_supp(t_rules *rules, int i, int map_x, int map_y)
 {
 	while (++i < rules->n_sprites)
 	{
@@ -51,11 +51,13 @@ void	kill_enemy_supp(t_rules *rules, int i, int map_x, int map_y)
 			rules->spr[i].attacking = 0;
 			rules->spr[i].type = 1;
 			rules->map.map[map_y][map_x] = '6';
+			return (1);
 		}
 	}
+	return (0);
 }
 
-void	kill_enemy(t_rules *rules, float pts[3])
+int	kill_enemy(t_rules *rules, float pts[3])
 {
 	int			map_x;
 	int			map_y;
@@ -80,5 +82,5 @@ void	kill_enemy(t_rules *rules, float pts[3])
 			map_y = pts[1] / rules->map.block_width;
 	}
 	i = -1;
-	kill_enemy_supp(rules, i, map_x, map_y);
+	return (kill_enemy_supp(rules, i, map_x, map_y));
 }

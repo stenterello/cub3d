@@ -6,7 +6,7 @@
 /*   By: ddelladi <ddelladi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/01 13:05:11 by ddelladi          #+#    #+#             */
-/*   Updated: 2022/10/07 14:25:04 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/10/07 18:08:14 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ void			horizontal_lines_check_enemy(double angle, t_rules *rules,
 					float ret[3]);
 void			vertical_lines_check_enemy(double angle, t_rules *rules,
 					float ret[3]);
-void			kill_enemy(t_rules *rules, float pts[3]);
+int				kill_enemy(t_rules *rules, float pts[3]);
 int				virtual_vertical_colliding_enemy(t_ray ray, t_rules *rules,
 					int dir);
 

@@ -46,7 +46,7 @@ static int	take_rgb(char *str, unsigned char rgb[3])
 	while (str[i] && !ft_isdigit(str[i]))
 	{
 		i++;
-		if (str[i] && ft_isdigit(str[i]))
+		if (str[i] && (ft_isdigit(str[i]) || str[i] == '-'))
 		{
 			tmp = ft_atoi(&str[i]);
 			if (tmp > 255 || tmp < 0)

@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   gun_utils2.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gimartin <gimartin@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ddelladi <ddelladi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/07 11:42:11 by gimartin          #+#    #+#             */
-/*   Updated: 2022/10/07 11:43:32 by gimartin         ###   ########.fr       */
+/*   Updated: 2022/10/07 18:08:02 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d_bonus.h"
 
-void	bullet(t_rules *rules, double angle)
+int	bullet(t_rules *rules, double angle)
 {
 	float	f_pts[3];
 	float	s_pts[3];
@@ -23,12 +23,13 @@ void	bullet(t_rules *rules, double angle)
 		< rules->map.map_height_len[0]
 		&& f_pts[1] > 0 && f_pts[1] / rules->map.block_width
 		< rules->map.map_height_len[1])
-		kill_enemy(rules, f_pts);
+		return (kill_enemy(rules, f_pts));
 	else if (s_pts[0] && s_pts[0] > 0 && s_pts[0] / rules->map.block_width
 		< rules->map.map_height_len[0]
 		&& s_pts[1] > 0 && s_pts[1] / rules->map.block_width
 		< rules->map.map_height_len[1])
-		kill_enemy(rules, s_pts);
+		return (kill_enemy(rules, s_pts));
+	return (0);
 }
 
 void	shoot(t_rules *rules)
@@ -44,7 +45,8 @@ void	shoot(t_rules *rules)
 	load_gun(rules);
 	while (i++ < 72)
 	{
-		bullet(rules, angle);
+		if (bullet(rules, angle))
+			return ;
 		angle = decrement_angle(angle, 1);
 	}
 	rules->player.ammo -= 1;

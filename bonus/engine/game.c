@@ -6,16 +6,11 @@
 /*   By: ddelladi <ddelladi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/26 16:57:44 by ddelladi          #+#    #+#             */
-/*   Updated: 2022/10/07 13:38:57 by ddelladi         ###   ########.fr       */
+/*   Updated: 2022/10/07 18:50:14 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d_bonus.h"
-
-static void	menu(t_rules *rules)
-{
-	(void)rules;
-}
 
 static void	lost_screen(t_rules *rules)
 {
@@ -58,9 +53,7 @@ static void	game(t_rules *rules)
 
 void	decide_game(t_rules *rules)
 {
-	if (rules->game_status == START)
-		menu(rules);
-	else if (rules->game_status == PLAY)
+	if (rules->game_status == PLAY)
 		game(rules);
 	else if (rules->game_status == LOST)
 		lost_screen(rules);
